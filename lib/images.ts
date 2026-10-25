@@ -3,4 +3,5 @@
 export const photos = {
   onboarding: require('@/assets/images/onboarding.jpg') as number,
   home: null as number | null, // home.jpg: wide, about 1200 x 800, darker on the left for the headline
+  session: null as number | null, // session.jpg: video shape, about 1600 x 900, the cover picture for the lesson videos
 };

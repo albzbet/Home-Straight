@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { looksLikeEmail, parseMoney, timeLabel } from '@/lib/format';
+import { highlightTail, looksLikeEmail, parseMoney, timeLabel } from '@/lib/format';
 
 describe('format', () => {
   it('reads money people type', () => {
@@ -15,5 +15,13 @@ describe('format', () => {
     expect(timeLabel('12:00')).toBe('12:00pm');
     expect(looksLikeEmail('mate@example.com')).toBe(true);
     expect(looksLikeEmail('mate@')).toBe(false);
+  });
+});
+
+describe('highlightTail', () => {
+  it('lights up the last sentence, or the last word', () => {
+    expect(highlightTail('Small choices. Big freedom.')).toEqual(['Small choices. ', 'Big freedom.']);
+    expect(highlightTail("Welcome: why you're here")).toEqual(["Welcome: why you're ", 'here']);
+    expect(highlightTail('Triggers')).toEqual(['', 'Triggers']);
   });
 });

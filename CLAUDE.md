@@ -42,6 +42,9 @@ what's next. Plain English, click-by-click steps.
 - Screens redone so far: welcome (`app/welcome.tsx`, owner's layout); Home dashboard (`app/(tabs)/home.tsx`, mockup screen 2)
   with the bottom tabs in `app/(tabs)/` (Home, Program, Progress, Explore, More; `Screen tab` shows `BrandHeader`: name, SOS,
   Get help now). Progress, Explore and `app/missions.tsx` are holding screens until their mockup versions are built.
+  Session (`app/session/[day].tsx`, mockup screen 3): lesson page with close / Week • Day / SOS / help, the title in Bebas with
+  its tail in orange (`highlightTail`), `VideoCard` and `AudioCard` (`components/SessionMedia.tsx`), busy-day switch,
+  "Mark as complete", then check-in, action, done.
   Photos are listed in `lib/images.ts` (null = not arrived yet; `Photo` shows a plain dark space). `Tile` for quick access.
 
 ## Where things are

@@ -1,24 +1,29 @@
+import { Ionicons } from '@expo/vector-icons';
 import { Redirect, router, useLocalSearchParams } from 'expo-router';
 import { useState } from 'react';
-import { View } from 'react-native';
-import { useCrisisGate } from '@/components/Help';
-import { LessonAudio, LessonVideo } from '@/components/Media';
+import { Pressable, Text, View } from 'react-native';
 import { BounceBack, CheckinQuestions, useCheckin } from '@/components/Checkin';
-import { Button, Card, Choice, Field, Screen, ProgressBar, Txt } from '@/components/ui';
+import { GetHelpButton } from '@/components/GetHelpButton';
+import { useCrisisGate } from '@/components/Help';
+import { AudioCard, VideoCard } from '@/components/SessionMedia';
+import { Button, Card, Choice, Field, PrimaryButton, ProgressBar, Screen, Txt } from '@/components/ui';
 import { useContent } from '@/lib/content';
+import { highlightTail } from '@/lib/format';
+import { photos } from '@/lib/images';
 import { FREE_DAYS, localDate, today } from '@/lib/program';
 import { lastCheckinDate } from '@/lib/progress';
 import { useStore } from '@/lib/store';
-import { space } from '@/lib/theme';
+import { fonts, radius, space, useTheme } from '@/lib/theme';
 
-// One daily session. Full (~10 min): video, audio, check-in, one action. Busy day (5 min): audio and check-in.
+// One daily session (mockup screen 3). The lesson page has the 60-second video and the guided audio, then "Mark as
+// complete" leads to the 1-minute check-in and one action for today. Busy day (5 min): the short audio and the check-in.
 // Someone who says they gambled gets the bounce-back step straight after the check-in, never a telling-off.
 // A session already done opens in "listen again" mode (?review=1): just the lesson, nothing saved. After the program,
 // "repeat a week" (?repeat=1) runs done sessions again in full, saving the check-in as a daily check-in instead.
-type Step = 'start' | 'video' | 'audio' | 'checkin' | 'bounce' | 'action' | 'done';
-const FULL: Step[] = ['start', 'video', 'audio', 'checkin', 'action', 'done'];
-const BUSY: Step[] = ['start', 'audio', 'checkin', 'done'];
-const REVIEW: Step[] = ['start', 'video', 'audio', 'done'];
+type Step = 'lesson' | 'checkin' | 'bounce' | 'action' | 'done';
+const FULL: Step[] = ['lesson', 'checkin', 'action', 'done'];
+const BUSY: Step[] = ['lesson', 'checkin', 'done'];
+const REVIEW: Step[] = ['lesson', 'done'];
 
 export default function Session() {
   const {
@@ -27,7 +32,8 @@ export default function Session() {
     repeat: repeatParam,
   } = useLocalSearchParams<{ day: string; review?: string; repeat?: string }>();
   const day = Number(dayParam);
-  const { weeks, lesson: findLesson } = useContent();
+  const th = useTheme();
+  const { lesson: findLesson } = useContent();
   const lesson = findLesson(day);
   const { state, signedIn, saveDay, saveCheckin } = useStore();
   const [busy, setBusy] = useState(false);
@@ -52,7 +58,6 @@ export default function Session() {
   if (!review && !repeat && step !== 'done' && !already && (t.day !== day || !t.unlocked)) return <Redirect href="/home" />;
   if (step !== 'done' && !already && day > FREE_DAYS && !signedIn) return <Redirect href="/save-progress" />;
 
-  const week = weeks.find((w) => w.week === lesson.week)!;
   const canGo = step !== 'checkin' || checkin.complete;
 
   const finish = async () => {
@@ -74,19 +79,12 @@ export default function Session() {
   const next = () => check([action, ...checkin.texts], () => (steps[at + 1] === 'done' && !review ? finish() : setAt(at + 1)));
 
   const footer =
-    step === 'start' && review ? (
-      <>
-        <Button label="Listen again" onPress={() => setAt(1)} />
-        <Button label="Back" kind="ghost" onPress={() => router.back()} />
-      </>
-    ) : step === 'done' && review ? (
-      <Button label="Done" onPress={() => router.back()} />
-    ) : step === 'start' ? (
-      <>
-        <Button label={`Start (about 10 minutes)`} onPress={() => (setBusy(false), setAt(1))} />
-        <Button label="Busy day? Do the 5-minute version" kind="secondary" onPress={() => (setBusy(true), setAt(1))} />
-        <Button label="Not now" kind="ghost" onPress={() => router.replace('/home')} />
-      </>
+    step === 'lesson' ? (
+      review ? (
+        <PrimaryButton label="Done" onPress={() => router.back()} />
+      ) : (
+        <PrimaryButton label="Mark as complete" onPress={() => setAt(1)} />
+      )
     ) : step === 'done' && repeat ? (
       day % 7 !== 0 ? (
         <>
@@ -117,38 +115,79 @@ export default function Session() {
       </>
     );
 
+  const [plain, lit] = highlightTail(lesson.title);
+  const close = () => (review || repeat ? router.back() : router.replace('/home'));
+  const label = (text: string) => <Text style={{ fontFamily: fonts.semibold, fontSize: 15, color: th.text }}>{text}</Text>;
+
   return (
-    <Screen footer={footer}>
+    <Screen footer={footer} help={false} sos={false}>
       {sheet}
-      {step !== 'start' && step !== 'done' ? <ProgressBar at={at} of={steps.length - 2} /> : null}
+      {/* Close on the left, Week and Day in the middle, Urge SOS and Get help now on the right. */}
+      <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.sm }}>
+        <Pressable accessibilityRole="button" accessibilityLabel="Close" onPress={close} hitSlop={10}>
+          <Ionicons name="close" size={26} color={th.text} />
+        </Pressable>
+        <Text style={{ flex: 1, textAlign: 'center', fontFamily: fonts.medium, fontSize: 14, color: th.text }}>
+          Week {lesson.week} • Day {day}
+        </Text>
+        <Pressable
+          accessibilityRole="button"
+          accessibilityLabel="Urge SOS"
+          onPress={() => router.push('/sos')}
+          hitSlop={8}
+          style={{
+            width: 34,
+            height: 34,
+            borderRadius: radius.pill,
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor: th.card,
+          }}
+        >
+          <Ionicons name="pulse" size={17} color={th.sos} />
+        </Pressable>
+        <GetHelpButton />
+      </View>
+      {step !== 'lesson' && step !== 'done' ? <ProgressBar at={at} of={steps.length - 1} /> : null}
 
-      {step === 'start' && (
-        <View style={{ gap: space.md, marginTop: space.xl }}>
-          <Txt variant="label">
-            Week {lesson.week} · {week.theme} · Day {day}
-          </Txt>
-          <Txt variant="title">{lesson.title}</Txt>
-          <Txt variant="muted">{week.summary}</Txt>
-        </View>
-      )}
-
-      {step === 'video' && (
+      {step === 'lesson' && (
         <>
-          <Txt variant="h2">{lesson.title}</Txt>
-          <LessonVideo url={lesson.video.url} script={lesson.video.script} />
-        </>
-      )}
-
-      {step === 'audio' && (
-        <>
-          <Txt variant="h2">{lesson.audio.title}</Txt>
-          <Txt variant="muted">
-            {busy ? `${lesson.busyAudio.minutes} minutes` : `${lesson.audio.minutes} minutes`}. Find a comfy spot. Headphones help.
-          </Txt>
+          <Text
+            accessibilityRole="header"
+            style={{ fontFamily: fonts.display, fontSize: 52, lineHeight: 52, color: th.text, marginTop: space.sm }}
+          >
+            {plain.toUpperCase()}
+            <Text style={{ color: th.primary }}>{lit.toUpperCase()}</Text>
+          </Text>
+          {!review ? (
+            <Pressable
+              accessibilityRole="switch"
+              accessibilityState={{ checked: busy }}
+              onPress={() => setBusy((b) => !b)}
+              style={{ flexDirection: 'row', alignItems: 'center', gap: space.sm, alignSelf: 'flex-start' }}
+            >
+              <Ionicons name={busy ? 'checkmark-circle' : 'time-outline'} size={18} color={th.primary} />
+              <Text style={{ fontFamily: fonts.medium, fontSize: 14, color: th.primary }}>
+                {busy ? 'Busy-day version on (5 minutes)' : 'Busy day? Switch to the 5-minute version'}
+              </Text>
+            </Pressable>
+          ) : null}
+          {!busy ? (
+            <>
+              {label('60 second video')}
+              <VideoCard url={lesson.video.url} script={lesson.video.script} poster={photos.session} />
+            </>
+          ) : null}
+          {label(busy ? 'Listen' : 'Follow with audio')}
           {busy ? (
-            <LessonAudio url={lesson.busyAudio.url} script={lesson.busyAudio.script} />
+            <AudioCard
+              url={lesson.busyAudio.url}
+              script={lesson.busyAudio.script}
+              title="Short version"
+              minutes={lesson.busyAudio.minutes}
+            />
           ) : (
-            <LessonAudio url={lesson.audio.url} script={lesson.audio.script} />
+            <AudioCard url={lesson.audio.url} script={lesson.audio.script} title={lesson.audio.title} minutes={lesson.audio.minutes} />
           )}
         </>
       )}

@@ -50,7 +50,7 @@
       "reviewStatus": "placeholder",
       "video": {
         "url": null,
-        "script": "G'day, and welcome. Deciding to take a look at your gambling takes guts, and you've already done the hardest part: you've started. Over the next six weeks you'll spend about ten minutes each morning on a short lesson, a quick check-in and one small thing to try that day. There's no falling behind here. If you miss a day, you just pick up where you left off."
+        "script": "G'day, and welcome. Deciding to take a look at your gambling takes guts, and you've already done the hardest part: you've started. Over the next eight weeks you'll spend about ten minutes each morning on a short lesson, a quick check-in and one small thing to try that day. There's no falling behind here. If you miss a day, you just pick up where you left off."
       },
       "audio": {
         "url": null,
@@ -62,7 +62,7 @@
       "busyAudio": {
         "url": null,
         "minutes": 3,
-        "script": "Short on time? That's fine. Take one slow breath. Think of the main reason you're here, and say it to yourself. That reason is your anchor for the next six weeks. Now a quick check-in, and you're done for today."
+        "script": "Short on time? That's fine. Take one slow breath. Think of the main reason you're here, and say it to yourself. That reason is your anchor for the next eight weeks. Now a quick check-in, and you're done for today."
       },
       "action": {
         "prompt": "Pick one thing for today, or write your own",
