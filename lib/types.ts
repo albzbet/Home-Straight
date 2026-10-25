@@ -31,6 +31,8 @@ export type DayRecord = {
   gambled: boolean | null; // yesterday
   amount: number | null;
   action: string;
+  slipWhat?: string; // if they gambled: what was going on (bounce-back step)
+  slipDifferent?: string; // ...and what they'd do differently
 };
 
 export type ProgramState = {

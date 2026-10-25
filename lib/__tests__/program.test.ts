@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { localDate, nextDay, today, TOTAL_DAYS, weekOf } from '@/lib/program';
+import { dayStatus, localDate, nextDay, today, TOTAL_DAYS, weekOf } from '@/lib/program';
 import type { DayRecord } from '@/lib/types';
 
 const done = (day: number, date: string): DayRecord => ({
@@ -39,5 +39,15 @@ describe('program', () => {
   it('works out weeks and dates', () => {
     expect([1, 7, 8, 42].map(weekOf)).toEqual([1, 1, 2, 6]);
     expect(localDate(new Date(2026, 0, 5))).toBe('2026-01-05');
+  });
+});
+
+describe('dayStatus', () => {
+  it('labels each session', () => {
+    const days = [done(1, '2026-10-25')];
+    expect(dayStatus(1, days, '2026-10-25')).toBe('done');
+    expect(dayStatus(2, days, '2026-10-25')).toBe('tomorrow');
+    expect(dayStatus(2, days, '2026-10-26')).toBe('today');
+    expect(dayStatus(3, days, '2026-10-26')).toBe('later');
   });
 });

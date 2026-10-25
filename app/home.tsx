@@ -58,6 +58,7 @@ export default function Home() {
         <Txt variant="muted">
           {state.days.length} of {TOTAL_DAYS} sessions done
         </Txt>
+        <Button label="See all 6 weeks" kind="secondary" onPress={() => router.push('/program')} />
       </Card>
 
       <Txt variant="small">{config.help.disclaimer}</Txt>

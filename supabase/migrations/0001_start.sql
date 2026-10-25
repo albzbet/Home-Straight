@@ -82,8 +82,12 @@ create table if not exists public.day_progress (
   gambled boolean,
   amount numeric(10, 2) check (amount between 0 and 1000000),
   action bytea, -- encrypted
+  slip_what bytea, -- encrypted: if they gambled, what was going on
+  slip_different bytea, -- encrypted: what they'd do differently
   primary key (member_id, day)
 );
+alter table public.day_progress add column if not exists slip_what bytea;
+alter table public.day_progress add column if not exists slip_different bytea;
 
 alter table public.members enable row level security;
 alter table public.questionnaires enable row level security;
@@ -118,7 +122,8 @@ language sql stable security definer set search_path = public as $$
         order by q.taken_at) from public.questionnaires q where q.member_id = auth.uid()), '[]'::jsonb),
     'days', coalesce((select jsonb_agg(jsonb_build_object('day', d.day, 'localDate', d.local_date, 'completedAt', d.completed_at,
         'busy', d.busy, 'mood', d.mood, 'urge', d.urge, 'gambled', d.gambled, 'amount', d.amount,
-        'action', coalesce(private.dec(d.action), '')) order by d.day) from public.day_progress d where d.member_id = auth.uid()), '[]'::jsonb))
+        'action', coalesce(private.dec(d.action), ''), 'slipWhat', coalesce(private.dec(d.slip_what), ''),
+        'slipDifferent', coalesce(private.dec(d.slip_different), '')) order by d.day) from public.day_progress d where d.member_id = auth.uid()), '[]'::jsonb))
   from (select auth.uid() as uid) me
   left join public.members m on m.id = me.uid
   where me.uid is not null
@@ -187,12 +192,14 @@ begin
   if d > 1 and not exists (select 1 from public.day_progress where member_id = uid and day = d - 1) then
     raise exception 'finish the day before first';
   end if;
-  insert into public.day_progress (member_id, day, local_date, busy, mood, urge, gambled, amount, action)
+  insert into public.day_progress (member_id, day, local_date, busy, mood, urge, gambled, amount, action, slip_what, slip_different)
   values (uid, d, (p ->> 'localDate')::date, coalesce((p ->> 'busy')::boolean, false), (p ->> 'mood')::smallint,
-    (p ->> 'urge')::smallint, (p ->> 'gambled')::boolean, (p ->> 'amount')::numeric, private.enc(left(p ->> 'action', 300)))
+    (p ->> 'urge')::smallint, (p ->> 'gambled')::boolean, (p ->> 'amount')::numeric, private.enc(left(p ->> 'action', 300)),
+    private.enc(left(p ->> 'slipWhat', 600)), private.enc(left(p ->> 'slipDifferent', 300)))
   on conflict (member_id, day) do update set
     local_date = excluded.local_date, completed_at = now(), busy = excluded.busy, mood = excluded.mood, urge = excluded.urge,
-    gambled = excluded.gambled, amount = excluded.amount, action = excluded.action;
+    gambled = excluded.gambled, amount = excluded.amount, action = excluded.action, slip_what = excluded.slip_what,
+    slip_different = excluded.slip_different;
 end $$;
 
 -- Moves a "try first" Day 1 from the phone into a new account. Does nothing if the account already has a program.

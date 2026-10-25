@@ -48,7 +48,8 @@ what's next. Plain English, click-by-click steps.
 1. Project setup, auth, try-first Day 1, onboarding: done (25 Oct 2026). Migration 0001 written, not yet run by the owner.
 2. Safety: done. `GetHelpButton` on every `Screen`, `/help`, crisis words in `config/safety.json` checked on the phone
    (`lib/safety.ts`, `useCrisisGate` in `components/Help.tsx`) before moving on from any screen with free text. Nothing is stored.
-3. Program engine (all 42 days, unlocks, pick up where you left off; the session screen already exists).
+3. Program engine: done. `app/session/[day].tsx` (full, busy day, bounce-back step after a reported slip,
+   `?review=1` to listen again without saving), `app/program.tsx` (all 6 weeks), `dayStatus` in `lib/program.ts`.
 4. Urge SOS. 5. Home: journey, money kept, streaks + total gamble-free days. 6. Reminders, re-engagement, pausing.
 5. Weekly summaries, end questionnaire, PDF plan. 8. Buddy emails (double opt-in). 9. Payments (RevenueCat), hardship, refunds.
 6. Maintenance mode, meditation library. 11. Admin content editor and analytics dashboard.

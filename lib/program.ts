@@ -31,3 +31,13 @@ export function today(days: DayRecord[], date: string = localDate()): Today {
 }
 
 export const weekOf = (day: number) => Math.ceil(day / 7);
+
+export type DayStatus = 'done' | 'today' | 'tomorrow' | 'later';
+
+// Where one session stands: done, open today, opening tomorrow, or further on.
+export function dayStatus(day: number, days: DayRecord[], date: string = localDate()): DayStatus {
+  if (days.some((d) => d.day === day)) return 'done';
+  const t = today(days, date);
+  if (t.day === day) return t.unlocked ? 'today' : 'tomorrow';
+  return 'later';
+}

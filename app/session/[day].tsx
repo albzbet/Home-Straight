@@ -12,12 +12,15 @@ import { useStore } from '@/lib/store';
 import { space } from '@/lib/theme';
 
 // One daily session. Full (~10 min): video, audio, check-in, one action. Busy day (5 min): audio and check-in.
-type Step = 'start' | 'video' | 'audio' | 'checkin' | 'action' | 'done';
+// Someone who says they gambled gets the bounce-back step straight after the check-in, never a telling-off.
+// A session already done opens in "listen again" mode (?review=1): just the lesson, nothing saved.
+type Step = 'start' | 'video' | 'audio' | 'checkin' | 'bounce' | 'action' | 'done';
 const FULL: Step[] = ['start', 'video', 'audio', 'checkin', 'action', 'done'];
 const BUSY: Step[] = ['start', 'audio', 'checkin', 'done'];
+const REVIEW: Step[] = ['start', 'video', 'audio', 'done'];
 
 export default function Session() {
-  const { day: dayParam } = useLocalSearchParams<{ day: string }>();
+  const { day: dayParam, review: reviewParam } = useLocalSearchParams<{ day: string; review?: string }>();
   const day = Number(dayParam);
   const lesson = findLesson(day);
   const { state, signedIn, saveDay } = useStore();
@@ -28,17 +31,23 @@ export default function Session() {
   const [gambled, setGambled] = useState<boolean | null>(null);
   const [amount, setAmount] = useState('');
   const [action, setAction] = useState('');
+  const [slipWhat, setSlipWhat] = useState<string[]>([]);
+  const [slipNote, setSlipNote] = useState('');
+  const [slipDifferent, setSlipDifferent] = useState('');
   const [saving, setSaving] = useState(false);
   const [problem, setProblem] = useState<string | null>(null);
 
   const { check, sheet } = useCrisisGate();
-  const steps = busy ? BUSY : FULL;
-  const step = steps[at]!;
   const already = state.days.some((d) => d.day === day);
+  const review = already && reviewParam === '1';
+  const base = review ? REVIEW : busy ? BUSY : FULL;
+  const steps = gambled ? base.flatMap((s) => (s === 'checkin' ? (['checkin', 'bounce'] as Step[]) : [s])) : base;
+  const step = steps[at]!;
+  const lastCheckin = state.days.filter((d) => d.day !== day).at(-1);
   // Only today's session (or one already done, to look back on) can be opened. Day 2 onwards needs an account.
   const t = today(state.days);
   if (!lesson) return <Redirect href="/home" />;
-  if (step !== 'done' && !already && (t.day !== day || !t.unlocked)) return <Redirect href="/home" />;
+  if (!review && step !== 'done' && !already && (t.day !== day || !t.unlocked)) return <Redirect href="/home" />;
   if (step !== 'done' && !already && day > FREE_DAYS && !signedIn) return <Redirect href="/save-progress" />;
 
   const week = weeks.find((w) => w.week === lesson.week)!;
@@ -58,6 +67,8 @@ export default function Session() {
         gambled,
         amount: gambled ? parseMoney(amount) : null,
         action: action.trim(),
+        slipWhat: gambled ? [...slipWhat, slipNote.trim()].filter(Boolean).join('; ') : '',
+        slipDifferent: gambled ? slipDifferent.trim() : '',
       });
       setAt(at + 1);
     } catch {
@@ -68,10 +79,17 @@ export default function Session() {
   };
 
   // Their plan for today is checked for crisis words before it's saved.
-  const next = () => check([action], () => (steps[at + 1] === 'done' ? finish() : setAt(at + 1)));
+  const next = () => check([action, slipNote, slipDifferent], () => (steps[at + 1] === 'done' && !review ? finish() : setAt(at + 1)));
 
   const footer =
-    step === 'start' ? (
+    step === 'start' && review ? (
+      <>
+        <Button label="Listen again" onPress={() => setAt(1)} />
+        <Button label="Back" kind="ghost" onPress={() => router.back()} />
+      </>
+    ) : step === 'done' && review ? (
+      <Button label="Done" onPress={() => router.back()} />
+    ) : step === 'start' ? (
       <>
         <Button label={`Start (about 10 minutes)`} onPress={() => (setBusy(false), setAt(1))} />
         <Button label="Busy day? Do the 5-minute version" kind="secondary" onPress={() => (setBusy(true), setAt(1))} />
@@ -146,14 +164,13 @@ export default function Session() {
               <Chip key={n} label={String(n)} selected={urge === n} onPress={() => setUrge(n)} />
             ))}
           </Row>
-          <Txt variant="h2">Did you gamble yesterday?</Txt>
+          <Txt variant="h2">{checkinQuestion(lastCheckin?.localDate)}</Txt>
           <Row>
             <Chip label="No" selected={gambled === false} onPress={() => setGambled(false)} />
             <Chip label="Yes" selected={gambled === true} onPress={() => setGambled(true)} />
           </Row>
           {gambled ? (
             <>
-              <Txt variant="muted">Thanks for being honest. That takes guts, and it's how this works.</Txt>
               <Field
                 label="How much, roughly? (optional)"
                 placeholder="$"
@@ -163,6 +180,31 @@ export default function Session() {
               />
             </>
           ) : null}
+        </>
+      )}
+
+      {step === 'bounce' && (
+        <>
+          <Txt variant="title">Thanks for being honest</Txt>
+          <Txt variant="muted">
+            A slip doesn't wipe out your progress. Every gamble-free day you've had still counts, and you're still here, which is what
+            matters. Let's look at what happened so next time can go differently.
+          </Txt>
+          <Txt variant="h2">What was going on?</Txt>
+          <Row>
+            {SLIP_REASONS.map((r) => (
+              <Chip key={r} label={r} selected={slipWhat.includes(r)} onPress={() => setSlipWhat(toggle(slipWhat, r))} />
+            ))}
+          </Row>
+          <Field label="Anything else? (optional)" value={slipNote} onChangeText={setSlipNote} multiline maxLength={300} />
+          <Txt variant="h2">What could you do differently next time?</Txt>
+          <Field
+            placeholder="e.g. Leave my card at home on payday"
+            value={slipDifferent}
+            onChangeText={setSlipDifferent}
+            multiline
+            maxLength={300}
+          />
         </>
       )}
 
@@ -186,15 +228,16 @@ export default function Session() {
 
       {step === 'done' && (
         <View style={{ gap: space.lg, marginTop: space.xl }}>
-          <Txt variant="title">Day {day} done. Good on you.</Txt>
+          <Txt variant="title">{review ? `That's Day ${day} again.` : `Day ${day} done. Good on you.`}</Txt>
+          {gambled ? <Txt>Bouncing back is what counts, and you just did it.</Txt> : null}
           {action.trim() ? (
             <Card>
               <Txt variant="label">Your one thing for today</Txt>
               <Txt>{action.trim()}</Txt>
             </Card>
           ) : null}
-          <Txt variant="muted">{lesson.teaser}</Txt>
-          {!signedIn ? (
+          {!review ? <Txt variant="muted">{lesson.teaser}</Txt> : null}
+          {!signedIn && !review ? (
             <Card>
               <Txt variant="h2">Keep going tomorrow</Txt>
               <Txt variant="muted">
@@ -206,4 +249,20 @@ export default function Session() {
       )}
     </Screen>
   );
+}
+
+const SLIP_REASONS = [
+  ...config.onboarding.riskyTimes.map((r) => r.label),
+  'An ad or offer',
+  'Trying to win back money',
+  'Someone else was betting',
+  "I'm not sure",
+];
+
+const toggle = (list: string[], item: string) => (list.includes(item) ? list.filter((x) => x !== item) : [...list, item]);
+
+// "Did you gamble yesterday?", or "since your last check-in" when they've been away for a few days.
+function checkinQuestion(lastDate: string | undefined): string {
+  const yesterday = localDate(new Date(Date.now() - 86_400_000));
+  return !lastDate || lastDate >= yesterday ? 'Did you gamble yesterday?' : 'Have you gambled since your last check-in?';
 }
