@@ -2,6 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createContext, useCallback, useContext, useEffect, useState, type ReactNode } from 'react';
 import { useAuth } from './auth';
 import { supabase } from './supabase';
+import { localDate } from './program';
 import { emptyState, type DayRecord, type Onboarding, type ProgramState, type Questionnaire, type UrgeLog } from './types';
 
 // A member's program data. Before they make an account ("try first") it lives on the phone only.
@@ -22,6 +23,7 @@ type Store = {
   saveQuestionnaire: (q: Questionnaire) => Promise<void>;
   saveDay: (d: DayRecord) => Promise<void>;
   saveUrge: (u: UrgeLog) => Promise<void>;
+  setPause: (days: number | null | false) => Promise<void>; // days, null = until I come back, false = resume now
   deleteMyData: () => Promise<void>;
 };
 
@@ -144,6 +146,15 @@ export function StoreProvider({ children }: { children: ReactNode }) {
         (s) => ({ ...s, urges: [...s.urges, u] }),
         () => rpc('hs_save_urge', { p: u }),
       ),
+    setPause: (days) => {
+      const today = localDate();
+      const pause =
+        days === false ? null : { since: today, until: days === null ? null : localDate(new Date(Date.now() + days * 86_400_000)) };
+      return update(
+        (s) => ({ ...s, pause }),
+        () => rpc('hs_set_pause', { p: pause }),
+      );
+    },
     deleteMyData: async () => {
       if (signedIn) {
         await rpc('hs_delete_my_data');

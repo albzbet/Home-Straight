@@ -53,7 +53,8 @@ what's next. Plain English, click-by-click steps.
 4. Urge SOS: done. `SosButton` on every `Screen`, `app/sos.tsx` (timer + breathing from `config.sos`, why and
    money goal, message buddy via the share sheet, call/chat Gambling Help Online, log afterwards in `urge_logs`).
 5. Home: done. `Journey` path, gamble-free days in total and in a row, money kept towards the goal
-   (`lib/progress.ts`: a check-in "yes" marks the day before; Urge SOS "I gambled" marks that day; a slip never resets the total). 6. Reminders, re-engagement, pausing.
+   (`lib/progress.ts`: a check-in "yes" marks the day before; Urge SOS "I gambled" marks that day; a slip never resets the total). 6. Reminders and pausing: done. Local notifications only (`lib/reminders.ts`, plan in `lib/reminderPlan.ts`, wording in
+   `config.reminders`): next mornings, then one "Welcome back" after 2 quiet days, nothing while paused. Pause in Settings.
 6. Weekly summaries, end questionnaire, PDF plan. 8. Buddy emails (double opt-in). 9. Payments (RevenueCat), hardship, refunds.
 7. Maintenance mode, meditation library. 11. Admin content editor and analytics dashboard.
 

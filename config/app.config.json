@@ -320,5 +320,35 @@
       "Doing something else",
       "Getting out of the house"
     ]
+  },
+  "reminders": {
+    "_readme": "Notification wording. Never mention gambling here: these can show on a locked screen. {habit} is filled in with their morning habit, e.g. 'with my morning coffee'.",
+    "daily": {
+      "title": "Your 10 minutes",
+      "body": "Ready when you are{habit}."
+    },
+    "welcomeBack": {
+      "title": "Welcome back",
+      "body": "Here's a 5-minute catch-up whenever you're ready."
+    },
+    "resume": {
+      "title": "Ready when you are",
+      "body": "Your program is here whenever you'd like to pick it up again."
+    },
+    "quietDaysBeforeWelcomeBack": 2,
+    "pauseOptions": [
+      {
+        "label": "1 week",
+        "days": 7
+      },
+      {
+        "label": "2 weeks",
+        "days": 14
+      },
+      {
+        "label": "Until I come back",
+        "days": null
+      }
+    ]
   }
 }

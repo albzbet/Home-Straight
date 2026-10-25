@@ -55,12 +55,16 @@ create table if not exists public.members (
   buddy_email bytea, -- encrypted
   buddy_consent_at timestamptz,
   onboarded_at timestamptz,
+  paused_since date, -- program on hold (no reminders); null = not paused
+  paused_until date, -- null while paused = until they come back
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
 
 -- Added after the first version of this file: harmless if the column is already there.
 alter table public.members add column if not exists gambling_types text[] not null default '{}';
+alter table public.members add column if not exists paused_since date;
+alter table public.members add column if not exists paused_until date;
 
 create table if not exists public.questionnaires (
   id bigint generated always as identity primary key,
@@ -117,6 +121,7 @@ language sql stable security definer set search_path = public as $$
   select jsonb_build_object(
     'nickname', m.nickname,
     'adultConfirmedAt', m.adult_confirmed_at,
+    'pause', case when m.paused_since is null then null else jsonb_build_object('since', m.paused_since, 'until', m.paused_until) end,
     'onboarding', case when m.onboarded_at is null then null else jsonb_build_object(
       'goal', m.goal,
       'gamblingTypes', to_jsonb(m.gambling_types),
@@ -219,6 +224,18 @@ begin
     slip_different = excluded.slip_different;
 end $$;
 
+-- Pause or resume the program. p: { since, until } (until may be null), or null to resume.
+create or replace function public.hs_set_pause(p jsonb) returns void
+language plpgsql security definer set search_path = public as $$
+begin
+  if auth.uid() is null then raise exception 'not signed in'; end if;
+  update public.members set
+    paused_since = case when p is null or jsonb_typeof(p) = 'null' then null else (p ->> 'since')::date end,
+    paused_until = case when p is null or jsonb_typeof(p) = 'null' then null else (p ->> 'until')::date end,
+    updated_at = now()
+  where id = auth.uid();
+end $$;
+
 -- One Urge SOS use. p: { at, seconds, triggers: [...], passed, helped: [...], note }
 create or replace function public.hs_save_urge(p jsonb) returns void
 language plpgsql security definer set search_path = public as $$
@@ -265,6 +282,8 @@ begin
 end $$;
 
 revoke execute on function public.hs_my_state(), public.hs_save_member(jsonb), public.hs_save_questionnaire(jsonb),
-  public.hs_save_day(jsonb), public.hs_save_urge(jsonb), public.hs_import_guest(jsonb), public.hs_delete_my_data() from public, anon;
+  public.hs_save_day(jsonb), public.hs_save_urge(jsonb), public.hs_set_pause(jsonb), public.hs_import_guest(jsonb),
+  public.hs_delete_my_data() from public, anon;
 grant execute on function public.hs_my_state(), public.hs_save_member(jsonb), public.hs_save_questionnaire(jsonb),
-  public.hs_save_day(jsonb), public.hs_save_urge(jsonb), public.hs_import_guest(jsonb), public.hs_delete_my_data() to authenticated;
+  public.hs_save_day(jsonb), public.hs_save_urge(jsonb), public.hs_set_pause(jsonb), public.hs_import_guest(jsonb),
+  public.hs_delete_my_data() to authenticated;

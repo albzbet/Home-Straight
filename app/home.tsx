@@ -7,13 +7,16 @@ import { lesson } from '@/lib/content';
 import { money } from '@/lib/format';
 import { FREE_DAYS, today } from '@/lib/program';
 import { progress } from '@/lib/progress';
+import { isPaused } from '@/lib/reminderPlan';
+import { remindersSupported, useRemindersOn } from '@/lib/reminders';
 import { useStore } from '@/lib/store';
 import { space, useTheme } from '@/lib/theme';
 
 // Home: today's session, the 6-week journey, gamble-free days and money kept.
 export default function Home() {
   const th = useTheme();
-  const { state, signedIn } = useStore();
+  const { state, signedIn, setPause } = useStore();
+  const [remindOn, setRemindOn] = useRemindersOn();
   if (!state.onboarding) return <Redirect href="/" />;
 
   const t = today(state.days);
@@ -29,6 +32,23 @@ export default function Home() {
         <Txt variant="title">{state.nickname ? `G'day, ${state.nickname}` : "G'day"}</Txt>
         <Button label="Settings" kind="ghost" onPress={() => router.push('/settings')} />
       </View>
+
+      {isPaused(state) ? (
+        <Card>
+          <Txt variant="label">On a break</Txt>
+          <Txt variant="h2">Your program is paused</Txt>
+          <Txt variant="muted">Everything is waiting right where you left it. Come back whenever you're ready.</Txt>
+          <Button label="Pick up where I left off" onPress={() => setPause(false).catch(() => {})} />
+        </Card>
+      ) : null}
+
+      {remindersSupported && remindOn === false && !isPaused(state) && state.days.length > 0 ? (
+        <Card>
+          <Txt variant="h2">Want a nudge each morning?</Txt>
+          <Txt variant="muted">A quiet reminder at the time you picked. It never mentions gambling.</Txt>
+          <Button label="Turn on reminders" kind="secondary" onPress={() => setRemindOn(true)} />
+        </Card>
+      ) : null}
 
       <Card>
         <Txt variant="label">Today</Txt>

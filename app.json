@@ -38,7 +38,13 @@
       ],
       "expo-web-browser",
       "expo-audio",
-      "expo-video"
+      "expo-video",
+      [
+        "expo-notifications",
+        {
+          "color": "#2F6F62"
+        }
+      ]
     ],
     "scheme": "homestraight",
     "experiments": {

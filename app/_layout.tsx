@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { useColorScheme } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { AuthProvider } from '@/lib/auth';
+import { useReminderSync } from '@/lib/reminders';
 import { StoreProvider, useStore } from '@/lib/store';
 import { useTheme } from '@/lib/theme';
 
@@ -12,7 +13,8 @@ SplashScreen.preventAutoHideAsync();
 function RootStack() {
   const t = useTheme();
   const scheme = useColorScheme();
-  const { loading } = useStore();
+  const { loading, state } = useStore();
+  useReminderSync(state, !loading);
   useEffect(() => {
     if (!loading) SplashScreen.hideAsync();
   }, [loading]);

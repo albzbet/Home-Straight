@@ -52,7 +52,10 @@ export type ProgramState = {
   questionnaires: Questionnaire[];
   days: DayRecord[];
   urges: UrgeLog[];
+  pause: Pause | null; // the program is on hold: no reminders, no new sessions nudged
 };
+
+export type Pause = { since: string; until: string | null }; // until: YYYY-MM-DD, or null for "until I come back"
 
 export const emptyState: ProgramState = {
   nickname: null,
@@ -61,4 +64,5 @@ export const emptyState: ProgramState = {
   questionnaires: [],
   days: [],
   urges: [],
+  pause: null,
 };
