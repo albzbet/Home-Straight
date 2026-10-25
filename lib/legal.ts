@@ -10,6 +10,8 @@ What we never do: sell or share your data, show gambling ads, or share anything 
 
 Deleting it: Settings > Delete my data removes your account and everything in it.
 
+Counting: to see whether the program is helping people, we look at totals only (for example, how many people finished Week 1, or the average check-in across everyone). Averages are only shown when at least 5 people are behind them. We also keep simple daily tallies, with nothing about who did them, of how often Urge SOS is opened and how many people try Day 1 before making an account. No advertising or third-party tracking tools are used.
+
 Where it's kept: Supabase (our database provider).
 
 Questions: [contact email to be added].`;

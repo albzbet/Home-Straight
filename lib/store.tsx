@@ -2,6 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createContext, useCallback, useContext, useEffect, useState, type ReactNode } from 'react';
 import { useAuth } from './auth';
 import { supabase } from './supabase';
+import { countUsage } from './usage';
 import { localDate } from './program';
 import {
   emptyState,
@@ -137,21 +138,26 @@ export function StoreProvider({ children }: { children: ReactNode }) {
         (s) => ({ ...s, nickname }),
         () => rpc('hs_save_member', { p: { nickname } }),
       ),
-    saveOnboarding: (o) =>
-      update(
+    saveOnboarding: async (o) => {
+      const first = !state.onboarding;
+      await update(
         (s) => ({ ...s, onboarding: o }),
         () => rpc('hs_save_member', { p: { onboarding: o } }),
-      ),
+      );
+      if (first && !signedIn) countUsage('guest_onboarded');
+    },
     saveQuestionnaire: (q) =>
       update(
         (s) => ({ ...s, questionnaires: [...s.questionnaires, q] }),
         () => rpc('hs_save_questionnaire', { p: q }),
       ),
-    saveDay: (d) =>
-      update(
+    saveDay: async (d) => {
+      await update(
         (s) => ({ ...s, days: [...s.days.filter((x) => x.day !== d.day), d].sort((a, b) => a.day - b.day) }),
         () => rpc('hs_save_day', { p: d }),
-      ),
+      );
+      if (d.day === 1 && !signedIn) countUsage('guest_day1');
+    },
     saveUrge: (u) =>
       update(
         (s) => ({ ...s, urges: [...s.urges, u] }),

@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import { Journey } from '@/components/Journey';
 import { Button, Card, Screen, StepBar, Txt } from '@/components/ui';
 import { config } from '@/lib/config';
-import { lesson, meditationOfTheDay } from '@/lib/content';
+import { useContent } from '@/lib/content';
 import { money } from '@/lib/format';
 import { FREE_DAYS, localDate, today } from '@/lib/program';
 import { progress } from '@/lib/progress';
@@ -16,6 +16,7 @@ import { space, useTheme } from '@/lib/theme';
 export default function Home() {
   const th = useTheme();
   const { state, signedIn, setPause } = useStore();
+  const { lesson, meditationOfTheDay } = useContent();
   const [remindOn, setRemindOn] = useRemindersOn();
   if (!state.onboarding) return <Redirect href="/" />;
 

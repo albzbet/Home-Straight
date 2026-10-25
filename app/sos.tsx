@@ -8,6 +8,7 @@ import { config } from '@/lib/config';
 import { money } from '@/lib/format';
 import { useReducedMotion } from '@/lib/motion';
 import { useStore } from '@/lib/store';
+import { countUsage } from '@/lib/usage';
 import { radius, space, useTheme } from '@/lib/theme';
 import type { UrgeLog } from '@/lib/types';
 
@@ -35,6 +36,7 @@ export default function Sos() {
   const [problem, setProblem] = useState<string | null>(null);
   const { check, sheet } = useCrisisGate();
 
+  useEffect(() => countUsage('sos_opened'), []);
   const total = sos.minutes * 60;
   useEffect(() => {
     if (phase !== 'ride') return;

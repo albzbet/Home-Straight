@@ -1,10 +1,11 @@
 import { Redirect, useLocalSearchParams } from 'expo-router';
 import { LessonAudio } from '@/components/Media';
 import { Screen, Txt } from '@/components/ui';
-import { meditations } from '@/lib/content';
+import { useContent } from '@/lib/content';
 
 export default function MeditationPlayer() {
   const { id } = useLocalSearchParams<{ id: string }>();
+  const { meditations } = useContent();
   const m = meditations.find((x) => x.id === id);
   if (!m) return <Redirect href="/meditations" />;
   return (

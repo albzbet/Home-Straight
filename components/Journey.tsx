@@ -1,6 +1,6 @@
 import { View } from 'react-native';
 import { Card, Txt } from '@/components/ui';
-import { weeks } from '@/lib/content';
+import { useContent } from '@/lib/content';
 import { dayStatus, weekOf } from '@/lib/program';
 import type { DayRecord } from '@/lib/types';
 import { radius, space, useTheme } from '@/lib/theme';
@@ -8,6 +8,7 @@ import { radius, space, useTheme } from '@/lib/theme';
 // The 6-week path on Home: six stops joined by a line, with this week's seven days underneath.
 export function Journey({ days, currentDay }: { days: DayRecord[]; currentDay: number | null }) {
   const t = useTheme();
+  const { weeks } = useContent();
   const week = currentDay ? weekOf(currentDay) : 6;
   const theme = weeks.find((w) => w.week === week)!;
   const doneInWeek = (w: number) => days.filter((d) => weekOf(d.day) === w).length;

@@ -38,14 +38,15 @@ export function HelpServices({ order }: { order?: string[] }) {
 // The caring message. Nothing else can be done until it's acknowledged.
 export function CrisisSheet({ visible, onAcknowledge }: { visible: boolean; onAcknowledge: () => void }) {
   const t = useTheme();
+  const msg = crisisMessage();
   return (
     <Modal visible={visible} animationType="slide" onRequestClose={() => {}} presentationStyle="fullScreen">
       <SafeAreaView style={{ flex: 1, backgroundColor: t.bg }}>
         <ScrollView contentContainerStyle={{ padding: space.xl, gap: space.lg, maxWidth: 560, width: '100%', alignSelf: 'center' }}>
-          <Txt variant="title">{crisisMessage.title}</Txt>
-          <Txt>{crisisMessage.text}</Txt>
+          <Txt variant="title">{msg.title}</Txt>
+          <Txt>{msg.text}</Txt>
           <HelpServices order={['lifeline', 'gho', 'emergency']} />
-          <Button label={crisisMessage.acknowledge} kind="secondary" onPress={onAcknowledge} />
+          <Button label={msg.acknowledge} kind="secondary" onPress={onAcknowledge} />
         </ScrollView>
       </SafeAreaView>
     </Modal>

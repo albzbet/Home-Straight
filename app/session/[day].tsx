@@ -5,7 +5,7 @@ import { useCrisisGate } from '@/components/Help';
 import { LessonAudio, LessonVideo } from '@/components/Media';
 import { BounceBack, CheckinQuestions, useCheckin } from '@/components/Checkin';
 import { Button, Card, Choice, Field, Screen, StepBar, Txt } from '@/components/ui';
-import { weeks, lesson as findLesson } from '@/lib/content';
+import { useContent } from '@/lib/content';
 import { FREE_DAYS, localDate, today } from '@/lib/program';
 import { lastCheckinDate } from '@/lib/progress';
 import { useStore } from '@/lib/store';
@@ -27,6 +27,7 @@ export default function Session() {
     repeat: repeatParam,
   } = useLocalSearchParams<{ day: string; review?: string; repeat?: string }>();
   const day = Number(dayParam);
+  const { weeks, lesson: findLesson } = useContent();
   const lesson = findLesson(day);
   const { state, signedIn, saveDay, saveCheckin } = useStore();
   const [busy, setBusy] = useState(false);

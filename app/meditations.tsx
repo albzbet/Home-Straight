@@ -1,12 +1,13 @@
 import { router } from 'expo-router';
 import { Pressable, View } from 'react-native';
 import { Screen, Txt } from '@/components/ui';
-import { meditations } from '@/lib/content';
+import { useContent } from '@/lib/content';
 import { radius, space, useTheme } from '@/lib/theme';
 
 // The meditation library: short audio for everyday moments.
 export default function Meditations() {
   const t = useTheme();
+  const { meditations } = useContent();
   return (
     <Screen>
       <Txt variant="title">Meditations</Txt>

@@ -11,7 +11,22 @@ const normalise = (s: string) =>
     .replace(/[^a-z0-9']+/g, ' ')
     .trim()} `;
 
-const phrases = safety.phrases.map(normalise).filter((p) => p.trim());
+export type SafetyContent = { phrases: string[]; message: typeof safety.message };
+
+let raw = safety.phrases;
+let phrases = raw.map(normalise).filter((p) => p.trim());
+let message = safety.message;
+
+export const crisisMessage = () => message;
+export const crisisPhrases = () => raw;
+
+// The admin area can replace the word list and message (see lib/content.ts). null goes back to config/safety.json.
+export function setSafety(s: SafetyContent | null) {
+  const next = s?.phrases?.length ? s : safety;
+  raw = next.phrases;
+  phrases = raw.map(normalise).filter((p) => p.trim());
+  message = { ...safety.message, ...next.message };
+}
 
 export function mentionsCrisis(...texts: (string | null | undefined)[]): boolean {
   return texts.some((t) => {
@@ -20,5 +35,3 @@ export function mentionsCrisis(...texts: (string | null | undefined)[]): boolean
     return phrases.some((p) => text.includes(p));
   });
 }
-
-export const crisisMessage = safety.message;

@@ -31,6 +31,21 @@ Without Supabase set up, the app runs in "try first" mode: onboarding and Day 1 
    a 6-digit code if tapping the link doesn't open the app.
 6. Apple and Google sign-in need their own setup (Authentication → Providers). We'll do that when we make a test build.
 
+## Admin area (editing lessons, the dashboard)
+
+1. In Supabase, **SQL Editor → New snippet**: run `supabase/migrations/0002_admin.sql` (after 0001).
+2. Sign in to the app once with the account you want to use as admin.
+3. Run this in the SQL Editor, with that account's email:
+   ```
+   insert into public.admins (user_id) select id from auth.users where email = 'you@example.com' on conflict do nothing;
+   ```
+4. In the app: **Settings → Admin**. On a computer it's easier: run `npx expo start --web`, open the address it shows, sign in,
+   then Settings → Admin. From there you can edit every lesson, upload videos and audio (Supabase's free plan takes files up to
+   50 MB each), edit the meditations, the week themes and the crisis words, and see the dashboard.
+
+Changes reach everyone the next time they open the app. Anything not edited comes from the copy built into the app
+(`content/` and `config/`).
+
 ## For developers
 
 - `app/` screens (expo-router), `components/` shared pieces, `lib/` logic, `content/program.json` all 42 lessons,

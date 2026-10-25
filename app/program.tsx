@@ -1,7 +1,7 @@
 import { router } from 'expo-router';
 import { Pressable, View } from 'react-native';
 import { Button, Card, Screen, Txt } from '@/components/ui';
-import { lessons, weeks } from '@/lib/content';
+import { useContent } from '@/lib/content';
 import { dayStatus, FREE_DAYS, nextDay } from '@/lib/program';
 import { useState } from 'react';
 import { useStore } from '@/lib/store';
@@ -11,6 +11,7 @@ import { radius, space, useTheme } from '@/lib/theme';
 export default function Program() {
   const t = useTheme();
   const { state, signedIn, restartProgram } = useStore();
+  const { lessons, weeks } = useContent();
   const finished = nextDay(state.days) === null;
   const [asking, setAsking] = useState(false);
   const [busy, setBusy] = useState(false);

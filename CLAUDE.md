@@ -28,8 +28,8 @@ what's next. Plain English, click-by-click steps.
 
 ## Where things are
 
-- `content/program.json` all 42 lessons (weeks, titles, video/audio URLs and scripts, actions, teasers, `reviewStatus`).
-  Editable by a psychologist. Step 11 moves it into a database table with an admin editor.
+- `content/program.json` all 42 lessons and `content/meditations.json`: the built-in copy. Admins edit live content in the
+  admin area (saved in `public.content`), which wins over the built-in copy.
 - `config/app.config.json` helplines, disclaimer, onboarding choices, questionnaire (PGSI-style placeholder), moods.
 - `lib/store.tsx` member's data: on the phone for guests ("try first", Day 1 only), in Supabase once signed in; the phone
   copy is moved across by `hs_import_guest` and wiped. `lib/program.ts` which session is next (one a day, missed ones wait).
@@ -64,8 +64,12 @@ what's next. Plain English, click-by-click steps.
   (`app/checkin.tsx`, `daily_checkins`), meditation of the day and library (`content/meditations.json`), game plan, repeat a
   week (`/session/N?repeat=1`, saves a daily check-in) or start again (`hs_restart_program` keeps check-ins).
   Check-in and bounce-back questions are shared (`components/Checkin.tsx`).
-- Still to build: 11 admin content editor and analytics dashboard, then 8 buddy emails (double opt-in) and 9 payments
-  (RevenueCat), hardship access, refund policy (the owner chose 10 and 11 first).
+- Step 11, admin: done. Migration 0002 (`admins`, `content`, `media` storage bucket, anonymous `usage_counts`,
+  `hs_admin_stats`). Content: built-in JSON overlaid with `public.content` rows (`lib/content.ts`, `useContent()`, cached on the
+  phone); crisis words too (`setSafety`). Admin screens in `app/admin/` (`AdminScreen`, `MediaField` uploads), linked from
+  Settings for admins. Dashboard shows totals only; averages need 5+ people.
+- Still to build: 8 buddy emails (double opt-in) and 9 payments (RevenueCat), hardship access (and its admin review screen),
+  refund policy.
 
 Before launch (owner): lawyer for privacy policy and terms (Privacy Act, health information; TGA wording), licence check for
 PGSI questions, psychologist review of content, possibly a neutral name (the "home straight" is racing language).

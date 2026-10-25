@@ -4,7 +4,7 @@ import { Animated, View } from 'react-native';
 import { Stat } from '@/components/Stat';
 import { Button, Screen, Txt } from '@/components/ui';
 import { config } from '@/lib/config';
-import { weeks } from '@/lib/content';
+import { useContent } from '@/lib/content';
 import { money } from '@/lib/format';
 import { useReducedMotion } from '@/lib/motion';
 import { useStore } from '@/lib/store';
@@ -18,6 +18,7 @@ export default function WeekDone() {
   const { n } = useLocalSearchParams<{ n: string }>();
   const week = Number(n);
   const { state } = useStore();
+  const { weeks } = useContent();
   const [grow] = useState(() => new Animated.Value(reduced ? 1 : 0.6));
   useEffect(() => {
     if (!reduced) Animated.spring(grow, { toValue: 1, friction: 6, useNativeDriver: true }).start();

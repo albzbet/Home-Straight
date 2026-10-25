@@ -2,6 +2,7 @@ import { router } from 'expo-router';
 import { useState } from 'react';
 import { Button, Card, Chip, Row, Screen, Txt } from '@/components/ui';
 import { signOut } from '@/lib/auth';
+import { useIsAdmin } from '@/lib/admin';
 import { config } from '@/lib/config';
 import { timeLabel } from '@/lib/format';
 import { isPaused } from '@/lib/reminderPlan';
@@ -11,6 +12,7 @@ import { useStore } from '@/lib/store';
 export default function Settings() {
   const { signedIn, state, deleteMyData, saveOnboarding, setPause } = useStore();
   const [remindOn, setRemindOn] = useRemindersOn();
+  const admin = useIsAdmin();
   const [busy, setBusy] = useState<string | null>(null);
   const [deleting, setDeleting] = useState(false);
   const [problem, setProblem] = useState<string | null>(null);
@@ -126,6 +128,7 @@ export default function Settings() {
         )}
         {problem ? <Txt variant="small">{problem}</Txt> : null}
       </Card>
+      {admin ? <Button label="Admin" kind="ghost" onPress={() => router.push('/admin')} /> : null}
       <Button label="Privacy policy" kind="ghost" onPress={() => router.push('/privacy')} />
       <Button label="Terms of use" kind="ghost" onPress={() => router.push('/terms')} />
       <Txt variant="small">{config.help.disclaimer}</Txt>
