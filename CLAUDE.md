@@ -41,7 +41,7 @@ what's next. Plain English, click-by-click steps.
   gamble-free days, and money kept.
 - Screens redone so far: welcome (`app/welcome.tsx`, owner's layout); Home dashboard (`app/(tabs)/home.tsx`, mockup screen 2)
   with the bottom tabs in `app/(tabs)/` (Home, Program, Progress, Explore, More; `Screen tab` shows `BrandHeader`: name, SOS,
-  Get help now). Explore and `app/missions.tsx` are holding screens until their mockup versions are built.
+  Get help now). `app/missions.tsx` is a holding screen until its mockup version is built.
   Session (`app/session/[day].tsx`, mockup screen 3): lesson page with close / Week • Day / SOS / help, the title in Bebas with
   its tail in orange (`highlightTail`), `VideoCard` and `AudioCard` (`components/SessionMedia.tsx`), busy-day switch,
   "Mark as complete", then check-in, action, done.
@@ -51,6 +51,10 @@ what's next. Plain English, click-by-click steps.
   Progress (`app/(tabs)/progress.tsx`, mockup screen 5): This week / This month / Total (`periodStats`, weeks start Monday,
   never before the program), money kept / gamble-free days / sessions, photo card, weekly goals set automatically
   (`weeklyGoals`: 5 sessions, keep a week's usual spend, 7 gamble-free days; reset each Monday).
+  Bookie Tricks Exposed (Explore tab `app/(tabs)/explore.tsx`, mockup screen 6): `EpisodeCard` list, then meditations;
+  each opens `app/episode/[id].tsx` (video, or its script until a video is uploaded, summary, key points). Episodes are in
+  `content/episodes.json` (placeholder text for now), edited live in Admin > Bookie Tricks Exposed (`app/admin/episodes.tsx`,
+  content key `episodes`). Thumbnails `photos.tricks` in `lib/images.ts`.
   Photos are listed in `lib/images.ts` (null = not arrived yet; `Photo` shows a plain dark space). `Tile` for quick access.
 
 ## Where things are

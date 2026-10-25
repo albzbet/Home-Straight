@@ -1,0 +1,69 @@
+{
+  "_readme": "Bookie Tricks Exposed: short episodes on how gambling companies keep people hooked (shown in the Explore tab). Put a link in 'url' once a video is uploaded (or upload it in the admin area); until then the script is shown to read. 'duration' is what the list shows, e.g. \"8:24\". 'number' sets the order. PLACEHOLDER text until a psychologist has written and checked it.",
+  "episodes": [
+    {
+      "id": "the-tricks-explained",
+      "number": 1,
+      "title": "The tricks explained",
+      "duration": "8:24",
+      "summary": "How gambling companies design products and ads to keep you coming back.",
+      "points": [
+        "Every product is built so the house comes out ahead over time.",
+        "Ads, offers and apps are tested to find what keeps people playing.",
+        "Knowing the tricks takes away some of their power."
+      ],
+      "video": {
+        "url": null,
+        "script": "PLACEHOLDER: Episode 1 script: \"The tricks explained\"."
+      }
+    },
+    {
+      "id": "how-they-hook-you",
+      "number": 2,
+      "title": "How they hook you",
+      "duration": "7:12",
+      "summary": "Bonus bets, push notifications and 'free' offers, and what they're really for.",
+      "points": [
+        "'Free' offers are there to get you betting again.",
+        "Notifications and emails are timed for when you're most likely to give in.",
+        "You can switch them off and unsubscribe today."
+      ],
+      "video": {
+        "url": null,
+        "script": "PLACEHOLDER: Episode 2 script: \"How they hook you\"."
+      }
+    },
+    {
+      "id": "the-illusion-of-control",
+      "number": 3,
+      "title": "The illusion of control",
+      "duration": "6:58",
+      "summary": "Why knowing a lot, or having a system, doesn't change how it works.",
+      "points": [
+        "Lucky rituals and systems don't change random results.",
+        "Skill and knowledge feel like control, but the house still comes out ahead.",
+        "Noticing the feeling of control is the first step to questioning it."
+      ],
+      "video": {
+        "url": null,
+        "script": "PLACEHOLDER: Episode 3 script: \"The illusion of control\"."
+      }
+    },
+    {
+      "id": "why-just-one-never-works",
+      "number": 4,
+      "title": "Why \"just one\" never works",
+      "duration": "7:41",
+      "summary": "The thinking behind 'just one more' and how to step around it.",
+      "points": [
+        "'Just one' is usually the start, not the end.",
+        "Urges rise and fall: waiting is a real choice.",
+        "Having a plan for that moment makes it easier."
+      ],
+      "video": {
+        "url": null,
+        "script": "PLACEHOLDER: Episode 4 script: \"Why \"just one\" never works\"."
+      }
+    }
+  ]
+}

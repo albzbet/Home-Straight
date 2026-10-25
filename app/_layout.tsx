@@ -56,6 +56,8 @@ function RootStack() {
         <Stack.Screen name="admin/lesson/[day]" options={{ headerShown: true, title: '' }} />
         <Stack.Screen name="admin/weeks" options={{ headerShown: true, title: '' }} />
         <Stack.Screen name="admin/meditations" options={{ headerShown: true, title: '' }} />
+        <Stack.Screen name="admin/episodes" options={{ headerShown: true, title: '' }} />
+        <Stack.Screen name="episode/[id]" options={{ headerShown: true, title: '' }} />
         <Stack.Screen name="admin/safety" options={{ headerShown: true, title: '' }} />
         <Stack.Screen name="meditations" options={{ headerShown: true, title: '' }} />
         <Stack.Screen name="meditation/[id]" options={{ headerShown: true, title: '' }} />
