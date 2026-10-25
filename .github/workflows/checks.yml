@@ -1,0 +1,26 @@
+# Runs on every push and pull request: the same checks a developer runs before committing.
+name: Checks
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Type check
+        run: npm run typecheck
+      - name: Lint
+        run: npm run lint -- --max-warnings 0
+      - name: Formatting
+        run: npm run format:check
+      - name: Unit tests
+        run: npm test

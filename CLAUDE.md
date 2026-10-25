@@ -1,0 +1,56 @@
+# Homestraight: notes for Claude
+
+Working name. An Australian app helping adults take control of their gambling: a 6-week, CBT-based morning program
+(42 sessions of about 10 minutes, a 5-minute "busy day" version), Urge SOS and ongoing support tools. The owner is a beginner
+developer: explain plans first, build step by step, and after each step say what was built, how to test it on a phone, and
+what's next. Plain English, click-by-click steps.
+
+## Rules that never bend
+
+- A self-help and wellbeing program, NOT a medical treatment. Never claim to diagnose, treat or cure, never promise outcomes.
+  Questionnaire scores are never shown as a severity label.
+- Complements Gambling Help Online (1800 858 858, 24/7), never replaces it. Lifeline 13 11 14, 000 for emergencies.
+- Warm, non-judgemental, plain-spoken Australian tone. No shaming, no guilt-tripping, never "fall behind".
+- No betting imagery, odds, racing language, slot-style rewards, random prizes, loot boxes or leaderboards.
+- No gambling ads, affiliate links or bookmaker partnerships. Never share or sell data; never share anything with gambling operators.
+- Treat all member data as sensitive health information. Collect the minimum. Nickname only, never real names. 18+ only.
+  Free text members write is encrypted in the database (`private.enc` / `private.dec`, key in Vault).
+- Notification wording and the app icon must never mention gambling.
+- Keep this repo separate from the owner's other apps (some are poker apps). Never copy code that mentions poker or betting.
+
+## Stack
+
+- Expo SDK 58 (React Native 0.88, React 19.3), expo-router (`app/`), TypeScript. Expo changes every SDK: check the
+  versioned docs (docs.expo.dev/versions/v58.0.0/) before using an Expo API. The Expo API is blocked from cloud sessions,
+  so install with `EXPO_OFFLINE=1 npx expo install <pkg>` (picks the SDK's versions).
+- Supabase (separate project from any other app): Postgres, RLS on with no policies; the app only calls `hs_*`
+  security-definer functions that touch the caller's own rows.
+
+## Where things are
+
+- `content/program.json` all 42 lessons (weeks, titles, video/audio URLs and scripts, actions, teasers, `reviewStatus`).
+  Editable by a psychologist. Step 11 moves it into a database table with an admin editor.
+- `config/app.config.json` helplines, disclaimer, onboarding choices, questionnaire (PGSI-style placeholder), moods.
+- `lib/store.tsx` member's data: on the phone for guests ("try first", Day 1 only), in Supabase once signed in; the phone
+  copy is moved across by `hs_import_guest` and wiped. `lib/program.ts` which session is next (one a day, missed ones wait).
+- `lib/auth.tsx` Apple / Google (browser sheet) and email link or 6-digit code. Without `.env` the app runs guest-only.
+- `app/index.tsx` sends people to welcome → onboarding → Day 1 → nickname → home.
+- `supabase/migrations/` numbered SQL, run by hand in the SQL Editor in order. Never edit one that has been run; add the next
+  number using `create or replace` / `if not exists`.
+
+## Commands
+
+- Before committing: `npm run typecheck`, `npm run lint -- --max-warnings 0`, `npm run format:check`, `npm test`
+  (GitHub runs the same on every push). Tests (Vitest) in `lib/__tests__/` cover the pure logic.
+
+## Progress (owner's build order)
+
+1. Project setup, auth, try-first Day 1, onboarding: done (25 Oct 2026). Migration 0001 written, not yet run by the owner.
+2. Safety: Get help now + crisis keyword detection. Next.
+3. Program engine (all 42 days, unlocks, pick up where you left off; the session screen already exists).
+4. Urge SOS. 5. Home: journey, money kept, streaks + total gamble-free days. 6. Reminders, re-engagement, pausing.
+5. Weekly summaries, end questionnaire, PDF plan. 8. Buddy emails (double opt-in). 9. Payments (RevenueCat), hardship, refunds.
+6. Maintenance mode, meditation library. 11. Admin content editor and analytics dashboard.
+
+Before launch (owner): lawyer for privacy policy and terms (Privacy Act, health information; TGA wording), licence check for
+PGSI questions, psychologist review of content, possibly a neutral name (the "home straight" is racing language).

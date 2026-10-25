@@ -1,0 +1,67 @@
+{
+  "_readme": "Everything here can be edited without touching code. Keep the same shape: change the words and numbers, not the names on the left. After editing, the app picks it up next time it's started.",
+  "help": {
+    "disclaimer": "This program supports self-help and is not a substitute for professional care.",
+    "services": [
+      {
+        "id": "gho",
+        "name": "Gambling Help Online",
+        "detail": "Free and confidential, 24/7, phone and live chat",
+        "phone": "1800 858 858",
+        "web": "https://www.gamblinghelponline.org.au"
+      },
+      { "id": "lifeline", "name": "Lifeline", "detail": "Crisis support, 24/7", "phone": "13 11 14", "web": "https://www.lifeline.org.au" },
+      { "id": "emergency", "name": "Emergency", "detail": "If you or someone else is in danger right now", "phone": "000" }
+    ]
+  },
+  "onboarding": {
+    "goals": [
+      { "id": "quit", "label": "Quit", "detail": "Stop gambling altogether" },
+      { "id": "cut_back", "label": "Cut back", "detail": "Gamble less and stay in control" },
+      { "id": "break", "label": "Take a break", "detail": "Step away for a while and see how it feels" }
+    ],
+    "whys": [
+      "My family",
+      "My partner",
+      "My kids",
+      "Money",
+      "My health",
+      "My mental health",
+      "A goal I'm working towards",
+      "My work",
+      "Feeling in control again"
+    ],
+    "riskyTimes": [
+      "Weekends",
+      "Evenings",
+      "Payday",
+      "Live sport",
+      "After a few drinks",
+      "When I'm stressed",
+      "When I'm bored",
+      "When I'm on my own"
+    ],
+    "paydays": ["Weekly", "Fortnightly", "Monthly", "It varies", "I'd rather not say"],
+    "habits": ["With my morning coffee", "Before work", "On the bus or train", "After breakfast", "After dropping the kids off"],
+    "reminderTimes": ["06:00", "06:30", "07:00", "07:30", "08:00", "08:30", "09:00", "09:30", "10:00"]
+  },
+  "questionnaire": {
+    "_note": "PLACEHOLDER questions modelled on the PGSI. Before launch, check the licence for the real PGSI wording and have a psychologist approve these. Answers are stored privately and never shown as a diagnosis.",
+    "intro": "In the last 12 months, how often...",
+    "scale": ["Never", "Sometimes", "Most of the time", "Almost always"],
+    "items": [
+      "...have you bet more than you could really afford to lose?",
+      "...have you needed to bet larger amounts to get the same feeling?",
+      "...have you gone back another day to try to win back money you lost?",
+      "...have you borrowed money or sold something to gamble?",
+      "...have you felt you might have a problem with gambling?",
+      "...has gambling caused you health problems, including stress or anxiety?",
+      "...have people criticised your betting or said you had a problem?",
+      "...has your gambling caused money problems for you or your household?",
+      "...have you felt guilty about the way you gamble, or what happens when you gamble?"
+    ]
+  },
+  "checkin": {
+    "moods": ["Rough", "Low", "Okay", "Good", "Great"]
+  }
+}
