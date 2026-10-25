@@ -42,6 +42,7 @@ create table if not exists public.members (
   nickname text check (char_length(nickname) between 2 and 24),
   adult_confirmed_at timestamptz,
   goal text check (goal in ('quit', 'cut_back', 'break')),
+  gambling_types text[] not null default '{}' check (cardinality(gambling_types) <= 20),
   why_choices text[] not null default '{}' check (cardinality(why_choices) <= 20),
   why_text bytea, -- encrypted
   weekly_spend numeric(10, 2) check (weekly_spend between 0 and 1000000),
@@ -57,6 +58,9 @@ create table if not exists public.members (
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
+
+-- Added after the first version of this file: harmless if the column is already there.
+alter table public.members add column if not exists gambling_types text[] not null default '{}';
 
 create table if not exists public.questionnaires (
   id bigint generated always as identity primary key,
@@ -97,6 +101,7 @@ language sql stable security definer set search_path = public as $$
     'adultConfirmedAt', m.adult_confirmed_at,
     'onboarding', case when m.onboarded_at is null then null else jsonb_build_object(
       'goal', m.goal,
+      'gamblingTypes', to_jsonb(m.gambling_types),
       'whyChoices', to_jsonb(m.why_choices),
       'whyText', coalesce(private.dec(m.why_text), ''),
       'weeklySpend', m.weekly_spend,
@@ -138,6 +143,7 @@ begin
   if o is not null and jsonb_typeof(o) = 'object' then
     update public.members set
       goal = o ->> 'goal',
+      gambling_types = coalesce(array(select jsonb_array_elements_text(o -> 'gamblingTypes')), '{}'),
       why_choices = coalesce(array(select jsonb_array_elements_text(o -> 'whyChoices')), '{}'),
       why_text = private.enc(left(o ->> 'whyText', 300)),
       weekly_spend = (o ->> 'weeklySpend')::numeric,

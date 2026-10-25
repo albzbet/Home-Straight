@@ -1,15 +1,33 @@
 import { router } from 'expo-router';
 import { useState } from 'react';
 import { View } from 'react-native';
-import { Button, Chip, Choice, Field, Row, Screen, StepBar, Txt } from '@/components/ui';
+import { Button, Card, Chip, Choice, Field, Row, Screen, StepBar, Txt } from '@/components/ui';
 import { config } from '@/lib/config';
 import { looksLikeEmail, parseMoney, timeLabel } from '@/lib/format';
+import { moneyInsight, pickInsights, type Insight } from '@/lib/insights';
 import { useStore } from '@/lib/store';
 import { space } from '@/lib/theme';
 import type { Goal, Onboarding as OnboardingAnswers } from '@/lib/types';
 
-// Seven quick questions (under 3 minutes), then straight into Day 1. Everything except the goal can be skipped.
-const STEPS = ['goal', 'why', 'money', 'risky', 'time', 'buddy', 'questions'] as const;
+// Eight quick questions (about 3 minutes), then straight into Day 1. The first four are each followed by a short
+// "something to know" card matched to what was picked, so it starts teaching straight away. Money comes once they've
+// seen a few of those. Everything except the goal and the why can be skipped.
+const STEPS = [
+  'goal',
+  'goalCard',
+  'types',
+  'typesCard',
+  'why',
+  'whyCard',
+  'risky',
+  'riskyCard',
+  'money',
+  'moneyCard',
+  'time',
+  'buddy',
+  'questions',
+] as const;
+const QUESTIONS = STEPS.filter((s) => !s.endsWith('Card'));
 const o = config.onboarding;
 const q = config.questionnaire;
 
@@ -22,6 +40,7 @@ export default function Onboarding() {
   const [problem, setProblem] = useState<string | null>(null);
 
   const [goal, setGoal] = useState<Goal | null>(null);
+  const [types, setTypes] = useState<string[]>([]);
   const [whys, setWhys] = useState<string[]>([]);
   const [whyText, setWhyText] = useState('');
   const [spend, setSpend] = useState('');
@@ -36,9 +55,13 @@ export default function Onboarding() {
   const [answers, setAnswers] = useState<(number | null)[]>(q.items.map(() => null));
 
   const name = STEPS[step]!;
+  const isCard = name.endsWith('Card');
+  const question = QUESTIONS.indexOf(isCard ? STEPS[step - 1]! : name) + 1;
   const buddyOk = !buddyEmail.trim() || (looksLikeEmail(buddyEmail) && buddyConsent);
   const canGo =
+    isCard ||
     (name === 'goal' && !!goal) ||
+    name === 'types' ||
     (name === 'why' && (whys.length > 0 || !!whyText.trim())) ||
     name === 'money' ||
     name === 'risky' ||
@@ -51,6 +74,7 @@ export default function Onboarding() {
     setProblem(null);
     const answersOut: OnboardingAnswers = {
       goal: goal!,
+      gamblingTypes: types,
       whyChoices: whys,
       whyText: whyText.trim(),
       weeklySpend: parseMoney(spend),
@@ -78,7 +102,21 @@ export default function Onboarding() {
   };
 
   const next = () => (step < STEPS.length - 1 ? setStep(step + 1) : finish());
-  const optional = name !== 'goal' && name !== 'why' && name !== 'questions';
+  const optional = !isCard && name !== 'goal' && name !== 'why' && name !== 'questions';
+
+  // The card for the step just answered.
+  const cards: Insight[] =
+    name === 'goalCard'
+      ? [o.goals.find((g) => g.id === goal)?.insight ?? o.goalFallback]
+      : name === 'typesCard'
+        ? pickInsights(o.gamblingTypes, types, o.gamblingTypesFallback)
+        : name === 'whyCard'
+          ? pickInsights(o.whys, whys, o.whyFallback)
+          : name === 'riskyCard'
+            ? pickInsights(o.riskyTimes, risky, o.riskyFallback)
+            : name === 'moneyCard'
+              ? [moneyInsight(o.money, parseMoney(spend), parseMoney(target), savingFor)]
+              : [];
 
   return (
     <Screen
@@ -93,7 +131,7 @@ export default function Onboarding() {
       <View style={{ gap: space.sm }}>
         <StepBar at={step + 1} of={STEPS.length} />
         <Txt variant="small">
-          {step + 1} of {STEPS.length}
+          Question {question} of {QUESTIONS.length}
           {optional ? ' · you can skip this one' : ''}
         </Txt>
       </View>
@@ -108,11 +146,33 @@ export default function Onboarding() {
         </>
       )}
 
+      {isCard && (
+        <View style={{ gap: space.lg, marginTop: space.lg }}>
+          <Txt variant="label">Something to know</Txt>
+          {cards.map((c) => (
+            <Card key={c.title}>
+              <Txt variant="h2">{c.title}</Txt>
+              <Txt>{c.text}</Txt>
+            </Card>
+          ))}
+        </View>
+      )}
+
+      {name === 'types' && (
+        <>
+          <Txt variant="title">What kind of gambling is part of your life?</Txt>
+          <Txt variant="muted">Pick any that apply, starting with the main one. It helps us show you what's most useful.</Txt>
+          {o.gamblingTypes.map((g) => (
+            <Choice key={g.label} label={g.label} selected={types.includes(g.label)} onPress={() => setTypes(toggle(types, g.label))} />
+          ))}
+        </>
+      )}
+
       {name === 'why' && (
         <>
           <Txt variant="title">What's your why?</Txt>
           <Txt variant="muted">Pick any that fit, or put it in your own words. We'll remind you of this on the tough days.</Txt>
-          {o.whys.map((w) => (
+          {o.whys.map(({ label: w }) => (
             <Choice key={w} label={w} selected={whys.includes(w)} onPress={() => setWhys(toggle(whys, w))} />
           ))}
           <Field label="In my own words (optional)" value={whyText} onChangeText={setWhyText} multiline maxLength={300} />
@@ -145,7 +205,7 @@ export default function Onboarding() {
         <>
           <Txt variant="title">When is it hardest?</Txt>
           <Txt variant="muted">Pick the times the urge tends to show up. We'll help you plan around them.</Txt>
-          {o.riskyTimes.map((r) => (
+          {o.riskyTimes.map(({ label: r }) => (
             <Choice key={r} label={r} selected={risky.includes(r)} onPress={() => setRisky(toggle(risky, r))} />
           ))}
           <Txt variant="h2">How often do you get paid?</Txt>

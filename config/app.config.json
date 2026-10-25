@@ -10,40 +10,265 @@
         "phone": "1800 858 858",
         "web": "https://www.gamblinghelponline.org.au"
       },
-      { "id": "lifeline", "name": "Lifeline", "detail": "Crisis support, 24/7", "phone": "13 11 14", "web": "https://www.lifeline.org.au" },
-      { "id": "emergency", "name": "Emergency", "detail": "If you or someone else is in danger right now", "phone": "000" }
+      {
+        "id": "lifeline",
+        "name": "Lifeline",
+        "detail": "Crisis support, 24/7",
+        "phone": "13 11 14",
+        "web": "https://www.lifeline.org.au"
+      },
+      {
+        "id": "emergency",
+        "name": "Emergency",
+        "detail": "If you or someone else is in danger right now",
+        "phone": "000"
+      }
     ]
   },
   "onboarding": {
     "goals": [
-      { "id": "quit", "label": "Quit", "detail": "Stop gambling altogether" },
-      { "id": "cut_back", "label": "Cut back", "detail": "Gamble less and stay in control" },
-      { "id": "break", "label": "Take a break", "detail": "Step away for a while and see how it feels" }
+      {
+        "id": "quit",
+        "label": "Quit",
+        "detail": "Stop gambling altogether",
+        "insight": {
+          "title": "Urges fade the less you feed them",
+          "text": "An urge can feel like it'll last forever, but most rise, peak and pass within about half an hour. Every time you ride one out, the next one tends to be a bit easier. Week 4 is all about this."
+        }
+      },
+      {
+        "id": "cut_back",
+        "label": "Cut back",
+        "detail": "Gamble less and stay in control",
+        "insight": {
+          "title": "Decide your limits before, not during",
+          "text": "Limits made in the moment rarely hold, because gambling is built to keep you going. Limits you set ahead of time, with money and time agreed up front, work much better. We'll help you set yours."
+        }
+      },
+      {
+        "id": "break",
+        "label": "Take a break",
+        "detail": "Step away for a while and see how it feels",
+        "insight": {
+          "title": "A break shows you what's changed",
+          "text": "Stepping away for a while is a chance to notice what's different: your money, your sleep, your mood, how much head space you've got. You decide what comes next once you've seen it."
+        }
+      }
     ],
+    "goalFallback": {
+      "title": "A break shows you what's changed",
+      "text": "Stepping away for a while is a chance to notice what's different: your money, your sleep, your mood, how much head space you've got. You decide what comes next once you've seen it."
+    },
+    "gamblingTypes": [
+      {
+        "label": "Pokies",
+        "insight": {
+          "title": "Pokies are built to keep you playing",
+          "text": "Every spin is random, so a win is never 'due', and over time the machine always comes out ahead. The lights and sounds even celebrate 'wins' smaller than your bet, so losing can feel like winning."
+        }
+      },
+      {
+        "label": "Sports betting",
+        "insight": {
+          "title": "The apps are designed around the game",
+          "text": "In-play bets, multis and 'bonus bets' keep you tapping while the game is on. Knowing a sport well doesn't change the fact that the prices are set so the bookmaker comes out ahead."
+        }
+      },
+      {
+        "label": "Betting on races",
+        "insight": {
+          "title": "A race every few minutes",
+          "text": "With races running back to back all day, there's always another chance to win it back. That constant next one is what makes it so hard to stop at a set amount."
+        }
+      },
+      {
+        "label": "Online casino games",
+        "insight": {
+          "title": "Always open, money that doesn't feel real",
+          "text": "Online games never close, and money on a screen doesn't feel like cash in your hand. That makes it easy to lose track of time and spend more than you meant to."
+        }
+      },
+      {
+        "label": "Lotto and scratchies",
+        "insight": {
+          "title": "Small amounts add up quietly",
+          "text": "Because each ticket is cheap and everyday, it's easy to miss how much it adds up to over a month or a year. Tracking it is often an eye-opener."
+        }
+      },
+      {
+        "label": "Keno",
+        "insight": {
+          "title": "Fast games, quick decisions",
+          "text": "A new game every few minutes means there's little time to stop and think between bets. Slowing things down is one of the most useful skills you'll practise."
+        }
+      },
+      {
+        "label": "Casino table games",
+        "insight": {
+          "title": "The house edge never sleeps",
+          "text": "Every table game is set up so the casino comes out ahead over time. A good night doesn't change that. It just makes the next visit more tempting."
+        }
+      },
+      {
+        "label": "Cards or poker",
+        "insight": {
+          "title": "Skill can make it harder to stop",
+          "text": "When skill plays a part, it's easy to believe you'll win it back next time. Chasing losses is one of the biggest thinking traps, and Week 3 covers it."
+        }
+      },
+      {
+        "label": "Something else",
+        "insight": {
+          "title": "Whatever it is, the hooks are similar",
+          "text": "Most gambling works the same way on the brain: uncertain wins, near misses and the chance to win it back. What you learn here applies to all of it."
+        }
+      }
+    ],
+    "gamblingTypesFallback": {
+      "title": "Whatever it is, the hooks are similar",
+      "text": "Most gambling works the same way on the brain: uncertain wins, near misses and the chance to win it back. What you learn here applies to all of it."
+    },
     "whys": [
-      "My family",
-      "My partner",
-      "My kids",
-      "Money",
-      "My health",
-      "My mental health",
-      "A goal I'm working towards",
-      "My work",
-      "Feeling in control again"
+      {
+        "label": "My family",
+        "insight": {
+          "title": "The people closest to you notice first",
+          "text": "Gambling often hits family hardest: the time it takes, the money, the worry. The good news is they usually notice the change when things get better too. Week 5 covers rebuilding trust."
+        }
+      },
+      {
+        "label": "My partner",
+        "insight": {
+          "title": "The people closest to you notice first",
+          "text": "Gambling often hits family hardest: the time it takes, the money, the worry. The good news is they usually notice the change when things get better too. Week 5 covers rebuilding trust."
+        }
+      },
+      {
+        "label": "My kids",
+        "insight": {
+          "title": "Kids notice more than we think",
+          "text": "Kids pick up on stress, distraction and money worries, even when nobody says anything. More time and attention for them is one of the best things you'll get back."
+        }
+      },
+      {
+        "label": "Money",
+        "insight": {
+          "title": "We'll keep count of what you keep",
+          "text": "Each week we'll show an estimate of the money you've kept and how close you are to your goal. Seeing it grow is a strong reason to keep going."
+        }
+      },
+      {
+        "label": "My health",
+        "insight": {
+          "title": "Gambling and stress feed each other",
+          "text": "Gambling can mess with sleep, appetite and stress levels, and stress makes urges stronger. Looking after one helps the other."
+        }
+      },
+      {
+        "label": "My mental health",
+        "insight": {
+          "title": "You're not alone with this",
+          "text": "Gambling problems often go hand in hand with feeling low or anxious. This program can help, and if things feel heavy, talking to someone helps too. Help is always one tap away."
+        }
+      },
+      {
+        "label": "A goal I'm working towards",
+        "insight": {
+          "title": "Keep your goal where you can see it",
+          "text": "People who keep their goal in front of them stick with change more often. We'll remind you of it on the tough days."
+        }
+      },
+      {
+        "label": "My work",
+        "insight": {
+          "title": "Gambling takes more than money",
+          "text": "Lost sleep, checking apps and worrying about losses all eat into your focus at work. Getting that head space back is a real win."
+        }
+      },
+      {
+        "label": "Feeling in control again",
+        "insight": {
+          "title": "Control comes back bit by bit",
+          "text": "Every urge you ride out, every day you stick to your plan, builds the feeling that you're the one calling the shots again."
+        }
+      }
     ],
+    "whyFallback": {
+      "title": "Your reason is your anchor",
+      "text": "Whatever brought you here, hang on to it. On the tough days, remembering why you started is one of the most powerful tools you've got."
+    },
     "riskyTimes": [
-      "Weekends",
-      "Evenings",
-      "Payday",
-      "Live sport",
-      "After a few drinks",
-      "When I'm stressed",
-      "When I'm bored",
-      "When I'm on my own"
+      {
+        "label": "Weekends",
+        "insight": {
+          "title": "Free time needs a plan",
+          "text": "Long stretches with nothing planned leave room for urges. Filling weekends with things you enjoy is part of Week 5."
+        }
+      },
+      {
+        "label": "Evenings",
+        "insight": {
+          "title": "Tired brains find it harder to say no",
+          "text": "At the end of a long day, willpower runs low. A simple evening routine can take the pressure off."
+        }
+      },
+      {
+        "label": "Payday",
+        "insight": {
+          "title": "Plan payday before it arrives",
+          "text": "Having money land in your account is a big trigger. Sorting bills and savings first thing on payday, before anything else, makes a real difference. Week 2 shows you how."
+        }
+      },
+      {
+        "label": "Live sport",
+        "insight": {
+          "title": "Sport and betting have been tied together",
+          "text": "Betting ads and in-game offers are built around the game you're watching. It's possible to enjoy the footy without them. Week 2 helps you plan for it."
+        }
+      },
+      {
+        "label": "After a few drinks",
+        "insight": {
+          "title": "Alcohol loosens your limits",
+          "text": "A few drinks make it harder to stick to decisions you made sober. Planning ahead for nights out is one of the simplest ways to protect your progress."
+        }
+      },
+      {
+        "label": "When I'm stressed",
+        "insight": {
+          "title": "The urge is often about the feeling",
+          "text": "When you're stressed, gambling can feel like an escape. Often the urge isn't really about gambling, it's about wanting a break from the feeling. Week 4 gives you other ways to get that break."
+        }
+      },
+      {
+        "label": "When I'm bored",
+        "insight": {
+          "title": "Boredom is a real trigger",
+          "text": "Gambling gives a quick buzz when life feels flat. Finding other things that give you a lift is a big part of Week 5."
+        }
+      },
+      {
+        "label": "When I'm on my own",
+        "insight": {
+          "title": "Being alone makes it easier to slip",
+          "text": "With no one around, there's nothing to interrupt the urge. Having someone to message, or something to do, can break the pattern."
+        }
+      }
     ],
+    "riskyFallback": {
+      "title": "Knowing your triggers is half the battle",
+      "text": "Most people find the urge shows up at the same kinds of times. Over the next few weeks you'll learn to spot yours and plan around them."
+    },
     "paydays": ["Weekly", "Fortnightly", "Monthly", "It varies", "I'd rather not say"],
+    "money": {
+      "title": "What you could keep",
+      "withSpend": "At about {weekly} a week, six weeks adds up to around {sixWeeks} you could keep.",
+      "withGoal": "That would get you to {savingFor} ({target}) in about {weeks} weeks.",
+      "noSpend": "No worries. Money isn't the only thing you'll get back. We'll still count every gamble-free day."
+    },
     "habits": ["With my morning coffee", "Before work", "On the bus or train", "After breakfast", "After dropping the kids off"],
-    "reminderTimes": ["06:00", "06:30", "07:00", "07:30", "08:00", "08:30", "09:00", "09:30", "10:00"]
+    "reminderTimes": ["06:00", "06:30", "07:00", "07:30", "08:00", "08:30", "09:00", "09:30", "10:00"],
+    "_insights": "The short 'something to know' cards shown between onboarding questions. Each choice can have its own card; people see the cards for the first one or two things they tapped (in the order they tapped them). 'fallback' shows when nothing they picked has a card. PLACEHOLDER wording until a psychologist has reviewed it."
   },
   "questionnaire": {
     "_note": "PLACEHOLDER questions modelled on the PGSI. Before launch, check the licence for the real PGSI wording and have a psychologist approve these. Answers are stored privately and never shown as a diagnosis.",

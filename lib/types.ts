@@ -4,6 +4,7 @@ export type Goal = 'quit' | 'cut_back' | 'break';
 
 export type Onboarding = {
   goal: Goal;
+  gamblingTypes: string[]; // pokies, sports betting... the main one first
   whyChoices: string[];
   whyText: string;
   weeklySpend: number | null; // average weekly spend on gambling, in dollars
