@@ -45,18 +45,23 @@ what's next. Plain English, click-by-click steps.
 
 ## Progress (owner's build order)
 
-1. Project setup, auth, try-first Day 1, onboarding: done (25 Oct 2026). Migration 0001 written, not yet run by the owner.
-2. Safety: done. `GetHelpButton` on every `Screen`, `/help`, crisis words in `config/safety.json` checked on the phone
-   (`lib/safety.ts`, `useCrisisGate` in `components/Help.tsx`) before moving on from any screen with free text. Nothing is stored.
-3. Program engine: done. `app/session/[day].tsx` (full, busy day, bounce-back step after a reported slip,
-   `?review=1` to listen again without saving), `app/program.tsx` (all 6 weeks), `dayStatus` in `lib/program.ts`.
-4. Urge SOS: done. `SosButton` on every `Screen`, `app/sos.tsx` (timer + breathing from `config.sos`, why and
-   money goal, message buddy via the share sheet, call/chat Gambling Help Online, log afterwards in `urge_logs`).
-5. Home: done. `Journey` path, gamble-free days in total and in a row, money kept towards the goal
-   (`lib/progress.ts`: a check-in "yes" marks the day before; Urge SOS "I gambled" marks that day; a slip never resets the total). 6. Reminders and pausing: done. Local notifications only (`lib/reminders.ts`, plan in `lib/reminderPlan.ts`, wording in
-   `config.reminders`): next mornings, then one "Welcome back" after 2 quiet days, nothing while paused. Pause in Settings.
-6. Weekly summaries, end questionnaire, PDF plan. 8. Buddy emails (double opt-in). 9. Payments (RevenueCat), hardship, refunds.
-7. Maintenance mode, meditation library. 11. Admin content editor and analytics dashboard.
+- Step 1, setup, accounts, try-first Day 1, onboarding: done. Onboarding teaches as it goes ("something to know" cards
+  matched to answers, `lib/insights.ts`). Migration 0001 written, not yet run by the owner (it is kept re-runnable; until the
+  owner runs it, new tables and columns are added to it with `if not exists`).
+- Step 2, safety: done. `GetHelpButton` on every `Screen`, `/help`, crisis words in `config/safety.json` checked on the phone
+  (`lib/safety.ts`, `useCrisisGate` in `components/Help.tsx`) before moving on from any screen with free text. Nothing stored.
+- Step 3, program engine: done. `app/session/[day].tsx` (full, busy day, bounce-back step after a reported slip, `?review=1`
+  to listen again without saving), `app/program.tsx` (all 6 weeks), `dayStatus` in `lib/program.ts`.
+- Step 4, Urge SOS: done. `SosButton` on every `Screen`, `app/sos.tsx` (timer and breathing from `config.sos`, why and money
+  goal, message buddy via the share sheet, call or chat Gambling Help Online, log afterwards in `urge_logs`).
+- Step 5, home: done. `Journey` path, gamble-free days in total and in a row, money kept towards the goal (`lib/progress.ts`:
+  a check-in "yes" marks the day before; Urge SOS "I gambled" marks that day; a slip never resets the total).
+- Step 6, reminders and pausing: done. Local notifications only (`lib/reminders.ts`, plan in `lib/reminderPlan.ts`, wording in
+  `config.reminders`): next mornings, then one "Welcome back" after 2 quiet days, nothing while paused. Pause in Settings.
+- Step 7, summaries and plan: done. `app/week/[n].tsx` after every 7th session, `app/finish.tsx` (end questionnaire,
+  before/after as counts only), `app/plan.tsx` and `lib/planPdf.ts` (expo-print, share sheet). Logic in `lib/summary.ts`.
+- Still to build: 8 buddy emails (double opt-in), 9 payments (RevenueCat), hardship access, refund policy, 10 maintenance
+  mode and meditation library, 11 admin content editor and analytics dashboard.
 
 Before launch (owner): lawyer for privacy policy and terms (Privacy Act, health information; TGA wording), licence check for
 PGSI questions, psychologist review of content, possibly a neutral name (the "home straight" is racing language).
