@@ -1,0 +1,42 @@
+{
+  "_readme": "Crisis safety settings. If anything a person writes contains one of these words or phrases, the app stops and shows the caring message below before they can carry on. Add or remove phrases freely (lower case is fine; matching ignores capitals and punctuation, and matches whole words only, so 'die' won't match 'diet'). Have a clinician review this list before launch.",
+  "phrases": [
+    "suicide",
+    "suicidal",
+    "kill myself",
+    "killing myself",
+    "end it all",
+    "end my life",
+    "ending my life",
+    "take my own life",
+    "taking my own life",
+    "want to die",
+    "wanna die",
+    "wish i was dead",
+    "wish i were dead",
+    "better off dead",
+    "better off without me",
+    "no reason to live",
+    "nothing to live for",
+    "can't go on",
+    "cant go on",
+    "don't want to be here",
+    "dont want to be here",
+    "self harm",
+    "self-harm",
+    "selfharm",
+    "hurt myself",
+    "hurting myself",
+    "harm myself",
+    "cut myself",
+    "cutting myself",
+    "overdose",
+    "kms",
+    "unalive"
+  ],
+  "message": {
+    "title": "It sounds like things might be really hard right now",
+    "text": "You don't have to get through this on your own. If you're thinking about suicide or hurting yourself, please reach out now. Talking to someone can help, and they're there for exactly this.",
+    "acknowledge": "I've read this"
+  }
+}

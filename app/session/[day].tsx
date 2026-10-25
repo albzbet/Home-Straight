@@ -1,6 +1,7 @@
 import { Redirect, router, useLocalSearchParams } from 'expo-router';
 import { useState } from 'react';
 import { View } from 'react-native';
+import { useCrisisGate } from '@/components/Help';
 import { LessonAudio, LessonVideo } from '@/components/Media';
 import { Button, Card, Chip, Choice, Field, Row, Screen, StepBar, Txt } from '@/components/ui';
 import { config } from '@/lib/config';
@@ -30,6 +31,7 @@ export default function Session() {
   const [saving, setSaving] = useState(false);
   const [problem, setProblem] = useState<string | null>(null);
 
+  const { check, sheet } = useCrisisGate();
   const steps = busy ? BUSY : FULL;
   const step = steps[at]!;
   const already = state.days.some((d) => d.day === day);
@@ -65,7 +67,8 @@ export default function Session() {
     }
   };
 
-  const next = () => (steps[at + 1] === 'done' ? finish() : setAt(at + 1));
+  // Their plan for today is checked for crisis words before it's saved.
+  const next = () => check([action], () => (steps[at + 1] === 'done' ? finish() : setAt(at + 1)));
 
   const footer =
     step === 'start' ? (
@@ -93,6 +96,7 @@ export default function Session() {
 
   return (
     <Screen footer={footer}>
+      {sheet}
       {step !== 'start' && step !== 'done' ? <StepBar at={at} of={steps.length - 2} /> : null}
 
       {step === 'start' && (

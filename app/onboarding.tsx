@@ -1,6 +1,7 @@
 import { router } from 'expo-router';
 import { useState } from 'react';
 import { View } from 'react-native';
+import { useCrisisGate } from '@/components/Help';
 import { Button, Card, Chip, Choice, Field, Row, Screen, StepBar, Txt } from '@/components/ui';
 import { config } from '@/lib/config';
 import { looksLikeEmail, parseMoney, timeLabel } from '@/lib/format';
@@ -101,7 +102,9 @@ export default function Onboarding() {
     }
   };
 
-  const next = () => (step < STEPS.length - 1 ? setStep(step + 1) : finish());
+  const { check, sheet } = useCrisisGate();
+  // Anything they've written is checked for crisis words before moving on.
+  const next = () => check([whyText, savingFor, habit], () => (step < STEPS.length - 1 ? setStep(step + 1) : finish()));
   const optional = !isCard && name !== 'goal' && name !== 'why' && name !== 'questions';
 
   // The card for the step just answered.
@@ -146,6 +149,7 @@ export default function Onboarding() {
         </>
       )}
 
+      {sheet}
       {isCard && (
         <View style={{ gap: space.lg, marginTop: space.lg }}>
           <Txt variant="label">Something to know</Txt>

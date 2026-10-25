@@ -46,7 +46,8 @@ what's next. Plain English, click-by-click steps.
 ## Progress (owner's build order)
 
 1. Project setup, auth, try-first Day 1, onboarding: done (25 Oct 2026). Migration 0001 written, not yet run by the owner.
-2. Safety: Get help now + crisis keyword detection. Next.
+2. Safety: done. `GetHelpButton` on every `Screen`, `/help`, crisis words in `config/safety.json` checked on the phone
+   (`lib/safety.ts`, `useCrisisGate` in `components/Help.tsx`) before moving on from any screen with free text. Nothing is stored.
 3. Program engine (all 42 days, unlocks, pick up where you left off; the session screen already exists).
 4. Urge SOS. 5. Home: journey, money kept, streaks + total gamble-free days. 6. Reminders, re-engagement, pausing.
 5. Weekly summaries, end questionnaire, PDF plan. 8. Buddy emails (double opt-in). 9. Payments (RevenueCat), hardship, refunds.
