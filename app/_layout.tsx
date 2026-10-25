@@ -47,6 +47,7 @@ function RootStack() {
           contentStyle: { backgroundColor: t.bg },
         }}
       >
+        <Stack.Screen name="(tabs)" />
         <Stack.Screen name="sos" options={{ presentation: 'modal' }} />
         <Stack.Screen name="help" options={{ headerShown: true, title: '', presentation: 'modal' }} />
         <Stack.Screen name="admin/index" options={{ headerShown: true, title: '' }} />
@@ -59,12 +60,12 @@ function RootStack() {
         <Stack.Screen name="meditations" options={{ headerShown: true, title: '' }} />
         <Stack.Screen name="meditation/[id]" options={{ headerShown: true, title: '' }} />
         <Stack.Screen name="plan" options={{ headerShown: true, title: '' }} />
-        <Stack.Screen name="program" options={{ headerShown: true, title: '' }} />
         <Stack.Screen name="settings" options={{ headerShown: true, title: 'Settings' }} />
         <Stack.Screen name="privacy" options={{ headerShown: true, title: 'Privacy policy' }} />
         <Stack.Screen name="terms" options={{ headerShown: true, title: 'Terms of use' }} />
         <Stack.Screen name="refunds" options={{ headerShown: true, title: '' }} />
         <Stack.Screen name="hardship" options={{ headerShown: true, title: '' }} />
+        <Stack.Screen name="missions" options={{ headerShown: true, title: '' }} />
         <Stack.Screen name="buddy" options={{ headerShown: false }} />
         <Stack.Screen name="admin/hardship" options={{ headerShown: true, title: '' }} />
         <Stack.Screen name="sign-in" options={{ headerShown: true, title: '' }} />

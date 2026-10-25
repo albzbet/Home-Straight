@@ -12,6 +12,7 @@ import {
   type ViewStyle,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { BrandHeader } from '@/components/Brand';
 import { GetHelpButton, SosButton } from '@/components/GetHelpButton';
 import { Ionicons } from '@expo/vector-icons';
 import { fonts, radius, shadow, space, useTheme } from '@/lib/theme';
@@ -20,23 +21,28 @@ import { fonts, radius, shadow, space, useTheme } from '@/lib/theme';
 // Colours, fonts and sizes come from lib/theme.ts only.
 
 // Every screen has Urge SOS and Get help now along the top (turned off only on those two screens themselves).
+// tab: a main tab (the tab bar takes care of the bottom edge, and the top shows the app's name with SOS and help).
 export function Screen({
   children,
   footer,
   scroll = true,
   help = true,
   sos = true,
+  tab = false,
 }: {
   children: ReactNode;
   footer?: ReactNode;
   scroll?: boolean;
   help?: boolean;
   sos?: boolean;
+  tab?: boolean;
 }) {
   const t = useTheme();
   const inner = (
     <View style={{ width: '100%', maxWidth: 560, alignSelf: 'center', padding: space.xl, paddingTop: space.md, gap: space.lg }}>
-      {help || sos ? (
+      {tab ? (
+        <BrandHeader />
+      ) : help || sos ? (
         <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
           {sos ? <SosButton /> : <View />}
           {help ? <GetHelpButton /> : <View />}
@@ -46,7 +52,7 @@ export function Screen({
     </View>
   );
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: t.bg }} edges={['top', 'bottom']}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: t.bg }} edges={tab ? ['top'] : ['top', 'bottom']}>
       {scroll ? (
         <ScrollView contentContainerStyle={{ flexGrow: 1 }} keyboardShouldPersistTaps="handled">
           {inner}

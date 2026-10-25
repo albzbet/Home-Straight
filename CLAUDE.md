@@ -39,8 +39,10 @@ what's next. Plain English, click-by-click steps.
   until then the app name is set in Bebas Neue with an orange 8 and a sunrise icon.
 - No "time back" / hours-per-week anywhere (owner's call, Oct 2026): Home's stat cards are the streak with total
   gamble-free days, and money kept.
-- Screens redone so far: welcome (`app/welcome.tsx`, owner's layout). Next: Home dashboard with a bottom tab bar
-  (Home, Program, Progress, Explore, More), then the other mockup screens one at a time.
+- Screens redone so far: welcome (`app/welcome.tsx`, owner's layout); Home dashboard (`app/(tabs)/home.tsx`, mockup screen 2)
+  with the bottom tabs in `app/(tabs)/` (Home, Program, Progress, Explore, More; `Screen tab` shows `BrandHeader`: name, SOS,
+  Get help now). Progress, Explore and `app/missions.tsx` are holding screens until their mockup versions are built.
+  Photos are listed in `lib/images.ts` (null = not arrived yet; `Photo` shows a plain dark space). `Tile` for quick access.
 
 ## Where things are
 

@@ -17,7 +17,7 @@ export default function Program() {
   const [busy, setBusy] = useState(false);
 
   return (
-    <Screen>
+    <Screen tab>
       <Txt variant="title">Your {weeks.length} weeks</Txt>
       <Txt variant="muted">One new session each day. Missed one? It waits for you. Just pick up where you left off.</Txt>
       {finished ? (
