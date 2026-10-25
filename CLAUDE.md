@@ -84,6 +84,8 @@ what's next. Plain English, click-by-click steps.
   (Resend; templates in `templates.ts`, tested, never mention gambling or money), schedule `supabase/buddy-schedule.sql`
   (pg_cron + pg_net). Buddies answer on `app/buddy.tsx` in the web version (a button, so link scanners can't say yes),
   hosted on Netlify (`netlify.toml`). Settings > Your buddy (`BuddySettings`).
+- Test builds: `eas.json` (preview = internal APK / ad hoc iOS, production = store, app version kept by EAS); Supabase keys
+  come from EAS environment variables (README). The owner still has to run `eas init`.
 - Still to build: 9 payments (RevenueCat); `freeAccess` (hardship) must count as unlocked.
 
 Before launch (owner): lawyer for privacy policy and terms (Privacy Act, health information; TGA wording), licence check for

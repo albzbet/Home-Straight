@@ -31,6 +31,32 @@ Without Supabase set up, the app runs in "try first" mode: onboarding and Day 1 
    a 6-digit code if tapping the link doesn't open the app.
 6. Apple and Google sign-in need their own setup (Authentication → Providers). We'll do that when we make a test build.
 
+## Installing a test version on your phone (EAS build)
+
+Some things only work in the real installed app, not Expo Go: Apple and Google sign-in, switching the app icon, and
+payments later. Expo's build service (EAS) makes the installable app in the cloud. Free plan is fine.
+
+1. Make a free account at [expo.dev](https://expo.dev).
+2. In a terminal in the project folder:
+   ```
+   npx eas-cli login
+   npx eas-cli init
+   ```
+   `init` adds your project's ID to `app.json`. Commit that change (or ask me to).
+3. Give the build your Supabase address and public key (the same two as in `.env`; the build can't see `.env`):
+   ```
+   npx eas-cli env:create --name EXPO_PUBLIC_SUPABASE_URL --value https://YOUR-PROJECT-REF.supabase.co --environment preview --environment production --visibility plaintext
+   npx eas-cli env:create --name EXPO_PUBLIC_SUPABASE_ANON_KEY --value your-anon-key --environment preview --environment production --visibility plaintext
+   ```
+4. **Android:** `npx eas-cli build --platform android --profile preview`. It takes about 15 minutes, then shows a link and
+   QR code. Open it on your phone, download the app and install it (Android will ask you to allow installing from your browser).
+5. **iPhone** (needs the Apple Developer account): `npx eas-cli device:create` to register your phone, then
+   `npx eas-cli build --platform ios --profile preview`.
+6. In Supabase → Authentication → URL Configuration → Redirect URLs, make sure `homestr8://**` is there (sign-in links open
+   the installed app).
+
+For the stores later: `npx eas-cli build --profile production`, then `npx eas-cli submit`.
+
 ## Admin area (editing lessons, the dashboard)
 
 1. In Supabase, **SQL Editor → New snippet**: run `supabase/migrations/0002_admin.sql`, then `0003_hardship.sql` (after 0001,
