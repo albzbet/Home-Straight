@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <!-- Alternative icon: about as plain as an icon gets. -->
+  <rect width="1024" height="1024" fill="#55606B"/>
+  <circle cx="512" cy="512" r="250" fill="none" stroke="#EEF1F4" stroke-width="56"/>
+  <circle cx="512" cy="512" r="70" fill="#EEF1F4"/>
+</svg>

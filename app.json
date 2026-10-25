@@ -12,7 +12,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "backgroundColor": "#F7F3EC",
+        "backgroundColor": "#2F6F62",
         "foregroundImage": "./assets/android-icon-foreground.png",
         "backgroundImage": "./assets/android-icon-background.png",
         "monochromeImage": "./assets/android-icon-monochrome.png"
@@ -30,7 +30,7 @@
         {
           "backgroundColor": "#F7F3EC",
           "image": "./assets/splash-icon.png",
-          "imageWidth": 120,
+          "imageWidth": 140,
           "dark": {
             "backgroundColor": "#121816"
           }
@@ -42,10 +42,39 @@
       [
         "expo-notifications",
         {
-          "color": "#2F6F62"
+          "color": "#2F6F62",
+          "icon": "./assets/notification-icon.png"
         }
       ],
-      "expo-sharing"
+      "expo-sharing",
+      "expo-secure-store",
+      [
+        "expo-alternate-app-icons",
+        [
+          {
+            "name": "IconLeaf",
+            "ios": "./assets/icon-leaf.png",
+            "android": {
+              "foregroundImage": "./assets/icon-leaf-foreground.png",
+              "backgroundColor": "#F7F3EC"
+            }
+          },
+          {
+            "name": "IconPlain",
+            "ios": "./assets/icon-plain.png",
+            "android": {
+              "foregroundImage": "./assets/icon-plain-foreground.png",
+              "backgroundColor": "#55606B"
+            }
+          }
+        ]
+      ],
+      [
+        "expo-local-authentication",
+        {
+          "faceIDPermission": "Face ID lets you lock the app so only you can open it."
+        }
+      ]
     ],
     "scheme": "homestraight",
     "experiments": {

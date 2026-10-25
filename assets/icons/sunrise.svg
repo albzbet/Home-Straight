@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <!-- Default icon: a sun coming up over a calm horizon. -->
+  <rect width="1024" height="1024" fill="#2F6F62"/>
+  <clipPath id="sky"><rect width="1024" height="600"/></clipPath>
+  <circle cx="512" cy="600" r="230" fill="#F3D9A4" clip-path="url(#sky)"/>
+  <rect x="190" y="620" width="644" height="28" rx="14" fill="#F7F3EC"/>
+  <rect x="290" y="690" width="444" height="22" rx="11" fill="#F7F3EC" opacity="0.55"/>
+  <rect x="390" y="752" width="244" height="18" rx="9" fill="#F7F3EC" opacity="0.3"/>
+</svg>

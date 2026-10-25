@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <!-- Alternative icon: a single leaf on sand. -->
+  <rect width="1024" height="1024" fill="#F7F3EC"/>
+  <path d="M512 210 C 720 330 760 560 512 820 C 264 560 304 330 512 210 Z" fill="#2F6F62"/>
+  <path d="M512 300 L 512 760" stroke="#F7F3EC" stroke-width="22" stroke-linecap="round"/>
+  <path d="M512 470 L 610 400 M512 580 L 420 505" stroke="#F7F3EC" stroke-width="18" stroke-linecap="round"/>
+</svg>

@@ -1,5 +1,6 @@
 import { router } from 'expo-router';
 import { useState } from 'react';
+import { PrivacySettings } from '@/components/PrivacySettings';
 import { Button, Card, Chip, Row, Screen, Txt } from '@/components/ui';
 import { signOut } from '@/lib/auth';
 import { useIsAdmin } from '@/lib/admin';
@@ -109,6 +110,8 @@ export default function Settings() {
           )}
         </Card>
       ) : null}
+
+      <PrivacySettings />
 
       <Card>
         <Txt variant="label">Your data</Txt>

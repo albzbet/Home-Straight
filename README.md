@@ -46,6 +46,12 @@ Without Supabase set up, the app runs in "try first" mode: onboarding and Day 1 
 Changes reach everyone the next time they open the app. Anything not edited comes from the copy built into the app
 (`content/` and `config/`).
 
+## Keeping it private
+
+- **App lock** (Settings → App lock): Face ID / fingerprint, or a 4-digit PIN just for this app. Works in Expo Go.
+- **App icon** (Settings → App icon): three plain icons. Switching needs the installed app (a test build), not Expo Go.
+- Notifications never mention gambling.
+
 ## For developers
 
 - `app/` screens (expo-router), `components/` shared pieces, `lib/` logic, `content/program.json` all 42 lessons,

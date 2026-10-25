@@ -3,6 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
 import { useColorScheme } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { AppLockGate } from '@/components/AppLock';
 import { AuthProvider } from '@/lib/auth';
 import { loadContent } from '@/lib/content';
 import { useReminderSync } from '@/lib/reminders';
@@ -65,7 +66,9 @@ export default function RootLayout() {
     <SafeAreaProvider>
       <AuthProvider>
         <StoreProvider>
-          <RootStack />
+          <AppLockGate>
+            <RootStack />
+          </AppLockGate>
         </StoreProvider>
       </AuthProvider>
     </SafeAreaProvider>

@@ -68,6 +68,12 @@ what's next. Plain English, click-by-click steps.
   `hs_admin_stats`). Content: built-in JSON overlaid with `public.content` rows (`lib/content.ts`, `useContent()`, cached on the
   phone); crisis words too (`setSafety`). Admin screens in `app/admin/` (`AdminScreen`, `MediaField` uploads), linked from
   Settings for admins. Dashboard shows totals only; averages need 5+ people.
+- Privacy extras: done. Optional app lock (`components/AppLock.tsx` `AppLockGate` round the app, `lib/appLock.ts`: Face ID /
+  fingerprint with the phone's passcode as fallback, or a 4-digit app PIN stored only as a salted hash in SecureStore;
+  relocks after 30 seconds away, covers the screen in the app switcher, Get help now works while locked; forgotten PIN =
+  sign out or clear guest data, then unlock). Plain app icons (sources in `assets/icons/`), switchable in Settings via
+  `expo-alternate-app-icons` (installed app only; `lib/appIcon.ts` loads it on demand so Expo Go doesn't crash).
+  Settings > `PrivacySettings`. App lock works in Expo Go; icon switching needs a test build.
 - Still to build: 8 buddy emails (double opt-in) and 9 payments (RevenueCat), hardship access (and its admin review screen),
   refund policy.
 
