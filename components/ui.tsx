@@ -1,8 +1,6 @@
 import type { ReactNode } from 'react';
 import {
   ActivityIndicator,
-  Alert,
-  Platform,
   Pressable,
   ScrollView,
   Text,
@@ -209,16 +207,4 @@ export function Loading() {
       <ActivityIndicator color={t.action} />
     </View>
   );
-}
-
-// "Are you sure?" that also works in a web browser.
-export function confirm(title: string, message: string, yes: string, onYes: () => void) {
-  if (Platform.OS === 'web') {
-    if (window.confirm(`${title}\n\n${message}`)) onYes();
-    return;
-  }
-  Alert.alert(title, message, [
-    { text: 'Cancel', style: 'cancel' },
-    { text: yes, style: 'destructive', onPress: onYes },
-  ]);
 }

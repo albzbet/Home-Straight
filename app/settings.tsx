@@ -1,6 +1,6 @@
 import { router } from 'expo-router';
 import { useState } from 'react';
-import { Button, Card, confirm, Screen, Txt } from '@/components/ui';
+import { Button, Card, Screen, Txt } from '@/components/ui';
 import { signOut } from '@/lib/auth';
 import { config } from '@/lib/config';
 import { useStore } from '@/lib/store';
@@ -10,26 +10,21 @@ export default function Settings() {
   const [deleting, setDeleting] = useState(false);
   const [problem, setProblem] = useState<string | null>(null);
 
-  const remove = () =>
-    confirm(
-      'Delete my data?',
-      signedIn
-        ? 'This permanently deletes your account and everything you have saved. It cannot be undone.'
-        : 'This deletes everything saved on this phone. It cannot be undone.',
-      'Delete',
-      async () => {
-        setDeleting(true);
-        setProblem(null);
-        try {
-          await deleteMyData();
-          router.replace('/');
-        } catch {
-          setProblem("That didn't work. Check your internet connection and try again.");
-        } finally {
-          setDeleting(false);
-        }
-      },
-    );
+  // "Are you sure?" shown on the screen itself, so it works the same on phones and in a web browser.
+  const [asking, setAsking] = useState(false);
+
+  const remove = async () => {
+    setDeleting(true);
+    setProblem(null);
+    try {
+      await deleteMyData();
+      router.replace('/');
+    } catch {
+      setProblem("That didn't work. Check your internet connection and try again.");
+    } finally {
+      setDeleting(false);
+    }
+  };
 
   return (
     <Screen>
@@ -45,7 +40,19 @@ export default function Settings() {
       <Card>
         <Txt variant="label">Your data</Txt>
         <Txt variant="muted">We never share or sell your data, and never share anything with gambling companies.</Txt>
-        <Button label="Delete my data" kind="secondary" onPress={remove} loading={deleting} />
+        {asking ? (
+          <>
+            <Txt>
+              {signedIn
+                ? 'This permanently deletes your account and everything you have saved. It cannot be undone.'
+                : 'This deletes everything saved on this phone. It cannot be undone.'}
+            </Txt>
+            <Button label="Yes, delete everything" kind="help" onPress={remove} loading={deleting} />
+            <Button label="Cancel" kind="ghost" onPress={() => setAsking(false)} />
+          </>
+        ) : (
+          <Button label="Delete my data" kind="secondary" onPress={() => setAsking(true)} />
+        )}
         {problem ? <Txt variant="small">{problem}</Txt> : null}
       </Card>
       <Button label="Privacy policy" kind="ghost" onPress={() => router.push('/privacy')} />
