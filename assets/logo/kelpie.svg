@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- PLACEHOLDER kelpie mark. Replace this file with the real assets/logo/kelpie.svg. -->
+  <path fill="#FFFFFF" stroke="#0F1114" stroke-width="2.5" stroke-linejoin="round"
+    d="M31 50 L26 6 L47 34 Q56 31 64 34 L78 5 L74 46 Q82 56 77 64 Q70 72 60 74 L44 90 Q38 95 33 91 Q30 86 36 80 L44 70 Q32 64 31 50 Z"/>
+  <path fill="none" stroke="#0F1114" stroke-width="2.5" stroke-linecap="round" d="M33 12 L43 32 M72 12 L67 33"/>
+  <ellipse cx="60" cy="52" rx="3.2" ry="2.4" fill="#0F1114"/>
+  <circle cx="36" cy="88" r="3" fill="#0F1114"/>
+</svg>

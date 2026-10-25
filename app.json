@@ -74,7 +74,9 @@
         {
           "faceIDPermission": "Face ID lets you lock the app so only you can open it."
         }
-      ]
+      ],
+      "expo-font",
+      "expo-image"
     ],
     "scheme": "homestr8",
     "experiments": {
