@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { lastCheckinDate, progress } from '@/lib/progress';
+import { lastCheckinDate, periodStart, periodStats, progress, weeklyGoals } from '@/lib/progress';
 import { emptyState, type DayRecord, type Onboarding, type ProgramState } from '@/lib/types';
 
 const onboarding = (startDate: string, weeklySpend: number | null = 140, savingTarget: number | null = 200): Onboarding => ({
@@ -64,5 +64,33 @@ describe('daily check-ins', () => {
     expect(p.gambleFreeDays).toBe(9);
     expect(p.streak).toBe(3);
     expect(lastCheckinDate(state({ checkins: [daily], days: [checkin(1, '2026-10-02', false)] }))).toBe('2026-10-08');
+  });
+});
+
+describe('periodStats and weeklyGoals', () => {
+  // Program started Thu 1 Oct 2026; "today" is Sat 10 Oct, so this week runs Mon 5 to Sat 10.
+  const days = [checkin(1, '2026-10-01', false), checkin(2, '2026-10-06', false), checkin(3, '2026-10-08', true)];
+  const s = state({ days });
+
+  it('adds up this week, this month and the whole program', () => {
+    expect(periodStats(s, 'week', '2026-10-10')).toEqual({ moneyKept: 100, gambleFreeDays: 5, sessions: 2, urgesHandled: 0 });
+    expect(periodStats(s, 'month', '2026-10-10')).toMatchObject({ gambleFreeDays: 9, sessions: 3 });
+    expect(periodStats(s, 'total', '2026-10-10')).toMatchObject({ gambleFreeDays: 9, moneyKept: 180 });
+  });
+
+  it('never starts before the program did', () => {
+    expect(periodStart('week', '2026-10-02', '2026-10-01')).toBe('2026-10-01');
+    expect(periodStart('week', '2026-10-10', '2026-09-01')).toBe('2026-10-05');
+    expect(periodStart('month', '2026-10-10', '2026-09-01')).toBe('2026-10-01');
+  });
+
+  it('sets this week’s goals from the program and their spend', () => {
+    expect(weeklyGoals(s, '2026-10-10').map((g) => [g.label, g.at, g.of])).toEqual([
+      ['Complete 5 sessions', 2, 5],
+      ['Keep $140', 100, 140],
+      ['7 gamble-free days', 5, 7],
+    ]);
+    const noSpend = { ...s, onboarding: { ...s.onboarding!, weeklySpend: null } };
+    expect(weeklyGoals(noSpend, '2026-10-10').map((g) => g.id)).toEqual(['sessions', 'gambleFree']);
   });
 });

@@ -41,13 +41,16 @@ what's next. Plain English, click-by-click steps.
   gamble-free days, and money kept.
 - Screens redone so far: welcome (`app/welcome.tsx`, owner's layout); Home dashboard (`app/(tabs)/home.tsx`, mockup screen 2)
   with the bottom tabs in `app/(tabs)/` (Home, Program, Progress, Explore, More; `Screen tab` shows `BrandHeader`: name, SOS,
-  Get help now). Progress, Explore and `app/missions.tsx` are holding screens until their mockup versions are built.
+  Get help now). Explore and `app/missions.tsx` are holding screens until their mockup versions are built.
   Session (`app/session/[day].tsx`, mockup screen 3): lesson page with close / Week • Day / SOS / help, the title in Bebas with
   its tail in orange (`highlightTail`), `VideoCard` and `AudioCard` (`components/SessionMedia.tsx`), busy-day switch,
   "Mark as complete", then check-in, action, done.
   Urge SOS (`app/sos.tsx`, mockup screen 4): big green breathing ring with a countdown (`Breather`), 1/3/5 min
   (`config.sos.durations`, replaced the old 10-minute timer), Breathe / Ground (5-4-3-2-1) / Reframe (`config.sos.reframes`
   plus their why and money goal), "Talk to someone" card (Gambling Help Online call / chat, message buddy), then the log.
+  Progress (`app/(tabs)/progress.tsx`, mockup screen 5): This week / This month / Total (`periodStats`, weeks start Monday,
+  never before the program), money kept / gamble-free days / sessions, photo card, weekly goals set automatically
+  (`weeklyGoals`: 5 sessions, keep a week's usual spend, 7 gamble-free days; reset each Monday).
   Photos are listed in `lib/images.ts` (null = not arrived yet; `Photo` shows a plain dark space). `Tile` for quick access.
 
 ## Where things are

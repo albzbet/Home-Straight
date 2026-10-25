@@ -44,3 +44,64 @@ export function progress(state: ProgramState, today: string = localDate()): Prog
   const goalShare = o?.savingTarget ? Math.min(1, moneyKept / o.savingTarget) : null;
   return { daysSinceStart, gambleFreeDays, streak, moneyKept, goalShare };
 }
+
+export type Period = 'week' | 'month' | 'total';
+
+export type PeriodStats = {
+  moneyKept: number;
+  gambleFreeDays: number;
+  sessions: number; // program sessions done
+  urgesHandled: number; // Urge SOS uses where the urge passed or was easing
+};
+
+const startOfProgram = (state: ProgramState, today: string) => {
+  const o = state.onboarding;
+  return o?.completedAt ? localDate(new Date(o.completedAt)) : (state.days[0]?.localDate ?? today);
+};
+
+// The first day of this week (Monday), this month, or the program.
+export function periodStart(period: Period, today: string, programStart: string): string {
+  let from = programStart;
+  if (period === 'week') {
+    const d = toDate(today);
+    from = addDays(today, -((d.getDay() + 6) % 7));
+  } else if (period === 'month') from = `${today.slice(0, 8)}01`;
+  return from > programStart ? from : programStart;
+}
+
+// Progress screen: what this week, this month or the whole program added up to.
+export function periodStats(state: ProgramState, period: Period, today: string = localDate()): PeriodStats {
+  const from = periodStart(period, today, startOfProgram(state, today));
+  const inRange = (d: string) => d >= from && d <= today;
+  const days = from <= today ? daysBetween(from, today) + 1 : 0;
+  const slips = [...gambleDates(state)].filter(inRange).length;
+  const gambleFreeDays = Math.max(0, days - slips);
+  const spend = state.onboarding?.weeklySpend ?? 0;
+  return {
+    moneyKept: Math.round((spend / 7) * gambleFreeDays),
+    gambleFreeDays,
+    sessions: state.days.filter((d) => inRange(d.localDate)).length,
+    urgesHandled: state.urges.filter((u) => u.passed !== 'gambled' && inRange(localDate(new Date(u.at)))).length,
+  };
+}
+
+export type WeeklyGoal = { id: 'sessions' | 'money' | 'gambleFree'; label: string; at: number; of: number };
+
+// This week's goals, worked out from the program and their usual spend (nothing to set up): 5 sessions, keep a week's
+// usual spend, 7 gamble-free days. The money goal only shows if they told us their spend.
+export function weeklyGoals(state: ProgramState, today: string = localDate(), sessionsGoal = 5): WeeklyGoal[] {
+  const week = periodStats(state, 'week', today);
+  const spend = state.onboarding?.weeklySpend ?? 0;
+  const goals: WeeklyGoal[] = [
+    { id: 'sessions', label: `Complete ${sessionsGoal} sessions`, at: Math.min(week.sessions, sessionsGoal), of: sessionsGoal },
+  ];
+  if (spend > 0)
+    goals.push({
+      id: 'money',
+      label: `Keep $${Math.round(spend)}`,
+      at: Math.min(week.moneyKept, Math.round(spend)),
+      of: Math.round(spend),
+    });
+  goals.push({ id: 'gambleFree', label: '7 gamble-free days', at: Math.min(week.gambleFreeDays, 7), of: 7 });
+  return goals;
+}
