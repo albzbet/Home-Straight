@@ -350,5 +350,15 @@
         "days": null
       }
     ]
+  },
+  "support": {
+    "_readme": "Where people can reach you. Replace the placeholder email before launch.",
+    "email": "support@example.com"
+  },
+  "payments": {
+    "_readme": "Pricing rules shown to people. Prices themselves are set in the App Store and Google Play (step 9).",
+    "freeWeeks": 1,
+    "refundDays": 60,
+    "refundHeadline": "Not right for you? Full refund, no questions asked."
   }
 }
