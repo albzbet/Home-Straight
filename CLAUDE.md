@@ -45,6 +45,9 @@ what's next. Plain English, click-by-click steps.
   Session (`app/session/[day].tsx`, mockup screen 3): lesson page with close / Week • Day / SOS / help, the title in Bebas with
   its tail in orange (`highlightTail`), `VideoCard` and `AudioCard` (`components/SessionMedia.tsx`), busy-day switch,
   "Mark as complete", then check-in, action, done.
+  Urge SOS (`app/sos.tsx`, mockup screen 4): big green breathing ring with a countdown (`Breather`), 1/3/5 min
+  (`config.sos.durations`, replaced the old 10-minute timer), Breathe / Ground (5-4-3-2-1) / Reframe (`config.sos.reframes`
+  plus their why and money goal), "Talk to someone" card (Gambling Help Online call / chat, message buddy), then the log.
   Photos are listed in `lib/images.ts` (null = not arrived yet; `Photo` shows a plain dark space). `Tile` for quick access.
 
 ## Where things are

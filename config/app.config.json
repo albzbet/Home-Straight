@@ -290,8 +290,8 @@
     "moods": ["Rough", "Low", "Okay", "Good", "Great"]
   },
   "sos": {
-    "_readme": "Urge SOS. 'breathingAudioUrl' is the guided breathing recording (null until one is uploaded). The breathing guide counts in and out in seconds. 'buddyMessage' is the text that opens ready to send to their buddy; they can change it before sending.",
-    "minutes": 10,
+    "_readme": "Urge SOS. 'durations' are the timer choices in minutes (the first is picked to start with). 'breathingAudioUrl' is the guided breathing recording (null until one is uploaded). The breathing guide counts in and out in seconds. 'ground' is the 5-4-3-2-1 senses exercise; 'reframes' are common thinking traps with a calmer way to see each. 'buddyMessage' is the text that opens ready to send to their buddy; they can change it before sending.",
+    "durations": [1, 3, 5],
     "breathingAudioUrl": null,
     "breathing": {
       "inSeconds": 4,
@@ -313,12 +313,40 @@
     ],
     "helped": [
       "Breathing",
+      "Grounding",
+      "Reframing my thoughts",
       "Waiting it out",
       "Remembering my why",
       "Messaging someone",
       "Calling for support",
       "Doing something else",
       "Getting out of the house"
+    ],
+    "tagline": "Take a minute. You've got this.",
+    "ground": [
+      "5 things you can see",
+      "4 things you can touch",
+      "3 things you can hear",
+      "2 things you can smell",
+      "1 thing you can taste"
+    ],
+    "reframes": [
+      {
+        "thought": "\"I'm due a win.\"",
+        "reply": "Every bet is random. Nothing is ever 'due', and it doesn't remember what you've lost."
+      },
+      {
+        "thought": "\"I'll just win back what I lost.\"",
+        "reply": "Chasing losses is how most big losses happen. Today's money is safer where it is."
+      },
+      {
+        "thought": "\"Just one won't hurt.\"",
+        "reply": "One often turns into more. If you wait, this urge will pass on its own."
+      },
+      {
+        "thought": "\"I deserve a bit of fun.\"",
+        "reply": "You do. Pick something that won't cost you tomorrow: a walk, a call, a feed, a show."
+      }
     ]
   },
   "reminders": {
