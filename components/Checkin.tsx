@@ -1,8 +1,11 @@
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { useState } from 'react';
+import { Pressable, Text, View } from 'react-native';
 import { Chip, Field, Row, Txt } from '@/components/ui';
 import { config } from '@/lib/config';
 import { parseMoney } from '@/lib/format';
 import { localDate } from '@/lib/program';
+import { fonts, moodColors, space, useTheme } from '@/lib/theme';
 
 // The 1-minute check-in and the bounce-back questions, shared by the daily sessions and the after-program daily check-in.
 
@@ -65,16 +68,62 @@ function gambleQuestion(lastDate: string | undefined): string {
   return !lastDate || lastDate >= yesterday ? 'Did you gamble yesterday?' : 'Have you gambled since your last check-in?';
 }
 
-export function CheckinQuestions({ f, lastDate }: { f: Fields; lastDate?: string }) {
+// Faces for moods 1 (struggling) to 5 (great).
+const FACES = ['emoticon-cry', 'emoticon-sad', 'emoticon-neutral', 'emoticon-happy', 'emoticon-excited'] as const;
+
+// The five mood faces, best first (as in the mockup). Saved as 1-5, 5 being great.
+export function MoodPicker({ value, onChange }: { value: number | null; onChange: (mood: number) => void }) {
+  const t = useTheme();
+  const moods = config.checkin.moods.map((label, i) => ({ label, mood: i + 1 })).reverse();
+  return (
+    <View accessibilityRole="radiogroup" style={{ flexDirection: 'row', justifyContent: 'space-between', gap: space.xs }}>
+      {moods.map(({ label, mood }) => {
+        const selected = value === mood;
+        const faded = value !== null && !selected;
+        return (
+          <Pressable
+            key={label}
+            accessibilityRole="radio"
+            accessibilityLabel={label}
+            accessibilityState={{ selected }}
+            onPress={() => onChange(mood)}
+            style={{ flex: 1, alignItems: 'center', gap: space.xs, opacity: faded ? 0.45 : 1 }}
+          >
+            <View
+              style={{
+                borderRadius: 999,
+                padding: 3,
+                borderWidth: 2,
+                borderColor: selected ? t.text : 'transparent',
+              }}
+            >
+              <MaterialCommunityIcons name={FACES[mood - 1]} size={48} color={moodColors[mood - 1]} />
+            </View>
+            <Text
+              numberOfLines={1}
+              adjustsFontSizeToFit
+              style={{ color: selected ? t.text : t.textMuted, fontFamily: selected ? fonts.semibold : fonts.medium, fontSize: 12 }}
+            >
+              {label}
+            </Text>
+          </Pressable>
+        );
+      })}
+    </View>
+  );
+}
+
+// withMood false: the mood was already asked on a page before (the daily check-in).
+export function CheckinQuestions({ f, lastDate, withMood = true }: { f: Fields; lastDate?: string; withMood?: boolean }) {
   return (
     <>
-      <Txt variant="title">Quick check-in</Txt>
-      <Txt variant="h2">How are you feeling?</Txt>
-      <Row>
-        {config.checkin.moods.map((m, i) => (
-          <Chip key={m} label={m} selected={f.mood === i + 1} onPress={() => f.setMood(i + 1)} />
-        ))}
-      </Row>
+      {withMood ? (
+        <>
+          <Txt variant="title">Quick check-in</Txt>
+          <Txt variant="h2">How are you feeling?</Txt>
+          <MoodPicker value={f.mood} onChange={f.setMood} />
+        </>
+      ) : null}
       <Txt variant="h2">How strong is the urge to gamble right now?</Txt>
       <Txt variant="small">0 is none at all, 10 is the strongest it gets.</Txt>
       <Row>

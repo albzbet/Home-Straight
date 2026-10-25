@@ -26,6 +26,9 @@ export const colors = {
   overlay: 'rgba(15, 17, 20, 0.55)', // over photos, so text stays readable
 };
 
+// The five mood faces on the check-in, from 1 (struggling) to 5 (great).
+export const moodColors = ['#EF4444', '#FB923C', '#FACC15', '#A7AFBA', '#22C55E'];
+
 // Fonts are loaded in app/_layout.tsx (Google Fonts via expo-google-fonts). Use these names, not fontWeight, with them.
 export const fonts = {
   display: 'BebasNeue_400Regular', // headings: always upper case

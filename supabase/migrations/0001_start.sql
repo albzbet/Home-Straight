@@ -125,6 +125,8 @@ create table if not exists public.daily_checkins (
   slip_different bytea, -- encrypted
   primary key (member_id, local_date)
 );
+-- The optional "what's on your mind?" note on the daily check-in.
+alter table public.daily_checkins add column if not exists note bytea; -- encrypted
 
 alter table public.members enable row level security;
 alter table public.daily_checkins enable row level security;
@@ -167,8 +169,8 @@ language sql stable security definer set search_path = public as $$
         'slipDifferent', coalesce(private.dec(d.slip_different), '')) order by d.day) from public.day_progress d where d.member_id = auth.uid()), '[]'::jsonb),
     'checkins', coalesce((select jsonb_agg(jsonb_build_object('localDate', c.local_date, 'mood', c.mood, 'urge', c.urge,
         'gambled', c.gambled, 'amount', c.amount, 'action', coalesce(private.dec(c.action), ''),
-        'slipWhat', coalesce(private.dec(c.slip_what), ''), 'slipDifferent', coalesce(private.dec(c.slip_different), ''))
-        order by c.local_date) from public.daily_checkins c where c.member_id = auth.uid()), '[]'::jsonb),
+        'slipWhat', coalesce(private.dec(c.slip_what), ''), 'slipDifferent', coalesce(private.dec(c.slip_different), ''),
+        'note', coalesce(private.dec(c.note), '')) order by c.local_date) from public.daily_checkins c where c.member_id = auth.uid()), '[]'::jsonb),
     'urges', coalesce((select jsonb_agg(jsonb_build_object('at', u.started_at, 'seconds', u.seconds, 'triggers', to_jsonb(u.triggers),
         'passed', u.passed, 'helped', to_jsonb(u.helped), 'note', coalesce(private.dec(u.note), '')) order by u.started_at)
         from public.urge_logs u where u.member_id = auth.uid()), '[]'::jsonb))
@@ -263,7 +265,7 @@ begin
   where id = auth.uid();
 end $$;
 
--- A daily check-in. p: { localDate, mood, urge, gambled, amount, action, slipWhat, slipDifferent }
+-- A daily check-in. p: { localDate, mood, urge, gambled, amount, action, slipWhat, slipDifferent, note }
 create or replace function public.hs_save_checkin(p jsonb) returns void
 language plpgsql security definer set search_path = public as $$
 declare
@@ -271,13 +273,13 @@ declare
 begin
   if uid is null then raise exception 'not signed in'; end if;
   insert into public.members (id) values (uid) on conflict (id) do nothing;
-  insert into public.daily_checkins (member_id, local_date, mood, urge, gambled, amount, action, slip_what, slip_different)
+  insert into public.daily_checkins (member_id, local_date, mood, urge, gambled, amount, action, slip_what, slip_different, note)
   values (uid, (p ->> 'localDate')::date, (p ->> 'mood')::smallint, (p ->> 'urge')::smallint, (p ->> 'gambled')::boolean,
     (p ->> 'amount')::numeric, private.enc(left(p ->> 'action', 300)), private.enc(left(p ->> 'slipWhat', 600)),
-    private.enc(left(p ->> 'slipDifferent', 300)))
+    private.enc(left(p ->> 'slipDifferent', 300)), private.enc(left(p ->> 'note', 300)))
   on conflict (member_id, local_date) do update set
     mood = excluded.mood, urge = excluded.urge, gambled = excluded.gambled, amount = excluded.amount,
-    action = excluded.action, slip_what = excluded.slip_what, slip_different = excluded.slip_different;
+    action = excluded.action, slip_what = excluded.slip_what, slip_different = excluded.slip_different, note = excluded.note;
 end $$;
 
 -- Start the 56 sessions again: each session's check-in moves across to the daily check-ins (so gamble-free days stay the

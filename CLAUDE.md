@@ -55,6 +55,9 @@ what's next. Plain English, click-by-click steps.
   each opens `app/episode/[id].tsx` (video, or its script until a video is uploaded, summary, key points). Episodes are in
   `content/episodes.json` (placeholder text for now), edited live in Admin > Bookie Tricks Exposed (`app/admin/episodes.tsx`,
   content key `episodes`). Thumbnails `photos.tricks` in `lib/images.ts`.
+  Daily check-in (`app/checkin.tsx`, mockup screen 7): five mood faces (`MoodPicker` in `components/Checkin.tsx`, best
+  first, saved 1-5; colours `moodColors`; labels `config.checkin.moods`) and an optional note (encrypted
+  `daily_checkins.note`), then urge and "did you gamble?", bounce-back after a slip. Sessions use the same faces.
   Photos are listed in `lib/images.ts` (null = not arrived yet; `Photo` shows a plain dark space). `Tile` for quick access.
 
 ## Where things are

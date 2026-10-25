@@ -45,6 +45,7 @@ export type DailyCheckin = {
   action: string;
   slipWhat: string;
   slipDifferent: string;
+  note?: string; // the optional "what's on your mind?" note
 };
 
 // One use of Urge SOS, logged afterwards.

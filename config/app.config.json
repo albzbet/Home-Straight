@@ -287,7 +287,7 @@
     ]
   },
   "checkin": {
-    "moods": ["Rough", "Low", "Okay", "Good", "Great"]
+    "moods": ["Struggling", "Tough", "Alright", "Good", "Great"]
   },
   "sos": {
     "_readme": "Urge SOS. 'durations' are the timer choices in minutes (the first is picked to start with). 'breathingAudioUrl' is the guided breathing recording (null until one is uploaded). The breathing guide counts in and out in seconds. 'ground' is the 5-4-3-2-1 senses exercise; 'reframes' are common thinking traps with a calmer way to see each. 'buddyMessage' is the text that opens ready to send to their buddy; they can change it before sending.",

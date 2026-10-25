@@ -1,17 +1,23 @@
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { router } from 'expo-router';
 import { useState } from 'react';
-import { BounceBack, CheckinQuestions, useCheckin } from '@/components/Checkin';
+import { View } from 'react-native';
+import { BounceBack, CheckinQuestions, MoodPicker, useCheckin } from '@/components/Checkin';
 import { useCrisisGate } from '@/components/Help';
-import { Button, Screen, Txt } from '@/components/ui';
+import { Button, Field, PrimaryButton, Screen, Txt } from '@/components/ui';
 import { localDate } from '@/lib/program';
 import { lastCheckinDate } from '@/lib/progress';
 import { useStore } from '@/lib/store';
+import { space, useTheme } from '@/lib/theme';
 
-// The 1-minute daily check-in for after the program (keeps gamble-free days and the streak counting).
+// The 1-minute daily check-in (mockup screen 7): mood faces and an optional note, then the urge and "did you gamble?"
+// (which keeps gamble-free days and the streak counting), then bounce-back questions after a slip.
 export default function DailyCheckin() {
+  const t = useTheme();
   const { state, saveCheckin } = useStore();
   const checkin = useCheckin();
-  const [step, setStep] = useState<'questions' | 'bounce' | 'done'>('questions');
+  const [note, setNote] = useState('');
+  const [step, setStep] = useState<'mood' | 'questions' | 'bounce' | 'done'>('mood');
   const [saving, setSaving] = useState(false);
   const [problem, setProblem] = useState<string | null>(null);
   const { check, sheet } = useCrisisGate();
@@ -19,11 +25,11 @@ export default function DailyCheckin() {
   const lastDate = lastCheckinDate({ ...state, checkins: state.checkins.filter((c) => c.localDate !== localDate()) });
 
   const save = () =>
-    check(checkin.texts, async () => {
+    check([...checkin.texts, note], async () => {
       setSaving(true);
       setProblem(null);
       try {
-        await saveCheckin({ localDate: localDate(), action: '', ...checkin.result() });
+        await saveCheckin({ localDate: localDate(), action: '', ...checkin.result(), note: note.trim() });
         setStep('done');
       } catch {
         setProblem("That didn't save. Check your internet connection and try again.");
@@ -34,11 +40,48 @@ export default function DailyCheckin() {
 
   if (step === 'done')
     return (
-      <Screen footer={<Button label="Done" onPress={() => router.replace('/home')} />}>
-        <Txt variant="title">Thanks for checking in.</Txt>
-        <Txt variant="muted">
-          {checkin.gambled ? 'Bouncing back is what counts, and you just did it.' : 'Another day in the bank. See you tomorrow.'}
-        </Txt>
+      <Screen footer={<PrimaryButton label="Done" onPress={() => router.replace('/home')} />}>
+        <View style={{ alignItems: 'center', gap: space.md, paddingTop: space.xxl }}>
+          <MaterialCommunityIcons name="check-circle" size={72} color={t.success} />
+          <Txt variant="title" style={{ textAlign: 'center' }}>
+            Thanks for checking in
+          </Txt>
+          <Txt variant="muted" style={{ textAlign: 'center' }}>
+            {checkin.gambled ? 'Bouncing back is what counts, and you just did it.' : 'Another day in the bank. See you tomorrow.'}
+          </Txt>
+        </View>
+      </Screen>
+    );
+
+  if (step === 'mood')
+    return (
+      <Screen
+        footer={
+          <>
+            <PrimaryButton label="Next" onPress={() => check([note], () => setStep('questions'))} disabled={checkin.fields.mood === null} />
+            <Button label="Back" kind="ghost" onPress={() => router.back()} />
+          </>
+        }
+      >
+        {sheet}
+        <View style={{ alignItems: 'center', gap: space.sm, paddingTop: space.lg, paddingBottom: space.md }}>
+          <MaterialCommunityIcons name="weather-sunset-up" size={64} color={t.primary} />
+          <Txt variant="title" style={{ textAlign: 'center' }}>
+            How are you today?
+          </Txt>
+          <Txt variant="muted" style={{ textAlign: 'center' }}>
+            Quick and simple. No wrong answers.
+          </Txt>
+        </View>
+        <MoodPicker value={checkin.fields.mood} onChange={checkin.fields.setMood} />
+        <Field
+          label="Add a quick note (optional)"
+          placeholder="What's on your mind?"
+          value={note}
+          onChangeText={setNote}
+          multiline
+          maxLength={300}
+        />
       </Screen>
     );
 
@@ -48,16 +91,23 @@ export default function DailyCheckin() {
         <>
           {problem ? <Txt variant="small">{problem}</Txt> : null}
           {step === 'questions' && checkin.gambled ? (
-            <Button label="Next" onPress={() => setStep('bounce')} disabled={!checkin.complete} />
+            <PrimaryButton label="Next" onPress={() => setStep('bounce')} disabled={!checkin.complete} />
           ) : (
-            <Button label="Save" onPress={save} disabled={!checkin.complete} loading={saving} />
+            <PrimaryButton label="Save" onPress={save} disabled={!checkin.complete} loading={saving} />
           )}
-          <Button label="Back" kind="ghost" onPress={() => (step === 'bounce' ? setStep('questions') : router.back())} />
+          <Button label="Back" kind="ghost" onPress={() => setStep(step === 'bounce' ? 'questions' : 'mood')} />
         </>
       }
     >
       {sheet}
-      {step === 'questions' ? <CheckinQuestions f={checkin.fields} lastDate={lastDate} /> : <BounceBack f={checkin.fields} />}
+      {step === 'questions' ? (
+        <>
+          <Txt variant="title">Two more quick ones</Txt>
+          <CheckinQuestions f={checkin.fields} lastDate={lastDate} withMood={false} />
+        </>
+      ) : (
+        <BounceBack f={checkin.fields} />
+      )}
     </Screen>
   );
 }
