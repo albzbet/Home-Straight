@@ -30,14 +30,14 @@ describe('program', () => {
     expect(today(days, '2026-10-20')).toEqual({ day: 3, unlocked: true });
   });
 
-  it('is finished after all 42', () => {
+  it('is finished after all 56', () => {
     const days = Array.from({ length: TOTAL_DAYS }, (_, i) => done(i + 1, '2026-10-01'));
     expect(nextDay(days)).toBeNull();
     expect(today(days).day).toBeNull();
   });
 
   it('works out weeks and dates', () => {
-    expect([1, 7, 8, 42].map(weekOf)).toEqual([1, 1, 2, 6]);
+    expect([1, 7, 8, 56].map(weekOf)).toEqual([1, 1, 2, 8]);
     expect(localDate(new Date(2026, 0, 5))).toBe('2026-01-05');
   });
 });

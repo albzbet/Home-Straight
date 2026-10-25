@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { isPaused, reminderPlan } from '@/lib/reminderPlan';
-import { localDate } from '@/lib/program';
+import { localDate, TOTAL_DAYS } from '@/lib/program';
 import { emptyState, type DayRecord, type ProgramState } from '@/lib/types';
 
 const onboarding = { ...({} as NonNullable<ProgramState['onboarding']>), reminderTime: '07:30', completedAt: '2026-10-01T09:00:00' };
@@ -46,7 +46,7 @@ describe('reminderPlan', () => {
 
   it('nothing before onboarding or after the program', () => {
     expect(reminderPlan(emptyState, at('2026-10-05T10:00:00'))).toEqual([]);
-    const all = Array.from({ length: 42 }, (_, i) => done(i + 1, '2026-10-01'));
+    const all = Array.from({ length: TOTAL_DAYS }, (_, i) => done(i + 1, '2026-10-01'));
     expect(reminderPlan(state({ days: all }), at('2026-10-05T10:00:00'))).toEqual([]);
   });
 });

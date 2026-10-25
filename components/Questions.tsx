@@ -3,7 +3,7 @@ import { Chip, Row, Txt } from '@/components/ui';
 import { config } from '@/lib/config';
 import { space } from '@/lib/theme';
 
-// The private before-and-after questions (config.questionnaire), asked in onboarding and again after Week 6.
+// The private before-and-after questions (config.questionnaire), asked in onboarding and again after the last week.
 const q = config.questionnaire;
 
 export const blankAnswers = (): (number | null)[] => q.items.map(() => null);

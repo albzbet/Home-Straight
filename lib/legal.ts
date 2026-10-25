@@ -42,10 +42,10 @@ Questions: ${email}.`;
 
 export const termsOfUse = `PLACEHOLDER. These are not the real terms of use.
 
-Homestraight is a self-help and wellbeing program. It is not a medical treatment and does not diagnose, treat or cure any condition. It is not a substitute for professional care.
+homestr8 is a self-help and wellbeing program. It is not a medical treatment and does not diagnose, treat or cure any condition. It is not a substitute for professional care.
 
 If you need help now, call Gambling Help Online on 1800 858 858 (free, 24/7), Lifeline on 13 11 14, or 000 in an emergency.
 
-You must be 18 or older to use Homestraight.
+You must be 18 or older to use homestr8.
 
-Paying: Week ${config.payments.freeWeeks} is free. Weeks 2 to 6 are a one-off purchase through the App Store or Google Play. ${refundSummary} See the refund policy for details.`;
+Paying: Week ${config.payments.freeWeeks} is free. Weeks 2 to 8 are a one-off purchase through the App Store or Google Play. ${refundSummary} See the refund policy for details.`;

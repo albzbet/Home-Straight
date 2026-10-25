@@ -1,4 +1,4 @@
--- Homestraight 0002: admins, editable content (lessons, meditations, crisis words), media uploads and the dashboard.
+-- homestr8 0002: admins, editable content (lessons, meditations, crisis words), media uploads and the dashboard.
 -- Run after 0001, in Supabase > SQL Editor > New snippet > Run. Safe to run again.
 --
 -- To make yourself an admin (after you've signed in to the app once), run this with your own sign-in email:
@@ -18,15 +18,19 @@ revoke execute on function public.hs_is_admin() from public, anon;
 grant execute on function public.hs_is_admin() to authenticated;
 
 -- ---------------------------------------------------------------------------
--- Content. One row per piece: 'weeks', 'lesson:1' ... 'lesson:42', 'meditations', 'safety'.
+-- Content. One row per piece: 'weeks', 'lesson:1' ... 'lesson:56', 'meditations', 'safety'.
 -- Anything not in here falls back to the copy built into the app.
 -- ---------------------------------------------------------------------------
 create table if not exists public.content (
-  key text primary key check (key ~ '^(weeks|meditations|safety|lesson:([1-9]|[1-3][0-9]|4[0-2]))$'),
+  key text primary key check (key ~ '^(weeks|meditations|safety|lesson:([1-9]|[1-4][0-9]|5[0-6]))$'),
   value jsonb not null,
   updated_at timestamptz not null default now(),
   updated_by uuid references auth.users (id) on delete set null
 );
+-- Lessons go up to day 56 (8 weeks): harmless if the table was made with this limit already.
+alter table public.content drop constraint if exists content_key_check;
+alter table public.content add constraint content_key_check
+  check (key ~ '^(weeks|meditations|safety|lesson:([1-9]|[1-4][0-9]|5[0-6]))$');
 alter table public.content enable row level security;
 
 -- Everyone (signed in or not) reads the content: lessons aren't private.
@@ -124,7 +128,7 @@ begin
       'day3', (select count(*) from reached where furthest >= 3),
       'day7', (select count(*) from reached where furthest >= 7),
       'week3', (select count(*) from reached where furthest >= 21),
-      'week6', (select count(*) from reached where furthest >= 42)),
+      'week8', (select count(*) from reached where furthest >= 56)),
     'sos', jsonb_build_object(
       'opened', (select coalesce(sum(count), 0) from public.usage_counts where name = 'sos_opened'),
       'opened30', (select coalesce(sum(count), 0) from public.usage_counts where name = 'sos_opened' and day > current_date - 30),

@@ -5,7 +5,7 @@ import raw from '@/content/program.json';
 import { setSafety, type SafetyContent } from './safety';
 import { supabase } from './supabase';
 
-// Lesson content for the 6-week program, the meditations and the crisis words.
+// Lesson content for the 8-week program, the meditations and the crisis words.
 // The app carries a built-in copy (content/*.json, config/safety.json). Once an admin edits something in the admin area it's
 // saved in the database (public.content) and wins over the built-in copy. The last copy fetched is kept on the phone, so
 // edits show even offline.

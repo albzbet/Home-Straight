@@ -5,11 +5,11 @@ import { dayStatus, weekOf } from '@/lib/program';
 import type { DayRecord } from '@/lib/types';
 import { radius, space, useTheme } from '@/lib/theme';
 
-// The 6-week path on Home: six stops joined by a line, with this week's seven days underneath.
+// The program's path on Home: one stop per week joined by a line, with this week's seven days underneath.
 export function Journey({ days, currentDay }: { days: DayRecord[]; currentDay: number | null }) {
   const t = useTheme();
   const { weeks } = useContent();
-  const week = currentDay ? weekOf(currentDay) : 6;
+  const week = currentDay ? weekOf(currentDay) : weeks.length;
   const theme = weeks.find((w) => w.week === week)!;
   const doneInWeek = (w: number) => days.filter((d) => weekOf(d.day) === w).length;
 
@@ -19,7 +19,15 @@ export function Journey({ days, currentDay }: { days: DayRecord[]; currentDay: n
       <View style={{ height: 40, justifyContent: 'center' }}>
         {/* The line behind the stops: grey, filled in green up to this week. */}
         <View style={{ position: 'absolute', left: 14, right: 14, height: 3, backgroundColor: t.line }} />
-        <View style={{ position: 'absolute', left: 14, width: `${((week - 1) / 5) * 100 * 0.9}%`, height: 3, backgroundColor: t.action }} />
+        <View
+          style={{
+            position: 'absolute',
+            left: 14,
+            width: `${((week - 1) / (weeks.length - 1)) * 100 * 0.9}%`,
+            height: 3,
+            backgroundColor: t.action,
+          }}
+        />
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
           {weeks.map((w) => {
             const finished = doneInWeek(w.week) === 7;

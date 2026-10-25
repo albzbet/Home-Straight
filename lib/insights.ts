@@ -1,4 +1,5 @@
 import { money } from './format';
+import { TOTAL_WEEKS } from './program';
 
 // The short "something to know" cards shown between onboarding questions (wording in config/app.config.json).
 
@@ -21,10 +22,10 @@ type MoneyText = { title: string; withSpend: string; withGoal: string; noSpend: 
 
 const fill = (template: string, values: Record<string, string>) => template.replace(/\{(\w+)\}/g, (_, k: string) => values[k] ?? '');
 
-// "At about $150 a week, six weeks adds up to around $900 ... That would get you to Bali ($3,000) in about 20 weeks."
+// "At about $150 a week, eight weeks adds up to around $1,200 ... That would get you to Bali ($3,000) in about 20 weeks."
 export function moneyInsight(text: MoneyText, weeklySpend: number | null, savingTarget: number | null, savingFor: string): Insight {
   if (!weeklySpend) return { title: text.title, text: text.noSpend };
-  let body = fill(text.withSpend, { weekly: money(weeklySpend), sixWeeks: money(weeklySpend * 6) });
+  let body = fill(text.withSpend, { weekly: money(weeklySpend), programTotal: money(weeklySpend * TOTAL_WEEKS) });
   if (savingTarget) {
     const weeks = Math.max(1, Math.ceil(savingTarget / weeklySpend));
     body += ' ' + fill(text.withGoal, { savingFor: savingFor.trim() || 'your goal', target: money(savingTarget), weeks: String(weeks) });

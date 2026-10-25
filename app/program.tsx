@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { useStore } from '@/lib/store';
 import { radius, space, useTheme } from '@/lib/theme';
 
-// All 6 weeks at a glance. Done sessions can be listened to again; today's opens; the rest wait their turn.
+// All the weeks at a glance. Done sessions can be listened to again; today's opens; the rest wait their turn.
 export default function Program() {
   const t = useTheme();
   const { state, signedIn, restartProgram } = useStore();
@@ -18,7 +18,7 @@ export default function Program() {
 
   return (
     <Screen>
-      <Txt variant="title">Your 6 weeks</Txt>
+      <Txt variant="title">Your {weeks.length} weeks</Txt>
       <Txt variant="muted">One new session each day. Missed one? It waits for you. Just pick up where you left off.</Txt>
       {finished ? (
         <Card>

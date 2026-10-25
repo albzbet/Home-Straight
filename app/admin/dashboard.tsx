@@ -32,7 +32,7 @@ export default function Dashboard() {
     ['Day 3', f.day3],
     ['Day 7 (end of week 1)', f.day7],
     ['Week 3', f.week3],
-    ['Week 6 (finished)', f.week6],
+    ['Week 8 (finished)', f.week8],
   ];
   const notEnough = `Shown once at least ${stats.minGroup} people are behind it.`;
   return (

@@ -35,7 +35,7 @@ export default function Welcome() {
       <View style={{ gap: space.md, marginTop: space.xxl }}>
         <Txt variant="title">G'day. Let's get you back in control.</Txt>
         <Txt variant="muted">
-          A 6-week morning program, about 10 minutes a day, to help you quit, cut back or take a break from gambling. At your pace, no
+          An 8-week morning program, about 10 minutes a day, to help you quit, cut back or take a break from gambling. At your pace, no
           judgement.
         </Txt>
       </View>

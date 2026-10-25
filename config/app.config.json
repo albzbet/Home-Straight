@@ -262,7 +262,7 @@
     "paydays": ["Weekly", "Fortnightly", "Monthly", "It varies", "I'd rather not say"],
     "money": {
       "title": "What you could keep",
-      "withSpend": "At about {weekly} a week, six weeks adds up to around {sixWeeks} you could keep.",
+      "withSpend": "At about {weekly} a week, the eight weeks of the program add up to around {programTotal} you could keep.",
       "withGoal": "That would get you to {savingFor} ({target}) in about {weeks} weeks.",
       "noSpend": "No worries. Money isn't the only thing you'll get back. We'll still count every gamble-free day."
     },

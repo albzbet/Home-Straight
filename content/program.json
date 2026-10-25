@@ -23,11 +23,21 @@
     },
     {
       "week": 5,
-      "theme": "Filling the gap",
-      "summary": "New things to do with your time, and rebuilding money and relationships."
+      "theme": "Feelings and stress",
+      "summary": "The feelings behind urges, like stress, boredom, loneliness and low moods, and calmer ways to handle them."
     },
     {
       "week": 6,
+      "theme": "Filling the gap",
+      "summary": "New things to do with your time, and routines that leave less room for gambling."
+    },
+    {
+      "week": 7,
+      "theme": "Money and relationships",
+      "summary": "Getting on top of money, and rebuilding trust with the people around you."
+    },
+    {
+      "week": 8,
       "theme": "Your plan forward",
       "summary": "Spotting slips early, bouncing back, and your personal plan for what comes next."
     }
@@ -791,16 +801,205 @@
         "prompt": "One thing for today",
         "options": ["PLACEHOLDER action one", "PLACEHOLDER action two", "PLACEHOLDER action three"]
       },
-      "teaser": "Tomorrow: What gambling gave you."
+      "teaser": "Tomorrow: Feelings behind the urge."
     },
     {
       "day": 29,
       "week": 5,
+      "title": "Feelings behind the urge",
+      "reviewStatus": "placeholder",
+      "video": {
+        "url": null,
+        "script": "PLACEHOLDER: 60-second animated intro to \"Feelings behind the urge\" (week 5: Feelings and stress)."
+      },
+      "audio": {
+        "url": null,
+        "kind": "lesson",
+        "minutes": 6,
+        "title": "Feelings behind the urge",
+        "script": "PLACEHOLDER: 5 to 7 minute guided lesson on \"Feelings behind the urge\". A psychologist will write and record this."
+      },
+      "busyAudio": {
+        "url": null,
+        "minutes": 3,
+        "script": "PLACEHOLDER: 3-minute short version of \"Feelings behind the urge\"."
+      },
+      "action": {
+        "prompt": "One thing for today",
+        "options": ["PLACEHOLDER action one", "PLACEHOLDER action two", "PLACEHOLDER action three"]
+      },
+      "teaser": "Tomorrow: Stress and the need to escape."
+    },
+    {
+      "day": 30,
+      "week": 5,
+      "title": "Stress and the need to escape",
+      "reviewStatus": "placeholder",
+      "video": {
+        "url": null,
+        "script": "PLACEHOLDER: 60-second animated intro to \"Stress and the need to escape\" (week 5: Feelings and stress)."
+      },
+      "audio": {
+        "url": null,
+        "kind": "lesson",
+        "minutes": 6,
+        "title": "Stress and the need to escape",
+        "script": "PLACEHOLDER: 5 to 7 minute guided lesson on \"Stress and the need to escape\". A psychologist will write and record this."
+      },
+      "busyAudio": {
+        "url": null,
+        "minutes": 3,
+        "script": "PLACEHOLDER: 3-minute short version of \"Stress and the need to escape\"."
+      },
+      "action": {
+        "prompt": "One thing for today",
+        "options": ["PLACEHOLDER action one", "PLACEHOLDER action two", "PLACEHOLDER action three"]
+      },
+      "teaser": "Tomorrow: Boredom and loneliness."
+    },
+    {
+      "day": 31,
+      "week": 5,
+      "title": "Boredom and loneliness",
+      "reviewStatus": "placeholder",
+      "video": {
+        "url": null,
+        "script": "PLACEHOLDER: 60-second animated intro to \"Boredom and loneliness\" (week 5: Feelings and stress)."
+      },
+      "audio": {
+        "url": null,
+        "kind": "reflection",
+        "minutes": 6,
+        "title": "Boredom and loneliness",
+        "script": "PLACEHOLDER: 5 to 7 minute guided reflection on \"Boredom and loneliness\". A psychologist will write and record this."
+      },
+      "busyAudio": {
+        "url": null,
+        "minutes": 3,
+        "script": "PLACEHOLDER: 3-minute short version of \"Boredom and loneliness\"."
+      },
+      "action": {
+        "prompt": "One thing for today",
+        "options": ["PLACEHOLDER action one", "PLACEHOLDER action two", "PLACEHOLDER action three"]
+      },
+      "teaser": "Tomorrow: When your mood is low."
+    },
+    {
+      "day": 32,
+      "week": 5,
+      "title": "When your mood is low",
+      "reviewStatus": "placeholder",
+      "video": {
+        "url": null,
+        "script": "PLACEHOLDER: 60-second animated intro to \"When your mood is low\" (week 5: Feelings and stress)."
+      },
+      "audio": {
+        "url": null,
+        "kind": "lesson",
+        "minutes": 6,
+        "title": "When your mood is low",
+        "script": "PLACEHOLDER: 5 to 7 minute guided lesson on \"When your mood is low\". A psychologist will write and record this."
+      },
+      "busyAudio": {
+        "url": null,
+        "minutes": 3,
+        "script": "PLACEHOLDER: 3-minute short version of \"When your mood is low\"."
+      },
+      "action": {
+        "prompt": "One thing for today",
+        "options": ["PLACEHOLDER action one", "PLACEHOLDER action two", "PLACEHOLDER action three"]
+      },
+      "teaser": "Tomorrow: Sleep and energy."
+    },
+    {
+      "day": 33,
+      "week": 5,
+      "title": "Sleep and energy",
+      "reviewStatus": "placeholder",
+      "video": {
+        "url": null,
+        "script": "PLACEHOLDER: 60-second animated intro to \"Sleep and energy\" (week 5: Feelings and stress)."
+      },
+      "audio": {
+        "url": null,
+        "kind": "lesson",
+        "minutes": 6,
+        "title": "Sleep and energy",
+        "script": "PLACEHOLDER: 5 to 7 minute guided lesson on \"Sleep and energy\". A psychologist will write and record this."
+      },
+      "busyAudio": {
+        "url": null,
+        "minutes": 3,
+        "script": "PLACEHOLDER: 3-minute short version of \"Sleep and energy\"."
+      },
+      "action": {
+        "prompt": "One thing for today",
+        "options": ["PLACEHOLDER action one", "PLACEHOLDER action two", "PLACEHOLDER action three"]
+      },
+      "teaser": "Tomorrow: Calming your body."
+    },
+    {
+      "day": 34,
+      "week": 5,
+      "title": "Calming your body",
+      "reviewStatus": "placeholder",
+      "video": {
+        "url": null,
+        "script": "PLACEHOLDER: 60-second animated intro to \"Calming your body\" (week 5: Feelings and stress)."
+      },
+      "audio": {
+        "url": null,
+        "kind": "meditation",
+        "minutes": 6,
+        "title": "Calming your body",
+        "script": "PLACEHOLDER: 5 to 7 minute guided meditation on \"Calming your body\". A psychologist will write and record this."
+      },
+      "busyAudio": {
+        "url": null,
+        "minutes": 3,
+        "script": "PLACEHOLDER: 3-minute short version of \"Calming your body\"."
+      },
+      "action": {
+        "prompt": "One thing for today",
+        "options": ["PLACEHOLDER action one", "PLACEHOLDER action two", "PLACEHOLDER action three"]
+      },
+      "teaser": "Tomorrow: Looking back on week 5."
+    },
+    {
+      "day": 35,
+      "week": 5,
+      "title": "Looking back on week 5",
+      "reviewStatus": "placeholder",
+      "video": {
+        "url": null,
+        "script": "PLACEHOLDER: 60-second animated intro to \"Looking back on week 5\" (week 5: Feelings and stress)."
+      },
+      "audio": {
+        "url": null,
+        "kind": "reflection",
+        "minutes": 6,
+        "title": "Looking back on week 5",
+        "script": "PLACEHOLDER: 5 to 7 minute guided reflection on \"Looking back on week 5\". A psychologist will write and record this."
+      },
+      "busyAudio": {
+        "url": null,
+        "minutes": 3,
+        "script": "PLACEHOLDER: 3-minute short version of \"Looking back on week 5\"."
+      },
+      "action": {
+        "prompt": "One thing for today",
+        "options": ["PLACEHOLDER action one", "PLACEHOLDER action two", "PLACEHOLDER action three"]
+      },
+      "teaser": "Tomorrow: What gambling gave you."
+    },
+    {
+      "day": 36,
+      "week": 6,
       "title": "What gambling gave you",
       "reviewStatus": "placeholder",
       "video": {
         "url": null,
-        "script": "PLACEHOLDER: 60-second animated intro to \"What gambling gave you\" (week 5: Filling the gap)."
+        "script": "PLACEHOLDER: 60-second animated intro to \"What gambling gave you\" (week 6: Filling the gap)."
       },
       "audio": {
         "url": null,
@@ -821,13 +1020,13 @@
       "teaser": "Tomorrow: New ways to fill the time."
     },
     {
-      "day": 30,
-      "week": 5,
+      "day": 37,
+      "week": 6,
       "title": "New ways to fill the time",
       "reviewStatus": "placeholder",
       "video": {
         "url": null,
-        "script": "PLACEHOLDER: 60-second animated intro to \"New ways to fill the time\" (week 5: Filling the gap)."
+        "script": "PLACEHOLDER: 60-second animated intro to \"New ways to fill the time\" (week 6: Filling the gap)."
       },
       "audio": {
         "url": null,
@@ -845,55 +1044,28 @@
         "prompt": "One thing for today",
         "options": ["PLACEHOLDER action one", "PLACEHOLDER action two", "PLACEHOLDER action three"]
       },
-      "teaser": "Tomorrow: Rebuilding your money."
+      "teaser": "Tomorrow: Fun that's good for you."
     },
     {
-      "day": 31,
-      "week": 5,
-      "title": "Rebuilding your money",
+      "day": 38,
+      "week": 6,
+      "title": "Fun that's good for you",
       "reviewStatus": "placeholder",
       "video": {
         "url": null,
-        "script": "PLACEHOLDER: 60-second animated intro to \"Rebuilding your money\" (week 5: Filling the gap)."
+        "script": "PLACEHOLDER: 60-second animated intro to \"Fun that's good for you\" (week 6: Filling the gap)."
       },
       "audio": {
         "url": null,
         "kind": "reflection",
         "minutes": 6,
-        "title": "Rebuilding your money",
-        "script": "PLACEHOLDER: 5 to 7 minute guided reflection on \"Rebuilding your money\". A psychologist will write and record this."
+        "title": "Fun that's good for you",
+        "script": "PLACEHOLDER: 5 to 7 minute guided reflection on \"Fun that's good for you\". A psychologist will write and record this."
       },
       "busyAudio": {
         "url": null,
         "minutes": 3,
-        "script": "PLACEHOLDER: 3-minute short version of \"Rebuilding your money\"."
-      },
-      "action": {
-        "prompt": "One thing for today",
-        "options": ["PLACEHOLDER action one", "PLACEHOLDER action two", "PLACEHOLDER action three"]
-      },
-      "teaser": "Tomorrow: Rebuilding trust."
-    },
-    {
-      "day": 32,
-      "week": 5,
-      "title": "Rebuilding trust",
-      "reviewStatus": "placeholder",
-      "video": {
-        "url": null,
-        "script": "PLACEHOLDER: 60-second animated intro to \"Rebuilding trust\" (week 5: Filling the gap)."
-      },
-      "audio": {
-        "url": null,
-        "kind": "lesson",
-        "minutes": 6,
-        "title": "Rebuilding trust",
-        "script": "PLACEHOLDER: 5 to 7 minute guided lesson on \"Rebuilding trust\". A psychologist will write and record this."
-      },
-      "busyAudio": {
-        "url": null,
-        "minutes": 3,
-        "script": "PLACEHOLDER: 3-minute short version of \"Rebuilding trust\"."
+        "script": "PLACEHOLDER: 3-minute short version of \"Fun that's good for you\"."
       },
       "action": {
         "prompt": "One thing for today",
@@ -902,13 +1074,13 @@
       "teaser": "Tomorrow: Looking after your body."
     },
     {
-      "day": 33,
-      "week": 5,
+      "day": 39,
+      "week": 6,
       "title": "Looking after your body",
       "reviewStatus": "placeholder",
       "video": {
         "url": null,
-        "script": "PLACEHOLDER: 60-second animated intro to \"Looking after your body\" (week 5: Filling the gap)."
+        "script": "PLACEHOLDER: 60-second animated intro to \"Looking after your body\" (week 6: Filling the gap)."
       },
       "audio": {
         "url": null,
@@ -926,55 +1098,271 @@
         "prompt": "One thing for today",
         "options": ["PLACEHOLDER action one", "PLACEHOLDER action two", "PLACEHOLDER action three"]
       },
-      "teaser": "Tomorrow: Fun that's good for you."
+      "teaser": "Tomorrow: Building a routine."
     },
     {
-      "day": 34,
-      "week": 5,
-      "title": "Fun that's good for you",
+      "day": 40,
+      "week": 6,
+      "title": "Building a routine",
       "reviewStatus": "placeholder",
       "video": {
         "url": null,
-        "script": "PLACEHOLDER: 60-second animated intro to \"Fun that's good for you\" (week 5: Filling the gap)."
+        "script": "PLACEHOLDER: 60-second animated intro to \"Building a routine\" (week 6: Filling the gap)."
       },
       "audio": {
         "url": null,
-        "kind": "meditation",
+        "kind": "lesson",
         "minutes": 6,
-        "title": "Fun that's good for you",
-        "script": "PLACEHOLDER: 5 to 7 minute guided meditation on \"Fun that's good for you\". A psychologist will write and record this."
+        "title": "Building a routine",
+        "script": "PLACEHOLDER: 5 to 7 minute guided lesson on \"Building a routine\". A psychologist will write and record this."
       },
       "busyAudio": {
         "url": null,
         "minutes": 3,
-        "script": "PLACEHOLDER: 3-minute short version of \"Fun that's good for you\"."
+        "script": "PLACEHOLDER: 3-minute short version of \"Building a routine\"."
       },
       "action": {
         "prompt": "One thing for today",
         "options": ["PLACEHOLDER action one", "PLACEHOLDER action two", "PLACEHOLDER action three"]
       },
-      "teaser": "Tomorrow: Looking back on week 5."
+      "teaser": "Tomorrow: Things to look forward to."
     },
     {
-      "day": 35,
-      "week": 5,
-      "title": "Looking back on week 5",
+      "day": 41,
+      "week": 6,
+      "title": "Things to look forward to",
       "reviewStatus": "placeholder",
       "video": {
         "url": null,
-        "script": "PLACEHOLDER: 60-second animated intro to \"Looking back on week 5\" (week 5: Filling the gap)."
+        "script": "PLACEHOLDER: 60-second animated intro to \"Things to look forward to\" (week 6: Filling the gap)."
+      },
+      "audio": {
+        "url": null,
+        "kind": "meditation",
+        "minutes": 6,
+        "title": "Things to look forward to",
+        "script": "PLACEHOLDER: 5 to 7 minute guided meditation on \"Things to look forward to\". A psychologist will write and record this."
+      },
+      "busyAudio": {
+        "url": null,
+        "minutes": 3,
+        "script": "PLACEHOLDER: 3-minute short version of \"Things to look forward to\"."
+      },
+      "action": {
+        "prompt": "One thing for today",
+        "options": ["PLACEHOLDER action one", "PLACEHOLDER action two", "PLACEHOLDER action three"]
+      },
+      "teaser": "Tomorrow: Looking back on week 6."
+    },
+    {
+      "day": 42,
+      "week": 6,
+      "title": "Looking back on week 6",
+      "reviewStatus": "placeholder",
+      "video": {
+        "url": null,
+        "script": "PLACEHOLDER: 60-second animated intro to \"Looking back on week 6\" (week 6: Filling the gap)."
       },
       "audio": {
         "url": null,
         "kind": "reflection",
         "minutes": 6,
-        "title": "Looking back on week 5",
-        "script": "PLACEHOLDER: 5 to 7 minute guided reflection on \"Looking back on week 5\". A psychologist will write and record this."
+        "title": "Looking back on week 6",
+        "script": "PLACEHOLDER: 5 to 7 minute guided reflection on \"Looking back on week 6\". A psychologist will write and record this."
       },
       "busyAudio": {
         "url": null,
         "minutes": 3,
-        "script": "PLACEHOLDER: 3-minute short version of \"Looking back on week 5\"."
+        "script": "PLACEHOLDER: 3-minute short version of \"Looking back on week 6\"."
+      },
+      "action": {
+        "prompt": "One thing for today",
+        "options": ["PLACEHOLDER action one", "PLACEHOLDER action two", "PLACEHOLDER action three"]
+      },
+      "teaser": "Tomorrow: Facing the numbers."
+    },
+    {
+      "day": 43,
+      "week": 7,
+      "title": "Facing the numbers",
+      "reviewStatus": "placeholder",
+      "video": {
+        "url": null,
+        "script": "PLACEHOLDER: 60-second animated intro to \"Facing the numbers\" (week 7: Money and relationships)."
+      },
+      "audio": {
+        "url": null,
+        "kind": "lesson",
+        "minutes": 6,
+        "title": "Facing the numbers",
+        "script": "PLACEHOLDER: 5 to 7 minute guided lesson on \"Facing the numbers\". A psychologist will write and record this."
+      },
+      "busyAudio": {
+        "url": null,
+        "minutes": 3,
+        "script": "PLACEHOLDER: 3-minute short version of \"Facing the numbers\"."
+      },
+      "action": {
+        "prompt": "One thing for today",
+        "options": ["PLACEHOLDER action one", "PLACEHOLDER action two", "PLACEHOLDER action three"]
+      },
+      "teaser": "Tomorrow: Rebuilding your money."
+    },
+    {
+      "day": 44,
+      "week": 7,
+      "title": "Rebuilding your money",
+      "reviewStatus": "placeholder",
+      "video": {
+        "url": null,
+        "script": "PLACEHOLDER: 60-second animated intro to \"Rebuilding your money\" (week 7: Money and relationships)."
+      },
+      "audio": {
+        "url": null,
+        "kind": "lesson",
+        "minutes": 6,
+        "title": "Rebuilding your money",
+        "script": "PLACEHOLDER: 5 to 7 minute guided lesson on \"Rebuilding your money\". A psychologist will write and record this."
+      },
+      "busyAudio": {
+        "url": null,
+        "minutes": 3,
+        "script": "PLACEHOLDER: 3-minute short version of \"Rebuilding your money\"."
+      },
+      "action": {
+        "prompt": "One thing for today",
+        "options": ["PLACEHOLDER action one", "PLACEHOLDER action two", "PLACEHOLDER action three"]
+      },
+      "teaser": "Tomorrow: Protecting your money."
+    },
+    {
+      "day": 45,
+      "week": 7,
+      "title": "Protecting your money",
+      "reviewStatus": "placeholder",
+      "video": {
+        "url": null,
+        "script": "PLACEHOLDER: 60-second animated intro to \"Protecting your money\" (week 7: Money and relationships)."
+      },
+      "audio": {
+        "url": null,
+        "kind": "reflection",
+        "minutes": 6,
+        "title": "Protecting your money",
+        "script": "PLACEHOLDER: 5 to 7 minute guided reflection on \"Protecting your money\". A psychologist will write and record this."
+      },
+      "busyAudio": {
+        "url": null,
+        "minutes": 3,
+        "script": "PLACEHOLDER: 3-minute short version of \"Protecting your money\"."
+      },
+      "action": {
+        "prompt": "One thing for today",
+        "options": ["PLACEHOLDER action one", "PLACEHOLDER action two", "PLACEHOLDER action three"]
+      },
+      "teaser": "Tomorrow: Talking to the people you love."
+    },
+    {
+      "day": 46,
+      "week": 7,
+      "title": "Talking to the people you love",
+      "reviewStatus": "placeholder",
+      "video": {
+        "url": null,
+        "script": "PLACEHOLDER: 60-second animated intro to \"Talking to the people you love\" (week 7: Money and relationships)."
+      },
+      "audio": {
+        "url": null,
+        "kind": "lesson",
+        "minutes": 6,
+        "title": "Talking to the people you love",
+        "script": "PLACEHOLDER: 5 to 7 minute guided lesson on \"Talking to the people you love\". A psychologist will write and record this."
+      },
+      "busyAudio": {
+        "url": null,
+        "minutes": 3,
+        "script": "PLACEHOLDER: 3-minute short version of \"Talking to the people you love\"."
+      },
+      "action": {
+        "prompt": "One thing for today",
+        "options": ["PLACEHOLDER action one", "PLACEHOLDER action two", "PLACEHOLDER action three"]
+      },
+      "teaser": "Tomorrow: Rebuilding trust."
+    },
+    {
+      "day": 47,
+      "week": 7,
+      "title": "Rebuilding trust",
+      "reviewStatus": "placeholder",
+      "video": {
+        "url": null,
+        "script": "PLACEHOLDER: 60-second animated intro to \"Rebuilding trust\" (week 7: Money and relationships)."
+      },
+      "audio": {
+        "url": null,
+        "kind": "lesson",
+        "minutes": 6,
+        "title": "Rebuilding trust",
+        "script": "PLACEHOLDER: 5 to 7 minute guided lesson on \"Rebuilding trust\". A psychologist will write and record this."
+      },
+      "busyAudio": {
+        "url": null,
+        "minutes": 3,
+        "script": "PLACEHOLDER: 3-minute short version of \"Rebuilding trust\"."
+      },
+      "action": {
+        "prompt": "One thing for today",
+        "options": ["PLACEHOLDER action one", "PLACEHOLDER action two", "PLACEHOLDER action three"]
+      },
+      "teaser": "Tomorrow: Asking for support."
+    },
+    {
+      "day": 48,
+      "week": 7,
+      "title": "Asking for support",
+      "reviewStatus": "placeholder",
+      "video": {
+        "url": null,
+        "script": "PLACEHOLDER: 60-second animated intro to \"Asking for support\" (week 7: Money and relationships)."
+      },
+      "audio": {
+        "url": null,
+        "kind": "meditation",
+        "minutes": 6,
+        "title": "Asking for support",
+        "script": "PLACEHOLDER: 5 to 7 minute guided meditation on \"Asking for support\". A psychologist will write and record this."
+      },
+      "busyAudio": {
+        "url": null,
+        "minutes": 3,
+        "script": "PLACEHOLDER: 3-minute short version of \"Asking for support\"."
+      },
+      "action": {
+        "prompt": "One thing for today",
+        "options": ["PLACEHOLDER action one", "PLACEHOLDER action two", "PLACEHOLDER action three"]
+      },
+      "teaser": "Tomorrow: Looking back on week 7."
+    },
+    {
+      "day": 49,
+      "week": 7,
+      "title": "Looking back on week 7",
+      "reviewStatus": "placeholder",
+      "video": {
+        "url": null,
+        "script": "PLACEHOLDER: 60-second animated intro to \"Looking back on week 7\" (week 7: Money and relationships)."
+      },
+      "audio": {
+        "url": null,
+        "kind": "reflection",
+        "minutes": 6,
+        "title": "Looking back on week 7",
+        "script": "PLACEHOLDER: 5 to 7 minute guided reflection on \"Looking back on week 7\". A psychologist will write and record this."
+      },
+      "busyAudio": {
+        "url": null,
+        "minutes": 3,
+        "script": "PLACEHOLDER: 3-minute short version of \"Looking back on week 7\"."
       },
       "action": {
         "prompt": "One thing for today",
@@ -983,13 +1371,13 @@
       "teaser": "Tomorrow: Spotting a slip early."
     },
     {
-      "day": 36,
-      "week": 6,
+      "day": 50,
+      "week": 8,
       "title": "Spotting a slip early",
       "reviewStatus": "placeholder",
       "video": {
         "url": null,
-        "script": "PLACEHOLDER: 60-second animated intro to \"Spotting a slip early\" (week 6: Your plan forward)."
+        "script": "PLACEHOLDER: 60-second animated intro to \"Spotting a slip early\" (week 8: Your plan forward)."
       },
       "audio": {
         "url": null,
@@ -1010,13 +1398,13 @@
       "teaser": "Tomorrow: If you slip: bouncing back."
     },
     {
-      "day": 37,
-      "week": 6,
+      "day": 51,
+      "week": 8,
       "title": "If you slip: bouncing back",
       "reviewStatus": "placeholder",
       "video": {
         "url": null,
-        "script": "PLACEHOLDER: 60-second animated intro to \"If you slip: bouncing back\" (week 6: Your plan forward)."
+        "script": "PLACEHOLDER: 60-second animated intro to \"If you slip: bouncing back\" (week 8: Your plan forward)."
       },
       "audio": {
         "url": null,
@@ -1037,13 +1425,13 @@
       "teaser": "Tomorrow: Your warning signs."
     },
     {
-      "day": 38,
-      "week": 6,
+      "day": 52,
+      "week": 8,
       "title": "Your warning signs",
       "reviewStatus": "placeholder",
       "video": {
         "url": null,
-        "script": "PLACEHOLDER: 60-second animated intro to \"Your warning signs\" (week 6: Your plan forward)."
+        "script": "PLACEHOLDER: 60-second animated intro to \"Your warning signs\" (week 8: Your plan forward)."
       },
       "audio": {
         "url": null,
@@ -1064,13 +1452,13 @@
       "teaser": "Tomorrow: Your support plan."
     },
     {
-      "day": 39,
-      "week": 6,
+      "day": 53,
+      "week": 8,
       "title": "Your support plan",
       "reviewStatus": "placeholder",
       "video": {
         "url": null,
-        "script": "PLACEHOLDER: 60-second animated intro to \"Your support plan\" (week 6: Your plan forward)."
+        "script": "PLACEHOLDER: 60-second animated intro to \"Your support plan\" (week 8: Your plan forward)."
       },
       "audio": {
         "url": null,
@@ -1091,13 +1479,13 @@
       "teaser": "Tomorrow: Your money plan."
     },
     {
-      "day": 40,
-      "week": 6,
+      "day": 54,
+      "week": 8,
       "title": "Your money plan",
       "reviewStatus": "placeholder",
       "video": {
         "url": null,
-        "script": "PLACEHOLDER: 60-second animated intro to \"Your money plan\" (week 6: Your plan forward)."
+        "script": "PLACEHOLDER: 60-second animated intro to \"Your money plan\" (week 8: Your plan forward)."
       },
       "audio": {
         "url": null,
@@ -1118,13 +1506,13 @@
       "teaser": "Tomorrow: Putting your plan together."
     },
     {
-      "day": 41,
-      "week": 6,
+      "day": 55,
+      "week": 8,
       "title": "Putting your plan together",
       "reviewStatus": "placeholder",
       "video": {
         "url": null,
-        "script": "PLACEHOLDER: 60-second animated intro to \"Putting your plan together\" (week 6: Your plan forward)."
+        "script": "PLACEHOLDER: 60-second animated intro to \"Putting your plan together\" (week 8: Your plan forward)."
       },
       "audio": {
         "url": null,
@@ -1145,13 +1533,13 @@
       "teaser": "Tomorrow: Looking ahead."
     },
     {
-      "day": 42,
-      "week": 6,
+      "day": 56,
+      "week": 8,
       "title": "Looking ahead",
       "reviewStatus": "placeholder",
       "video": {
         "url": null,
-        "script": "PLACEHOLDER: 60-second animated intro to \"Looking ahead\" (week 6: Your plan forward)."
+        "script": "PLACEHOLDER: 60-second animated intro to \"Looking ahead\" (week 8: Your plan forward)."
       },
       "audio": {
         "url": null,

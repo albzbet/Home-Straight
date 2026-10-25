@@ -29,14 +29,16 @@ describe('pickInsights', () => {
 describe('moneyInsight', () => {
   const text = {
     title: 'What you could keep',
-    withSpend: 'At about {weekly} a week, six weeks is {sixWeeks}.',
+    withSpend: 'At about {weekly} a week, eight weeks is {programTotal}.',
     withGoal: '{savingFor} ({target}) in about {weeks} weeks.',
     noSpend: 'No worries.',
   };
 
   it('does the maths', () => {
-    expect(moneyInsight(text, 150, 3000, 'Bali').text).toBe('At about $150 a week, six weeks is $900. Bali ($3,000) in about 20 weeks.');
-    expect(moneyInsight(text, 150, null, '').text).toBe('At about $150 a week, six weeks is $900.');
+    expect(moneyInsight(text, 150, 3000, 'Bali').text).toBe(
+      'At about $150 a week, eight weeks is $1,200. Bali ($3,000) in about 20 weeks.',
+    );
+    expect(moneyInsight(text, 150, null, '').text).toBe('At about $150 a week, eight weeks is $1,200.');
     expect(moneyInsight(text, 40, 100, '').text).toContain('your goal ($100) in about 3 weeks');
   });
 

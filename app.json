@@ -1,14 +1,14 @@
 {
   "expo": {
-    "name": "Homestraight",
-    "slug": "homestraight",
+    "name": "homestr8",
+    "slug": "homestr8",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "automatic",
     "ios": {
       "supportsTablet": false,
-      "bundleIdentifier": "au.homestraight.app"
+      "bundleIdentifier": "au.homestr8.app"
     },
     "android": {
       "adaptiveIcon": {
@@ -18,7 +18,7 @@
         "monochromeImage": "./assets/android-icon-monochrome.png"
       },
       "predictiveBackGestureEnabled": false,
-      "package": "au.homestraight.app"
+      "package": "au.homestr8.app"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -76,7 +76,7 @@
         }
       ]
     ],
-    "scheme": "homestraight",
+    "scheme": "homestr8",
     "experiments": {
       "typedRoutes": false
     }

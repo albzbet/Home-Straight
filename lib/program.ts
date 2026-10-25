@@ -3,7 +3,8 @@ import type { DayRecord } from './types';
 // How the program moves along. Pure logic, tested in lib/__tests__/program.test.ts.
 // One new session a day; missed ones simply wait, so nobody ever "falls behind".
 
-export const TOTAL_DAYS = 42;
+export const TOTAL_WEEKS = 8;
+export const TOTAL_DAYS = TOTAL_WEEKS * 7; // 56
 export const FREE_DAYS = 1; // days you can do before making an account ("try first")
 
 // Today's date on the phone, as YYYY-MM-DD.
@@ -12,7 +13,7 @@ export function localDate(d: Date = new Date()): string {
   return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
 }
 
-// The first session not done yet, or null once all 42 are done.
+// The first session not done yet, or null once all of them are done.
 export function nextDay(days: DayRecord[]): number | null {
   const done = new Set(days.map((d) => d.day));
   for (let day = 1; day <= TOTAL_DAYS; day++) if (!done.has(day)) return day;

@@ -42,7 +42,7 @@ export async function pickAndUpload(folder: string, kind: 'audio' | 'video'): Pr
 export type Stats = {
   members: number;
   tryFirst: { onboarded: number; day1: number };
-  funnel: { day1: number; day3: number; day7: number; week3: number; week6: number };
+  funnel: { day1: number; day3: number; day7: number; week3: number; week8: number };
   sos: { opened: number; opened30: number; logged: number; handled: number };
   checkins30: { count: number; mood: number; urge: number } | null;
   questionnaire: { people: number; before?: number; after?: number };

@@ -11,7 +11,7 @@ export default function AdminHome() {
         the app.
       </Txt>
       <Button label="Dashboard" onPress={() => router.push('/admin/dashboard')} />
-      <Button label="Lessons (42 days)" kind="secondary" onPress={() => router.push('/admin/lessons')} />
+      <Button label="Lessons (56 days)" kind="secondary" onPress={() => router.push('/admin/lessons')} />
       <Button label="Week themes" kind="secondary" onPress={() => router.push('/admin/weeks')} />
       <Button label="Meditations" kind="secondary" onPress={() => router.push('/admin/meditations')} />
       <Button label="Crisis words and message" kind="secondary" onPress={() => router.push('/admin/safety')} />

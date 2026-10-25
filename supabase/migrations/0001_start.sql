@@ -1,4 +1,4 @@
--- Homestraight 0001: members and their program (onboarding answers, questionnaires, daily sessions).
+-- homestr8 0001: members and their program (onboarding answers, questionnaires, daily sessions).
 -- Run once in Supabase > SQL Editor > New snippet > Run. Safe to run again.
 --
 -- Privacy design:
@@ -79,7 +79,7 @@ create index if not exists questionnaires_member on public.questionnaires (membe
 
 create table if not exists public.day_progress (
   member_id uuid not null references public.members (id) on delete cascade,
-  day smallint not null check (day between 1 and 42),
+  day smallint not null check (day between 1 and 56),
   local_date date not null,
   completed_at timestamptz not null default now(),
   busy boolean not null default false,
@@ -92,6 +92,9 @@ create table if not exists public.day_progress (
   slip_different bytea, -- encrypted: what they'd do differently
   primary key (member_id, day)
 );
+-- The program grew from 6 to 8 weeks (56 days): harmless if the table was made with the new limit already.
+alter table public.day_progress drop constraint if exists day_progress_day_check;
+alter table public.day_progress add constraint day_progress_day_check check (day between 1 and 56);
 alter table public.day_progress add column if not exists slip_what bytea;
 alter table public.day_progress add column if not exists slip_different bytea;
 
@@ -108,7 +111,7 @@ create table if not exists public.urge_logs (
 );
 create index if not exists urge_logs_member on public.urge_logs (member_id, started_at);
 
--- Check-ins outside the 42 sessions: the daily check-in after the program, repeated weeks, and the check-ins from a
+-- Check-ins outside the 56 sessions: the daily check-in after the program, repeated weeks, and the check-ins from a
 -- finished run of the program when someone starts again. One per day (a second one that day replaces the first).
 create table if not exists public.daily_checkins (
   member_id uuid not null references public.members (id) on delete cascade,
@@ -277,7 +280,7 @@ begin
     action = excluded.action, slip_what = excluded.slip_what, slip_different = excluded.slip_different;
 end $$;
 
--- Start the 42 sessions again: each session's check-in moves across to the daily check-ins (so gamble-free days stay the
+-- Start the 56 sessions again: each session's check-in moves across to the daily check-ins (so gamble-free days stay the
 -- same), then the sessions are cleared. A day that already has a daily check-in keeps that one.
 create or replace function public.hs_restart_program() returns void
 language plpgsql security definer set search_path = public as $$

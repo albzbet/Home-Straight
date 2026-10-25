@@ -5,14 +5,14 @@ import { Button, Card, Screen, StepBar, Txt } from '@/components/ui';
 import { config } from '@/lib/config';
 import { useContent } from '@/lib/content';
 import { money } from '@/lib/format';
-import { FREE_DAYS, localDate, today } from '@/lib/program';
+import { FREE_DAYS, localDate, today, TOTAL_DAYS, TOTAL_WEEKS } from '@/lib/program';
 import { progress } from '@/lib/progress';
 import { isPaused } from '@/lib/reminderPlan';
 import { remindersSupported, useRemindersOn } from '@/lib/reminders';
 import { useStore } from '@/lib/store';
 import { space, useTheme } from '@/lib/theme';
 
-// Home: today's session, the 6-week journey, gamble-free days and money kept.
+// Home: today's session, the journey through the weeks, gamble-free days and money kept.
 export default function Home() {
   const th = useTheme();
   const { state, signedIn, setPause } = useStore();
@@ -75,7 +75,7 @@ export default function Home() {
             </>
           ) : (
             <>
-              <Txt variant="h2">You've finished all 42 sessions. That's a big deal.</Txt>
+              <Txt variant="h2">You've finished all {TOTAL_DAYS} sessions. That's a big deal.</Txt>
               <Button label="One last thing: see how far you've come" onPress={() => router.push('/finish')} />
             </>
           )
@@ -114,7 +114,7 @@ export default function Home() {
       ) : (
         <>
           <Journey days={state.days} currentDay={t.day} />
-          <Button label="See all 6 weeks" kind="secondary" onPress={() => router.push('/program')} />
+          <Button label={`See all ${TOTAL_WEEKS} weeks`} kind="secondary" onPress={() => router.push('/program')} />
         </>
       )}
 

@@ -168,7 +168,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
         (s) => ({ ...s, checkins: [...s.checkins.filter((x) => x.localDate !== c.localDate), c] }),
         () => rpc('hs_save_checkin', { p: c }),
       ),
-    // Start the 42 sessions again. Their check-ins are kept (as daily check-ins), so gamble-free days don't change.
+    // Start the sessions again. Their check-ins are kept (as daily check-ins), so gamble-free days don't change.
     restartProgram: () =>
       update(
         (s) => ({

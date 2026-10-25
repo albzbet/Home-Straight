@@ -1,7 +1,7 @@
-# Homestraight: notes for Claude
+# homestr8: notes for Claude
 
-Working name. An Australian app helping adults take control of their gambling: a 6-week, CBT-based morning program
-(42 sessions of about 10 minutes, a 5-minute "busy day" version), Urge SOS and ongoing support tools. The owner is a beginner
+The app is called **homestr8** (owner's choice, Oct 2026; the repo keeps the old Home-Straight name). An Australian app
+helping adults take control of their gambling: an 8-week, CBT-based morning program (56 sessions of about 10 minutes, a 5-minute "busy day" version), Urge SOS and ongoing support tools. The owner is a beginner
 developer: explain plans first, build step by step, and after each step say what was built, how to test it on a phone, and
 what's next. Plain English, click-by-click steps.
 
@@ -28,7 +28,8 @@ what's next. Plain English, click-by-click steps.
 
 ## Where things are
 
-- `content/program.json` all 42 lessons and `content/meditations.json`: the built-in copy. Admins edit live content in the
+- The program is 8 weeks (owner's change, Oct 2026): `TOTAL_WEEKS` / `TOTAL_DAYS` in `lib/program.ts`; never hard-code 8 or 56.
+- `content/program.json` all 56 lessons and `content/meditations.json`: the built-in copy. Admins edit live content in the
   admin area (saved in `public.content`), which wins over the built-in copy.
 - `config/app.config.json` helplines, disclaimer, onboarding choices, questionnaire (PGSI-style placeholder), moods.
 - `lib/store.tsx` member's data: on the phone for guests ("try first", Day 1 only), in Supabase once signed in; the phone
@@ -51,7 +52,7 @@ what's next. Plain English, click-by-click steps.
 - Step 2, safety: done. `GetHelpButton` on every `Screen`, `/help`, crisis words in `config/safety.json` checked on the phone
   (`lib/safety.ts`, `useCrisisGate` in `components/Help.tsx`) before moving on from any screen with free text. Nothing stored.
 - Step 3, program engine: done. `app/session/[day].tsx` (full, busy day, bounce-back step after a reported slip, `?review=1`
-  to listen again without saving), `app/program.tsx` (all 6 weeks), `dayStatus` in `lib/program.ts`.
+  to listen again without saving), `app/program.tsx` (all the weeks), `dayStatus` in `lib/program.ts`.
 - Step 4, Urge SOS: done. `SosButton` on every `Screen`, `app/sos.tsx` (timer and breathing from `config.sos`, why and money
   goal, message buddy via the share sheet, call or chat Gambling Help Online, log afterwards in `urge_logs`).
 - Step 5, home: done. `Journey` path, gamble-free days in total and in a row, money kept towards the goal (`lib/progress.ts`:
@@ -60,7 +61,7 @@ what's next. Plain English, click-by-click steps.
   `config.reminders`): next mornings, then one "Welcome back" after 2 quiet days, nothing while paused. Pause in Settings.
 - Step 7, summaries and plan: done. `app/week/[n].tsx` after every 7th session, `app/finish.tsx` (end questionnaire,
   before/after as counts only), `app/plan.tsx` and `lib/planPdf.ts` (expo-print, share sheet). Logic in `lib/summary.ts`.
-- Step 10, maintenance mode: done. After Day 42 and the end questionnaire, Home becomes a toolkit: daily check-in
+- Step 10, maintenance mode: done. After Day 56 and the end questionnaire, Home becomes a toolkit: daily check-in
   (`app/checkin.tsx`, `daily_checkins`), meditation of the day and library (`content/meditations.json`), game plan, repeat a
   week (`/session/N?repeat=1`, saves a daily check-in) or start again (`hs_restart_program` keeps check-ins).
   Check-in and bounce-back questions are shared (`components/Checkin.tsx`).
@@ -78,4 +79,4 @@ what's next. Plain English, click-by-click steps.
   refund policy.
 
 Before launch (owner): lawyer for privacy policy and terms (Privacy Act, health information; TGA wording), licence check for
-PGSI questions, psychologist review of content, possibly a neutral name (the "home straight" is racing language).
+PGSI questions, psychologist review of content, the name homestr8 still plays on "home straight" (racing language); the owner has chosen it.

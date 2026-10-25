@@ -11,7 +11,7 @@ import { useStore } from '@/lib/store';
 import { questionnaireChange } from '@/lib/summary';
 import { space } from '@/lib/theme';
 
-// After Week 6: the same private questions as at the start, then how far they've come. Never a score or a label.
+// After the last week: the same private questions as at the start, then how far they've come. Never a score or a label.
 export default function Finish() {
   const { state, saveQuestionnaire } = useStore();
   const done = state.questionnaires.some((q) => q.kind === 'end');
@@ -57,7 +57,7 @@ export default function Finish() {
   const handled = state.urges.filter((u) => u.passed !== 'gambled').length;
   return (
     <Screen footer={<Button label="See my game plan" onPress={() => router.push('/plan')} />}>
-      <Txt variant="title">Six weeks. Look at that.</Txt>
+      <Txt variant="title">Eight weeks. Look at that.</Txt>
       {change ? (
         <Card>
           <Txt variant="label">Compared with when you started</Txt>
@@ -69,7 +69,7 @@ export default function Finish() {
           <Txt variant="muted">
             {change.worse > 0
               ? `${change.worse} ${change.worse === 1 ? 'is' : 'are'} tougher than before. That's worth talking through with Gambling Help Online, any time.`
-              : 'Change takes time, and you showed up for six weeks. Keep going.'}
+              : 'Change takes time, and you showed up for eight weeks. Keep going.'}
           </Txt>
         </Card>
       ) : null}

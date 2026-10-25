@@ -35,7 +35,7 @@ export type DayRecord = {
   slipDifferent?: string; // ...and what they'd do differently
 };
 
-// A check-in outside the 42 sessions: the daily check-in after the program, or a repeated week.
+// A check-in outside the program's sessions: the daily check-in after the program, or a repeated week.
 export type DailyCheckin = {
   localDate: string;
   mood: number | null;
