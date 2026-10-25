@@ -291,6 +291,7 @@ export function StatCard({
   label,
   sub,
   style,
+  onPress,
 }: {
   icon?: keyof typeof Ionicons.glyphMap;
   iconColor?: string;
@@ -298,10 +299,14 @@ export function StatCard({
   label: string;
   sub?: string;
   style?: StyleProp<ViewStyle>;
+  onPress?: () => void; // makes the card a button
 }) {
   const t = useTheme();
   return (
-    <View
+    <Pressable
+      disabled={!onPress}
+      onPress={onPress}
+      accessibilityRole={onPress ? 'button' : undefined}
       style={[
         {
           flex: 1,
@@ -326,7 +331,7 @@ export function StatCard({
       </Text>
       <Text style={{ fontFamily: fonts.medium, fontSize: 12, color: t.textMuted }}>{label}</Text>
       {sub ? <Text style={{ fontFamily: fonts.body, fontSize: 11, color: t.textFaint }}>{sub}</Text> : null}
-    </View>
+    </Pressable>
   );
 }
 

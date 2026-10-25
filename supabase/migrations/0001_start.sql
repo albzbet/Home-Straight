@@ -67,6 +67,7 @@ alter table public.members add column if not exists gambling_types text[] not nu
 alter table public.members add column if not exists paused_since date;
 alter table public.members add column if not exists paused_until date;
 alter table public.members add column if not exists plan_notes bytea;
+alter table public.members add column if not exists goal_since date; -- when the current savings goal was set
 
 create table if not exists public.questionnaires (
   id bigint generated always as identity primary key,
@@ -164,6 +165,7 @@ language sql stable security definer set search_path = public as $$
       'weeklySpend', m.weekly_spend,
       'savingFor', coalesce(private.dec(m.saving_for), ''),
       'savingTarget', m.saving_target,
+      'goalSince', m.goal_since,
       'riskyTimes', to_jsonb(m.risky_times),
       'payday', coalesce(m.payday, ''),
       'habit', coalesce(m.habit, ''),
@@ -217,6 +219,7 @@ begin
       weekly_spend = (o ->> 'weeklySpend')::numeric,
       saving_for = private.enc(left(o ->> 'savingFor', 60)),
       saving_target = (o ->> 'savingTarget')::numeric,
+      goal_since = (o ->> 'goalSince')::date,
       risky_times = coalesce(array(select jsonb_array_elements_text(o -> 'riskyTimes')), '{}'),
       payday = nullif(o ->> 'payday', ''),
       habit = nullif(left(o ->> 'habit', 80), ''),

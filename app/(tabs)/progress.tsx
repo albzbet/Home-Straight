@@ -1,4 +1,5 @@
 import { Ionicons } from '@expo/vector-icons';
+import { router } from 'expo-router';
 import { useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import { Photo } from '@/components/Photo';
@@ -57,7 +58,15 @@ export default function Progress() {
       </View>
 
       <View style={{ flexDirection: 'row', gap: space.md }}>
-        {hasSpend ? <StatCard icon="cash" iconColor={t.success} value={money(stats.moneyKept)} label="Money kept" /> : null}
+        {hasSpend ? (
+          <StatCard
+            icon="cash"
+            iconColor={t.success}
+            value={money(stats.moneyKept)}
+            label="Money kept"
+            onPress={() => router.push('/goal')}
+          />
+        ) : null}
         <StatCard icon="sunny" iconColor={t.mission} value={String(stats.gambleFreeDays)} label="Gamble-free days" />
         <StatCard icon="checkmark-circle" iconColor={t.success} value={String(stats.sessions)} label="Sessions done" />
       </View>

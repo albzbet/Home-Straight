@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { lastCheckinDate, periodStart, periodStats, progress, weeklyGoals } from '@/lib/progress';
+import { goalProgress, lastCheckinDate, periodStart, periodStats, progress, weeklyGoals } from '@/lib/progress';
 import { emptyState, type DayRecord, type Onboarding, type ProgramState } from '@/lib/types';
 
 const onboarding = (startDate: string, weeklySpend: number | null = 140, savingTarget: number | null = 200): Onboarding => ({
@@ -92,5 +92,31 @@ describe('periodStats and weeklyGoals', () => {
     ]);
     const noSpend = { ...s, onboarding: { ...s.onboarding!, weeklySpend: null } };
     expect(weeklyGoals(noSpend, '2026-10-10').map((g) => g.id)).toEqual(['sessions', 'gambleFree']);
+  });
+});
+
+describe('goalProgress', () => {
+  const base = (extra: Partial<Onboarding> = {}): ProgramState => ({
+    ...emptyState,
+    onboarding: { ...onboarding('2026-10-01', 140, 500), savingFor: 'A trip to Bali', ...extra },
+  });
+  it('counts money kept since the start, with weeks to go', () => {
+    // 10 days at $20 a day = $200 of $500; $300 to go at $140 a week = 3 weeks.
+    expect(goalProgress(base(), '2026-10-10')).toMatchObject({
+      name: 'A trip to Bali',
+      kept: 200,
+      share: 0.4,
+      reached: false,
+      weeksToGo: 3,
+    });
+  });
+  it('starts a new goal from $0 on the day it was set', () => {
+    expect(goalProgress(base({ goalSince: '2026-10-10' }), '2026-10-10')).toMatchObject({ kept: 20, weeksToGo: 4 });
+  });
+  it('knows when it is reached', () => {
+    expect(goalProgress(base({ savingTarget: 100 }), '2026-10-10')).toMatchObject({ kept: 200, share: 1, reached: true, weeksToGo: null });
+  });
+  it('is null without a target', () => {
+    expect(goalProgress(base({ savingTarget: null }), '2026-10-10')).toBeNull();
   });
 });

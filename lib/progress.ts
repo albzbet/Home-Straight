@@ -41,8 +41,37 @@ export function progress(state: ProgramState, today: string = localDate()): Prog
   const last = slips.at(-1);
   const streak = last ? daysBetween(last, today) : daysSinceStart;
   const moneyKept = o?.weeklySpend ? Math.round((o.weeklySpend / 7) * gambleFreeDays) : 0;
-  const goalShare = o?.savingTarget ? Math.min(1, moneyKept / o.savingTarget) : null;
+  const goalShare = goalProgress(state, today)?.share ?? null;
   return { daysSinceStart, gambleFreeDays, streak, moneyKept, goalShare };
+}
+
+export type GoalProgress = {
+  name: string; // what they're saving for ('' if they didn't say)
+  target: number;
+  kept: number; // money kept since the goal was set (an estimate)
+  share: number; // 0-1
+  reached: boolean;
+  weeksToGo: number | null; // at their usual weekly spend; null if we don't know it or it's reached
+};
+
+// Their savings goal: money kept counts from the day it was set (a new goal starts from $0), never before the program.
+export function goalProgress(state: ProgramState, today: string = localDate()): GoalProgress | null {
+  const o = state.onboarding;
+  if (!o?.savingTarget) return null;
+  const start = startOfProgram(state, today);
+  const from = o.goalSince && o.goalSince > start ? o.goalSince : start;
+  const days = from <= today ? daysBetween(from, today) + 1 : 0;
+  const slips = [...gambleDates(state)].filter((d) => d >= from && d <= today).length;
+  const kept = o.weeklySpend ? Math.round((o.weeklySpend / 7) * Math.max(0, days - slips)) : 0;
+  const reached = kept >= o.savingTarget;
+  return {
+    name: o.savingFor.trim(),
+    target: o.savingTarget,
+    kept,
+    share: Math.min(1, kept / o.savingTarget),
+    reached,
+    weeksToGo: !reached && o.weeklySpend ? Math.ceil((o.savingTarget - kept) / o.weeklySpend) : null,
+  };
 }
 
 export type Period = 'week' | 'month' | 'total';

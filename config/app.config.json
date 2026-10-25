@@ -286,6 +286,17 @@
       "...have you felt guilty about the way you gamble, or what happens when you gamble?"
     ]
   },
+  "goals": {
+    "_readme": "Goal tracking. 'ideas' are the goal ideas offered on the goal screen; 'icon' is an Ionicons name (icons.expo.fyi).",
+    "ideas": [
+      { "label": "Holiday", "icon": "airplane" },
+      { "label": "Car", "icon": "car-sport" },
+      { "label": "Gym setup", "icon": "barbell" },
+      { "label": "House deposit", "icon": "home" },
+      { "label": "Pay off a debt", "icon": "card" },
+      { "label": "Rainy-day fund", "icon": "umbrella" }
+    ]
+  },
   "checkin": {
     "moods": ["Struggling", "Tough", "Alright", "Good", "Great"]
   },

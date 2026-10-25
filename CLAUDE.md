@@ -62,6 +62,10 @@ what's next. Plain English, click-by-click steps.
   take the tick off again), all missions. One a week in list order from the week the program started (`lib/missions.ts`,
   weeks start Monday); `content/missions.json`, edited in Admin > Weekly missions (content key `missions`). Ticks in
   `mission_done` (`hs_save_mission`, `state.missions`). Nothing to win, no rewards beyond the tick.
+  Goal tracking (`app/goal.tsx`, mockup screen 9; from Home's and Progress's money card and More > Your goal): the savings
+  goal (`onboarding.savingFor` / `savingTarget`) with money kept towards it (`goalProgress` in `lib/progress.ts`: counts from
+  `goalSince`, so a goal with a new name starts from $0; same name keeps counting), weeks to go, change / set the next goal
+  (also the usual weekly spend), goal ideas from `config.goals.ideas`. `members.goal_since` in 0001.
   Photos are listed in `lib/images.ts` (null = not arrived yet; `Photo` shows a plain dark space). `Tile` for quick access.
 
 ## Where things are

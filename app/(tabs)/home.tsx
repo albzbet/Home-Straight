@@ -10,7 +10,7 @@ import { money } from '@/lib/format';
 import { photos } from '@/lib/images';
 import { FREE_DAYS, localDate, today, TOTAL_DAYS, TOTAL_WEEKS, weekOf } from '@/lib/program';
 import { missionOfTheWeek } from '@/lib/missions';
-import { progress } from '@/lib/progress';
+import { goalProgress, progress } from '@/lib/progress';
 import { isPaused } from '@/lib/reminderPlan';
 import { remindersSupported, useRemindersOn } from '@/lib/reminders';
 import { useStore } from '@/lib/store';
@@ -33,6 +33,7 @@ export default function Home() {
   const finished = !t.day;
   const p = progress(state);
   const mission = missionOfTheWeek(missions, state);
+  const goal = goalProgress(state);
   const o = state.onboarding;
   const now = new Date();
   const todayDate = localDate(now);
@@ -119,7 +120,8 @@ export default function Home() {
             iconColor={th.success}
             value={money(p.moneyKept)}
             label="Money kept"
-            sub={o.savingTarget ? `of ${money(o.savingTarget)} for ${o.savingFor || 'your goal'}` : 'an estimate'}
+            sub={goal ? `${Math.round(goal.share * 100)}% of the way to ${goal.name || 'your goal'}` : 'an estimate'}
+            onPress={() => router.push('/goal')}
           />
         ) : (
           <StatCard icon="checkmark-circle" iconColor={th.success} value={String(state.days.length)} label="Sessions done" />
