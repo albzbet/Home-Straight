@@ -2,32 +2,32 @@
 // Dark only, on purpose. Components take every colour from these tokens; never hard-code a colour in a screen.
 
 export const colors = {
-  bg: '#0F1114', // charcoal background
-  hero: '#0F171F', // the dark space behind the app name on the welcome screen
-  primary: '#FF6A2E', // orange: main buttons, highlights, the "8"
+  bg: '#17191A', // charcoal background
+  hero: '#17191A', // the dark space behind the app name on the welcome screen
+  primary: '#C57950', // burnt copper: main buttons, highlights, the "8"
   onPrimary: '#FFFFFF',
-  text: '#FFFFFF',
-  textMuted: '#A7AFBA',
-  textFaint: '#6E7782',
-  success: '#22C55E', // green: progress bars, "done", money kept
-  slate: '#334155', // blue-grey brand colour; cards are built from it
-  card: 'rgba(51, 65, 85, 0.38)', // #334155 over the charcoal: the standard card
-  cardRaised: 'rgba(51, 65, 85, 0.62)', // a step lighter, for cards on cards and pressed states
+  text: '#FFFFFF', // timeless white
+  textMuted: '#ABA7A2',
+  textFaint: '#77736E',
+  success: '#399B7A', // progress green: progress bars, "done", money kept
+  slate: '#4C4945', // stone: cards are built from it
+  card: 'rgba(76, 73, 69, 0.42)', // stone over the charcoal: the standard card
+  cardRaised: 'rgba(76, 73, 69, 0.68)', // a step lighter, for cards on cards and pressed states
   cardBorder: 'rgba(255, 255, 255, 0.06)',
-  primarySoft: 'rgba(255, 106, 46, 0.16)', // orange wash behind chosen options
-  successSoft: 'rgba(34, 197, 94, 0.16)',
+  primarySoft: 'rgba(197, 121, 80, 0.18)', // copper wash behind chosen options
+  successSoft: 'rgba(57, 155, 122, 0.18)',
   track: 'rgba(255, 255, 255, 0.12)', // empty part of a progress bar
-  sos: '#EF4444', // Urge SOS icon
-  calm: '#38BDF8', // "time back" clock
-  explore: '#8B5CF6', // Bookie Tricks Exposed tile
-  mission: '#F59E0B', // weekly mission tile
-  help: '#FFFFFF', // Get help now: white, so it stands apart from the orange buttons
-  onHelp: '#0F1114',
-  overlay: 'rgba(15, 17, 20, 0.55)', // over photos, so text stays readable
+  sos: '#E05A4F', // Urge SOS icon
+  calm: '#7FA7C2', // spare accent
+  explore: '#C57950', // Bookie Tricks Exposed tile
+  mission: '#D9A441', // weekly mission tile
+  help: '#FFFFFF', // Get help now and the big white buttons
+  onHelp: '#17191A',
+  overlay: 'rgba(23, 25, 26, 0.55)', // over photos, so text stays readable
 };
 
 // The five mood faces on the check-in, from 1 (struggling) to 5 (great).
-export const moodColors = ['#EF4444', '#FB923C', '#FACC15', '#A7AFBA', '#22C55E'];
+export const moodColors = ['#E05A4F', '#E08A4F', '#E8C15A', '#C9C4BD', '#B9B4AD'];
 
 // Fonts are loaded in app/_layout.tsx (Google Fonts via expo-google-fonts). Use these names, not fontWeight, with them.
 export const fonts = {

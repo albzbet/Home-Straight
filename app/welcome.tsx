@@ -1,12 +1,13 @@
-import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 import { Image } from 'expo-image';
 import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
 import { useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { Kelpie } from '@/components/Brand';
 import { GetHelpButton } from '@/components/GetHelpButton';
-import { Button, PrimaryButton, Txt } from '@/components/ui';
+import { Button, Txt } from '@/components/ui';
 import { config } from '@/lib/config';
 import { TOTAL_WEEKS } from '@/lib/program';
 import { useStore } from '@/lib/store';
@@ -56,7 +57,7 @@ export default function Welcome() {
           </View>
 
           <View style={{ alignItems: 'center', gap: space.sm, marginTop: space.xl }}>
-            <MaterialCommunityIcons name="weather-sunset-up" size={44} color={t.primary} />
+            <Kelpie height={110} />
             <Text
               accessibilityRole="header"
               style={{ fontFamily: fonts.display, fontSize: 64, lineHeight: 66, letterSpacing: 1, color: t.text }}
@@ -81,7 +82,7 @@ export default function Welcome() {
               <Ionicons name={adult ? 'checkbox' : 'square-outline'} size={24} color={adult ? t.primary : t.text} />
               <Text style={{ fontFamily: fonts.medium, fontSize: 15, color: t.text }}>I'm 18 or older</Text>
             </Pressable>
-            <PrimaryButton label="Get started" onPress={start} disabled={!adult} loading={busy} />
+            <Button label="Get started" kind="light" icon="arrow-forward" onPress={start} disabled={!adult} loading={busy} />
             <Text style={{ fontFamily: fonts.medium, fontSize: 15, color: t.text, textAlign: 'center' }}>Your pace. Your call.</Text>
             {accountsAvailable ? <Button label="I already have an account" kind="ghost" onPress={() => router.push('/sign-in')} /> : null}
             <Txt variant="small" style={{ textAlign: 'center', color: t.textFaint }}>

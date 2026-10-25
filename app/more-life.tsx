@@ -1,7 +1,7 @@
-import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { router, useLocalSearchParams } from 'expo-router';
 import { Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { Kelpie } from '@/components/Brand';
 import { GetHelpButton, SosButton } from '@/components/GetHelpButton';
 import { Photo } from '@/components/Photo';
 import { PrimaryButton } from '@/components/ui';
@@ -49,7 +49,7 @@ export default function MoreLife() {
           </View>
           <View style={{ flex: 1 }} />
           <View style={{ gap: space.md, paddingBottom: space.lg }}>
-            <MaterialCommunityIcons name="weather-sunset-up" size={40} color={t.primary} />
+            <Kelpie height={56} />
             <Text accessibilityRole="header" style={{ fontFamily: fonts.display, fontSize: 64, lineHeight: 62, color: t.text }}>
               {config.moreLife.lines.map((l) => l.toUpperCase()).join('\n')}
             </Text>

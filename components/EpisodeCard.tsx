@@ -9,7 +9,7 @@ import { photos } from '@/lib/images';
 import { fonts, radius, space, useTheme } from '@/lib/theme';
 
 // One Bookie Tricks Exposed episode in the list (mockup screen 6): thumbnail with a play button, EP number, the title in
-// big capitals with its last word in orange, and the length.
+// big capitals with its last word in copper, and the length.
 export function EpisodeCard({ episode }: { episode: Episode }) {
   const t = useTheme();
   const thumb = photos.tricks[episode.number - 1] ?? null;

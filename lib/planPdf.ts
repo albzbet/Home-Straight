@@ -12,9 +12,9 @@ const section = (title: string, items: string[]) =>
 
 export function planHtml(plan: GamePlan, notes: string, name: string | null): string {
   return `<html><head><meta charset="utf-8"><style>
-    body { font-family: -apple-system, Roboto, Helvetica, Arial, sans-serif; color: #1F2D2B; padding: 32px; line-height: 1.5; }
-    h1 { font-size: 26px; margin: 0 0 4px; } h2 { font-size: 17px; margin: 22px 0 6px; color: #2F6F62; }
-    ul { margin: 0; padding-left: 20px; } p.small { color: #5E6B68; font-size: 12px; margin-top: 32px; }
+    body { font-family: -apple-system, Roboto, Helvetica, Arial, sans-serif; color: #17191A; padding: 32px; line-height: 1.5; }
+    h1 { font-size: 26px; margin: 0 0 4px; } h2 { font-size: 17px; margin: 22px 0 6px; color: #9C5B39; }
+    ul { margin: 0; padding-left: 20px; } p.small { color: #4C4945; font-size: 12px; margin-top: 32px; }
   </style></head><body>
     <h1>${name ? `${esc(name)}'s plan` : 'My plan'}</h1>
     ${section('Why I’m doing this', plan.why)}

@@ -88,7 +88,7 @@ export function Txt({ children, variant = 'body', style }: { children: ReactNode
   return <Text style={[styles[variant], style]}>{children}</Text>;
 }
 
-type ButtonKind = 'primary' | 'secondary' | 'ghost' | 'help';
+type ButtonKind = 'primary' | 'secondary' | 'ghost' | 'help' | 'light'; // light: white with dark text, for the big hero buttons
 
 export function Button({
   label,
@@ -106,8 +106,8 @@ export function Button({
   icon?: keyof typeof Ionicons.glyphMap;
 }) {
   const t = useTheme();
-  const bg = { primary: t.primary, secondary: t.card, ghost: 'transparent', help: t.help }[kind];
-  const fg = { primary: t.onPrimary, secondary: t.text, ghost: t.primary, help: t.onHelp }[kind];
+  const bg = { primary: t.primary, secondary: t.card, ghost: 'transparent', help: t.help, light: t.help }[kind];
+  const fg = { primary: t.onPrimary, secondary: t.text, ghost: t.primary, help: t.onHelp, light: t.onHelp }[kind];
   const off = disabled || loading;
   return (
     <Pressable
@@ -244,7 +244,7 @@ export function Card({ children, style, raised }: { children: ReactNode; style?:
   );
 }
 
-// The main orange call to action. (Button with kind="primary"; named so screens read clearly.)
+// The main copper call to action. (Button with kind="primary"; named so screens read clearly.)
 export function PrimaryButton(props: Omit<Parameters<typeof Button>[0], 'kind'>) {
   return <Button {...props} kind="primary" />;
 }

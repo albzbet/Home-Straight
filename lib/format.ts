@@ -22,7 +22,7 @@ export function timeLabel(hhmm: string): string {
 
 export const looksLikeEmail = (s: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s.trim());
 
-// Splits a headline so its last part can be shown in orange: the last sentence if there are two or more
+// Splits a headline so its last part can be shown in copper: the last sentence if there are two or more
 // ("Small choices. | Big freedom."), otherwise the last word ("Welcome: why you're | here").
 export function highlightTail(title: string): [string, string] {
   const t = title.trim();

@@ -2,6 +2,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { router } from 'expo-router';
 import { useState } from 'react';
 import { View } from 'react-native';
+import { Kelpie } from '@/components/Brand';
 import { BounceBack, CheckinQuestions, MoodPicker, useCheckin } from '@/components/Checkin';
 import { useCrisisGate } from '@/components/Help';
 import { Button, Field, PrimaryButton, Screen, Txt } from '@/components/ui';
@@ -65,7 +66,7 @@ export default function DailyCheckin() {
       >
         {sheet}
         <View style={{ alignItems: 'center', gap: space.sm, paddingTop: space.lg, paddingBottom: space.md }}>
-          <MaterialCommunityIcons name="weather-sunset-up" size={64} color={t.primary} />
+          <Kelpie height={84} />
           <Txt variant="title" style={{ textAlign: 'center' }}>
             How are you today?
           </Txt>

@@ -2,7 +2,9 @@
 
 The source drawings for the app icons. None of them hint at gambling.
 
-- `sunrise.svg`: the default icon (`assets/icon.png`, the Android adaptive icon, the splash and the favicon).
+- The default icon is the homestr8 kelpie (`assets/logo/kelpie.png`, made from the owner's `kelpie-source.png`): charcoal on
+  burnt copper for `assets/icon.png`, the Android adaptive icon and the favicon; white for the splash, the notification icon
+  and Android's monochrome icon. `sunrise.svg` was the old default, kept for reference.
 - `leaf.svg` and `plain.svg`: the plainer icons people can switch to in Settings > App icon (`assets/icon-leaf*.png`,
   `assets/icon-plain*.png`, set up in `app.json` under `expo-alternate-app-icons`).
 

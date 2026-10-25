@@ -336,7 +336,7 @@ export default function Sos() {
   );
 }
 
-// The big breathing circle: a green ring that grows as you breathe in and shrinks as you breathe out, with a countdown for
+// The big breathing circle: a white ring that grows as you breathe in and shrinks as you breathe out, with a countdown for
 // each breath. With reduce motion on, it stays still and the words and numbers do the guiding.
 function Breather({ elapsed, left, onAgain }: { elapsed: number; left: number; onAgain: () => void }) {
   const t = useTheme();
@@ -368,10 +368,10 @@ function Breather({ elapsed, left, onAgain }: { elapsed: number; left: number; o
           height: 240,
           borderRadius: 120,
           borderWidth: 10,
-          borderColor: t.success,
-          backgroundColor: t.successSoft,
-          shadowColor: t.success,
-          shadowOpacity: 0.6,
+          borderColor: t.text,
+          backgroundColor: t.card,
+          shadowColor: t.text,
+          shadowOpacity: 0.35,
           shadowRadius: 24,
           shadowOffset: { width: 0, height: 0 },
           transform: [{ scale: reduced || done ? 0.92 : scale }],
@@ -380,7 +380,7 @@ function Breather({ elapsed, left, onAgain }: { elapsed: number; left: number; o
       {done ? (
         <Pressable accessibilityRole="button" onPress={onAgain} style={{ alignItems: 'center', gap: 4 }}>
           <Text style={{ fontFamily: fonts.semibold, fontSize: 18, color: t.text }}>Well ridden</Text>
-          <Text style={{ fontFamily: fonts.medium, fontSize: 14, color: t.success }}>Tap to go again</Text>
+          <Text style={{ fontFamily: fonts.medium, fontSize: 14, color: t.primary }}>Tap to go again</Text>
         </Pressable>
       ) : (
         <View style={{ alignItems: 'center' }} accessibilityLiveRegion="polite">

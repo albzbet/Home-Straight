@@ -1,16 +1,30 @@
-import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
+import { Image } from 'expo-image';
 import { router } from 'expo-router';
 import { Pressable, Text, View } from 'react-native';
 import { GetHelpButton } from '@/components/GetHelpButton';
 import { fonts, radius, space, useTheme } from '@/lib/theme';
 
-// The app's name: HOMESTR in white and the 8 in orange, with the sunrise mark. (Swapped for the owner's logo files when
-// they arrive: assets/logo.)
+// The homestr8 kelpie (the owner's logo, assets/logo/kelpie.png: white on see-through), in any colour. White by default.
+export function Kelpie({ height, color }: { height: number; color?: string }) {
+  const t = useTheme();
+  return (
+    <Image
+      source={require('@/assets/logo/kelpie.png')}
+      style={{ height, width: Math.round((height * 254) / 387) }}
+      tintColor={color ?? t.text}
+      contentFit="contain"
+      accessible={false}
+    />
+  );
+}
+
+// The app's name: the kelpie, then HOMESTR in white and the 8 in copper.
 export function Wordmark({ size = 26 }: { size?: number }) {
   const t = useTheme();
   return (
     <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.sm }} accessible accessibilityLabel="homestr8">
-      <MaterialCommunityIcons name="weather-sunset-up" size={Math.round(size * 0.95)} color={t.primary} />
+      <Kelpie height={Math.round(size * 1.25)} />
       <Text style={{ fontFamily: fonts.display, fontSize: size, lineHeight: size * 1.05, letterSpacing: 0.8, color: t.text }}>
         HOMESTR<Text style={{ color: t.primary }}>8</Text>
       </Text>

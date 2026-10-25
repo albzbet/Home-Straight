@@ -28,24 +28,26 @@ what's next. Plain English, click-by-click steps.
 
 ## Look and feel (owner's redesign, Oct 2026)
 
-- Reference: `design/homestr8-mockup.png`. Dark only. Tokens in `lib/theme.ts` (`colors`, `fonts`, `space`, `radius`,
-  `shadow`): charcoal #0F1114, orange #FF6A2E (primary buttons, the "8"), green #22C55E (progress), cards from blue-grey
-  #334155; Bebas Neue for headings (capitals), Inter for everything else (loaded in `app/_layout.tsx`). Never hard-code
+- Reference: `design/homestr8-mockup-copper.webp` (owner's colours since 25 Oct 2026; the older `homestr8-mockup.png` has
+  the same layouts in orange, which is gone). Dark only. Tokens in `lib/theme.ts` (`colors`, `fonts`, `space`, `radius`,
+  `shadow`): charcoal #17191A, burnt copper #C57950 (main buttons, highlights, the "8"), timeless white #FFFFFF (the big
+  hero buttons: `Button kind="light"`), progress green #399B7A, cards from stone #4C4945; Bebas Neue for headings (capitals), Inter for everything else (loaded in `app/_layout.tsx`). Never hard-code
   colours or fonts in screens; use `useTheme()` / `fonts`. Old token names (`ink`, `action`...) still map onto the new ones.
 - Shared pieces in `components/ui.tsx`: `Screen`, `Txt`, `Button` / `PrimaryButton`, `Card` (`raised`), `ProgressBar`,
   `SectionHeader`, `StatCard`, `Choice`, `Chip`, `Field`.
 - Photos come from the owner (`assets/images`, JPG, no text, no gambling imagery); I can't make real photos, so missing
-  ones get a plain placeholder, never a drawn fake. Logo files `assets/logo/kelpie.svg` / `wordmark.svg` are still to come;
-  until then the app name is set in Bebas Neue with an orange 8 and a sunrise icon.
+  ones get a plain placeholder, never a drawn fake. The logo is the owner's kelpie: `assets/logo/kelpie.png` (white on
+  see-through, made from `kelpie-source.png`), drawn by `Kelpie` in `components/Brand.tsx` in any colour; `Wordmark` is the
+  kelpie with HOMESTR in white and the 8 in copper. App icon: charcoal kelpie on copper (`assets/icons/README.md`).
 - No "time back" / hours-per-week anywhere (owner's call, Oct 2026): Home's stat cards are the streak with total
   gamble-free days, and money kept.
 - Screens redone so far: welcome (`app/welcome.tsx`, owner's layout); Home dashboard (`app/(tabs)/home.tsx`, mockup screen 2)
   with the bottom tabs in `app/(tabs)/` (Home, Program, Progress, Explore, More; `Screen tab` shows `BrandHeader`: name, SOS,
   Get help now).
   Session (`app/session/[day].tsx`, mockup screen 3): lesson page with close / Week • Day / SOS / help, the title in Bebas with
-  its tail in orange (`highlightTail`), `VideoCard` and `AudioCard` (`components/SessionMedia.tsx`), busy-day switch,
+  its tail in copper (`highlightTail`), `VideoCard` and `AudioCard` (`components/SessionMedia.tsx`), busy-day switch,
   "Mark as complete", then check-in, action, done.
-  Urge SOS (`app/sos.tsx`, mockup screen 4): big green breathing ring with a countdown (`Breather`), 1/3/5 min
+  Urge SOS (`app/sos.tsx`, mockup screen 4): big white breathing ring with a countdown (`Breather`), 1/3/5 min
   (`config.sos.durations`, replaced the old 10-minute timer), Breathe / Ground (5-4-3-2-1) / Reframe (`config.sos.reframes`
   plus their why and money goal), "Talk to someone" card (Gambling Help Online call / chat, message buddy), then the log.
   Progress (`app/(tabs)/progress.tsx`, mockup screen 5): This week / This month / Total (`periodStats`, weeks start Monday,

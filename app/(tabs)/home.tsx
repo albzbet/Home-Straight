@@ -3,7 +3,7 @@ import { Redirect, router } from 'expo-router';
 import { Pressable, Text, View } from 'react-native';
 import { Photo } from '@/components/Photo';
 import { Tile } from '@/components/Tile';
-import { Button, Card, PrimaryButton, ProgressBar, Screen, StatCard, Txt } from '@/components/ui';
+import { Button, Card, ProgressBar, Screen, StatCard, Txt } from '@/components/ui';
 import { config } from '@/lib/config';
 import { useContent } from '@/lib/content';
 import { money } from '@/lib/format';
@@ -42,7 +42,7 @@ export default function Home() {
   const greeting = now.getHours() < 12 ? 'Good morning' : now.getHours() < 17 ? 'Good afternoon' : 'Good evening';
   const name = state.nickname ? `, ${state.nickname}` : '';
 
-  // The big orange button changes with where they're up to.
+  // The big button changes with where they're up to.
   const action = paused
     ? { label: 'Pick up where I left off', icon: 'play' as const, go: () => setPause(false).catch(() => {}) }
     : finished
@@ -130,7 +130,7 @@ export default function Home() {
 
       {/* Today's session. */}
       {action ? (
-        <PrimaryButton label={action.label} icon={action.icon} onPress={action.go} />
+        <Button label={action.label} kind="light" icon={action.icon} onPress={action.go} />
       ) : (
         <Card>
           <Txt variant="label">Today</Txt>

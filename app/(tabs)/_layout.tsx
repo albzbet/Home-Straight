@@ -4,7 +4,7 @@ import { fonts, useTheme } from '@/lib/theme';
 
 type IconName = keyof typeof Ionicons.glyphMap;
 
-// The bottom tab bar (mockup): Home, Program, Progress, Explore, More. Orange for the tab you're on.
+// The bottom tab bar (mockup): Home, Program, Progress, Explore, More. Copper for the tab you're on.
 const TABS: { name: string; title: string; icon: IconName; iconOn: IconName }[] = [
   { name: 'home', title: 'Home', icon: 'home-outline', iconOn: 'home' },
   { name: 'program', title: 'Program', icon: 'calendar-outline', iconOn: 'calendar' },
