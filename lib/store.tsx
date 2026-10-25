@@ -2,7 +2,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createContext, useCallback, useContext, useEffect, useState, type ReactNode } from 'react';
 import { useAuth } from './auth';
 import { supabase } from './supabase';
-import { emptyState, type DayRecord, type Onboarding, type ProgramState, type Questionnaire } from './types';
+import { emptyState, type DayRecord, type Onboarding, type ProgramState, type Questionnaire, type UrgeLog } from './types';
 
 // A member's program data. Before they make an account ("try first") it lives on the phone only.
 // Once they sign in it lives in Supabase (written-down answers encrypted there), and the phone copy is moved across and wiped.
@@ -21,6 +21,7 @@ type Store = {
   saveOnboarding: (o: Onboarding) => Promise<void>;
   saveQuestionnaire: (q: Questionnaire) => Promise<void>;
   saveDay: (d: DayRecord) => Promise<void>;
+  saveUrge: (u: UrgeLog) => Promise<void>;
   deleteMyData: () => Promise<void>;
 };
 
@@ -79,7 +80,7 @@ export function StoreProvider({ children }: { children: ReactNode }) {
             server = { ...server, nickname };
           }
           await AsyncStorage.multiRemove([GUEST_KEY, NICKNAME_KEY]);
-          if (live) setState(server);
+          if (live) setState({ ...emptyState, ...server });
         }
       } catch {
         if (live) setError("We couldn't load your program. Check your internet connection and try again.");
@@ -137,6 +138,11 @@ export function StoreProvider({ children }: { children: ReactNode }) {
       update(
         (s) => ({ ...s, days: [...s.days.filter((x) => x.day !== d.day), d].sort((a, b) => a.day - b.day) }),
         () => rpc('hs_save_day', { p: d }),
+      ),
+    saveUrge: (u) =>
+      update(
+        (s) => ({ ...s, urges: [...s.urges, u] }),
+        () => rpc('hs_save_urge', { p: u }),
       ),
     deleteMyData: async () => {
       if (signedIn) {

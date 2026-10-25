@@ -12,29 +12,32 @@ import {
   type ViewStyle,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { GetHelpButton } from '@/components/GetHelpButton';
+import { GetHelpButton, SosButton } from '@/components/GetHelpButton';
 import { radius, space, useTheme } from '@/lib/theme';
 
 // Shared building blocks for every screen. Colours come from lib/theme.ts only.
 
-// Every screen has "Get help now" in its top corner (help={false} only on the help screen itself).
+// Every screen has Urge SOS and Get help now along the top (turned off only on those two screens themselves).
 export function Screen({
   children,
   footer,
   scroll = true,
   help = true,
+  sos = true,
 }: {
   children: ReactNode;
   footer?: ReactNode;
   scroll?: boolean;
   help?: boolean;
+  sos?: boolean;
 }) {
   const t = useTheme();
   const inner = (
     <View style={{ width: '100%', maxWidth: 560, alignSelf: 'center', padding: space.xl, paddingTop: space.md, gap: space.lg }}>
-      {help ? (
-        <View style={{ flexDirection: 'row', justifyContent: 'flex-end' }}>
-          <GetHelpButton />
+      {help || sos ? (
+        <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+          {sos ? <SosButton /> : <View />}
+          {help ? <GetHelpButton /> : <View />}
         </View>
       ) : null}
       {children}

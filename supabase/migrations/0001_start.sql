@@ -89,7 +89,21 @@ create table if not exists public.day_progress (
 alter table public.day_progress add column if not exists slip_what bytea;
 alter table public.day_progress add column if not exists slip_different bytea;
 
+-- Urge SOS uses, logged afterwards.
+create table if not exists public.urge_logs (
+  id bigint generated always as identity primary key,
+  member_id uuid not null references public.members (id) on delete cascade,
+  started_at timestamptz not null,
+  seconds int not null check (seconds between 0 and 86400),
+  triggers text[] not null default '{}' check (cardinality(triggers) <= 20),
+  passed text not null check (passed in ('yes', 'easing', 'gambled')),
+  helped text[] not null default '{}' check (cardinality(helped) <= 20),
+  note bytea -- encrypted
+);
+create index if not exists urge_logs_member on public.urge_logs (member_id, started_at);
+
 alter table public.members enable row level security;
+alter table public.urge_logs enable row level security;
 alter table public.questionnaires enable row level security;
 alter table public.day_progress enable row level security;
 
@@ -123,7 +137,10 @@ language sql stable security definer set search_path = public as $$
     'days', coalesce((select jsonb_agg(jsonb_build_object('day', d.day, 'localDate', d.local_date, 'completedAt', d.completed_at,
         'busy', d.busy, 'mood', d.mood, 'urge', d.urge, 'gambled', d.gambled, 'amount', d.amount,
         'action', coalesce(private.dec(d.action), ''), 'slipWhat', coalesce(private.dec(d.slip_what), ''),
-        'slipDifferent', coalesce(private.dec(d.slip_different), '')) order by d.day) from public.day_progress d where d.member_id = auth.uid()), '[]'::jsonb))
+        'slipDifferent', coalesce(private.dec(d.slip_different), '')) order by d.day) from public.day_progress d where d.member_id = auth.uid()), '[]'::jsonb),
+    'urges', coalesce((select jsonb_agg(jsonb_build_object('at', u.started_at, 'seconds', u.seconds, 'triggers', to_jsonb(u.triggers),
+        'passed', u.passed, 'helped', to_jsonb(u.helped), 'note', coalesce(private.dec(u.note), '')) order by u.started_at)
+        from public.urge_logs u where u.member_id = auth.uid()), '[]'::jsonb))
   from (select auth.uid() as uid) me
   left join public.members m on m.id = me.uid
   where me.uid is not null
@@ -202,6 +219,20 @@ begin
     slip_different = excluded.slip_different;
 end $$;
 
+-- One Urge SOS use. p: { at, seconds, triggers: [...], passed, helped: [...], note }
+create or replace function public.hs_save_urge(p jsonb) returns void
+language plpgsql security definer set search_path = public as $$
+declare
+  uid uuid := auth.uid();
+begin
+  if uid is null then raise exception 'not signed in'; end if;
+  insert into public.members (id) values (uid) on conflict (id) do nothing;
+  insert into public.urge_logs (member_id, started_at, seconds, triggers, passed, helped, note)
+  values (uid, coalesce((p ->> 'at')::timestamptz, now()), coalesce((p ->> 'seconds')::int, 0),
+    coalesce(array(select jsonb_array_elements_text(p -> 'triggers')), '{}'), p ->> 'passed',
+    coalesce(array(select jsonb_array_elements_text(p -> 'helped')), '{}'), private.enc(left(p ->> 'note', 300)));
+end $$;
+
 -- Moves a "try first" Day 1 from the phone into a new account. Does nothing if the account already has a program.
 -- p: { nickname, adultConfirmed, onboarding, questionnaires: [...], days: [...] }
 create or replace function public.hs_import_guest(p jsonb) returns boolean
@@ -219,6 +250,9 @@ begin
   for x in select * from jsonb_array_elements(coalesce(p -> 'days', '[]'::jsonb)) order by (value ->> 'day')::int loop
     perform public.hs_save_day(x);
   end loop;
+  for x in select * from jsonb_array_elements(coalesce(p -> 'urges', '[]'::jsonb)) loop
+    perform public.hs_save_urge(x);
+  end loop;
   return true;
 end $$;
 
@@ -231,6 +265,6 @@ begin
 end $$;
 
 revoke execute on function public.hs_my_state(), public.hs_save_member(jsonb), public.hs_save_questionnaire(jsonb),
-  public.hs_save_day(jsonb), public.hs_import_guest(jsonb), public.hs_delete_my_data() from public, anon;
+  public.hs_save_day(jsonb), public.hs_save_urge(jsonb), public.hs_import_guest(jsonb), public.hs_delete_my_data() from public, anon;
 grant execute on function public.hs_my_state(), public.hs_save_member(jsonb), public.hs_save_questionnaire(jsonb),
-  public.hs_save_day(jsonb), public.hs_import_guest(jsonb), public.hs_delete_my_data() to authenticated;
+  public.hs_save_day(jsonb), public.hs_save_urge(jsonb), public.hs_import_guest(jsonb), public.hs_delete_my_data() to authenticated;

@@ -288,5 +288,37 @@
   },
   "checkin": {
     "moods": ["Rough", "Low", "Okay", "Good", "Great"]
+  },
+  "sos": {
+    "_readme": "Urge SOS. 'breathingAudioUrl' is the guided breathing recording (null until one is uploaded). The breathing guide counts in and out in seconds. 'buddyMessage' is the text that opens ready to send to their buddy; they can change it before sending.",
+    "minutes": 10,
+    "breathingAudioUrl": null,
+    "breathing": {
+      "inSeconds": 4,
+      "outSeconds": 6
+    },
+    "intro": "Urges are like waves. They build, peak and pass, usually within half an hour. You don't have to act on this one. Let's ride it out together.",
+    "buddyMessage": "Hey, I'm having a tough moment right now. Could you give me a call or send me a message?",
+    "triggers": [
+      "Payday",
+      "Live sport",
+      "An ad or offer",
+      "After a few drinks",
+      "Stressed",
+      "Bored",
+      "On my own",
+      "Money worries",
+      "Saw someone else betting",
+      "Not sure"
+    ],
+    "helped": [
+      "Breathing",
+      "Waiting it out",
+      "Remembering my why",
+      "Messaging someone",
+      "Calling for support",
+      "Doing something else",
+      "Getting out of the house"
+    ]
   }
 }

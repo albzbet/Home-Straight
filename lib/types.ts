@@ -35,12 +35,30 @@ export type DayRecord = {
   slipDifferent?: string; // ...and what they'd do differently
 };
 
+// One use of Urge SOS, logged afterwards.
+export type UrgeLog = {
+  at: string; // when it started
+  seconds: number; // how long they stayed with the timer
+  triggers: string[];
+  passed: 'yes' | 'easing' | 'gambled';
+  helped: string[];
+  note: string;
+};
+
 export type ProgramState = {
   nickname: string | null;
   adultConfirmedAt: string | null;
   onboarding: Onboarding | null;
   questionnaires: Questionnaire[];
   days: DayRecord[];
+  urges: UrgeLog[];
 };
 
-export const emptyState: ProgramState = { nickname: null, adultConfirmedAt: null, onboarding: null, questionnaires: [], days: [] };
+export const emptyState: ProgramState = {
+  nickname: null,
+  adultConfirmedAt: null,
+  onboarding: null,
+  questionnaires: [],
+  days: [],
+  urges: [],
+};

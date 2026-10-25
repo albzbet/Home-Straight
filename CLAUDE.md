@@ -50,9 +50,11 @@ what's next. Plain English, click-by-click steps.
    (`lib/safety.ts`, `useCrisisGate` in `components/Help.tsx`) before moving on from any screen with free text. Nothing is stored.
 3. Program engine: done. `app/session/[day].tsx` (full, busy day, bounce-back step after a reported slip,
    `?review=1` to listen again without saving), `app/program.tsx` (all 6 weeks), `dayStatus` in `lib/program.ts`.
-4. Urge SOS. 5. Home: journey, money kept, streaks + total gamble-free days. 6. Reminders, re-engagement, pausing.
-5. Weekly summaries, end questionnaire, PDF plan. 8. Buddy emails (double opt-in). 9. Payments (RevenueCat), hardship, refunds.
-6. Maintenance mode, meditation library. 11. Admin content editor and analytics dashboard.
+4. Urge SOS: done. `SosButton` on every `Screen`, `app/sos.tsx` (timer + breathing from `config.sos`, why and
+   money goal, message buddy via the share sheet, call/chat Gambling Help Online, log afterwards in `urge_logs`).
+5. Home: journey, money kept, streaks + total gamble-free days. 6. Reminders, re-engagement, pausing.
+6. Weekly summaries, end questionnaire, PDF plan. 8. Buddy emails (double opt-in). 9. Payments (RevenueCat), hardship, refunds.
+7. Maintenance mode, meditation library. 11. Admin content editor and analytics dashboard.
 
 Before launch (owner): lawyer for privacy policy and terms (Privacy Act, health information; TGA wording), licence check for
 PGSI questions, psychologist review of content, possibly a neutral name (the "home straight" is racing language).
