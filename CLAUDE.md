@@ -66,7 +66,7 @@ what's next. Plain English, click-by-click steps.
   goal (`onboarding.savingFor` / `savingTarget`) with money kept towards it (`goalProgress` in `lib/progress.ts`: counts from
   `goalSince`, so a goal with a new name starts from $0; same name keeps counting), weeks to go, change / set the next goal
   (also the usual weekly spend), goal ideas from `config.goals.ideas`. `members.goal_since` in 0001.
-  More life (`app/more-life.tsx`, mockup screen 10): full-screen photo (`photos.moreLife`) with `config.moreLife.lines`, their
+  More life (`app/more-life.tsx`, mockup screen 10): photo in the top two thirds (`photos.moreLife`, the welcome photo until its own arrives) with `config.moreLife.lines`, their
   gamble-free days, money kept and why; after every week summary (`?next=home|finish`) and from More > What it's all about.
   All ten mockup screens are now built.
   Photos are listed in `lib/images.ts` (null = not arrived yet; `Photo` shows a plain dark space). `Tile` for quick access.

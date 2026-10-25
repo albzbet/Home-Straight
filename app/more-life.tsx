@@ -33,7 +33,14 @@ export default function MoreLife() {
   };
 
   return (
-    <Photo source={photos.moreLife} fade="bottom" style={{ flex: 1, borderRadius: 0, backgroundColor: t.bg }}>
+    <View style={{ flex: 1, backgroundColor: t.bg }}>
+      {/* The photo fills the top two thirds and fades into the background, so the words sit below the people in it. */}
+      <Photo
+        source={photos.moreLife}
+        fade="bottom"
+        style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '68%', borderRadius: 0 }}
+        label="Someone and their dog watching the sun go down over the coast"
+      />
       <SafeAreaView style={{ flex: 1 }} edges={['top', 'bottom']}>
         <View style={{ flex: 1, width: '100%', maxWidth: 560, alignSelf: 'center', padding: space.xl, paddingTop: space.md }}>
           <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
@@ -56,6 +63,6 @@ export default function MoreLife() {
           <PrimaryButton label="Keep going" onPress={keepGoing} />
         </View>
       </SafeAreaView>
-    </Photo>
+    </View>
   );
 }
