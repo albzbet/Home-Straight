@@ -60,8 +60,12 @@ what's next. Plain English, click-by-click steps.
   `config.reminders`): next mornings, then one "Welcome back" after 2 quiet days, nothing while paused. Pause in Settings.
 - Step 7, summaries and plan: done. `app/week/[n].tsx` after every 7th session, `app/finish.tsx` (end questionnaire,
   before/after as counts only), `app/plan.tsx` and `lib/planPdf.ts` (expo-print, share sheet). Logic in `lib/summary.ts`.
-- Still to build: 8 buddy emails (double opt-in), 9 payments (RevenueCat), hardship access, refund policy, 10 maintenance
-  mode and meditation library, 11 admin content editor and analytics dashboard.
+- Step 10, maintenance mode: done. After Day 42 and the end questionnaire, Home becomes a toolkit: daily check-in
+  (`app/checkin.tsx`, `daily_checkins`), meditation of the day and library (`content/meditations.json`), game plan, repeat a
+  week (`/session/N?repeat=1`, saves a daily check-in) or start again (`hs_restart_program` keeps check-ins).
+  Check-in and bounce-back questions are shared (`components/Checkin.tsx`).
+- Still to build: 11 admin content editor and analytics dashboard, then 8 buddy emails (double opt-in) and 9 payments
+  (RevenueCat), hardship access, refund policy (the owner chose 10 and 11 first).
 
 Before launch (owner): lawyer for privacy policy and terms (Privacy Act, health information; TGA wording), licence check for
 PGSI questions, psychologist review of content, possibly a neutral name (the "home straight" is racing language).

@@ -35,6 +35,18 @@ export type DayRecord = {
   slipDifferent?: string; // ...and what they'd do differently
 };
 
+// A check-in outside the 42 sessions: the daily check-in after the program, or a repeated week.
+export type DailyCheckin = {
+  localDate: string;
+  mood: number | null;
+  urge: number | null;
+  gambled: boolean | null; // since the last check-in
+  amount: number | null;
+  action: string;
+  slipWhat: string;
+  slipDifferent: string;
+};
+
 // One use of Urge SOS, logged afterwards.
 export type UrgeLog = {
   at: string; // when it started
@@ -52,6 +64,7 @@ export type ProgramState = {
   questionnaires: Questionnaire[];
   days: DayRecord[];
   urges: UrgeLog[];
+  checkins: DailyCheckin[];
   planNotes: string; // their own notes for the game plan
   pause: Pause | null; // the program is on hold: no reminders, no new sessions nudged
 };
@@ -65,6 +78,7 @@ export const emptyState: ProgramState = {
   questionnaires: [],
   days: [],
   urges: [],
+  checkins: [],
   pause: null,
   planNotes: '',
 };

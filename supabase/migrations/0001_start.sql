@@ -108,7 +108,23 @@ create table if not exists public.urge_logs (
 );
 create index if not exists urge_logs_member on public.urge_logs (member_id, started_at);
 
+-- Check-ins outside the 42 sessions: the daily check-in after the program, repeated weeks, and the check-ins from a
+-- finished run of the program when someone starts again. One per day (a second one that day replaces the first).
+create table if not exists public.daily_checkins (
+  member_id uuid not null references public.members (id) on delete cascade,
+  local_date date not null,
+  mood smallint check (mood between 1 and 5),
+  urge smallint check (urge between 0 and 10),
+  gambled boolean,
+  amount numeric(10, 2) check (amount between 0 and 1000000),
+  action bytea, -- encrypted
+  slip_what bytea, -- encrypted
+  slip_different bytea, -- encrypted
+  primary key (member_id, local_date)
+);
+
 alter table public.members enable row level security;
+alter table public.daily_checkins enable row level security;
 alter table public.urge_logs enable row level security;
 alter table public.questionnaires enable row level security;
 alter table public.day_progress enable row level security;
@@ -146,6 +162,10 @@ language sql stable security definer set search_path = public as $$
         'busy', d.busy, 'mood', d.mood, 'urge', d.urge, 'gambled', d.gambled, 'amount', d.amount,
         'action', coalesce(private.dec(d.action), ''), 'slipWhat', coalesce(private.dec(d.slip_what), ''),
         'slipDifferent', coalesce(private.dec(d.slip_different), '')) order by d.day) from public.day_progress d where d.member_id = auth.uid()), '[]'::jsonb),
+    'checkins', coalesce((select jsonb_agg(jsonb_build_object('localDate', c.local_date, 'mood', c.mood, 'urge', c.urge,
+        'gambled', c.gambled, 'amount', c.amount, 'action', coalesce(private.dec(c.action), ''),
+        'slipWhat', coalesce(private.dec(c.slip_what), ''), 'slipDifferent', coalesce(private.dec(c.slip_different), ''))
+        order by c.local_date) from public.daily_checkins c where c.member_id = auth.uid()), '[]'::jsonb),
     'urges', coalesce((select jsonb_agg(jsonb_build_object('at', u.started_at, 'seconds', u.seconds, 'triggers', to_jsonb(u.triggers),
         'passed', u.passed, 'helped', to_jsonb(u.helped), 'note', coalesce(private.dec(u.note), '')) order by u.started_at)
         from public.urge_logs u where u.member_id = auth.uid()), '[]'::jsonb))
@@ -240,6 +260,38 @@ begin
   where id = auth.uid();
 end $$;
 
+-- A daily check-in. p: { localDate, mood, urge, gambled, amount, action, slipWhat, slipDifferent }
+create or replace function public.hs_save_checkin(p jsonb) returns void
+language plpgsql security definer set search_path = public as $$
+declare
+  uid uuid := auth.uid();
+begin
+  if uid is null then raise exception 'not signed in'; end if;
+  insert into public.members (id) values (uid) on conflict (id) do nothing;
+  insert into public.daily_checkins (member_id, local_date, mood, urge, gambled, amount, action, slip_what, slip_different)
+  values (uid, (p ->> 'localDate')::date, (p ->> 'mood')::smallint, (p ->> 'urge')::smallint, (p ->> 'gambled')::boolean,
+    (p ->> 'amount')::numeric, private.enc(left(p ->> 'action', 300)), private.enc(left(p ->> 'slipWhat', 600)),
+    private.enc(left(p ->> 'slipDifferent', 300)))
+  on conflict (member_id, local_date) do update set
+    mood = excluded.mood, urge = excluded.urge, gambled = excluded.gambled, amount = excluded.amount,
+    action = excluded.action, slip_what = excluded.slip_what, slip_different = excluded.slip_different;
+end $$;
+
+-- Start the 42 sessions again: each session's check-in moves across to the daily check-ins (so gamble-free days stay the
+-- same), then the sessions are cleared. A day that already has a daily check-in keeps that one.
+create or replace function public.hs_restart_program() returns void
+language plpgsql security definer set search_path = public as $$
+declare
+  uid uuid := auth.uid();
+begin
+  if uid is null then raise exception 'not signed in'; end if;
+  insert into public.daily_checkins (member_id, local_date, mood, urge, gambled, amount, action, slip_what, slip_different)
+  select member_id, local_date, mood, urge, gambled, amount, action, slip_what, slip_different
+  from public.day_progress where member_id = uid
+  on conflict (member_id, local_date) do nothing;
+  delete from public.day_progress where member_id = uid;
+end $$;
+
 -- One Urge SOS use. p: { at, seconds, triggers: [...], passed, helped: [...], note }
 create or replace function public.hs_save_urge(p jsonb) returns void
 language plpgsql security definer set search_path = public as $$
@@ -271,6 +323,9 @@ begin
   for x in select * from jsonb_array_elements(coalesce(p -> 'days', '[]'::jsonb)) order by (value ->> 'day')::int loop
     perform public.hs_save_day(x);
   end loop;
+  for x in select * from jsonb_array_elements(coalesce(p -> 'checkins', '[]'::jsonb)) loop
+    perform public.hs_save_checkin(x);
+  end loop;
   for x in select * from jsonb_array_elements(coalesce(p -> 'urges', '[]'::jsonb)) loop
     perform public.hs_save_urge(x);
   end loop;
@@ -287,7 +342,7 @@ end $$;
 
 revoke execute on function public.hs_my_state(), public.hs_save_member(jsonb), public.hs_save_questionnaire(jsonb),
   public.hs_save_day(jsonb), public.hs_save_urge(jsonb), public.hs_set_pause(jsonb), public.hs_import_guest(jsonb),
-  public.hs_delete_my_data() from public, anon;
+  public.hs_save_checkin(jsonb), public.hs_restart_program(), public.hs_delete_my_data() from public, anon;
 grant execute on function public.hs_my_state(), public.hs_save_member(jsonb), public.hs_save_questionnaire(jsonb),
   public.hs_save_day(jsonb), public.hs_save_urge(jsonb), public.hs_set_pause(jsonb), public.hs_import_guest(jsonb),
-  public.hs_delete_my_data() to authenticated;
+  public.hs_save_checkin(jsonb), public.hs_restart_program(), public.hs_delete_my_data() to authenticated;

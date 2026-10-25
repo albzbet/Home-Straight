@@ -3,7 +3,15 @@ import { createContext, useCallback, useContext, useEffect, useState, type React
 import { useAuth } from './auth';
 import { supabase } from './supabase';
 import { localDate } from './program';
-import { emptyState, type DayRecord, type Onboarding, type ProgramState, type Questionnaire, type UrgeLog } from './types';
+import {
+  emptyState,
+  type DailyCheckin,
+  type DayRecord,
+  type Onboarding,
+  type ProgramState,
+  type Questionnaire,
+  type UrgeLog,
+} from './types';
 
 // A member's program data. Before they make an account ("try first") it lives on the phone only.
 // Once they sign in it lives in Supabase (written-down answers encrypted there), and the phone copy is moved across and wiped.
@@ -24,6 +32,8 @@ type Store = {
   saveDay: (d: DayRecord) => Promise<void>;
   saveUrge: (u: UrgeLog) => Promise<void>;
   savePlanNotes: (notes: string) => Promise<void>;
+  saveCheckin: (c: DailyCheckin) => Promise<void>;
+  restartProgram: () => Promise<void>;
   setPause: (days: number | null | false) => Promise<void>; // days, null = until I come back, false = resume now
   deleteMyData: () => Promise<void>;
 };
@@ -146,6 +156,33 @@ export function StoreProvider({ children }: { children: ReactNode }) {
       update(
         (s) => ({ ...s, urges: [...s.urges, u] }),
         () => rpc('hs_save_urge', { p: u }),
+      ),
+    saveCheckin: (c) =>
+      update(
+        (s) => ({ ...s, checkins: [...s.checkins.filter((x) => x.localDate !== c.localDate), c] }),
+        () => rpc('hs_save_checkin', { p: c }),
+      ),
+    // Start the 42 sessions again. Their check-ins are kept (as daily check-ins), so gamble-free days don't change.
+    restartProgram: () =>
+      update(
+        (s) => ({
+          ...s,
+          days: [],
+          checkins: [
+            ...s.checkins,
+            ...s.days.map(({ localDate, mood, urge, gambled, amount, action, slipWhat, slipDifferent }) => ({
+              localDate,
+              mood,
+              urge,
+              gambled,
+              amount,
+              action,
+              slipWhat: slipWhat ?? '',
+              slipDifferent: slipDifferent ?? '',
+            })),
+          ],
+        }),
+        () => rpc('hs_restart_program'),
       ),
     savePlanNotes: (planNotes) =>
       update(

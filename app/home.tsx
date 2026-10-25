@@ -3,9 +3,9 @@ import { View } from 'react-native';
 import { Journey } from '@/components/Journey';
 import { Button, Card, Screen, StepBar, Txt } from '@/components/ui';
 import { config } from '@/lib/config';
-import { lesson } from '@/lib/content';
+import { lesson, meditationOfTheDay } from '@/lib/content';
 import { money } from '@/lib/format';
-import { FREE_DAYS, today } from '@/lib/program';
+import { FREE_DAYS, localDate, today } from '@/lib/program';
 import { progress } from '@/lib/progress';
 import { isPaused } from '@/lib/reminderPlan';
 import { remindersSupported, useRemindersOn } from '@/lib/reminders';
@@ -25,6 +25,10 @@ export default function Home() {
   const needsAccount = !!t.day && t.day > FREE_DAYS && !signedIn;
   const p = progress(state);
   const o = state.onboarding;
+  const finished = !t.day;
+  const todayDate = localDate();
+  const checkedInToday = state.checkins.some((c) => c.localDate === todayDate);
+  const suggestion = meditationOfTheDay(todayDate);
 
   return (
     <Screen>
@@ -53,17 +57,27 @@ export default function Home() {
       <Card>
         <Txt variant="label">Today</Txt>
         {!t.day || !next ? (
-          <>
-            <Txt variant="h2">You've finished all 42 sessions. That's a big deal.</Txt>
-            {state.questionnaires.some((q) => q.kind === 'end') ? (
-              <>
-                <Button label="See how far you've come" kind="secondary" onPress={() => router.push('/finish')} />
-                <Button label="Your game plan" onPress={() => router.push('/plan')} />
-              </>
-            ) : (
+          state.questionnaires.some((q) => q.kind === 'end') ? (
+            <>
+              {checkedInToday ? (
+                <Txt variant="h2">You've checked in today. Nice one.</Txt>
+              ) : (
+                <>
+                  <Txt variant="h2">How are you going today?</Txt>
+                  <Button label="Daily check-in (1 minute)" onPress={() => router.push('/checkin')} />
+                </>
+              )}
+              <Txt variant="muted">
+                Today's meditation: {suggestion.title} ({suggestion.minutes} min)
+              </Txt>
+              <Button label="Listen" kind="secondary" onPress={() => router.push(`/meditation/${suggestion.id}`)} />
+            </>
+          ) : (
+            <>
+              <Txt variant="h2">You've finished all 42 sessions. That's a big deal.</Txt>
               <Button label="One last thing: see how far you've come" onPress={() => router.push('/finish')} />
-            )}
-          </>
+            </>
+          )
         ) : needsAccount ? (
           <>
             <Txt variant="h2">
@@ -88,8 +102,20 @@ export default function Home() {
         )}
       </Card>
 
-      <Journey days={state.days} currentDay={t.day} />
-      <Button label="See all 6 weeks" kind="secondary" onPress={() => router.push('/program')} />
+      {finished ? (
+        <Card>
+          <Txt variant="label">Your toolkit</Txt>
+          <Button label="Meditations" kind="secondary" onPress={() => router.push('/meditations')} />
+          <Button label="Your game plan" kind="secondary" onPress={() => router.push('/plan')} />
+          <Button label="How far you've come" kind="secondary" onPress={() => router.push('/finish')} />
+          <Button label="Repeat a week, or start again" kind="secondary" onPress={() => router.push('/program')} />
+        </Card>
+      ) : (
+        <>
+          <Journey days={state.days} currentDay={t.day} />
+          <Button label="See all 6 weeks" kind="secondary" onPress={() => router.push('/program')} />
+        </>
+      )}
 
       <View style={{ flexDirection: 'row', gap: space.md }}>
         <Card style={{ flex: 1 }}>

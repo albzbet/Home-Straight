@@ -17,12 +17,19 @@ export type Progress = {
   goalShare: number | null; // 0-1 of the way to their savings target
 };
 
-// The days someone said they gambled: a check-in "yes" means the day before it; an Urge SOS "I gambled" means that day.
+// The days someone said they gambled: a check-in "yes" (session or daily) means the day before it; an Urge SOS
+// "I gambled" means that day.
 export function gambleDates(state: ProgramState): Set<string> {
   const dates = new Set<string>();
   for (const d of state.days) if (d.gambled) dates.add(addDays(d.localDate, -1));
   for (const u of state.urges) if (u.passed === 'gambled') dates.add(localDate(new Date(u.at)));
+  for (const c of state.checkins) if (c.gambled) dates.add(addDays(c.localDate, -1));
   return dates;
+}
+
+// The most recent check-in of any kind (session or daily), for "since your last check-in".
+export function lastCheckinDate(state: ProgramState): string | undefined {
+  return [...state.days.map((d) => d.localDate), ...state.checkins.map((c) => c.localDate)].sort().at(-1);
 }
 
 export function progress(state: ProgramState, today: string = localDate()): Progress {

@@ -35,6 +35,8 @@ function RootStack() {
       >
         <Stack.Screen name="sos" options={{ presentation: 'modal' }} />
         <Stack.Screen name="help" options={{ headerShown: true, title: '', presentation: 'modal' }} />
+        <Stack.Screen name="meditations" options={{ headerShown: true, title: '' }} />
+        <Stack.Screen name="meditation/[id]" options={{ headerShown: true, title: '' }} />
         <Stack.Screen name="plan" options={{ headerShown: true, title: '' }} />
         <Stack.Screen name="program" options={{ headerShown: true, title: '' }} />
         <Stack.Screen name="settings" options={{ headerShown: true, title: 'Settings' }} />

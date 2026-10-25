@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { progress } from '@/lib/progress';
+import { lastCheckinDate, progress } from '@/lib/progress';
 import { emptyState, type DayRecord, type Onboarding, type ProgramState } from '@/lib/types';
 
 const onboarding = (startDate: string, weeklySpend: number | null = 140, savingTarget: number | null = 200): Onboarding => ({
@@ -54,5 +54,15 @@ describe('progress', () => {
   it('copes with no spend or goal', () => {
     const p = progress({ ...emptyState, onboarding: onboarding('2026-10-01', null, null) }, '2026-10-01');
     expect(p).toMatchObject({ daysSinceStart: 1, moneyKept: 0, goalShare: null });
+  });
+});
+
+describe('daily check-ins', () => {
+  it('count a slip the day before, like session check-ins', () => {
+    const daily = { localDate: '2026-10-08', mood: 3, urge: 2, gambled: true, amount: null, action: '', slipWhat: '', slipDifferent: '' };
+    const p = progress(state({ checkins: [daily] }), '2026-10-10');
+    expect(p.gambleFreeDays).toBe(9);
+    expect(p.streak).toBe(3);
+    expect(lastCheckinDate(state({ checkins: [daily], days: [checkin(1, '2026-10-02', false)] }))).toBe('2026-10-08');
   });
 });

@@ -1,0 +1,77 @@
+{
+  "_readme": "Short audio meditations for the library (shown after the program). Put a link in 'url' once a recording is uploaded; until then the script is shown to read. Add or remove items freely; 'id' must be unique, lower case, no spaces.",
+  "meditations": [
+    {
+      "id": "two-minute-reset",
+      "title": "A two-minute reset",
+      "minutes": 2,
+      "theme": "breathing",
+      "summary": "For when you need to come back to yourself, fast.",
+      "url": null,
+      "script": "PLACEHOLDER: Wherever you are, let your shoulders drop. Breathe in slowly for four... and out for six. Again. Notice your feet on the ground. You're here, and you're okay right now."
+    },
+    {
+      "id": "riding-the-wave",
+      "title": "Riding the wave",
+      "minutes": 8,
+      "theme": "urge",
+      "summary": "Sit with an urge and watch it rise, peak and pass.",
+      "url": null,
+      "script": "PLACEHOLDER: Notice where you feel the urge in your body. Don't fight it and don't follow it. Just watch it, like a wave coming in. It will build, and then it will break and roll back out."
+    },
+    {
+      "id": "morning-intention",
+      "title": "Setting your intention",
+      "minutes": 5,
+      "theme": "morning",
+      "summary": "Start the day knowing what matters to you.",
+      "url": null,
+      "script": "PLACEHOLDER: Before the day gets going, bring your why to mind. Picture one moment today where you'd like to feel in control. What will you do in that moment?"
+    },
+    {
+      "id": "payday-calm",
+      "title": "Payday calm",
+      "minutes": 6,
+      "theme": "triggers",
+      "summary": "For the day the money lands.",
+      "url": null,
+      "script": "PLACEHOLDER: Money in the account can stir things up. Take a breath. Remember the plan you made for today's pay: bills, savings, then the rest. You decide where it goes."
+    },
+    {
+      "id": "after-a-slip",
+      "title": "After a slip",
+      "minutes": 7,
+      "theme": "kindness",
+      "summary": "Be kind to yourself and get back on track.",
+      "url": null,
+      "script": "PLACEHOLDER: A slip doesn't undo the work you've done. Breathe. Speak to yourself the way you'd speak to a mate in the same spot. What's one small step you can take right now?"
+    },
+    {
+      "id": "body-scan",
+      "title": "Body scan",
+      "minutes": 10,
+      "theme": "relax",
+      "summary": "Let go of tension from head to toe.",
+      "url": null,
+      "script": "PLACEHOLDER: Start at the top of your head and slowly move your attention down. Notice any tightness, and breathe into it. Let each part of you soften as you go."
+    },
+    {
+      "id": "wind-down",
+      "title": "Winding down for sleep",
+      "minutes": 10,
+      "theme": "sleep",
+      "summary": "Settle a busy mind at the end of the day.",
+      "url": null,
+      "script": "PLACEHOLDER: Lie back and let the day go. Each breath out, let a little more of the day go with it. There's nothing you need to do right now but rest."
+    },
+    {
+      "id": "gratitude",
+      "title": "Three good things",
+      "minutes": 4,
+      "theme": "mood",
+      "summary": "Notice what's going right.",
+      "url": null,
+      "script": "PLACEHOLDER: Think of three good things from today, however small. A cuppa, a laugh, a moment of quiet. Stay with each one for a breath or two."
+    }
+  ]
+}
