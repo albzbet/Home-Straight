@@ -135,6 +135,7 @@ export default function Settings() {
       <Button label="Privacy policy" kind="ghost" onPress={() => router.push('/privacy')} />
       <Button label="Terms of use" kind="ghost" onPress={() => router.push('/terms')} />
       <Button label="Refund policy" kind="ghost" onPress={() => router.push('/refunds')} />
+      <Button label="Can't afford it? Ask for free access" kind="ghost" onPress={() => router.push('/hardship')} />
       <Txt variant="small">{config.help.disclaimer}</Txt>
     </Screen>
   );

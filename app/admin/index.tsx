@@ -15,7 +15,7 @@ export default function AdminHome() {
       <Button label="Week themes" kind="secondary" onPress={() => router.push('/admin/weeks')} />
       <Button label="Meditations" kind="secondary" onPress={() => router.push('/admin/meditations')} />
       <Button label="Crisis words and message" kind="secondary" onPress={() => router.push('/admin/safety')} />
-      <Txt variant="small">Hardship requests will appear here once payments are built (step 9).</Txt>
+      <Button label="Free access requests" kind="secondary" onPress={() => router.push('/admin/hardship')} />
     </AdminScreen>
   );
 }

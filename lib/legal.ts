@@ -32,6 +32,8 @@ How we protect it: everything is treated as sensitive health information. Only y
 
 What we never do: sell or share your data, show gambling ads, or share anything with gambling companies.
 
+Free access requests: if you ask for free access, our small admin team sees your nickname and the message you wrote, and nothing else.
+
 Deleting it: Settings > Delete my data removes your account and everything in it.
 
 Counting: to see whether the program is helping people, we look at totals only (for example, how many people finished Week 1, or the average check-in across everyone). Averages are only shown when at least 5 people are behind them. We also keep simple daily tallies, with nothing about who did them, of how often Urge SOS is opened and how many people try Day 1 before making an account. No advertising or third-party tracking tools are used.

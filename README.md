@@ -33,7 +33,8 @@ Without Supabase set up, the app runs in "try first" mode: onboarding and Day 1 
 
 ## Admin area (editing lessons, the dashboard)
 
-1. In Supabase, **SQL Editor → New snippet**: run `supabase/migrations/0002_admin.sql` (after 0001).
+1. In Supabase, **SQL Editor → New snippet**: run `supabase/migrations/0002_admin.sql`, then `0003_hardship.sql` (after 0001,
+   always in number order).
 2. Sign in to the app once with the account you want to use as admin.
 3. Run this in the SQL Editor, with that account's email:
    ```

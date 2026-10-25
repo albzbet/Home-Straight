@@ -55,6 +55,8 @@ function RootStack() {
         <Stack.Screen name="privacy" options={{ headerShown: true, title: 'Privacy policy' }} />
         <Stack.Screen name="terms" options={{ headerShown: true, title: 'Terms of use' }} />
         <Stack.Screen name="refunds" options={{ headerShown: true, title: '' }} />
+        <Stack.Screen name="hardship" options={{ headerShown: true, title: '' }} />
+        <Stack.Screen name="admin/hardship" options={{ headerShown: true, title: '' }} />
         <Stack.Screen name="sign-in" options={{ headerShown: true, title: '' }} />
         <Stack.Screen name="save-progress" options={{ headerShown: true, title: '' }} />
       </Stack>

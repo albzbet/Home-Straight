@@ -75,8 +75,11 @@ what's next. Plain English, click-by-click steps.
   sign out or clear guest data, then unlock). Plain app icons (sources in `assets/icons/`), switchable in Settings via
   `expo-alternate-app-icons` (installed app only; `lib/appIcon.ts` loads it on demand so Expo Go doesn't crash).
   Settings > `PrivacySettings`. App lock works in Expo Go; icon switching needs a test build.
-- Still to build: 8 buddy emails (double opt-in) and 9 payments (RevenueCat), hardship access (and its admin review screen),
-  refund policy.
+- Refunds (owner's choice): "Not right for you? Full refund, no questions asked", 60 days, by email only (no in-app button);
+  `app/refunds.tsx`, `RefundNote`, wording in `lib/legal.ts`, `config.payments` / `config.support`.
+- Hardship access: done. Migration 0003 (`hardship_requests`, `members.free_access_at`, `hs_my_access`); `app/hardship.tsx`
+  (Settings > Can't afford it?), `app/admin/hardship.tsx`; `lib/access.ts`. Step 9 must treat `freeAccess` as unlocked.
+- Still to build: 8 buddy emails (double opt-in) and 9 payments (RevenueCat).
 
 Before launch (owner): lawyer for privacy policy and terms (Privacy Act, health information; TGA wording), licence check for
 PGSI questions, psychologist review of content, the name homestr8 still plays on "home straight" (racing language); the owner has chosen it.
