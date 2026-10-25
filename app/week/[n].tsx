@@ -35,7 +35,7 @@ export default function WeekDone() {
       footer={
         <Button
           label={week === weeks.length ? 'See how far you’ve come' : 'Back home'}
-          onPress={() => router.replace(week === weeks.length ? '/finish' : '/home')}
+          onPress={() => router.replace(`/more-life?next=${week === weeks.length ? 'finish' : 'home'}`)}
         />
       }
     >

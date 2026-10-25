@@ -297,6 +297,10 @@
       { "label": "Rainy-day fund", "icon": "umbrella" }
     ]
   },
+  "moreLife": {
+    "_readme": "The 'More life' screen: a big photo with these lines, shown after each week's summary and from More > What it's all about.",
+    "lines": ["More time.", "More money.", "A clearer you."]
+  },
   "checkin": {
     "moods": ["Struggling", "Tough", "Alright", "Good", "Great"]
   },
