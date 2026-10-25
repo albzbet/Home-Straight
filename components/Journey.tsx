@@ -3,7 +3,7 @@ import { Card, Txt } from '@/components/ui';
 import { useContent } from '@/lib/content';
 import { dayStatus, weekOf } from '@/lib/program';
 import type { DayRecord } from '@/lib/types';
-import { radius, space, useTheme } from '@/lib/theme';
+import { fonts, radius, space, useTheme } from '@/lib/theme';
 
 // The program's path on Home: one stop per week joined by a line, with this week's seven days underneath.
 export function Journey({ days, currentDay }: { days: DayRecord[]; currentDay: number | null }) {
@@ -47,7 +47,7 @@ export function Journey({ days, currentDay }: { days: DayRecord[]; currentDay: n
                   borderColor: finished || current ? t.action : t.line,
                 }}
               >
-                <Txt variant="small" style={{ fontWeight: '700', color: finished ? t.actionInk : current ? t.action : t.muted }}>
+                <Txt variant="small" style={{ fontFamily: fonts.bold, color: finished ? t.actionInk : current ? t.action : t.muted }}>
                   {String(w.week)}
                 </Txt>
               </View>

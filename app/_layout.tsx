@@ -1,39 +1,48 @@
-import { DarkTheme, DefaultTheme, SplashScreen, Stack, ThemeProvider } from 'expo-router';
+import { BebasNeue_400Regular } from '@expo-google-fonts/bebas-neue';
+import { Inter_400Regular, Inter_500Medium, Inter_600SemiBold, Inter_700Bold } from '@expo-google-fonts/inter';
+import { useFonts } from 'expo-font';
+import { DarkTheme, SplashScreen, Stack, ThemeProvider } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
-import { useColorScheme } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { AppLockGate } from '@/components/AppLock';
 import { AuthProvider } from '@/lib/auth';
 import { loadContent } from '@/lib/content';
 import { useReminderSync } from '@/lib/reminders';
 import { StoreProvider, useStore } from '@/lib/store';
-import { useTheme } from '@/lib/theme';
+import { fonts, useTheme } from '@/lib/theme';
 
 SplashScreen.preventAutoHideAsync();
 
 function RootStack() {
   const t = useTheme();
-  const scheme = useColorScheme();
   const { loading, state } = useStore();
+  // Bebas Neue (headings) and Inter (everything else). If they fail to load, the app carries on in the phone's own font.
+  const [fontsLoaded, fontError] = useFonts({ BebasNeue_400Regular, Inter_400Regular, Inter_500Medium, Inter_600SemiBold, Inter_700Bold });
+  const ready = !loading && (fontsLoaded || !!fontError);
   useReminderSync(state, !loading);
   useEffect(() => {
-    if (!loading) SplashScreen.hideAsync();
-  }, [loading]);
+    if (ready) SplashScreen.hideAsync();
+  }, [ready]);
   useEffect(() => {
     loadContent().catch(() => {});
   }, []);
 
-  const base = scheme === 'dark' ? DarkTheme : DefaultTheme;
-  const navTheme = { ...base, colors: { ...base.colors, background: t.bg, card: t.bg, text: t.ink, border: t.line, primary: t.action } };
+  // The app is dark only, so the navigator's own colours are too.
+  const navTheme = {
+    ...DarkTheme,
+    colors: { ...DarkTheme.colors, background: t.bg, card: t.bg, text: t.ink, border: t.line, primary: t.action },
+  };
+  if (!ready) return null;
   return (
     <ThemeProvider value={navTheme}>
-      <StatusBar style={scheme === 'dark' ? 'light' : 'dark'} />
+      <StatusBar style="light" />
       <Stack
         screenOptions={{
           headerShown: false,
           headerStyle: { backgroundColor: t.bg },
           headerTintColor: t.ink,
+          headerTitleStyle: { fontFamily: fonts.semibold },
           headerShadowVisible: false,
           contentStyle: { backgroundColor: t.bg },
         }}

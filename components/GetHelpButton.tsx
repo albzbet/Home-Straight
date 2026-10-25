@@ -1,6 +1,6 @@
 import { router } from 'expo-router';
 import { Pressable, Text } from 'react-native';
-import { radius, useTheme } from '@/lib/theme';
+import { fonts, radius, useTheme } from '@/lib/theme';
 
 // The two pills along the top of every screen: Urge SOS on the left, Get help now on the right.
 export function GetHelpButton() {
@@ -19,7 +19,7 @@ export function GetHelpButton() {
         opacity: pressed ? 0.8 : 1,
       })}
     >
-      <Text style={{ color: t.helpInk, fontWeight: '700', fontSize: 14 }}>Get help now</Text>
+      <Text style={{ color: t.helpInk, fontFamily: fonts.semibold, fontSize: 14 }}>Get help now</Text>
     </Pressable>
   );
 }
@@ -35,14 +35,14 @@ export function SosButton() {
       style={({ pressed }) => ({
         borderWidth: 1.5,
         borderColor: t.action,
-        backgroundColor: t.surface,
+        backgroundColor: 'transparent',
         borderRadius: radius.pill,
         paddingVertical: 6,
         paddingHorizontal: 14,
         opacity: pressed ? 0.8 : 1,
       })}
     >
-      <Text style={{ color: t.action, fontWeight: '700', fontSize: 14 }}>Urge SOS</Text>
+      <Text style={{ color: t.action, fontFamily: fonts.semibold, fontSize: 14 }}>Urge SOS</Text>
     </Pressable>
   );
 }

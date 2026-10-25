@@ -1,7 +1,7 @@
 import { Redirect, router } from 'expo-router';
 import { View } from 'react-native';
 import { Journey } from '@/components/Journey';
-import { Button, Card, Screen, StepBar, Txt } from '@/components/ui';
+import { Button, Card, Screen, ProgressBar, Txt } from '@/components/ui';
 import { config } from '@/lib/config';
 import { useContent } from '@/lib/content';
 import { money } from '@/lib/format';
@@ -140,7 +140,7 @@ export default function Home() {
           </Txt>
           {p.goalShare !== null ? (
             <>
-              <StepBar at={Math.round(p.goalShare * 100)} of={100} />
+              <ProgressBar at={Math.round(p.goalShare * 100)} of={100} />
               <Txt variant="muted">
                 {Math.round(p.goalShare * 100)}% of the way to {o.savingFor || 'your goal'} ({money(o.savingTarget!)})
               </Txt>

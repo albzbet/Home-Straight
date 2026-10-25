@@ -12,7 +12,7 @@ import {
   turnLockOff,
   unlockWithDevice,
 } from '@/lib/appLock';
-import { radius, space, useTheme } from '@/lib/theme';
+import { fonts, radius, space, useTheme } from '@/lib/theme';
 
 // Settings > Keep it private: the app lock and a plainer app icon.
 export function PrivacySettings() {
@@ -152,7 +152,7 @@ function IconCard() {
             >
               <Image source={c.image} style={{ width: 64, height: 64, borderRadius: radius.md }} accessibilityIgnoresInvertColors />
             </View>
-            <Text style={{ color: t.ink, fontWeight: chosen === c.id ? '700' : '500' }}>{c.label}</Text>
+            <Text style={{ color: t.ink, fontFamily: chosen === c.id ? fonts.bold : fonts.medium }}>{c.label}</Text>
           </Pressable>
         ))}
       </View>

@@ -4,7 +4,7 @@ import { View } from 'react-native';
 import { useCrisisGate } from '@/components/Help';
 import { LessonAudio, LessonVideo } from '@/components/Media';
 import { BounceBack, CheckinQuestions, useCheckin } from '@/components/Checkin';
-import { Button, Card, Choice, Field, Screen, StepBar, Txt } from '@/components/ui';
+import { Button, Card, Choice, Field, Screen, ProgressBar, Txt } from '@/components/ui';
 import { useContent } from '@/lib/content';
 import { FREE_DAYS, localDate, today } from '@/lib/program';
 import { lastCheckinDate } from '@/lib/progress';
@@ -120,7 +120,7 @@ export default function Session() {
   return (
     <Screen footer={footer}>
       {sheet}
-      {step !== 'start' && step !== 'done' ? <StepBar at={at} of={steps.length - 2} /> : null}
+      {step !== 'start' && step !== 'done' ? <ProgressBar at={at} of={steps.length - 2} /> : null}
 
       {step === 'start' && (
         <View style={{ gap: space.md, marginTop: space.xl }}>

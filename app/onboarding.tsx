@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { View } from 'react-native';
 import { useCrisisGate } from '@/components/Help';
 import { blankAnswers, Questions } from '@/components/Questions';
-import { Button, Card, Chip, Choice, Field, Row, Screen, StepBar, Txt } from '@/components/ui';
+import { Button, Card, Chip, Choice, Field, Row, Screen, ProgressBar, Txt } from '@/components/ui';
 import { config } from '@/lib/config';
 import { looksLikeEmail, parseMoney, timeLabel } from '@/lib/format';
 import { moneyInsight, pickInsights, type Insight } from '@/lib/insights';
@@ -132,7 +132,7 @@ export default function Onboarding() {
       }
     >
       <View style={{ gap: space.sm }}>
-        <StepBar at={step + 1} of={STEPS.length} />
+        <ProgressBar at={step + 1} of={STEPS.length} />
         <Txt variant="small">
           Question {question} of {QUESTIONS.length}
           {optional ? ' · you can skip this one' : ''}

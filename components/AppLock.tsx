@@ -7,7 +7,7 @@ import { checkPin, lockMode, lockSupported, turnLockOff, unlockWithDevice, type 
 import { signOut } from '@/lib/auth';
 import { isPin, pinWaitSeconds, shouldRelock } from '@/lib/lockRules';
 import { useStore } from '@/lib/store';
-import { radius, space, useTheme } from '@/lib/theme';
+import { fonts, radius, space, useTheme } from '@/lib/theme';
 
 // The optional app lock. When it's on, the app asks for Face ID / fingerprint or the app's PIN when it opens and after more
 // than 30 seconds away, and covers the screen while it's in the background (so the app switcher shows nothing). "Get help
@@ -208,7 +208,7 @@ export function PinPad({ onPress }: { onPress: (key: string) => void }) {
               borderColor: t.line,
             })}
           >
-            <Text style={{ fontSize: 26, fontWeight: '600', color: t.ink }}>{k}</Text>
+            <Text style={{ fontSize: 26, fontFamily: fonts.semibold, color: t.ink }}>{k}</Text>
           </Pressable>
         ) : (
           <View key={i} style={{ width: 76, height: 76 }} />

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { View } from 'react-native';
 import { AdminScreen } from '@/components/Admin';
 import { Stat } from '@/components/Stat';
-import { Button, Card, StepBar, Txt } from '@/components/ui';
+import { Button, Card, ProgressBar, Txt } from '@/components/ui';
 import { fetchStats, type Stats } from '@/lib/admin';
 import { space } from '@/lib/theme';
 
@@ -49,7 +49,7 @@ export default function Dashboard() {
             <Txt>
               {label}: {n} {stats.members ? `(${Math.round((n / stats.members) * 100)}%)` : ''}
             </Txt>
-            <StepBar at={n} of={Math.max(1, stats.members)} />
+            <ProgressBar at={n} of={Math.max(1, stats.members)} />
           </View>
         ))}
       </Card>

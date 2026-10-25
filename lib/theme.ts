@@ -3,6 +3,7 @@
 
 export const colors = {
   bg: '#0F1114', // charcoal background
+  hero: '#0F171F', // the dark space behind the app name on the welcome screen
   primary: '#FF6A2E', // orange: main buttons, highlights, the "8"
   onPrimary: '#FFFFFF',
   text: '#FFFFFF',

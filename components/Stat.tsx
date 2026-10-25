@@ -1,11 +1,6 @@
-import { Card, Txt } from '@/components/ui';
+import { StatCard } from '@/components/ui';
 
-// One number with a label underneath, for summaries.
+// One number with a label underneath, two to a row (week and end-of-program summaries).
 export function Stat({ value, label }: { value: string; label: string }) {
-  return (
-    <Card style={{ flexBasis: '46%', flexGrow: 1, padding: 18, gap: 4 }}>
-      <Txt variant="title">{value}</Txt>
-      <Txt variant="muted">{label}</Txt>
-    </Card>
-  );
+  return <StatCard value={value} label={label} style={{ flexBasis: '46%', flexGrow: 1 }} />;
 }

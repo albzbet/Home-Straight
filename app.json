@@ -5,7 +5,7 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "automatic",
+    "userInterfaceStyle": "dark",
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "au.homestr8.app"
@@ -28,12 +28,9 @@
       [
         "expo-splash-screen",
         {
-          "backgroundColor": "#F7F3EC",
+          "backgroundColor": "#0F1114",
           "image": "./assets/splash-icon.png",
-          "imageWidth": 140,
-          "dark": {
-            "backgroundColor": "#121816"
-          }
+          "imageWidth": 140
         }
       ],
       "expo-web-browser",

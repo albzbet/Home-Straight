@@ -26,6 +26,20 @@ what's next. Plain English, click-by-click steps.
 - Supabase (separate project from any other app): Postgres, RLS on with no policies; the app only calls `hs_*`
   security-definer functions that touch the caller's own rows.
 
+## Look and feel (owner's redesign, Oct 2026)
+
+- Reference: `design/homestr8-mockup.png`. Dark only. Tokens in `lib/theme.ts` (`colors`, `fonts`, `space`, `radius`,
+  `shadow`): charcoal #0F1114, orange #FF6A2E (primary buttons, the "8"), green #22C55E (progress), cards from blue-grey
+  #334155; Bebas Neue for headings (capitals), Inter for everything else (loaded in `app/_layout.tsx`). Never hard-code
+  colours or fonts in screens; use `useTheme()` / `fonts`. Old token names (`ink`, `action`...) still map onto the new ones.
+- Shared pieces in `components/ui.tsx`: `Screen`, `Txt`, `Button` / `PrimaryButton`, `Card` (`raised`), `ProgressBar`,
+  `SectionHeader`, `StatCard`, `Choice`, `Chip`, `Field`.
+- Photos come from the owner (`assets/images`, JPG, no text, no gambling imagery); I can't make real photos, so missing
+  ones get a plain placeholder, never a drawn fake. Logo files `assets/logo/kelpie.svg` / `wordmark.svg` are still to come;
+  until then the app name is set in Bebas Neue with an orange 8 and a sunrise icon.
+- Screens redone so far: welcome (`app/welcome.tsx`, owner's layout). Next: Home dashboard with a bottom tab bar
+  (Home, Program, Progress, Explore, More), then the other mockup screens one at a time.
+
 ## Where things are
 
 - The program is 8 weeks (owner's change, Oct 2026): `TOTAL_WEEKS` / `TOTAL_DAYS` in `lib/program.ts`; never hard-code 8 or 56.

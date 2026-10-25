@@ -5,7 +5,7 @@ import { useContent } from '@/lib/content';
 import { dayStatus, FREE_DAYS, nextDay } from '@/lib/program';
 import { useState } from 'react';
 import { useStore } from '@/lib/store';
-import { radius, space, useTheme } from '@/lib/theme';
+import { fonts, radius, space, useTheme } from '@/lib/theme';
 
 // All the weeks at a glance. Done sessions can be listened to again; today's opens; the rest wait their turn.
 export default function Program() {
@@ -108,7 +108,7 @@ export default function Program() {
                     >
                       <Txt
                         variant="small"
-                        style={{ color: status === 'done' ? t.actionInk : status === 'later' ? t.muted : t.action, fontWeight: '700' }}
+                        style={{ color: status === 'done' ? t.actionInk : status === 'later' ? t.muted : t.action, fontFamily: fonts.bold }}
                       >
                         {status === 'done' ? '✓' : String(l.day)}
                       </Txt>
