@@ -22,7 +22,7 @@ grant execute on function public.hs_is_admin() to authenticated;
 -- Anything not in here falls back to the copy built into the app.
 -- ---------------------------------------------------------------------------
 create table if not exists public.content (
-  key text primary key check (key ~ '^(weeks|meditations|episodes|safety|lesson:([1-9]|[1-4][0-9]|5[0-6]))$'),
+  key text primary key check (key ~ '^(weeks|meditations|episodes|missions|safety|lesson:([1-9]|[1-4][0-9]|5[0-6]))$'),
   value jsonb not null,
   updated_at timestamptz not null default now(),
   updated_by uuid references auth.users (id) on delete set null
@@ -30,7 +30,7 @@ create table if not exists public.content (
 -- Lessons go up to day 56 (8 weeks): harmless if the table was made with this limit already.
 alter table public.content drop constraint if exists content_key_check;
 alter table public.content add constraint content_key_check
-  check (key ~ '^(weeks|meditations|episodes|safety|lesson:([1-9]|[1-4][0-9]|5[0-6]))$');
+  check (key ~ '^(weeks|meditations|episodes|missions|safety|lesson:([1-9]|[1-4][0-9]|5[0-6]))$');
 alter table public.content enable row level security;
 
 -- Everyone (signed in or not) reads the content: lessons aren't private.

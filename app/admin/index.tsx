@@ -15,6 +15,7 @@ export default function AdminHome() {
       <Button label="Week themes" kind="secondary" onPress={() => router.push('/admin/weeks')} />
       <Button label="Meditations" kind="secondary" onPress={() => router.push('/admin/meditations')} />
       <Button label="Bookie Tricks Exposed episodes" kind="secondary" onPress={() => router.push('/admin/episodes')} />
+      <Button label="Weekly missions" kind="secondary" onPress={() => router.push('/admin/missions')} />
       <Button label="Crisis words and message" kind="secondary" onPress={() => router.push('/admin/safety')} />
       <Button label="Free access requests" kind="secondary" onPress={() => router.push('/admin/hardship')} />
     </AdminScreen>

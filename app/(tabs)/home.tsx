@@ -9,6 +9,7 @@ import { useContent } from '@/lib/content';
 import { money } from '@/lib/format';
 import { photos } from '@/lib/images';
 import { FREE_DAYS, localDate, today, TOTAL_DAYS, TOTAL_WEEKS, weekOf } from '@/lib/program';
+import { missionOfTheWeek } from '@/lib/missions';
 import { progress } from '@/lib/progress';
 import { isPaused } from '@/lib/reminderPlan';
 import { remindersSupported, useRemindersOn } from '@/lib/reminders';
@@ -20,7 +21,7 @@ import { fonts, radius, space, useTheme } from '@/lib/theme';
 export default function Home() {
   const th = useTheme();
   const { state, signedIn, setPause } = useStore();
-  const { lesson, week, meditationOfTheDay } = useContent();
+  const { lesson, week, meditationOfTheDay, missions } = useContent();
   const [remindOn, setRemindOn] = useRemindersOn();
   if (!state.onboarding) return <Redirect href="/" />;
 
@@ -31,6 +32,7 @@ export default function Home() {
   const paused = isPaused(state);
   const finished = !t.day;
   const p = progress(state);
+  const mission = missionOfTheWeek(missions, state);
   const o = state.onboarding;
   const now = new Date();
   const todayDate = localDate(now);
@@ -154,7 +156,7 @@ export default function Home() {
           icon="trail-sign"
           color={th.mission}
           title="This week's mission"
-          sub="Something to try"
+          sub={mission ? (mission.done ? 'Done this week' : mission.mission.title) : 'Something to try'}
           onPress={() => router.push('/missions')}
         />
         <Tile

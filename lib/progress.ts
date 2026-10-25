@@ -54,7 +54,8 @@ export type PeriodStats = {
   urgesHandled: number; // Urge SOS uses where the urge passed or was easing
 };
 
-const startOfProgram = (state: ProgramState, today: string) => {
+// The day the program started: when onboarding was finished (or the first session).
+export const startOfProgram = (state: ProgramState, today: string) => {
   const o = state.onboarding;
   return o?.completedAt ? localDate(new Date(o.completedAt)) : (state.days[0]?.localDate ?? today);
 };

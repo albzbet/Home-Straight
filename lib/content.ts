@@ -2,11 +2,13 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useSyncExternalStore } from 'react';
 import episodesRaw from '@/content/episodes.json';
 import meditationsRaw from '@/content/meditations.json';
+import missionsRaw from '@/content/missions.json';
 import raw from '@/content/program.json';
 import { setSafety, type SafetyContent } from './safety';
 import { supabase } from './supabase';
 
-// Lesson content for the 8-week program, the meditations, the Bookie Tricks Exposed episodes and the crisis words.
+// Lesson content for the 8-week program, the meditations, the Bookie Tricks Exposed episodes, the weekly missions and the
+// crisis words.
 // The app carries a built-in copy (content/*.json, config/safety.json). Once an admin edits something in the admin area it's
 // saved in the database (public.content) and wins over the built-in copy. The last copy fetched is kept on the phone, so
 // edits show even offline.
@@ -40,13 +42,17 @@ export type Episode = {
   video: Media;
 };
 
-export type Content = { weeks: Week[]; lessons: Lesson[]; meditations: Meditation[]; episodes: Episode[] };
+// A weekly mission: one real-life challenge. Nothing to win; ticking it off just marks it done.
+export type Mission = { id: string; title: string; body: string; ideas: string[] };
+
+export type Content = { weeks: Week[]; lessons: Lesson[]; meditations: Meditation[]; episodes: Episode[]; missions: Mission[] };
 
 export const builtIn: Content = {
   weeks: raw.weeks,
   lessons: raw.days as Lesson[],
   meditations: meditationsRaw.meditations,
   episodes: episodesRaw.episodes,
+  missions: missionsRaw.missions,
 };
 
 let current: Content = builtIn;
@@ -62,6 +68,7 @@ function apply(remote: Record<string, unknown>) {
     episodes: (Array.isArray(remote.episodes) ? (remote.episodes as Episode[]) : builtIn.episodes)
       .slice()
       .sort((a, b) => a.number - b.number),
+    missions: Array.isArray(remote.missions) && remote.missions.length ? (remote.missions as Mission[]) : builtIn.missions,
   };
   setSafety((remote.safety as SafetyContent) ?? null);
   listeners.forEach((l) => l());

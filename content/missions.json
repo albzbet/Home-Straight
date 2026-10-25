@@ -1,0 +1,65 @@
+{
+  "_readme": "Weekly missions: one real-life challenge a week, in this order (back to the start after the last one). Nothing to win: ticking one off just marks it done. 'ideas' are a few ways to do it. Edited in the admin area once the app is live.",
+  "missions": [
+    {
+      "id": "get-outside",
+      "title": "Get outside for 30 minutes",
+      "body": "Fresh air. Clear head. Real world wins. It doesn't have to be a hike: a walk, a swim at the beach, a kick of the footy, anything counts.",
+      "ideas": ["Walk to the shops instead of driving", "Take lunch to the park", "A swim, a surf or a paddle"]
+    },
+    {
+      "id": "catch-up",
+      "title": "Catch up with a mate",
+      "body": "Time with people who are good for you is one of the best things there is for your head. Face to face is great; a proper phone call counts too.",
+      "ideas": ["Grab a coffee or a feed", "Ring someone you haven't spoken to in a while", "Watch the footy at a mate's place"]
+    },
+    {
+      "id": "cook-a-meal",
+      "title": "Cook a proper meal",
+      "body": "Something from scratch, start to finish. It fills an evening, it's cheaper than takeaway and you get to eat it.",
+      "ideas": ["A barbie for the family", "A recipe you've never tried", "Cook a double batch and freeze half"]
+    },
+    {
+      "id": "phone-free-evening",
+      "title": "Have a phone-free evening",
+      "body": "Put the phone in another room from dinner until bed. Notice how the evening feels without it.",
+      "ideas": ["A board game or cards with the family", "Read a book or a magazine", "Get an early night"]
+    },
+    {
+      "id": "move-your-body",
+      "title": "Get your heart rate up",
+      "body": "Twenty minutes of anything that makes you puff. Exercise takes the edge off stress and urges, and you sleep better after it.",
+      "ideas": ["A run or a fast walk", "A bike ride", "Push-ups and squats in the lounge room"]
+    },
+    {
+      "id": "sort-one-thing",
+      "title": "Sort out one thing you've been putting off",
+      "body": "That job that's been hanging over you. Ticking it off clears a bit of mental space.",
+      "ideas": ["Clean out the garage or the car", "Make that appointment", "Fix the thing that's been broken for ages"]
+    },
+    {
+      "id": "try-something-new",
+      "title": "Try something new",
+      "body": "New things give your brain something to look forward to. Small counts: it just has to be new to you.",
+      "ideas": ["A class or a club", "A new walking track", "Learn a song, a trick or a recipe"]
+    },
+    {
+      "id": "do-something-for-someone",
+      "title": "Do something for someone else",
+      "body": "Helping someone out is good for them and good for you. No need for anything big.",
+      "ideas": ["Mow a neighbour's lawn", "Help a mate move", "Cook for someone who's doing it tough"]
+    },
+    {
+      "id": "sunrise-or-sunset",
+      "title": "Watch a sunrise or a sunset",
+      "body": "Ten minutes, no phone, just watching the sky change. A simple way to slow everything down.",
+      "ideas": ["From the beach or a lookout", "From the backyard with a cuppa", "On the way home from work"]
+    },
+    {
+      "id": "early-nights",
+      "title": "Three early nights",
+      "body": "Being tired makes urges louder. Aim for three nights this week in bed with the lights off by 10:30.",
+      "ideas": ["Phone on charge outside the bedroom", "No screens for the last half hour", "Same bedtime each night"]
+    }
+  ]
+}

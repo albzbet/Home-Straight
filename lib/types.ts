@@ -58,6 +58,9 @@ export type UrgeLog = {
   note: string;
 };
 
+// A weekly mission ticked off. weekOf: the Monday of the week it counts for.
+export type MissionDone = { missionId: string; weekOf: string; at: string };
+
 export type ProgramState = {
   nickname: string | null;
   adultConfirmedAt: string | null;
@@ -66,6 +69,7 @@ export type ProgramState = {
   days: DayRecord[];
   urges: UrgeLog[];
   checkins: DailyCheckin[];
+  missions: MissionDone[];
   planNotes: string; // their own notes for the game plan
   pause: Pause | null; // the program is on hold: no reminders, no new sessions nudged
 };
@@ -80,6 +84,7 @@ export const emptyState: ProgramState = {
   days: [],
   urges: [],
   checkins: [],
+  missions: [],
   pause: null,
   planNotes: '',
 };

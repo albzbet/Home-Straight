@@ -41,7 +41,7 @@ what's next. Plain English, click-by-click steps.
   gamble-free days, and money kept.
 - Screens redone so far: welcome (`app/welcome.tsx`, owner's layout); Home dashboard (`app/(tabs)/home.tsx`, mockup screen 2)
   with the bottom tabs in `app/(tabs)/` (Home, Program, Progress, Explore, More; `Screen tab` shows `BrandHeader`: name, SOS,
-  Get help now). `app/missions.tsx` is a holding screen until its mockup version is built.
+  Get help now).
   Session (`app/session/[day].tsx`, mockup screen 3): lesson page with close / Week • Day / SOS / help, the title in Bebas with
   its tail in orange (`highlightTail`), `VideoCard` and `AudioCard` (`components/SessionMedia.tsx`), busy-day switch,
   "Mark as complete", then check-in, action, done.
@@ -58,6 +58,10 @@ what's next. Plain English, click-by-click steps.
   Daily check-in (`app/checkin.tsx`, mockup screen 7): five mood faces (`MoodPicker` in `components/Checkin.tsx`, best
   first, saved 1-5; colours `moodColors`; labels `config.checkin.moods`) and an optional note (encrypted
   `daily_checkins.note`), then urge and "did you gamble?", bounce-back after a slip. Sessions use the same faces.
+  Weekly missions (`app/missions.tsx`, mockup screen 8): this week's mission (photo `photos.mission`, ideas, "I've done it",
+  take the tick off again), all missions. One a week in list order from the week the program started (`lib/missions.ts`,
+  weeks start Monday); `content/missions.json`, edited in Admin > Weekly missions (content key `missions`). Ticks in
+  `mission_done` (`hs_save_mission`, `state.missions`). Nothing to win, no rewards beyond the tick.
   Photos are listed in `lib/images.ts` (null = not arrived yet; `Photo` shows a plain dark space). `Tile` for quick access.
 
 ## Where things are
