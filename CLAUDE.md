@@ -37,6 +37,8 @@ what's next. Plain English, click-by-click steps.
 - Photos come from the owner (`assets/images`, JPG, no text, no gambling imagery); I can't make real photos, so missing
   ones get a plain placeholder, never a drawn fake. Logo files `assets/logo/kelpie.svg` / `wordmark.svg` are still to come;
   until then the app name is set in Bebas Neue with an orange 8 and a sunrise icon.
+- No "time back" / hours-per-week anywhere (owner's call, Oct 2026): Home's stat cards are the streak with total
+  gamble-free days, and money kept.
 - Screens redone so far: welcome (`app/welcome.tsx`, owner's layout). Next: Home dashboard with a bottom tab bar
   (Home, Program, Progress, Explore, More), then the other mockup screens one at a time.
 
