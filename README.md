@@ -47,6 +47,28 @@ Without Supabase set up, the app runs in "try first" mode: onboarding and Day 1 
 Changes reach everyone the next time they open the app. Anything not edited comes from the copy built into the app
 (`content/` and `config/`).
 
+## Buddy emails (switch on when you're ready)
+
+Everything is built; it just needs an email service and somewhere to host the buddy's "Yes, I'm in" page.
+
+1. **Database:** run `supabase/migrations/0004_buddy.sql` in the SQL Editor (after 0003).
+2. **Resend** ([resend.com](https://resend.com), free): sign up, add your domain under **Domains** and add the DNS records it
+   shows at your domain provider, then **API Keys → Create API key**. Keep the key to yourself (don't paste it in a chat).
+3. **Web version on Netlify** (free): **Add new site → Import from GitHub** → this repo. It reads `netlify.toml` by itself.
+   Under **Site configuration → Environment variables** add `EXPO_PUBLIC_SUPABASE_URL` and `EXPO_PUBLIC_SUPABASE_ANON_KEY`
+   (same as `.env`), then **Deploys → Trigger deploy**. Note the site address, e.g. `https://homestr8.netlify.app`.
+4. **Send-the-emails function**, in a terminal in the project folder:
+   ```
+   npx supabase login
+   npx supabase link --project-ref YOUR-PROJECT-REF
+   npx supabase secrets set RESEND_API_KEY=your-key EMAIL_FROM="homestr8 <hello@yourdomain.com.au>" BUDDY_PAGE_URL=https://homestr8.netlify.app/buddy
+   npx supabase functions deploy buddy --no-verify-jwt
+   ```
+   (Your project ref is in Supabase → Project Settings → General.)
+5. **Schedule:** open `supabase/buddy-schedule.sql`, replace `YOUR-PROJECT-REF` (twice), and run it in the SQL Editor.
+6. **Test:** in the app, Settings → Your buddy → add a second email address of your own. The invitation arrives within
+   15 minutes; tap "Yes, I'm in". Weekly notes go out on Monday mornings.
+
 ## Keeping it private
 
 - **App lock** (Settings → App lock): Face ID / fingerprint, or a 4-digit PIN just for this app. Works in Expo Go.

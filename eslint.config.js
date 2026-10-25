@@ -5,7 +5,8 @@ const prettierConfig = require('eslint-config-prettier/flat');
 
 module.exports = defineConfig([
   expoConfig,
-  { ignores: ['dist/*', 'web-build/*', '.expo/*'] },
+  // The Edge Function entry files run on Deno (Supabase), not in the app.
+  { ignores: ['dist/*', 'web-build/*', '.expo/*', 'supabase/functions/**/index.ts'] },
   {
     rules: {
       // Apostrophes in text are only a problem in web HTML, not in React Native <Text>.

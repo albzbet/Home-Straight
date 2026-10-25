@@ -79,7 +79,12 @@ what's next. Plain English, click-by-click steps.
   `app/refunds.tsx`, `RefundNote`, wording in `lib/legal.ts`, `config.payments` / `config.support`.
 - Hardship access: done. Migration 0003 (`hardship_requests`, `members.free_access_at`, `hs_my_access`); `app/hardship.tsx`
   (Settings > Can't afford it?), `app/admin/hardship.tsx`; `lib/access.ts`. Step 9 must treat `freeAccess` as unlocked.
-- Still to build: 8 buddy emails (double opt-in) and 9 payments (RevenueCat).
+- Buddy emails: built, not switched on. Migration 0004 (`buddies`, trigger keeps it in step with the member's buddy email and
+  consent, `hs_buddy_*` functions only for the service role, `hs_cron_key` in Vault). Edge Function `supabase/functions/buddy`
+  (Resend; templates in `templates.ts`, tested, never mention gambling or money), schedule `supabase/buddy-schedule.sql`
+  (pg_cron + pg_net). Buddies answer on `app/buddy.tsx` in the web version (a button, so link scanners can't say yes),
+  hosted on Netlify (`netlify.toml`). Settings > Your buddy (`BuddySettings`).
+- Still to build: 9 payments (RevenueCat); `freeAccess` (hardship) must count as unlocked.
 
 Before launch (owner): lawyer for privacy policy and terms (Privacy Act, health information; TGA wording), licence check for
 PGSI questions, psychologist review of content, the name homestr8 still plays on "home straight" (racing language); the owner has chosen it.

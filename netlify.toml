@@ -1,0 +1,15 @@
+# The web version of the app (the buddy page, and the admin area on a computer), hosted free on Netlify.
+# In Netlify: Add new site > Import from GitHub > this repo. Then Site configuration > Environment variables: add
+# EXPO_PUBLIC_SUPABASE_URL and EXPO_PUBLIC_SUPABASE_ANON_KEY (the same as in .env), and redeploy.
+[build]
+  command = "npx expo export --platform web"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# Every address (like /buddy) opens the app, which then shows the right page.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

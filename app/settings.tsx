@@ -1,5 +1,6 @@
 import { router } from 'expo-router';
 import { useState } from 'react';
+import { BuddySettings } from '@/components/BuddySettings';
 import { PrivacySettings } from '@/components/PrivacySettings';
 import { Button, Card, Chip, Row, Screen, Txt } from '@/components/ui';
 import { signOut } from '@/lib/auth';
@@ -110,6 +111,8 @@ export default function Settings() {
           )}
         </Card>
       ) : null}
+
+      <BuddySettings />
 
       <PrivacySettings />
 
