@@ -53,7 +53,17 @@ export default function Home() {
       <Card>
         <Txt variant="label">Today</Txt>
         {!t.day || !next ? (
-          <Txt variant="h2">You've finished all 42 sessions. That's a big deal.</Txt>
+          <>
+            <Txt variant="h2">You've finished all 42 sessions. That's a big deal.</Txt>
+            {state.questionnaires.some((q) => q.kind === 'end') ? (
+              <>
+                <Button label="See how far you've come" kind="secondary" onPress={() => router.push('/finish')} />
+                <Button label="Your game plan" onPress={() => router.push('/plan')} />
+              </>
+            ) : (
+              <Button label="One last thing: see how far you've come" onPress={() => router.push('/finish')} />
+            )}
+          </>
         ) : needsAccount ? (
           <>
             <Txt variant="h2">

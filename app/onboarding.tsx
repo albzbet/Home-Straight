@@ -2,6 +2,7 @@ import { router } from 'expo-router';
 import { useState } from 'react';
 import { View } from 'react-native';
 import { useCrisisGate } from '@/components/Help';
+import { blankAnswers, Questions } from '@/components/Questions';
 import { Button, Card, Chip, Choice, Field, Row, Screen, StepBar, Txt } from '@/components/ui';
 import { config } from '@/lib/config';
 import { looksLikeEmail, parseMoney, timeLabel } from '@/lib/format';
@@ -30,7 +31,6 @@ const STEPS = [
 ] as const;
 const QUESTIONS = STEPS.filter((s) => !s.endsWith('Card'));
 const o = config.onboarding;
-const q = config.questionnaire;
 
 const toggle = (list: string[], item: string) => (list.includes(item) ? list.filter((x) => x !== item) : [...list, item]);
 
@@ -53,7 +53,7 @@ export default function Onboarding() {
   const [time, setTime] = useState('07:30');
   const [buddyEmail, setBuddyEmail] = useState('');
   const [buddyConsent, setBuddyConsent] = useState(false);
-  const [answers, setAnswers] = useState<(number | null)[]>(q.items.map(() => null));
+  const [answers, setAnswers] = useState(blankAnswers);
 
   const name = STEPS[step]!;
   const isCard = name.endsWith('Card');
@@ -272,22 +272,7 @@ export default function Onboarding() {
           <Txt variant="muted">
             Nine questions. Only you can see your answers. We'll ask the same ones at the end of the program so you can see what's changed.
           </Txt>
-          <Txt variant="h2">{q.intro}</Txt>
-          {q.items.map((item, i) => (
-            <View key={i} style={{ gap: space.sm }}>
-              <Txt>{item}</Txt>
-              <Row>
-                {q.scale.map((label, value) => (
-                  <Chip
-                    key={label}
-                    label={label}
-                    selected={answers[i] === value}
-                    onPress={() => setAnswers(answers.map((a, j) => (j === i ? value : a)))}
-                  />
-                ))}
-              </Row>
-            </View>
-          ))}
+          <Questions answers={answers} onChange={setAnswers} />
         </>
       )}
     </Screen>

@@ -57,6 +57,7 @@ create table if not exists public.members (
   onboarded_at timestamptz,
   paused_since date, -- program on hold (no reminders); null = not paused
   paused_until date, -- null while paused = until they come back
+  plan_notes bytea, -- encrypted: their own notes for the game plan
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
@@ -65,6 +66,7 @@ create table if not exists public.members (
 alter table public.members add column if not exists gambling_types text[] not null default '{}';
 alter table public.members add column if not exists paused_since date;
 alter table public.members add column if not exists paused_until date;
+alter table public.members add column if not exists plan_notes bytea;
 
 create table if not exists public.questionnaires (
   id bigint generated always as identity primary key,
@@ -121,6 +123,7 @@ language sql stable security definer set search_path = public as $$
   select jsonb_build_object(
     'nickname', m.nickname,
     'adultConfirmedAt', m.adult_confirmed_at,
+    'planNotes', coalesce(private.dec(m.plan_notes), ''),
     'pause', case when m.paused_since is null then null else jsonb_build_object('since', m.paused_since, 'until', m.paused_until) end,
     'onboarding', case when m.onboarded_at is null then null else jsonb_build_object(
       'goal', m.goal,
@@ -163,6 +166,7 @@ begin
 
   update public.members set
     nickname = case when p ? 'nickname' and nullif(btrim(p ->> 'nickname'), '') is not null then btrim(p ->> 'nickname') else nickname end,
+    plan_notes = case when p ? 'planNotes' then private.enc(left(p ->> 'planNotes', 2000)) else plan_notes end,
     adult_confirmed_at = case when coalesce((p ->> 'adultConfirmed')::boolean, false) then coalesce(adult_confirmed_at, now()) else adult_confirmed_at end,
     updated_at = now()
   where id = uid;

@@ -52,6 +52,7 @@ export type ProgramState = {
   questionnaires: Questionnaire[];
   days: DayRecord[];
   urges: UrgeLog[];
+  planNotes: string; // their own notes for the game plan
   pause: Pause | null; // the program is on hold: no reminders, no new sessions nudged
 };
 
@@ -65,4 +66,5 @@ export const emptyState: ProgramState = {
   days: [],
   urges: [],
   pause: null,
+  planNotes: '',
 };

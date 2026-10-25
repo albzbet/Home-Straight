@@ -44,7 +44,8 @@
         {
           "color": "#2F6F62"
         }
-      ]
+      ],
+      "expo-sharing"
     ],
     "scheme": "homestraight",
     "experiments": {

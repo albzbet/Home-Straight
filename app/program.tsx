@@ -1,6 +1,6 @@
 import { router } from 'expo-router';
 import { Pressable, View } from 'react-native';
-import { Card, Screen, Txt } from '@/components/ui';
+import { Button, Card, Screen, Txt } from '@/components/ui';
 import { lessons, weeks } from '@/lib/content';
 import { dayStatus, FREE_DAYS } from '@/lib/program';
 import { useStore } from '@/lib/store';
@@ -20,6 +20,9 @@ export default function Program() {
           <Txt variant="label">Week {w.week}</Txt>
           <Txt variant="h2">{w.theme}</Txt>
           <Txt variant="muted">{w.summary}</Txt>
+          {state.days.some((d) => d.day === w.week * 7) ? (
+            <Button label={`Week ${w.week} summary`} kind="secondary" onPress={() => router.push(`/week/${w.week}`)} />
+          ) : null}
           <View style={{ gap: space.xs }}>
             {lessons
               .filter((l) => l.week === w.week)

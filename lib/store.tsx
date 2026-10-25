@@ -23,6 +23,7 @@ type Store = {
   saveQuestionnaire: (q: Questionnaire) => Promise<void>;
   saveDay: (d: DayRecord) => Promise<void>;
   saveUrge: (u: UrgeLog) => Promise<void>;
+  savePlanNotes: (notes: string) => Promise<void>;
   setPause: (days: number | null | false) => Promise<void>; // days, null = until I come back, false = resume now
   deleteMyData: () => Promise<void>;
 };
@@ -145,6 +146,11 @@ export function StoreProvider({ children }: { children: ReactNode }) {
       update(
         (s) => ({ ...s, urges: [...s.urges, u] }),
         () => rpc('hs_save_urge', { p: u }),
+      ),
+    savePlanNotes: (planNotes) =>
+      update(
+        (s) => ({ ...s, planNotes }),
+        () => rpc('hs_save_member', { p: { planNotes } }),
       ),
     setPause: (days) => {
       const today = localDate();

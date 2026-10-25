@@ -97,7 +97,11 @@ export default function Session() {
       </>
     ) : step === 'done' ? (
       signedIn ? (
-        <Button label="Done for today" onPress={() => router.replace('/home')} />
+        day % 7 === 0 ? (
+          <Button label={`See your week ${day / 7} summary`} onPress={() => router.replace(`/week/${day / 7}`)} />
+        ) : (
+          <Button label="Done for today" onPress={() => router.replace('/home')} />
+        )
       ) : (
         <>
           <Button label="Save my progress" onPress={() => router.replace('/save-progress')} />
