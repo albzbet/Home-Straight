@@ -60,6 +60,10 @@ export type UrgeLog = {
   note: string;
 };
 
+// An if-then plan: "If it's payday, then I'll move money into savings first thing." remind: an optional weekly heads-up
+// (weekday 0 = Sunday ... 6 = Saturday, time "HH:MM").
+export type IfThenPlan = { id: string; when: string; then: string; remind: { weekday: number; time: string } | null; createdAt: string };
+
 // A weekly mission ticked off. weekOf: the Monday of the week it counts for.
 export type MissionDone = { missionId: string; weekOf: string; at: string };
 
@@ -72,6 +76,7 @@ export type ProgramState = {
   urges: UrgeLog[];
   checkins: DailyCheckin[];
   missions: MissionDone[];
+  plans: IfThenPlan[];
   planNotes: string; // their own notes for the game plan
   pause: Pause | null; // the program is on hold: no reminders, no new sessions nudged
 };
@@ -87,6 +92,7 @@ export const emptyState: ProgramState = {
   urges: [],
   checkins: [],
   missions: [],
+  plans: [],
   pause: null,
   planNotes: '',
 };

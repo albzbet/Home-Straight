@@ -1,14 +1,14 @@
 import { BebasNeue_400Regular } from '@expo-google-fonts/bebas-neue';
 import { Inter_400Regular, Inter_500Medium, Inter_600SemiBold, Inter_700Bold } from '@expo-google-fonts/inter';
 import { useFonts } from 'expo-font';
-import { DarkTheme, SplashScreen, Stack, ThemeProvider } from 'expo-router';
+import { DarkTheme, router, SplashScreen, Stack, ThemeProvider, type Href } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { AppLockGate } from '@/components/AppLock';
 import { AuthProvider } from '@/lib/auth';
 import { loadContent } from '@/lib/content';
-import { useReminderSync } from '@/lib/reminders';
+import { useReminderSync, useReminderTaps } from '@/lib/reminders';
 import { StoreProvider, useStore } from '@/lib/store';
 import { fonts, useTheme } from '@/lib/theme';
 
@@ -21,6 +21,7 @@ function RootStack() {
   const [fontsLoaded, fontError] = useFonts({ BebasNeue_400Regular, Inter_400Regular, Inter_500Medium, Inter_600SemiBold, Inter_700Bold });
   const ready = !loading && (fontsLoaded || !!fontError);
   useReminderSync(state, !loading);
+  useReminderTaps(useCallback((url: string) => router.push(url as Href), []));
   useEffect(() => {
     if (ready) SplashScreen.hideAsync();
   }, [ready]);
@@ -71,6 +72,7 @@ function RootStack() {
         <Stack.Screen name="missions" options={{ headerShown: true, title: '' }} />
         <Stack.Screen name="goal" options={{ headerShown: true, title: '' }} />
         <Stack.Screen name="betstop" options={{ headerShown: true, title: '' }} />
+        <Stack.Screen name="plans" options={{ headerShown: true, title: '' }} />
         <Stack.Screen name="more-life" />
         <Stack.Screen name="buddy" options={{ headerShown: false }} />
         <Stack.Screen name="admin/hardship" options={{ headerShown: true, title: '' }} />

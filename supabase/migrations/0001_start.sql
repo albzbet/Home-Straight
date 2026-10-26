@@ -139,9 +139,22 @@ create table if not exists public.mission_done (
   primary key (member_id, week_of, mission_id)
 );
 
+-- If-then plans: "If [a risky moment], then I'll [something else]", with an optional weekly heads-up on the phone.
+create table if not exists public.if_then_plans (
+  member_id uuid not null references public.members (id) on delete cascade,
+  id text not null check (char_length(id) between 1 and 60),
+  when_text bytea not null, -- encrypted
+  then_text bytea not null, -- encrypted
+  remind_weekday smallint check (remind_weekday between 0 and 6), -- 0 = Sunday
+  remind_time text check (remind_time ~ '^\d{2}:\d{2}$'),
+  created_at timestamptz not null default now(),
+  primary key (member_id, id)
+);
+
 alter table public.members enable row level security;
 alter table public.daily_checkins enable row level security;
 alter table public.mission_done enable row level security;
+alter table public.if_then_plans enable row level security;
 alter table public.urge_logs enable row level security;
 alter table public.questionnaires enable row level security;
 alter table public.day_progress enable row level security;
@@ -189,7 +202,11 @@ language sql stable security definer set search_path = public as $$
         'passed', u.passed, 'helped', to_jsonb(u.helped), 'note', coalesce(private.dec(u.note), '')) order by u.started_at)
         from public.urge_logs u where u.member_id = auth.uid()), '[]'::jsonb),
     'missions', coalesce((select jsonb_agg(jsonb_build_object('missionId', x.mission_id, 'weekOf', x.week_of, 'at', x.done_at)
-        order by x.done_at) from public.mission_done x where x.member_id = auth.uid()), '[]'::jsonb))
+        order by x.done_at) from public.mission_done x where x.member_id = auth.uid()), '[]'::jsonb),
+    'plans', coalesce((select jsonb_agg(jsonb_build_object('id', f.id, 'when', private.dec(f.when_text), 'then', private.dec(f.then_text),
+        'remind', case when f.remind_weekday is null then null
+          else jsonb_build_object('weekday', f.remind_weekday, 'time', f.remind_time) end,
+        'createdAt', f.created_at) order by f.created_at) from public.if_then_plans f where f.member_id = auth.uid()), '[]'::jsonb))
   from (select auth.uid() as uid) me
   left join public.members m on m.id = me.uid
   where me.uid is not null
@@ -346,6 +363,34 @@ begin
   end if;
 end $$;
 
+-- Saves an if-then plan (new or changed). p: { id, when, then, remind: { weekday, time } | null, createdAt }. Up to 20 each.
+create or replace function public.hs_save_plan(p jsonb) returns void
+language plpgsql security definer set search_path = public as $$
+declare
+  uid uuid := auth.uid();
+begin
+  if uid is null then raise exception 'not signed in'; end if;
+  if nullif(btrim(p ->> 'when'), '') is null or nullif(btrim(p ->> 'then'), '') is null then raise exception 'empty plan'; end if;
+  insert into public.members (id) values (uid) on conflict (id) do nothing;
+  if not exists (select 1 from public.if_then_plans where member_id = uid and id = p ->> 'id')
+     and (select count(*) from public.if_then_plans where member_id = uid) >= 20 then
+    raise exception 'too many plans';
+  end if;
+  insert into public.if_then_plans (member_id, id, when_text, then_text, remind_weekday, remind_time, created_at)
+  values (uid, p ->> 'id', private.enc(left(p ->> 'when', 120)), private.enc(left(p ->> 'then', 200)),
+    (p -> 'remind' ->> 'weekday')::smallint, p -> 'remind' ->> 'time', coalesce((p ->> 'createdAt')::timestamptz, now()))
+  on conflict (member_id, id) do update set
+    when_text = excluded.when_text, then_text = excluded.then_text,
+    remind_weekday = excluded.remind_weekday, remind_time = excluded.remind_time;
+end $$;
+
+create or replace function public.hs_delete_plan(plan_id text) returns void
+language plpgsql security definer set search_path = public as $$
+begin
+  if auth.uid() is null then raise exception 'not signed in'; end if;
+  delete from public.if_then_plans where member_id = auth.uid() and id = plan_id;
+end $$;
+
 -- Moves a "try first" Day 1 from the phone into a new account. Does nothing if the account already has a program.
 -- p: { nickname, adultConfirmed, onboarding, questionnaires: [...], days: [...] }
 create or replace function public.hs_import_guest(p jsonb) returns boolean
@@ -372,6 +417,9 @@ begin
   for x in select * from jsonb_array_elements(coalesce(p -> 'missions', '[]'::jsonb)) loop
     perform public.hs_save_mission(x);
   end loop;
+  for x in select * from jsonb_array_elements(coalesce(p -> 'plans', '[]'::jsonb)) loop
+    perform public.hs_save_plan(x);
+  end loop;
   return true;
 end $$;
 
@@ -385,7 +433,9 @@ end $$;
 
 revoke execute on function public.hs_my_state(), public.hs_save_member(jsonb), public.hs_save_questionnaire(jsonb),
   public.hs_save_day(jsonb), public.hs_save_urge(jsonb), public.hs_set_pause(jsonb), public.hs_import_guest(jsonb),
-  public.hs_save_checkin(jsonb), public.hs_save_mission(jsonb), public.hs_restart_program(), public.hs_delete_my_data() from public, anon;
+  public.hs_save_checkin(jsonb), public.hs_save_mission(jsonb), public.hs_save_plan(jsonb), public.hs_delete_plan(text), public.hs_restart_program(),
+  public.hs_delete_my_data() from public, anon;
 grant execute on function public.hs_my_state(), public.hs_save_member(jsonb), public.hs_save_questionnaire(jsonb),
   public.hs_save_day(jsonb), public.hs_save_urge(jsonb), public.hs_set_pause(jsonb), public.hs_import_guest(jsonb),
-  public.hs_save_checkin(jsonb), public.hs_save_mission(jsonb), public.hs_restart_program(), public.hs_delete_my_data() to authenticated;
+  public.hs_save_checkin(jsonb), public.hs_save_mission(jsonb), public.hs_save_plan(jsonb), public.hs_delete_plan(text), public.hs_restart_program(),
+  public.hs_delete_my_data() to authenticated;

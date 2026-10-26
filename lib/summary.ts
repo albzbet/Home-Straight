@@ -1,3 +1,4 @@
+import { planLine } from './plans';
 import { gambleDates } from './progress';
 import { localDate } from './program';
 import type { ProgramState } from './types';
@@ -63,6 +64,7 @@ export function questionnaireChange(state: ProgramState): { better: number; same
 export type GamePlan = {
   why: string[];
   triggers: string[];
+  ifThen: string[]; // "Payday → I'll move money into savings first thing"
   whatHelps: string[];
   myActions: string[];
   ifISlip: string[];
@@ -83,6 +85,7 @@ export function gamePlan(state: ProgramState): GamePlan {
   return {
     why: [...(o?.whyChoices ?? []), ...(o?.whyText ? [o.whyText] : [])],
     triggers: ranked([...(o?.riskyTimes ?? []), ...state.urges.flatMap((u) => u.triggers)]),
+    ifThen: state.plans.map(planLine),
     whatHelps: ranked(state.urges.filter((u) => u.passed !== 'gambled').flatMap((u) => u.helped)).slice(0, 6),
     myActions: ranked(state.days.map((d) => d.action)).slice(0, 8),
     ifISlip: ranked(state.days.map((d) => d.slipDifferent ?? '')).slice(0, 5),

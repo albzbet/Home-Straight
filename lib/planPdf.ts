@@ -19,6 +19,7 @@ export function planHtml(plan: GamePlan, notes: string, name: string | null): st
     <h1>${name ? `${esc(name)}'s plan` : 'My plan'}</h1>
     ${section('Why I’m doing this', plan.why)}
     ${section('My risky times', plan.triggers)}
+    ${section('My if-then plans', plan.ifThen)}
     ${section('What helps when an urge hits', plan.whatHelps)}
     ${section('Things that work for me', plan.myActions)}
     ${section('If I slip, I’ll', plan.ifISlip)}

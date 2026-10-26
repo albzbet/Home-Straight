@@ -4,6 +4,7 @@ import { AndroidImportance } from 'expo-notifications';
 import { useEffect, useState } from 'react';
 import { Platform } from 'react-native';
 import { config } from './config';
+import { planNudges } from './plans';
 import { reminderPlan } from './reminderPlan';
 import type { ProgramState } from './types';
 
@@ -58,6 +59,31 @@ export async function scheduleReminders(state: ProgramState) {
       trigger: { type: Notifications.SchedulableTriggerInputTypes.DATE, date: p.at, channelId: 'reminders' },
     });
   }
+  // If-then plan heads-ups, every week at the time they picked. Tapping one opens their plans.
+  for (const n of planNudges(state)) {
+    await Notifications.scheduleNotificationAsync({
+      content: { title: r.plan.title, body: r.plan.body, data: { url: '/plans' } },
+      trigger: {
+        type: Notifications.SchedulableTriggerInputTypes.WEEKLY,
+        weekday: n.weekday + 1, // the phone counts Sunday as 1
+        hour: n.hour,
+        minute: n.minute,
+        channelId: 'reminders',
+      },
+    });
+  }
+}
+
+// Opens the screen a tapped reminder points to (only the plan heads-up has one, /plans).
+export function useReminderTaps(open: (url: string) => void) {
+  useEffect(() => {
+    if (!supported) return;
+    const sub = Notifications.addNotificationResponseReceivedListener((res) => {
+      const url = res.notification.request.content.data?.url;
+      if (typeof url === 'string' && url.startsWith('/')) open(url);
+    });
+    return () => sub.remove();
+  }, [open]);
 }
 
 // Keeps the phone's reminders in step with the program. Re-run whenever their data changes.

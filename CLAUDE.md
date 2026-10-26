@@ -76,6 +76,11 @@ what's next. Plain English, click-by-click steps.
   `config.betstop`, facts checked 26 Oct 2026): `BetstopCard` (`components/Betstop.tsx`) straight after picking it in
   onboarding and on Home until they tick "I've signed up" (`onboarding.betstopAt`, `members.betstop_at` in 0001);
   `app/betstop.tsx` (how it works, other barriers: bank block, blocking apps, clear the decks), also from More.
+- If-then plans (`app/plans.tsx`, More > If-then plans, a Home card after Day 1 until they have one): "If [risky moment],
+  then I'll [something else]" in three steps (their onboarding risky times first, marked Yours; ideas per moment from
+  `config.plans`; own words allowed and crisis-checked), optional weekly heads-up (`planNudges` in `lib/plans.ts`, WEEKLY local
+  notification, wording `config.reminders.plan`, tapping opens /plans via `useReminderTaps`; none while paused). Shown in Urge
+  SOS and the game plan / PDF (`planLine`). Saved encrypted in `if_then_plans` (`hs_save_plan` / `hs_delete_plan`, up to 20).
   Photos are listed in `lib/images.ts` (null = not arrived yet; `Photo` shows a plain dark space). `Tile` for quick access.
 
 ## Where things are

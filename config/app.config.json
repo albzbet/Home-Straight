@@ -287,6 +287,34 @@
       "...have you felt guilty about the way you gamble, or what happens when you gamble?"
     ]
   },
+  "plans": {
+    "_readme": "If-then plans: 'If [a risky moment], then I'll [something else].' The 'if' choices are the risky times from onboarding (their own first) plus 'extraWhens'. 'suggestions' are the 'then' ideas: those listed under a risky time come first for it, then 'anytime'. 'times' are the choices for the optional weekly heads-up. Members can always write their own.",
+    "extraWhens": ["Friday arvo after work", "When an ad or offer pops up", "When I want to win back what I've lost", "After an argument"],
+    "suggestions": {
+      "Payday": [
+        "Move money into savings first thing",
+        "Pay the bills before anything else",
+        "Ask someone I trust to hold my card for the day"
+      ],
+      "Weekends": ["Get out of the house early with a plan for the day", "Catch up with a mate"],
+      "Evenings": ["Go for a walk after dinner", "Put my phone on charge in another room"],
+      "Live sport": ["Watch it with mates who don't bet", "Delete the apps before the game starts"],
+      "After a few drinks": ["Leave my card at home before I go out", "Head home before the last round"],
+      "When I'm stressed": ["Open Urge SOS and breathe for 3 minutes", "Go for a walk or a run"],
+      "When I'm bored": ["Start something I've been putting off", "Ring someone for a chat"],
+      "When I'm on my own": ["Text a mate", "Get out of the house: a walk, the gym, the shops"],
+      "When an ad or offer pops up": ["Unsubscribe or block it straight away", "Close the app and put the phone down"],
+      "When I want to win back what I've lost": ["Remind myself the money's gone and chasing it costs more", "Open Urge SOS"],
+      "anytime": [
+        "Open Urge SOS and ride it out",
+        "Go for a walk or a run",
+        "Call or text a mate",
+        "Have a shower, then decide",
+        "Do something with my hands: cook, fix, build"
+      ]
+    },
+    "times": ["07:00", "12:00", "16:00", "18:00", "20:00"]
+  },
   "betstop": {
     "_readme": "BetStop, Australia's free national self-exclusion register (run by the ACMA). Recommended to everyone who picks 'Stop completely' (onboarding, a Home card until they've signed up) and open to everyone from More. Facts checked 26 Oct 2026 against acma.gov.au; check again before launch.",
     "url": "https://www.betstop.gov.au",
@@ -399,6 +427,10 @@
     "welcomeBack": {
       "title": "Welcome back",
       "body": "Here's a 5-minute catch-up whenever you're ready."
+    },
+    "plan": {
+      "title": "A heads-up",
+      "body": "You made a plan for around now. Tap to see it."
     },
     "resume": {
       "title": "Ready when you are",

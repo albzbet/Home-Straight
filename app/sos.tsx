@@ -8,6 +8,7 @@ import { Button, Card, Chip, Field, PrimaryButton, Row, Screen, Txt } from '@/co
 import { config } from '@/lib/config';
 import { money } from '@/lib/format';
 import { useReducedMotion } from '@/lib/motion';
+import { planLine } from '@/lib/plans';
 import { useStore } from '@/lib/store';
 import { countUsage } from '@/lib/usage';
 import { fonts, radius, space, useTheme } from '@/lib/theme';
@@ -266,6 +267,18 @@ export default function Sos() {
             </Card>
           ) : null}
         </>
+      ) : null}
+
+      {/* Their if-then plans: what they decided ahead of time to do in a moment like this. */}
+      {state.plans.length ? (
+        <Card raised>
+          <Txt variant="label">Your plan for moments like this</Txt>
+          {state.plans.slice(0, 3).map((p) => (
+            <Txt key={p.id} style={{ fontFamily: fonts.semibold }}>
+              {planLine(p)}
+            </Txt>
+          ))}
+        </Card>
       ) : null}
 
       {/* Talk to someone. */}

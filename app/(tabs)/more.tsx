@@ -10,6 +10,7 @@ type IconName = keyof typeof Ionicons.glyphMap;
 const ITEMS: { label: string; icon: IconName; href: Href }[] = [
   { label: 'Get help now', icon: 'call', href: '/help' },
   { label: 'Your goal', icon: 'flag', href: '/goal' },
+  { label: 'If-then plans', icon: 'git-branch', href: '/plans' },
   { label: "What it's all about", icon: 'sunny', href: '/more-life' },
   { label: 'Block betting (BetStop)', icon: 'shield-checkmark', href: '/betstop' },
   { label: 'Your game plan', icon: 'document-text', href: '/plan' },

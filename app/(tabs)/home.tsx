@@ -148,6 +148,15 @@ export default function Home() {
       {/* Stopping completely and not on BetStop yet: recommend it until they tick it off on the BetStop screen. */}
       {o.goal === 'quit' && !o.betstopAt ? <BetstopCard /> : null}
 
+      {/* No if-then plans yet: suggest making one (after Day 1, so the first morning isn't crowded). */}
+      {!state.plans.length && state.days.length > 0 ? (
+        <Card>
+          <Txt variant="label">Plan ahead</Txt>
+          <Txt>Pick a risky moment and decide now what you'll do instead. It takes a minute.</Txt>
+          <Button label="Make an if-then plan" kind="secondary" icon="git-branch" onPress={() => router.push('/plans')} />
+        </Card>
+      ) : null}
+
       {/* Quick access. */}
       <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: space.md }}>
         <Tile icon="pulse" color={th.sos} title="Urge SOS" sub="Get support now" onPress={() => router.push('/sos')} />
