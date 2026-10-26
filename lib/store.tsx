@@ -8,6 +8,7 @@ import {
   emptyState,
   type DailyCheckin,
   type DayRecord,
+  type FutureYou,
   type IfThenPlan,
   type MissionDone,
   type Onboarding,
@@ -39,6 +40,7 @@ type Store = {
   saveMission: (m: MissionDone, done: boolean) => Promise<void>; // done false takes the tick off again
   savePlan: (p: IfThenPlan) => Promise<void>;
   deletePlan: (id: string) => Promise<void>;
+  saveFutureYou: (f: FutureYou) => Promise<void>;
   restartProgram: () => Promise<void>;
   setPause: (days: number | null | false) => Promise<void>; // days, null = until I come back, false = resume now
   deleteMyData: () => Promise<void>;
@@ -190,6 +192,11 @@ export function StoreProvider({ children }: { children: ReactNode }) {
       update(
         (s) => ({ ...s, plans: s.plans.filter((x) => x.id !== id) }),
         () => rpc('hs_delete_plan', { plan_id: id }),
+      ),
+    saveFutureYou: (f) =>
+      update(
+        (s) => ({ ...s, futureYou: f }),
+        () => rpc('hs_save_future_you', { p: f }),
       ),
     // Start the sessions again. Their check-ins are kept (as daily check-ins), so gamble-free days don't change.
     restartProgram: () =>

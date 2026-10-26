@@ -73,6 +73,7 @@ function RootStack() {
         <Stack.Screen name="goal" options={{ headerShown: true, title: '' }} />
         <Stack.Screen name="betstop" options={{ headerShown: true, title: '' }} />
         <Stack.Screen name="plans" options={{ headerShown: true, title: '' }} />
+        <Stack.Screen name="future-you" options={{ headerShown: true, title: '' }} />
         <Stack.Screen name="more-life" />
         <Stack.Screen name="buddy" options={{ headerShown: false }} />
         <Stack.Screen name="admin/hardship" options={{ headerShown: true, title: '' }} />

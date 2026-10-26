@@ -250,6 +250,12 @@ export default function Sos() {
               <Txt>{r.reply}</Txt>
             </Card>
           ))}
+          {state.futureYou?.letter ? (
+            <Card raised>
+              <Txt variant="label">From future you</Txt>
+              <Txt variant="h2">"{state.futureYou.letter}"</Txt>
+            </Card>
+          ) : null}
           {why ? (
             <Card raised>
               <Txt variant="label">Your why</Txt>

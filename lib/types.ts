@@ -64,6 +64,9 @@ export type UrgeLog = {
 // (weekday 0 = Sunday ... 6 = Saturday, time "HH:MM").
 export type IfThenPlan = { id: string; when: string; then: string; remind: { weekday: number; time: string } | null; createdAt: string };
 
+// The "Future you" exercise: answers to the picture-it questions (same order as config.futureYou.prompts) and a letter.
+export type FutureYou = { horizon: string; answers: string[]; letter: string; at: string };
+
 // A weekly mission ticked off. weekOf: the Monday of the week it counts for.
 export type MissionDone = { missionId: string; weekOf: string; at: string };
 
@@ -77,6 +80,7 @@ export type ProgramState = {
   checkins: DailyCheckin[];
   missions: MissionDone[];
   plans: IfThenPlan[];
+  futureYou: FutureYou | null; // the latest time they did it
   planNotes: string; // their own notes for the game plan
   pause: Pause | null; // the program is on hold: no reminders, no new sessions nudged
 };
@@ -93,6 +97,7 @@ export const emptyState: ProgramState = {
   checkins: [],
   missions: [],
   plans: [],
+  futureYou: null,
   pause: null,
   planNotes: '',
 };

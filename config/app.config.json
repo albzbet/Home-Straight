@@ -287,6 +287,29 @@
       "...have you felt guilty about the way you gamble, or what happens when you gamble?"
     ]
   },
+  "futureYou": {
+    "_readme": "The 'Future you' exercise: picture a good day some time from now in real detail, then write a few lines from future you. {horizon} is filled in with the time they pick. PLACEHOLDER wording until a psychologist has checked it.",
+    "intro": "Picturing your future in real detail makes it easier to choose it over a quick bet today. Take a few minutes, and imagine it like a movie: small, real details work best.",
+    "horizons": ["6 months", "1 year", "5 years"],
+    "prompts": [
+      {
+        "q": "It's {horizon} from now and life's going well. Where are you, and what can you see around you?",
+        "placeholder": "e.g. On the back deck on a Saturday morning, coffee in hand"
+      },
+      { "q": "Who's with you? What are you doing together?", "placeholder": "e.g. The kids are in the pool and I'm actually there for it" },
+      {
+        "q": "What's different about money now? What has it gone towards?",
+        "placeholder": "e.g. The car's paid off and there's a bit put away"
+      },
+      {
+        "q": "How do you feel when you wake up in the morning?",
+        "placeholder": "e.g. Clear headed. No checking my phone with a knot in my gut"
+      },
+      { "q": "Looking back, what are you glad you did?", "placeholder": "e.g. Signed up to BetStop and stuck with the mornings" }
+    ],
+    "letter": "Now write a few lines from future you to you today. What would they want you to know?",
+    "letterPlaceholder": "e.g. Mate, hang in there. It gets easier, and it's worth it."
+  },
   "plans": {
     "_readme": "If-then plans: 'If [a risky moment], then I'll [something else].' The 'if' choices are the risky times from onboarding (their own first) plus 'extraWhens'. 'suggestions' are the 'then' ideas: those listed under a risky time come first for it, then 'anytime'. 'times' are the choices for the optional weekly heads-up. Members can always write their own.",
     "extraWhens": ["Friday arvo after work", "When an ad or offer pops up", "When I want to win back what I've lost", "After an argument"],

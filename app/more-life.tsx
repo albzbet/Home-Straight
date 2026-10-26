@@ -4,7 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Kelpie } from '@/components/Brand';
 import { GetHelpButton, SosButton } from '@/components/GetHelpButton';
 import { Photo } from '@/components/Photo';
-import { PrimaryButton } from '@/components/ui';
+import { Button, PrimaryButton } from '@/components/ui';
 import { config } from '@/lib/config';
 import { money } from '@/lib/format';
 import { photos } from '@/lib/images';
@@ -20,6 +20,8 @@ export default function MoreLife() {
   const { state } = useStore();
   const o = state.onboarding;
   const p = progress(state);
+  // Their note from the Future you exercise if they've done it (else its first answer); otherwise their why.
+  const future = state.futureYou?.letter || state.futureYou?.answers.find(Boolean);
   const why = o?.whyText.trim() || o?.whyChoices[0];
   const facts = [
     `${p.gambleFreeDays} gamble-free ${p.gambleFreeDays === 1 ? 'day' : 'days'}`,
@@ -54,13 +56,22 @@ export default function MoreLife() {
               {config.moreLife.lines.map((l) => l.toUpperCase()).join('\n')}
             </Text>
             {facts.length ? <Text style={{ fontFamily: fonts.semibold, fontSize: 16, color: t.success }}>{facts.join(' · ')}</Text> : null}
-            {why ? (
+            {future ? (
+              <Text style={{ fontFamily: fonts.body, fontSize: 15, lineHeight: 22, color: t.textMuted }}>
+                From future you: <Text style={{ color: t.text }}>"{future}"</Text>
+              </Text>
+            ) : why ? (
               <Text style={{ fontFamily: fonts.body, fontSize: 15, lineHeight: 22, color: t.textMuted }}>
                 Why you started: <Text style={{ color: t.text }}>{why}</Text>
               </Text>
             ) : null}
           </View>
           <PrimaryButton label="Keep going" onPress={keepGoing} />
+          <Button
+            label={state.futureYou ? 'See future you' : 'Picture future you'}
+            kind="ghost"
+            onPress={() => router.push('/future-you')}
+          />
         </View>
       </SafeAreaView>
     </View>

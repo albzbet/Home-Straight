@@ -81,6 +81,10 @@ what's next. Plain English, click-by-click steps.
   `config.plans`; own words allowed and crisis-checked), optional weekly heads-up (`planNudges` in `lib/plans.ts`, WEEKLY local
   notification, wording `config.reminders.plan`, tapping opens /plans via `useReminderTaps`; none while paused). Shown in Urge
   SOS and the game plan / PDF (`planLine`). Saved encrypted in `if_then_plans` (`hs_save_plan` / `hs_delete_plan`, up to 20).
+- Future you (`app/future-you.tsx`, More > Future you and a link on More life): pick 6 months / 1 year / 5 years, picture a good
+  day one question at a time (`config.futureYou.prompts`, placeholder wording), then a note from future you. Latest only, in
+  `future_you` (encrypted, `hs_save_future_you`, `state.futureYou`). The note shows on More life (instead of their why) and
+  in Urge SOS > Reframe.
   Photos are listed in `lib/images.ts` (null = not arrived yet; `Photo` shows a plain dark space). `Tile` for quick access.
 
 ## Where things are
