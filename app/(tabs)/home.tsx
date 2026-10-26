@@ -1,6 +1,7 @@
 import { Ionicons } from '@expo/vector-icons';
 import { Redirect, router } from 'expo-router';
 import { Pressable, Text, View } from 'react-native';
+import { BetstopCard } from '@/components/Betstop';
 import { Photo } from '@/components/Photo';
 import { Tile } from '@/components/Tile';
 import { Button, Card, ProgressBar, Screen, StatCard, Txt } from '@/components/ui';
@@ -143,6 +144,9 @@ export default function Home() {
           Day {t.day}: {next.title} · about 10 minutes, or 5 on a busy day
         </Txt>
       ) : null}
+
+      {/* Stopping completely and not on BetStop yet: recommend it until they tick it off on the BetStop screen. */}
+      {o.goal === 'quit' && !o.betstopAt ? <BetstopCard /> : null}
 
       {/* Quick access. */}
       <View style={{ flexDirection: 'row', flexWrap: 'wrap', gap: space.md }}>

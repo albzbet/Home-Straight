@@ -26,7 +26,7 @@ This policy is on top of your rights under the Australian Consumer Law, not inst
 
 export const privacyPolicy = `PLACEHOLDER. This is not the real privacy policy.
 
-What we collect: a nickname, how you sign in (Apple, Google or email), your answers in the program (goals, check-ins, plans and questionnaire answers), and, only if you add one, your buddy's email address.
+What we collect: a nickname, how you sign in (Apple, Google or email), your answers in the program (goals, check-ins, plans and questionnaire answers), whether you've ticked that you signed up to BetStop (we never contact BetStop or see your registration), and, only if you add one, your buddy's email address.
 
 How we protect it: everything is treated as sensitive health information. Only you can see your answers. The things you write in your own words are encrypted in our database.
 

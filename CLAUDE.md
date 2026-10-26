@@ -71,6 +71,11 @@ what's next. Plain English, click-by-click steps.
   More life (`app/more-life.tsx`, mockup screen 10): photo in the top two thirds (`photos.moreLife`, the welcome photo until its own arrives) with `config.moreLife.lines`, their
   gamble-free days, money kept and why; after every week summary (`?next=home|finish`) and from More > What it's all about.
   All ten mockup screens are now built.
+- Stopping completely is recommended (owner, 26 Oct 2026): the onboarding goal "Stop completely" (id `quit`) has a
+  Recommended badge (`recommended` in `config.onboarding.goals`, `Choice badge`). BetStop (national self-exclusion register,
+  `config.betstop`, facts checked 26 Oct 2026): `BetstopCard` (`components/Betstop.tsx`) straight after picking it in
+  onboarding and on Home until they tick "I've signed up" (`onboarding.betstopAt`, `members.betstop_at` in 0001);
+  `app/betstop.tsx` (how it works, other barriers: bank block, blocking apps, clear the decks), also from More.
   Photos are listed in `lib/images.ts` (null = not arrived yet; `Photo` shows a plain dark space). `Tile` for quick access.
 
 ## Where things are

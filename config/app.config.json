@@ -29,8 +29,9 @@
     "goals": [
       {
         "id": "quit",
-        "label": "Quit",
-        "detail": "Stop gambling altogether",
+        "label": "Stop completely",
+        "detail": "No more gambling at all",
+        "recommended": true,
         "insight": {
           "title": "Urges fade the less you feed them",
           "text": "An urge can feel like it'll last forever, but most rise, peak and pass within about half an hour. Every time you ride one out, the next one tends to be a bit easier. Week 4 is all about this."
@@ -284,6 +285,31 @@
       "...have people criticised your betting or said you had a problem?",
       "...has your gambling caused money problems for you or your household?",
       "...have you felt guilty about the way you gamble, or what happens when you gamble?"
+    ]
+  },
+  "betstop": {
+    "_readme": "BetStop, Australia's free national self-exclusion register (run by the ACMA). Recommended to everyone who picks 'Stop completely' (onboarding, a Home card until they've signed up) and open to everyone from More. Facts checked 26 Oct 2026 against acma.gov.au; check again before launch.",
+    "url": "https://www.betstop.gov.au",
+    "intro": "BetStop is a free register run by the Australian Government. Sign up once and you're blocked from every licensed online and phone betting company in Australia.",
+    "facts": [
+      "It covers all licensed online and phone betting companies, about 150 of them. They have to close your accounts, refuse new ones and stop sending you offers.",
+      "You choose how long: from 3 months up to the rest of your life. You can make it longer any time, but not shorter.",
+      "You'll need a few minutes and some ID to confirm it's you.",
+      "It doesn't cover pokies or casinos. For those, ask the venue about self-exclusion, or call Gambling Help Online on 1800 858 858."
+    ],
+    "more": [
+      {
+        "title": "Block gambling on your bank card",
+        "text": "Most big Australian banks let you block gambling payments in their app. Look under card settings or ask your bank."
+      },
+      {
+        "title": "Add a blocking app",
+        "text": "Apps like Gamban or BetBlocker stop betting sites and apps opening on your phone and computer."
+      },
+      {
+        "title": "Clear the decks",
+        "text": "Delete betting apps, unsubscribe from their emails and texts, and unfollow them on social media."
+      }
     ]
   },
   "goals": {

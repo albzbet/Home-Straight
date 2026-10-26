@@ -10,6 +10,7 @@ export type Onboarding = {
   weeklySpend: number | null; // average weekly spend on gambling, in dollars
   savingFor: string; // e.g. "A trip to Bali"
   savingTarget: number | null;
+  betstopAt?: string | null; // when they told us they'd signed up to BetStop (null = not yet)
   goalSince?: string | null; // YYYY-MM-DD the current goal was set; money kept counts towards it from then (null = the start)
   riskyTimes: string[];
   payday: string;

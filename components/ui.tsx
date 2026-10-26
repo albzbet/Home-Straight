@@ -142,7 +142,19 @@ export function Button({
 }
 
 // A choice people tap: one of several (radio) or many (checkbox).
-export function Choice({ label, detail, selected, onPress }: { label: string; detail?: string; selected: boolean; onPress: () => void }) {
+export function Choice({
+  label,
+  detail,
+  selected,
+  onPress,
+  badge,
+}: {
+  label: string;
+  detail?: string;
+  selected: boolean;
+  onPress: () => void;
+  badge?: string; // a small copper tag next to the label, e.g. "Recommended"
+}) {
   const t = useTheme();
   return (
     <Pressable
@@ -158,7 +170,27 @@ export function Choice({ label, detail, selected, onPress }: { label: string; de
         paddingHorizontal: space.lg,
       }}
     >
-      <Text style={{ color: t.text, fontSize: 16, fontFamily: selected ? fonts.semibold : fonts.medium }}>{label}</Text>
+      <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.sm, flexWrap: 'wrap' }}>
+        <Text style={{ color: t.text, fontSize: 16, fontFamily: selected ? fonts.semibold : fonts.medium }}>{label}</Text>
+        {badge ? (
+          <Text
+            style={{
+              color: t.onPrimary,
+              backgroundColor: t.primary,
+              fontSize: 11,
+              fontFamily: fonts.semibold,
+              letterSpacing: 0.5,
+              textTransform: 'uppercase',
+              borderRadius: radius.pill,
+              overflow: 'hidden',
+              paddingHorizontal: 8,
+              paddingVertical: 2,
+            }}
+          >
+            {badge}
+          </Text>
+        ) : null}
+      </View>
       {detail ? <Text style={{ color: t.textMuted, fontSize: 14, marginTop: 2, fontFamily: fonts.body }}>{detail}</Text> : null}
     </Pressable>
   );

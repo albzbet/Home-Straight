@@ -1,6 +1,7 @@
 import { router } from 'expo-router';
 import { useState } from 'react';
 import { View } from 'react-native';
+import { BetstopCard } from '@/components/Betstop';
 import { useCrisisGate } from '@/components/Help';
 import { blankAnswers, Questions } from '@/components/Questions';
 import { Button, Card, Chip, Choice, Field, Row, Screen, ProgressBar, Txt } from '@/components/ui';
@@ -54,6 +55,7 @@ export default function Onboarding() {
   const [buddyEmail, setBuddyEmail] = useState('');
   const [buddyConsent, setBuddyConsent] = useState(false);
   const [answers, setAnswers] = useState(blankAnswers);
+  const [betstop, setBetstop] = useState(false);
 
   const name = STEPS[step]!;
   const isCard = name.endsWith('Card');
@@ -87,6 +89,7 @@ export default function Onboarding() {
       reminderTime: time,
       buddyEmail: buddyConsent ? buddyEmail.trim() : '',
       buddyConsent: buddyConsent && !!buddyEmail.trim(),
+      betstopAt: goal === 'quit' && betstop ? new Date().toISOString() : null,
       completedAt: new Date().toISOString(),
     };
     try {
@@ -142,9 +145,19 @@ export default function Onboarding() {
       {name === 'goal' && (
         <>
           <Txt variant="title">What would you like to do?</Txt>
-          <Txt variant="muted">There's no wrong answer, and you can change it later.</Txt>
+          <Txt variant="muted">
+            We recommend stopping completely: a clear line is easier to hold than trying to keep gambling in check. But it's your call, and
+            there's no wrong answer.
+          </Txt>
           {o.goals.map((g) => (
-            <Choice key={g.id} label={g.label} detail={g.detail} selected={goal === g.id} onPress={() => setGoal(g.id as Goal)} />
+            <Choice
+              key={g.id}
+              label={g.label}
+              detail={g.detail}
+              badge={'recommended' in g && g.recommended ? 'Recommended' : undefined}
+              selected={goal === g.id}
+              onPress={() => setGoal(g.id as Goal)}
+            />
           ))}
         </>
       )}
@@ -159,6 +172,18 @@ export default function Onboarding() {
               <Txt>{c.text}</Txt>
             </Card>
           ))}
+          {/* Stopping completely: BetStop, recommended. They can sign up now (it opens the website) or later from Home. */}
+          {name === 'goalCard' && goal === 'quit' ? (
+            <>
+              <BetstopCard onMore={false} />
+              <Choice
+                label="I've signed up to BetStop"
+                detail="Tick this when you're done. No rush: you'll find it on Home too."
+                selected={betstop}
+                onPress={() => setBetstop(!betstop)}
+              />
+            </>
+          ) : null}
         </View>
       )}
 
