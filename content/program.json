@@ -1,5 +1,5 @@
 {
-  "_readme": "All lesson content for the 6-week program. Edit the words freely; keep the field names. Put a link in \"url\" once a video or audio file is ready (leave it null until then). Change \"reviewStatus\" to \"approved\" once a psychologist has checked a day.",
+  "_readme": "All lesson content for the 8-week program. Edit the words freely; keep the field names. Put a link in \"url\" once a video or audio file is ready (leave it null until then). Change \"reviewStatus\" to \"approved\" once a psychologist has checked a day. \"reviewStatus\": \"placeholder\" (not written yet), \"draft\" (written, waiting for a psychologist) or \"approved\".",
   "weeks": [
     {
       "week": 1,
@@ -47,27 +47,27 @@
       "day": 1,
       "week": 1,
       "title": "Welcome: why you're here",
-      "reviewStatus": "placeholder",
+      "reviewStatus": "draft",
       "video": {
         "url": null,
-        "script": "G'day, and welcome. Deciding to take a look at your gambling takes guts, and you've already done the hardest part: you've started. Over the next eight weeks you'll spend about ten minutes each morning on a short lesson, a quick check-in and one small thing to try that day. There's no falling behind here. If you miss a day, you just pick up where you left off."
+        "script": "G'day, and welcome to homestr8.\n\nDeciding to take a hard look at your gambling takes guts, and you've already done the hardest part: you've started.\n\nHere's how it works. Each morning, about ten minutes. A short video like this one, a guided audio, a quick check-in, and one small thing to try that day. Busy morning? There's a five-minute version.\n\nThere's no falling behind. Miss a day and the next session simply waits for you.\n\nTwo buttons are always there. Urge SOS, for when an urge hits. And Get help now, if you need a real person, any time of day or night.\n\nToday is about one thing: why you're here. Let's find it."
       },
       "audio": {
         "url": null,
         "kind": "lesson",
         "minutes": 6,
         "title": "Why you're here",
-        "script": "Find a comfortable spot and take a slow breath in... and out.\n\nToday is about your why. Think about the reason you opened this app. Maybe it's your family, your money, your health, or just wanting to feel in control again.\n\nPicture that reason clearly. Who's there? What does life look like when gambling isn't calling the shots?\n\nHang on to that picture. On the tough days, it's what you'll come back to. You don't need to have everything worked out. You just need to keep showing up, one morning at a time."
+        "script": "Find a comfortable spot, somewhere you won't be interrupted for a few minutes. Sit back, let your shoulders drop, and take a slow breath in... and let it go.\n\nOne more. In through your nose... and out, nice and slow.\n\nWelcome. Before we talk about anything else, I want to say this: wanting to change your relationship with gambling doesn't make you weak, and it doesn't make you a bad person. Gambling is designed, very cleverly, to keep people coming back. Plenty of good, smart, hard-working people get caught up in it. What matters now is what you do next, and you're already doing it.\n\nToday we're going to find your why. Your why is the reason you opened this app. It's the thing that will carry you through the tough days, so it's worth taking a few minutes to get it clear.\n\nLet's start simply. Think about the moment you decided to download homestr8. What was going on? Maybe it was a big loss. Maybe it was a quiet feeling that's been building for a while. Maybe someone said something that stuck with you. There's no right answer. Just notice what comes up.\n\nNow let's go a bit deeper. If gambling took up less of your life, or none of it, what would you get back?\n\nMaybe it's money. Bills paid on time, a bit put away, no more checking your account with a knot in your stomach.\n\nMaybe it's people. Being properly present with your partner, your kids, your mates. Not half there, with one eye on your phone.\n\nMaybe it's your head. Sleeping through the night. Waking up without that heavy feeling. Not carrying a secret around.\n\nMaybe it's trust, or pride, or just feeling in control of your own life again.\n\nTake a moment and let one of those land. Which one matters most to you? You might find it's more than one, and that's fine too.\n\nNow picture it. Really picture it. A normal day, some time from now, when gambling isn't calling the shots. Where are you? Who's with you? What are you doing with your Saturday? How does it feel to wake up that morning?\n\nStay with that picture for a few breaths.\n\nThat picture is your why. Hang on to it.\n\nHere's the thing about your why: it isn't something you think about once. It's something you come back to, again and again, especially when an urge shows up. Urges are loud and they're in a hurry. Your why is quieter, but it's deeper. Over the next eight weeks you'll get better at hearing it over the noise.\n\nA few things to know as you start.\n\nYou don't need to have everything worked out. You don't need to feel confident. You just need to keep showing up, one morning at a time.\n\nIf you slip up at some point, and many people do, it doesn't wipe out your progress. Every gamble-free day still counts. You dust yourself off and you pick up the next morning.\n\nAnd you're not doing this on your own. If an urge hits, tap Urge SOS. If things ever feel like too much, tap Get help now, and you'll find people you can talk to straight away, any time.\n\nBefore we finish, let's put your why into words. Try finishing this sentence, out loud or in your head: \"I'm doing this because...\"\n\nSay it once more, slowly. \"I'm doing this because...\"\n\nGood. That's your anchor.\n\nTake one last slow breath in... and out. When you're ready, head into your check-in. Well done for starting."
       },
       "busyAudio": {
         "url": null,
-        "minutes": 3,
-        "script": "Short on time? That's fine. Take one slow breath. Think of the main reason you're here, and say it to yourself. That reason is your anchor for the next eight weeks. Now a quick check-in, and you're done for today."
+        "minutes": 2,
+        "script": "Short on time this morning? That's fine. Let's do the most important part.\n\nTake one slow breath in... and out.\n\nWelcome to homestr8. Over the next eight weeks you'll spend a few minutes each morning working on your relationship with gambling. Miss a day and it just waits for you. There's no falling behind.\n\nToday is about your why: the reason you're here.\n\nAsk yourself one question. If gambling took up less of my life, what would I get back?\n\nMaybe it's money. Maybe it's time with the people you love. Maybe it's sleep, or peace of mind, or feeling in control again.\n\nPick the one that matters most, and picture it for a moment. A normal day, some time from now, when gambling isn't calling the shots.\n\nNow finish this sentence in your head: \"I'm doing this because...\"\n\nThat's your anchor. When an urge shows up, and it will, come back to it. And remember, Urge SOS is always one tap away.\n\nNow a quick check-in, and you're done for today. Good start."
       },
       "action": {
         "prompt": "Pick one thing for today, or write your own",
         "options": [
-          "Tell myself my why out loud once today",
+          "Say my why out loud once today",
           "Write my why on a note and keep it in my wallet",
           "If I get an urge today, I'll open this app before doing anything else"
         ]
@@ -78,26 +78,30 @@
       "day": 2,
       "week": 1,
       "title": "How gambling hooks the brain",
-      "reviewStatus": "placeholder",
+      "reviewStatus": "draft",
       "video": {
         "url": null,
-        "script": "PLACEHOLDER: 60-second animated intro to \"How gambling hooks the brain\" (week 1: Your why)."
+        "script": "Ever wondered why gambling is so hard to walk away from? It's not because you're weak. It's because it's built that way.\n\nYour brain has a reward system that lights up when something good might be about to happen. Not when it happens. When it might. That buzz of maybe is what gambling sells.\n\nWins come at random, which keeps your brain hooked far more than a steady reward would. Near misses feel like you nearly won, even though a miss is a miss. And the lights and sounds celebrate \"wins\" that are smaller than your bet.\n\nOver time, the maths is set so the house comes out ahead.\n\nKnowing how the hook works doesn't make you immune. But it does help you see it coming. That's today."
       },
       "audio": {
         "url": null,
         "kind": "lesson",
         "minutes": 6,
         "title": "How gambling hooks the brain",
-        "script": "PLACEHOLDER: 5 to 7 minute guided lesson on \"How gambling hooks the brain\". A psychologist will write and record this."
+        "script": "Get comfortable, and take a slow breath in... and out.\n\nYesterday you found your why. Today we're going to look at the other side of things: why gambling is so hard to step away from, even when part of you really wants to.\n\nLet's start with something important. If you've ever thought, \"What's wrong with me? Why can't I just stop?\", I want you to hear this. Nothing is wrong with you. Gambling products are designed by very smart people, and tested on millions of others, to be as hard to put down as possible. You're up against a system that's built to keep you playing. Understanding that system is the first step to getting out of it.\n\nSo, how does it work?\n\nYour brain has a reward system. It's there to help you survive. It nudges you towards things like food, connection and rest. When something good might be about to happen, your brain releases a chemical that creates a feeling of wanting, of anticipation. Notice that word: might. The strongest buzz often comes before the result, not after it. It's the moment the reels are spinning, the last few minutes of the game, the second before the result comes in.\n\nThat's the feeling gambling sells. Not the win itself, but the maybe.\n\nNow, here's the clever part. If you won every time, or never won at all, your brain would soon lose interest. But gambling pays out at random. Sometimes you win, often you don't, and you never know which it'll be. Scientists have found that random rewards like this are one of the most powerful ways to keep any creature coming back. It's the same reason it's hard to stop checking your phone.\n\nThere are a few other tricks layered on top.\n\nNear misses. When you almost win, two symbols out of three, the team losing by a point, your brain reacts a lot like it does to a win. It tells you that you were close, that next time could be it. But a near miss is just a loss. You weren't any closer.\n\nLosses dressed up as wins. On many machines, the lights flash and the music plays when you \"win\" back less than you put in. You've lost money, but it feels like a win.\n\nChasing. After a loss, there's a strong pull to win it back. It can feel like the only way to fix things. But chasing usually makes the hole deeper, because the maths doesn't change just because you're behind.\n\nAnd underneath all of it, the maths. Every product is set up so that over time, the house comes out ahead. Some people win some of the time. But the longer anyone plays, the more the numbers favour the house. That isn't bad luck. It's the business model.\n\nTake a breath here. That's a lot.\n\nSo what do you do with all this?\n\nFirst, go easy on yourself. Getting hooked by something that's designed to hook people isn't a personal failing.\n\nSecond, start noticing. Over the next few days, if you feel the pull, see if you can name what's happening. \"That's the maybe feeling.\" \"That's my brain chasing.\" \"That was a near miss, which is just a miss.\" Naming it puts a bit of space between you and the urge. And space is where your choices live.\n\nThird, remember that urges pass. That buzz of anticipation rises, peaks and fades, usually within about half an hour, whether you act on it or not. You don't have to fight it. You just have to wait it out. That's what Urge SOS is for.\n\nYou'll learn much more about the tricks in Bookie Tricks Exposed, in the Explore tab, whenever you've got a few spare minutes.\n\nLet's finish with a slow breath in... and out.\n\nYou now know more about how the hook works than most people ever will. That's real power. Head into your check-in when you're ready."
       },
       "busyAudio": {
         "url": null,
-        "minutes": 3,
-        "script": "PLACEHOLDER: 3-minute short version of \"How gambling hooks the brain\"."
+        "minutes": 2,
+        "script": "Quick one this morning. Take a breath in... and out.\n\nToday's big idea: gambling is hard to walk away from because it's designed that way. Not because something's wrong with you.\n\nYour brain gives you a buzz when something good might happen. Not when it happens. When it might. That's the feeling gambling sells: the maybe.\n\nWins come at random, which keeps your brain hooked far more than steady rewards would. Near misses feel like you nearly won, but a miss is just a miss. On many machines, the lights and music go off even when you win back less than you bet. And after a loss there's a pull to chase it, which usually makes the hole deeper.\n\nUnderneath it all, the maths is set so the house comes out ahead over time.\n\nHere's what to do with that. If you feel the pull today, try naming it. \"That's the maybe feeling.\" \"That's me chasing.\" Naming it gives you a bit of space, and space is where your choices live.\n\nAnd remember, urges rise, peak and pass, usually within about half an hour. Urge SOS can help you ride one out.\n\nNow your check-in. Nice work."
       },
       "action": {
         "prompt": "One thing for today",
-        "options": ["PLACEHOLDER action one", "PLACEHOLDER action two", "PLACEHOLDER action three"]
+        "options": [
+          "If I feel the pull, name it: \"that's the maybe feeling\"",
+          "Watch one episode of Bookie Tricks Exposed",
+          "Tell someone one thing I learned about how gambling hooks people"
+        ]
       },
       "teaser": "Tomorrow: Your money, your goal."
     },
@@ -105,26 +109,30 @@
       "day": 3,
       "week": 1,
       "title": "Your money, your goal",
-      "reviewStatus": "placeholder",
+      "reviewStatus": "draft",
       "video": {
         "url": null,
-        "script": "PLACEHOLDER: 60-second animated intro to \"Your money, your goal\" (week 1: Your why)."
+        "script": "Let's talk about money. Not to make you feel bad. To help you take back control of it.\n\nWhen you're caught up in gambling, it's easy to stop looking. The bank balance becomes something you avoid. But money you don't look at is money that slips away.\n\nToday's reflection is a gentle, honest look. Roughly what has gambling been costing you? And, more importantly, what would you rather that money did for you?\n\nA holiday. A car that doesn't break down. Getting on top of a debt. A bit put away for a rainy day. Something special for the kids.\n\nYour goal isn't a punishment. It's something to move towards. Let's find yours."
       },
       "audio": {
         "url": null,
         "kind": "reflection",
         "minutes": 6,
         "title": "Your money, your goal",
-        "script": "PLACEHOLDER: 5 to 7 minute guided reflection on \"Your money, your goal\". A psychologist will write and record this."
+        "script": "Settle in, and take a slow breath in... and out.\n\nToday's a reflection, so there's nothing to learn and nothing to get right. Just a few questions to sit with, in your own time.\n\nWe're going to talk about money. For a lot of people, this is the hardest part. There can be guilt, or shame, or a sinking feeling just thinking about it. If that's you, that's completely understandable. Notice that feeling, and let it be there. We're not here to add up everything that's gone wrong. We're here to look forward.\n\nLet's start gently. Without working out exact numbers, just roughly: in a usual week, how much has been going on gambling? It doesn't have to be precise. A rough idea is plenty.\n\nNow let's stretch that out a little. Think about a month. Then think about a year. You don't need to do the maths perfectly. Just let the size of it land.\n\nHow does that feel? Some people feel a jolt. Some people feel sad. Some people feel relief, because it's finally out in the open. Whatever you feel is okay. Breathe with it for a moment.\n\nNow here's the part I really want you to focus on. That money isn't gone forever. From today, every gamble-free day keeps some of it with you. So the question becomes: what would you rather that money did?\n\nLet's imagine a few possibilities. See which one gives you a little lift.\n\nMaybe it's a trip. A week somewhere warm, or a road trip with the family, paid for in full.\n\nMaybe it's getting out from under something. Paying off a credit card, or a loan, and feeling that weight come off.\n\nMaybe it's something for the people you love. Footy fees, a new bike for the kids, a proper dinner out with your partner.\n\nMaybe it's something for you. A gym setup, tools for the shed, a decent car.\n\nOr maybe it's just breathing room. Money in the bank, so the next unexpected bill isn't a crisis.\n\nPick one. If more than one comes up, pick the one that makes you smile, or the one that would make the biggest difference.\n\nNow picture having it. Picture the moment it's yours, or the moment that debt is gone. Where are you? Who are you telling? How does it feel?\n\nStay with that for a few breaths.\n\nThat's your goal. And here's how it connects to everything else. Every time you ride out an urge, every gamble-free day, you're moving towards that picture. Not in some vague way. In actual dollars.\n\nIn the app, you can set this goal, or change the one you picked when you started. Tap the Money kept card on Home, or go to More, then Your goal. You'll be able to watch it fill up.\n\nOne more thought before we finish. Some people find it helps to make their money a bit harder to get to in a weak moment. Things like paying bills and moving savings first thing on payday, or asking your bank to block gambling payments on your card. We'll talk more about that soon.\n\nLet's close with a slow breath in... and out.\n\nYour money is yours again, starting today. Head into your check-in when you're ready."
       },
       "busyAudio": {
         "url": null,
-        "minutes": 3,
-        "script": "PLACEHOLDER: 3-minute short version of \"Your money, your goal\"."
+        "minutes": 2,
+        "script": "Short version today. Take a breath in... and out.\n\nLet's take a quick, honest look at money. Not to feel bad. To take back control.\n\nRoughly how much has gambling been costing you in a usual week? A rough guess is fine. Now picture that over a month, then a year. Just let the size of it land, without judging yourself.\n\nHere's the good news. From today, every gamble-free day keeps some of that money with you.\n\nSo what would you rather it did? A trip. Paying off a debt. Something for the kids. A gym setup. Or just breathing room, so the next bill isn't a crisis.\n\nPick the one that gives you a lift, and picture having it. Where are you? How does it feel?\n\nThat's your goal. Every urge you ride out moves you towards it, in real dollars.\n\nYou can set or change your goal in the app: tap Money kept on Home, or go to More, then Your goal.\n\nNow your check-in. Good on you."
       },
       "action": {
         "prompt": "One thing for today",
-        "options": ["PLACEHOLDER action one", "PLACEHOLDER action two", "PLACEHOLDER action three"]
+        "options": [
+          "Set or update my goal in the app",
+          "Move a little money into savings today, even $10",
+          "Put a picture of my goal somewhere I'll see it"
+        ]
       },
       "teaser": "Tomorrow: Counting what you keep."
     },
@@ -132,26 +140,30 @@
       "day": 4,
       "week": 1,
       "title": "Counting what you keep",
-      "reviewStatus": "placeholder",
+      "reviewStatus": "draft",
       "video": {
         "url": null,
-        "script": "PLACEHOLDER: 60-second animated intro to \"Counting what you keep\" (week 1: Your why)."
+        "script": "Every gamble-free day, you keep money that would have gone. The app counts it for you, using what you told us you usually spend. It's an estimate, but it's your money, and watching it grow helps.\n\nNot everything you keep is money, though. Time. Sleep. Patience with the kids. Not checking your phone every five minutes. Those count too.\n\nToday we'll also make the money harder to get to in a weak moment. Your bank can usually block gambling payments on your card. If you've chosen to stop completely, BetStop can block every licensed online betting company in Australia with one sign-up. It's free.\n\nThe less you have to rely on willpower, the better. Let's set things up so it's on your side."
       },
       "audio": {
         "url": null,
         "kind": "lesson",
         "minutes": 6,
         "title": "Counting what you keep",
-        "script": "PLACEHOLDER: 5 to 7 minute guided lesson on \"Counting what you keep\". A psychologist will write and record this."
+        "script": "Get comfortable, and breathe in... and out.\n\nYesterday you thought about where you'd like your money to go. Today is about two things: noticing what you're keeping, and making it easier to keep it.\n\nLet's start with keeping count.\n\nOn your Home screen there's a card called Money kept. Every gamble-free day, it goes up by a day's worth of what you told us you usually spend. It's an estimate, not your bank balance, but it's a fair picture of the money that's staying with you instead of going out the door. When things get tough, it can really help to see that number.\n\nBut here's something that often surprises people. The money is only part of it. When gambling takes up less of your life, you tend to get other things back too, and they're easy to miss if you're not looking.\n\nLet's look now. Think back over the last day or two. Have you noticed anything at all? Maybe a bit more time in the evening. Maybe you went to bed earlier. Maybe you weren't checking scores or results all through dinner. Maybe you felt a little lighter, or a little prouder of yourself.\n\nIt might be small. That's fine. Small things are exactly what we're looking for. Each day in your check-in, see if you can notice one thing you kept that wasn't money.\n\nTake a breath.\n\nNow the second part: making it easier.\n\nHere's an honest truth. Willpower is useful, but it runs out. It runs out when you're tired, stressed, bored, a few drinks in, or when the footy's on and everyone's betting. So rather than relying on willpower alone, it makes sense to put a few barriers between you and gambling. That way, when the urge hits, there's time for it to pass before you can act on it.\n\nHere are some barriers people find helpful. See which ones fit you.\n\nYour bank. Most of the big Australian banks let you block gambling payments on your card, usually in the banking app under card settings. If you're not sure how, you can call your bank and ask.\n\nBetting apps and accounts. Deleting the apps, closing accounts and unsubscribing from their emails and texts. Out of sight really does help.\n\nBetStop. If you've decided to stop completely, BetStop is a free government register. One sign-up blocks you from every licensed online and phone betting company in Australia, for anywhere from three months to life. In the app you'll find it under More. It doesn't cover pokies or casinos, but for those, venues have their own self-exclusion programs, and Gambling Help Online can help you find them.\n\nBlocking apps. There are apps that stop betting sites opening on your phone and computer.\n\nAnd cash. Some people find it helps to carry less cash, or to have their pay go straight into an account that's harder to get to.\n\nYou don't have to do all of these. Pick one that feels doable today. Just one.\n\nNotice if part of you is resisting. If a little voice says, \"But what if I want a bet later?\", that's normal. That voice is the hook we talked about on Day 2. You don't have to argue with it. Just notice it, and do the thing anyway.\n\nLet's finish with a breath in... and out.\n\nEvery barrier you put up is a gift to the version of you who's having a tough moment. Head into your check-in when you're ready."
       },
       "busyAudio": {
         "url": null,
-        "minutes": 3,
-        "script": "PLACEHOLDER: 3-minute short version of \"Counting what you keep\"."
+        "minutes": 2,
+        "script": "Quick one today. Breath in... and out.\n\nEvery gamble-free day, the Money kept card on Home goes up by a day's worth of what you usually spend. It's an estimate, but it's money staying with you.\n\nAnd it's not only money. Time, sleep, patience, a clearer head. Today, see if you can notice one thing you kept that wasn't money.\n\nNow let's make it easier to keep. Willpower runs out when you're tired, stressed or bored, so it helps to put a few barriers in the way:\n\nBlock gambling payments on your card. Most big Australian banks let you do this in their app.\n\nDelete betting apps and unsubscribe from their emails and texts.\n\nIf you've chosen to stop completely, sign up to BetStop. It's free, and it blocks every licensed online and phone betting company in Australia. You'll find it under More.\n\nPick one and do it today. Just one.\n\nIf a little voice says, \"But what if I want a bet later?\", that's the hook talking. Notice it, and do the thing anyway.\n\nNow your check-in. Nice work."
       },
       "action": {
-        "prompt": "One thing for today",
-        "options": ["PLACEHOLDER action one", "PLACEHOLDER action two", "PLACEHOLDER action three"]
+        "prompt": "Pick one barrier for today",
+        "options": [
+          "Turn on the gambling block on my bank card",
+          "Delete betting apps and unsubscribe from their emails",
+          "Sign up to BetStop"
+        ]
       },
       "teaser": "Tomorrow: The people in your corner."
     },
@@ -159,26 +171,30 @@
       "day": 5,
       "week": 1,
       "title": "The people in your corner",
-      "reviewStatus": "placeholder",
+      "reviewStatus": "draft",
       "video": {
         "url": null,
-        "script": "PLACEHOLDER: 60-second animated intro to \"The people in your corner\" (week 1: Your why)."
+        "script": "Gambling loves secrecy. It grows when you're carrying it on your own.\n\nThat's why today is about the people in your corner. Not everyone needs to know. But having even one person you can be honest with can make a big difference.\n\nIt might be a partner, a mate, a brother or sister, a parent. Someone who'll listen without lecturing.\n\nIn the app you can add a buddy. Each week they'll get a short email saying how many sessions you've done, with an idea for how to back you up. It never mentions gambling or money.\n\nAnd there's always someone ready to talk. Gambling Help Online is free, confidential and open 24/7 on 1800 858 858. Talking to people who've been there, through groups like Gamblers Anonymous or SMART Recovery, helps a lot of people too.\n\nWho's in your corner?"
       },
       "audio": {
         "url": null,
         "kind": "lesson",
         "minutes": 6,
         "title": "The people in your corner",
-        "script": "PLACEHOLDER: 5 to 7 minute guided lesson on \"The people in your corner\". A psychologist will write and record this."
+        "script": "Get comfortable, and take a slow breath in... and out.\n\nToday we're going to talk about people. Because one of the things gambling does, quietly, is make people feel alone.\n\nIt's very common to keep gambling hidden. Some people hide how much they spend. Some hide how often. Some hide it altogether. Usually it's not because they're dishonest people. It's because of shame, or not wanting to worry anyone, or fear of what might happen if it came out.\n\nThe trouble is, secrecy is where gambling does best. When it's hidden, there's no one to notice when things are getting worse, no one to talk to when an urge hits, and a lot of energy goes into keeping the secret.\n\nSo today, let's think about who's in your corner. Not who you think should be. Who actually is.\n\nLet's do a little exercise. Picture a few circles, one inside the other, with you in the middle.\n\nIn the closest circle, think of the one or two people you trust most. People who've got your back. They don't have to be perfect. They just have to care about you.\n\nIn the next circle, people you get on with and could talk to if you needed. Mates, workmates, family members, someone from the footy club or the gym.\n\nAnd in the outer circle, people whose job it is to help, and who've heard it all before. Counsellors. Your GP. The team at Gambling Help Online.\n\nTake a moment to fill in those circles in your mind. Who comes up?\n\nIf your circles feel a bit empty right now, that's okay. Lots of people feel that way, especially when gambling has pulled them away from people. That outer circle is always there, and it's a good place to start.\n\nNow, here's a question to sit with. Is there one person who you could tell, even a little, about what you're doing with this app?\n\nYou don't have to tell them everything. You could start small. Something like, \"I'm trying to cut back on something that's been getting out of hand, and I'm doing a program in the mornings.\" Or, \"I'm having a go at giving up the betting. Could you check in on me now and then?\"\n\nNotice how it feels to imagine saying that. A bit scary? A bit of relief? Both are normal.\n\nIf you'd like some backup, the app has a buddy feature. You can add someone's email, with their okay, and each week they'll get a short, kind email saying how many sessions you've done, with an idea for how to support you. It never mentions gambling or money, so it's discreet. You'll find it in Settings, under Your buddy.\n\nAnd remember the people whose whole job is to help. Gambling Help Online is free, confidential and open all day, every day, on 1800 858 858, or by online chat. You don't have to be in crisis to call. You can call just to talk things through. There are also peer support groups, like Gamblers Anonymous and SMART Recovery, where you can meet people who understand from the inside.\n\nLet's finish with something kind. Picture someone who cares about you hearing that you're doing this program. Picture their face. Most people, when someone they love says, \"I'm working on something hard,\" feel proud of them, not disappointed.\n\nTake a breath in... and out.\n\nYou don't have to do this alone. Head into your check-in when you're ready."
       },
       "busyAudio": {
         "url": null,
-        "minutes": 3,
-        "script": "PLACEHOLDER: 3-minute short version of \"The people in your corner\"."
+        "minutes": 2,
+        "script": "Quick one today. Breath in... and out.\n\nGambling grows best in secret. When you carry it alone, there's no one to talk to when an urge hits, and the shame gets heavier.\n\nSo today, think about who's in your corner. Is there one person you trust, a partner, a mate, a family member, who you could tell, even a little?\n\nYou don't have to tell them everything. Something like, \"I'm trying to give up the betting. Could you check in on me now and then?\" is plenty.\n\nIf you'd like, you can add them as your buddy in Settings. Each week they'll get a short email saying how many sessions you've done, with an idea for how to support you. It never mentions gambling or money.\n\nAnd there's always someone ready to listen. Gambling Help Online is free, confidential and open 24/7 on 1800 858 858. You don't need to be in crisis to call. Peer groups like Gamblers Anonymous and SMART Recovery help a lot of people too.\n\nYou don't have to do this alone.\n\nNow your check-in. Good on you."
       },
       "action": {
         "prompt": "One thing for today",
-        "options": ["PLACEHOLDER action one", "PLACEHOLDER action two", "PLACEHOLDER action three"]
+        "options": [
+          "Tell one person I trust that I'm doing this program",
+          "Add a buddy in Settings",
+          "Save Gambling Help Online's number in my phone: 1800 858 858"
+        ]
       },
       "teaser": "Tomorrow: Small steps add up."
     },
@@ -186,26 +202,30 @@
       "day": 6,
       "week": 1,
       "title": "Small steps add up",
-      "reviewStatus": "placeholder",
+      "reviewStatus": "draft",
       "video": {
         "url": null,
-        "script": "PLACEHOLDER: 60-second animated intro to \"Small steps add up\" (week 1: Your why)."
+        "script": "Big changes are made of small steps. Not one heroic decision, but lots of ordinary ones. A morning session. An urge you let pass. A night you went to bed instead of scrolling.\n\nNone of them feel like much on their own. Together, they change things.\n\nToday's session is a guided meditation. It's a chance to slow down, notice your breathing, and practise something that's really useful when an urge turns up: letting a feeling be there without having to act on it.\n\nIf you've never done a meditation before, that's fine. There's nothing to get right. If your mind wanders, that's normal. Just come back.\n\nFind a quiet spot, and let's begin."
       },
       "audio": {
         "url": null,
         "kind": "meditation",
         "minutes": 6,
         "title": "Small steps add up",
-        "script": "PLACEHOLDER: 5 to 7 minute guided meditation on \"Small steps add up\". A psychologist will write and record this."
+        "script": "Find a comfortable position, sitting or lying down. If it feels okay, let your eyes close, or just let your gaze rest on the floor in front of you.\n\nTake a slow breath in through your nose... and let it out through your mouth.\n\nAnd again. In... and out.\n\nNow let your breathing find its own rhythm. You don't need to control it. Just notice it. The air coming in, cool. The air going out, a little warmer.\n\nLet's start by noticing your body. Feel where you're touching the chair, or the bed, or the floor. Let it hold your weight. You don't have to hold yourself up right now.\n\nNotice your feet. Your legs. Let them be heavy.\n\nNotice your stomach, rising and falling with each breath.\n\nNotice your shoulders. If they've crept up towards your ears, let them drop.\n\nNotice your jaw. Let it soften.\n\nGood. Just breathing.\n\nAt some point, your mind will wander. It might go to something you need to do today, or something that's worrying you. That's completely normal. Minds wander. When you notice it's wandered, that noticing is the skill. Gently bring your attention back to your breath. No telling yourself off. Just come back.\n\nNow let's think about this week. You've been showing up. Maybe every morning, maybe not. Either way, you're here now, and that counts.\n\nPicture a path. Not a steep mountain. Just an ordinary walking track, winding off into the distance. You're on it. Each step on its own is small. You can't see the end from here, and you don't need to. You only need to take the next step.\n\nBreathe in... and out.\n\nNow let's practise something you can use any time. Bring to mind a mild feeling of wanting. It doesn't have to be about gambling. It might be wanting a coffee, or wanting to check your phone. Just something small.\n\nNotice where you feel it in your body. Maybe a pull in your chest. A restlessness in your hands. A tightness somewhere.\n\nNow, instead of doing anything about it, just watch it. Like you're watching a wave at the beach. It rises... it peaks... and if you don't feed it, it starts to settle.\n\nYou don't have to fight it. You don't have to obey it. You can just let it be there, and let it pass.\n\nThat's what you'll do with gambling urges too. It's called urge surfing. You ride the wave instead of being knocked over by it. And every time you do it, you get a bit better at it.\n\nBreathe in... and out.\n\nBefore we finish, let's offer yourself something kind. Many people are very hard on themselves. If you are, try saying this, quietly, in your head: \"I'm doing my best. That's enough for today.\"\n\nOne more time. \"I'm doing my best. That's enough for today.\"\n\nNow start to bring your attention back to the room. Notice the sounds around you. Wriggle your fingers and toes. Take a deeper breath.\n\nWhen you're ready, open your eyes.\n\nSmall steps add up. You took one today. Head into your check-in when you're ready."
       },
       "busyAudio": {
         "url": null,
-        "minutes": 3,
-        "script": "PLACEHOLDER: 3-minute short version of \"Small steps add up\"."
+        "minutes": 2,
+        "script": "Short meditation today. Get comfortable, and if it feels okay, close your eyes.\n\nBreathe in slowly... and out.\n\nLet your shoulders drop. Let your jaw soften. Just notice your breath, coming in and going out.\n\nIf your mind wanders, that's normal. Just gently come back to your breath.\n\nNow bring to mind a small feeling of wanting. Maybe wanting a coffee, or to check your phone. Notice where you feel it in your body.\n\nInstead of acting on it, just watch it. Like a wave at the beach. It rises... it peaks... and if you don't feed it, it settles.\n\nThat's urge surfing. When a gambling urge comes, you can do the same thing: ride the wave instead of being knocked over by it.\n\nBig changes are made of small steps like this one.\n\nBefore you open your eyes, say this quietly to yourself: \"I'm doing my best. That's enough for today.\"\n\nTake one more slow breath, and open your eyes when you're ready.\n\nNow your check-in. Well done."
       },
       "action": {
         "prompt": "One thing for today",
-        "options": ["PLACEHOLDER action one", "PLACEHOLDER action two", "PLACEHOLDER action three"]
+        "options": [
+          "If an urge comes, watch it like a wave for two minutes",
+          "Take three slow breaths before I pick up my phone",
+          "Say to myself, \"I'm doing my best. That's enough for today\""
+        ]
       },
       "teaser": "Tomorrow: Looking back on week 1."
     },
@@ -213,26 +233,30 @@
       "day": 7,
       "week": 1,
       "title": "Looking back on week 1",
-      "reviewStatus": "placeholder",
+      "reviewStatus": "draft",
       "video": {
         "url": null,
-        "script": "PLACEHOLDER: 60-second animated intro to \"Looking back on week 1\" (week 1: Your why)."
+        "script": "One week. Whether you did every session or just some of them, you're still here, and that matters.\n\nToday's a chance to look back. What did you learn about yourself? What helped? What was harder than you expected?\n\nIf you slipped up this week, you're not starting again from zero. Every gamble-free day still counts. A slip is information, not failure. It shows you where to put a bit more support.\n\nNext week is all about triggers: the times, places, feelings and people that set off the urge. Knowing your triggers means you can plan for them, instead of being caught off guard.\n\nBut first, take a moment to give yourself some credit. Let's look back on week one."
       },
       "audio": {
         "url": null,
         "kind": "reflection",
         "minutes": 6,
         "title": "Looking back on week 1",
-        "script": "PLACEHOLDER: 5 to 7 minute guided reflection on \"Looking back on week 1\". A psychologist will write and record this."
+        "script": "Get comfortable, and take a slow breath in... and out.\n\nYou've made it to the end of your first week. Let's take a few minutes to look back at it, with curiosity, not judgement.\n\nFirst, the most important thing. However this week went, you're here. You opened the app this morning. That counts for a lot.\n\nLet's walk back through the week together.\n\nOn Day 1, you found your why. Can you remember what it was? Say it to yourself now. \"I'm doing this because...\" Does it still feel true? Has it changed at all? Sometimes it gets clearer as the days go on.\n\nOn Day 2, you learned how gambling hooks the brain. The buzz of maybe. Random rewards. Near misses that are really just misses. Chasing. Did you notice any of those this week? If you did, that's good. Noticing is the first step to choosing.\n\nOn Day 3, you thought about money and set a goal. What's yours? Picture it for a moment. Check how much you've kept so far on the Money kept card.\n\nOn Day 4, we talked about barriers, like blocking gambling payments on your card or signing up to BetStop. Did you put one in place? If you did, well done. If you haven't yet, there's no rush, but it's worth coming back to.\n\nOn Day 5, you thought about the people in your corner. Did you tell anyone? Even thinking about it is a step.\n\nAnd on Day 6, you practised watching a feeling like a wave, without having to act on it.\n\nTake a breath.\n\nNow let's look honestly at how the week went with gambling itself. There are no wrong answers here.\n\nIf you had a gamble-free week, take a moment to really feel that. It's not luck. You made a lot of choices to get there.\n\nIf you gambled this week, I want you to hear this clearly. You haven't failed, and you haven't wasted the week. Every gamble-free day still counts. A slip is information. It tells you something about when you're most at risk. Ask yourself, gently: what was going on just before? Was it a time of day? A feeling? Something someone said? An ad? Payday? Hold on to whatever you notice, because that's exactly what next week is about.\n\nLet's think about what helped. Out of everything this week, was there one thing that made a difference? Maybe it was the morning routine. Maybe it was a barrier you put in place. Maybe it was simply knowing why you're doing this. Whatever it was, that's something to keep doing.\n\nAnd was there anything that was harder than you expected? That's useful too. It tells us where to focus.\n\nNext week is all about triggers. The times, places, feelings and people that set off the urge. You'll learn to spot them early, and make a plan for them, so they don't catch you off guard.\n\nBefore we finish, let's give yourself some credit. Think of one thing from this week you're proud of. Big or small. Hold it in your mind.\n\nBreathe in... and out.\n\nWeek one, done. After your check-in today, you'll see a summary of your week. Head into your check-in when you're ready."
       },
       "busyAudio": {
         "url": null,
-        "minutes": 3,
-        "script": "PLACEHOLDER: 3-minute short version of \"Looking back on week 1\"."
+        "minutes": 2,
+        "script": "Short version today. Breath in... and out.\n\nOne week down. However it went, you're here, and that counts.\n\nLet's look back quickly.\n\nYour why. Say it to yourself now: \"I'm doing this because...\" Does it still feel true?\n\nHow gambling hooks the brain: the buzz of maybe, near misses, chasing. Did you notice any of those this week?\n\nYour goal, and the money you've kept so far. Check the Money kept card on Home.\n\nBarriers, like blocking gambling on your card or BetStop. And the people in your corner.\n\nIf you had a gamble-free week, take a moment to feel proud of that. You made a lot of choices to get there.\n\nIf you slipped up, you haven't failed. Every gamble-free day still counts. Ask yourself gently: what was going on just before? Hold on to that, because next week is all about triggers: the times, places, feelings and people that set off the urge.\n\nBefore you go, think of one thing from this week you're proud of.\n\nNow your check-in, then a summary of your week. Well done."
       },
       "action": {
         "prompt": "One thing for today",
-        "options": ["PLACEHOLDER action one", "PLACEHOLDER action two", "PLACEHOLDER action three"]
+        "options": [
+          "Write down one thing from this week I'm proud of",
+          "Think about what was going on before my strongest urge this week",
+          "Put one barrier in place that I haven't done yet"
+        ]
       },
       "teaser": "Tomorrow: What sets you off."
     },
