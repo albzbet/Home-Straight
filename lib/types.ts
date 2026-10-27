@@ -75,6 +75,18 @@ export type IfThenPlan = { id: string; when: string; then: string; remind: { wee
 // The "Future you" exercise: answers to the picture-it questions (same order as config.futureYou.prompts) and a letter.
 export type FutureYou = { horizon: string; answers: string[]; letter: string; at: string };
 
+// Your loop: their own cycle, step by step (their words or picked from config.loop), plus what's helped before.
+export type Loop = {
+  triggers: string[];
+  thoughts: string[];
+  feelings: string[];
+  where: string[];
+  payoffs: string[];
+  costs: string[];
+  helped: string;
+  at: string;
+};
+
 // A weekly mission ticked off. weekOf: the Monday of the week it counts for.
 export type MissionDone = { missionId: string; weekOf: string; at: string };
 
@@ -89,6 +101,7 @@ export type ProgramState = {
   missions: MissionDone[];
   plans: IfThenPlan[];
   futureYou: FutureYou | null; // the latest time they did it
+  loop: Loop | null;
   planNotes: string; // their own notes for the game plan
   pause: Pause | null; // the program is on hold: no reminders, no new sessions nudged
 };
@@ -106,6 +119,7 @@ export const emptyState: ProgramState = {
   missions: [],
   plans: [],
   futureYou: null,
+  loop: null,
   pause: null,
   planNotes: '',
 };

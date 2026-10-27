@@ -11,6 +11,7 @@ const ITEMS: { label: string; icon: IconName; href: Href }[] = [
   { label: 'Get help now', icon: 'call', href: '/help' },
   { label: "What you're aiming for", icon: 'compass', href: '/aim' },
   { label: 'Your goal', icon: 'flag', href: '/goal' },
+  { label: 'Your loop', icon: 'sync', href: '/loop' },
   { label: 'If-then plans', icon: 'git-branch', href: '/plans' },
   { label: 'Future you', icon: 'telescope', href: '/future-you' },
   { label: "What it's all about", icon: 'sunny', href: '/more-life' },

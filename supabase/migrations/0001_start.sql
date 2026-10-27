@@ -154,6 +154,13 @@ create table if not exists public.future_you (
   updated_at timestamptz not null default now()
 );
 
+-- Your loop (their own cycle: triggers, thoughts, feelings, where, payoffs, costs, what helped), latest only, encrypted JSON.
+create table if not exists public.member_loop (
+  member_id uuid primary key references public.members (id) on delete cascade,
+  data bytea not null, -- encrypted
+  updated_at timestamptz not null default now()
+);
+
 -- If-then plans: "If [a risky moment], then I'll [something else]", with an optional weekly heads-up on the phone.
 create table if not exists public.if_then_plans (
   member_id uuid not null references public.members (id) on delete cascade,
@@ -171,6 +178,7 @@ alter table public.daily_checkins enable row level security;
 alter table public.mission_done enable row level security;
 alter table public.if_then_plans enable row level security;
 alter table public.future_you enable row level security;
+alter table public.member_loop enable row level security;
 alter table public.urge_logs enable row level security;
 alter table public.questionnaires enable row level security;
 alter table public.day_progress enable row level security;
@@ -228,7 +236,8 @@ language sql stable security definer set search_path = public as $$
           else jsonb_build_object('weekday', f.remind_weekday, 'time', f.remind_time) end,
         'createdAt', f.created_at) order by f.created_at) from public.if_then_plans f where f.member_id = auth.uid()), '[]'::jsonb),
     'futureYou', (select jsonb_build_object('horizon', y.horizon, 'answers', coalesce(private.dec(y.answers)::jsonb, '[]'::jsonb),
-        'letter', coalesce(private.dec(y.letter), ''), 'at', y.updated_at) from public.future_you y where y.member_id = auth.uid()))
+        'letter', coalesce(private.dec(y.letter), ''), 'at', y.updated_at) from public.future_you y where y.member_id = auth.uid()),
+    'loop', (select private.dec(l.data)::jsonb || jsonb_build_object('at', l.updated_at) from public.member_loop l where l.member_id = auth.uid()))
   from (select auth.uid() as uid) me
   left join public.members m on m.id = me.uid
   where me.uid is not null
@@ -429,6 +438,25 @@ begin
     horizon = excluded.horizon, answers = excluded.answers, letter = excluded.letter, updated_at = excluded.updated_at;
 end $$;
 
+-- Saves their loop (replacing the last one). p: { triggers: [...], thoughts, feelings, where, payoffs, costs, helped }
+-- Only those keys are kept; each list up to 15 items of 120 characters.
+create or replace function public.hs_save_loop(p jsonb) returns void
+language plpgsql security definer set search_path = public as $$
+declare
+  uid uuid := auth.uid();
+  d jsonb := jsonb_build_object('helped', left(coalesce(p ->> 'helped', ''), 500));
+  k text;
+begin
+  if uid is null then raise exception 'not signed in'; end if;
+  foreach k in array array['triggers', 'thoughts', 'feelings', 'where', 'payoffs', 'costs'] loop
+    d := d || jsonb_build_object(k, (select coalesce(jsonb_agg(left(x, 120)), '[]'::jsonb) from (select jsonb_array_elements_text(
+      case when jsonb_typeof(p -> k) = 'array' then p -> k else '[]'::jsonb end) x limit 15) s));
+  end loop;
+  insert into public.members (id) values (uid) on conflict (id) do nothing;
+  insert into public.member_loop (member_id, data, updated_at) values (uid, private.enc(d::text), now())
+  on conflict (member_id) do update set data = excluded.data, updated_at = excluded.updated_at;
+end $$;
+
 create or replace function public.hs_delete_plan(plan_id text) returns void
 language plpgsql security definer set search_path = public as $$
 begin
@@ -466,6 +494,7 @@ begin
     perform public.hs_save_plan(x);
   end loop;
   if jsonb_typeof(p -> 'futureYou') = 'object' then perform public.hs_save_future_you(p -> 'futureYou'); end if;
+  if jsonb_typeof(p -> 'loop') = 'object' then perform public.hs_save_loop(p -> 'loop'); end if;
   return true;
 end $$;
 
@@ -479,9 +508,9 @@ end $$;
 
 revoke execute on function public.hs_my_state(), public.hs_save_member(jsonb), public.hs_save_questionnaire(jsonb),
   public.hs_save_day(jsonb), public.hs_save_urge(jsonb), public.hs_set_pause(jsonb), public.hs_import_guest(jsonb),
-  public.hs_save_checkin(jsonb), public.hs_save_mission(jsonb), public.hs_save_plan(jsonb), public.hs_delete_plan(text), public.hs_save_future_you(jsonb), public.hs_restart_program(),
+  public.hs_save_checkin(jsonb), public.hs_save_mission(jsonb), public.hs_save_plan(jsonb), public.hs_delete_plan(text), public.hs_save_future_you(jsonb), public.hs_save_loop(jsonb), public.hs_restart_program(),
   public.hs_delete_my_data() from public, anon;
 grant execute on function public.hs_my_state(), public.hs_save_member(jsonb), public.hs_save_questionnaire(jsonb),
   public.hs_save_day(jsonb), public.hs_save_urge(jsonb), public.hs_set_pause(jsonb), public.hs_import_guest(jsonb),
-  public.hs_save_checkin(jsonb), public.hs_save_mission(jsonb), public.hs_save_plan(jsonb), public.hs_delete_plan(text), public.hs_save_future_you(jsonb), public.hs_restart_program(),
+  public.hs_save_checkin(jsonb), public.hs_save_mission(jsonb), public.hs_save_plan(jsonb), public.hs_delete_plan(text), public.hs_save_future_you(jsonb), public.hs_save_loop(jsonb), public.hs_restart_program(),
   public.hs_delete_my_data() to authenticated;

@@ -200,6 +200,15 @@ export default function Home() {
       {/* Stopping completely and not on BetStop yet: recommend it until they tick it off on the BetStop screen. */}
       {o.goal === 'quit' && !o.betstopAt ? <BetstopCard /> : null}
 
+      {/* From Day 8 (triggers week) until they've done it: map their loop. */}
+      {!state.loop && state.days.length >= 7 ? (
+        <Card>
+          <Txt variant="label">Your loop</Txt>
+          <Txt>Map the cycle that keeps gambling going for you, and where to break it. About three minutes.</Txt>
+          <Button label="Map my loop" kind="secondary" icon="sync" onPress={() => router.push('/loop')} />
+        </Card>
+      ) : null}
+
       {/* No if-then plans yet: suggest making one (after Day 1, so the first morning isn't crowded). */}
       {!state.plans.length && state.days.length > 0 ? (
         <Card>

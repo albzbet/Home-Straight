@@ -310,6 +310,75 @@
     "letter": "Now write a few lines from future you to you today. What would they want you to know?",
     "letterPlaceholder": "e.g. Mate, hang in there. It gets easier, and it's worth it."
   },
+  "loop": {
+    "_readme": "Your loop: the member's own cycle (their CBT formulation), built from Day 8. Each step offers these choices plus their own words; triggers also suggest their risky times and what they've logged in Urge SOS. 'breakIt' is the tool shown on each link of the loop. PLACEHOLDER wording until a psychologist has checked it.",
+    "intro": "Gambling usually runs in a loop: something sets it off, a thought gives you permission, the urge builds, you gamble, you get something out of it for a while, and then it costs you, which sets up the next round. Let's map yours. It takes about three minutes, and every link is a place you can break it.",
+    "where": ["On my phone or computer", "At a pub or club", "At a casino", "At a newsagent", "With mates", "On my own"],
+    "triggers": [
+      "Payday",
+      "Friday arvo",
+      "Weekends",
+      "Late at night",
+      "Live sport",
+      "After a few drinks",
+      "An ad or offer",
+      "Money worries",
+      "Seeing others bet",
+      "After an argument"
+    ],
+    "thoughts": [
+      "I deserve it after the week I've had",
+      "I'll win it back",
+      "Just this once",
+      "I'm due a win",
+      "I know what I'm doing",
+      "A small bet won't hurt",
+      "This could fix my money problems",
+      "There's nothing else to do"
+    ],
+    "feelings": ["Stressed", "Bored", "Lonely", "Flat or low", "Angry or frustrated", "Anxious", "Restless", "Excited"],
+    "payoffs": [
+      "The buzz",
+      "Escaping for a while",
+      "Switching my head off",
+      "Hope of fixing my money",
+      "Something to look forward to",
+      "Feeling part of the group",
+      "Time going faster"
+    ],
+    "costs": [
+      "Money gone",
+      "Debt",
+      "Guilt or shame",
+      "Keeping secrets",
+      "Arguments at home",
+      "Less sleep",
+      "Worse at work",
+      "Less time with the people I love",
+      "Feeling worse than before"
+    ],
+    "helped": "Have you cut back or stopped before, even for a little while? What helped?",
+    "breakIt": {
+      "triggers": { "text": "Plan around it, so it doesn't catch you off guard.", "button": "Make an if-then plan", "href": "/plans" },
+      "thoughts": {
+        "text": "Catch the thought and answer it back. Week 3 shows you how.",
+        "button": "Reframe in Urge SOS",
+        "href": "/sos"
+      },
+      "feelings": { "text": "Ride the urge out. It peaks and passes.", "button": "Urge SOS", "href": "/sos" },
+      "where": {
+        "text": "Put a barrier in the way, so there's time for the urge to pass.",
+        "button": "Barriers and BetStop",
+        "href": "/betstop"
+      },
+      "payoffs": {
+        "text": "Find another way to get it: the buzz, the break, the company.",
+        "button": "This week's mission",
+        "href": "/missions"
+      },
+      "costs": { "text": "Keep the cost in view. It's what your why is protecting.", "button": "What it's all about", "href": "/more-life" }
+    }
+  },
   "plans": {
     "_readme": "If-then plans: 'If [a risky moment], then I'll [something else].' The 'if' choices are the risky times from onboarding (their own first) plus 'extraWhens'. 'suggestions' are the 'then' ideas: those listed under a risky time come first for it, then 'anytime'. 'times' are the choices for the optional weekly heads-up. Members can always write their own.",
     "extraWhens": ["Friday arvo after work", "When an ad or offer pops up", "When I want to win back what I've lost", "After an argument"],

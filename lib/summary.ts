@@ -1,3 +1,4 @@
+import { loopLines } from './loop';
 import { planLine } from './plans';
 import { gambleDates } from './progress';
 import { localDate } from './program';
@@ -64,6 +65,7 @@ export function questionnaireChange(state: ProgramState): { better: number; same
 export type GamePlan = {
   why: string[];
   triggers: string[];
+  loop: string[]; // "What sets it off: Payday, Live sport"
   ifThen: string[]; // "Payday → I'll move money into savings first thing"
   whatHelps: string[];
   myActions: string[];
@@ -85,6 +87,7 @@ export function gamePlan(state: ProgramState): GamePlan {
   return {
     why: [...(o?.whyChoices ?? []), ...(o?.whyText ? [o.whyText] : [])],
     triggers: ranked([...(o?.riskyTimes ?? []), ...state.urges.flatMap((u) => u.triggers)]),
+    loop: loopLines(state.loop),
     ifThen: state.plans.map(planLine),
     whatHelps: ranked(state.urges.filter((u) => u.passed !== 'gambled').flatMap((u) => u.helped)).slice(0, 6),
     myActions: ranked(state.days.map((d) => d.action)).slice(0, 8),

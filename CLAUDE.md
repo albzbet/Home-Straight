@@ -84,6 +84,12 @@ what's next. Plain English, click-by-click steps.
   changes the aim. Check-ins ask cut-back members "Did you stay within your limits?"; within limits = no bounce-back
   (`useCheckin(cutBack)`, `checkin.slip`). Gamble-free days and the streak still count any gambling. Columns
   `members.limit_*` / `break_*` in 0001.
+- Your loop (`app/loop.tsx`, the CBT formulation; More > Your loop, a Home card from Day 8 until done; Day 8 and Day 14 scripts
+  point to it): trigger, thought, feeling and urge, what I do, what I get out of it, what it costs, then what's helped before.
+  Choices in `config.loop` (placeholder wording) plus their own words (crisis-checked); triggers suggest their risky times and
+  Urge SOS triggers first, marked Yours (`loopChoices` in `lib/loop.ts`). Shown as a loop with "Break it here" and a tool per
+  link (`config.loop.breakIt`); in the game plan / PDF (`loopLines`). Latest only, encrypted JSON in `member_loop`
+  (`hs_save_loop`, `state.loop`). Week 3 should add to the thoughts.
 - If-then plans (`app/plans.tsx`, More > If-then plans, a Home card after Day 1 until they have one): "If [risky moment],
   then I'll [something else]" in three steps (their onboarding risky times first, marked Yours; ideas per moment from
   `config.plans`; own words allowed and crisis-checked), optional weekly heads-up (`planNudges` in `lib/plans.ts`, WEEKLY local

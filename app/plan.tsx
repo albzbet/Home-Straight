@@ -56,6 +56,7 @@ export default function Plan() {
       </Txt>
       {list('Why I’m doing this', plan.why, 'Add your why in your notes below.')}
       {list('My risky times', plan.triggers, 'None noted yet.')}
+      {list('My loop', plan.loop, 'Map it in More > Your loop.')}
       {list('My if-then plans', plan.ifThen, 'Make one in More > If-then plans.')}
       {list('What helps when an urge hits', plan.whatHelps, 'Use Urge SOS and log what helps. It will show up here.')}
       {list('Things that work for me', plan.myActions, 'Your daily actions will show up here.')}
