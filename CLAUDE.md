@@ -90,9 +90,9 @@ what's next. Plain English, click-by-click steps.
 ## Where things are
 
 - The program is 8 weeks (owner's change, Oct 2026): `TOTAL_WEEKS` / `TOTAL_DAYS` in `lib/program.ts`; never hard-code 8 or 56.
-- `content/program.json` all 56 lessons and `content/meditations.json`: the built-in copy. Week 1 (days 1-7) scripts are
-  written (`reviewStatus: "draft"`, waiting for a psychologist; review doc https://claude.ai/artifact/EWdURywMVzdbSabf6XKBp6);
-  days 8-56 are still placeholders. Paragraph breaks are pauses for the voice artist; no stage directions in the text
+- `content/program.json` all 56 lessons and `content/meditations.json`: the built-in copy. Weeks 1 and 2 (days 1-14) scripts are
+  written (`reviewStatus: "draft"`, waiting for a psychologist; review doc, one tab per week: https://claude.ai/artifact/EWdURywMVzdbSabf6XKBp6);
+  days 15-56 are still placeholders. Paragraph breaks are pauses for the voice artist; no stage directions in the text
   (it shows as-is until a recording exists). Busy-day audio is about 2 minutes. Admins edit live content in the
   admin area (saved in `public.content`), which wins over the built-in copy.
 - `config/app.config.json` helplines, disclaimer, onboarding choices, questionnaire (PGSI-style placeholder), moods.

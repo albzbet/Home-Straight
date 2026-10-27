@@ -264,26 +264,30 @@
       "day": 8,
       "week": 2,
       "title": "What sets you off",
-      "reviewStatus": "placeholder",
+      "reviewStatus": "draft",
       "video": {
         "url": null,
-        "script": "PLACEHOLDER: 60-second animated intro to \"What sets you off\" (week 2: Triggers)."
+        "script": "Welcome to week two. This week is all about triggers.\n\nA trigger is anything that sets off the urge to gamble. A time, like payday or Friday arvo. A place, like the pub. Something on your phone, like an ad or a notification. A feeling, like stress or boredom. Or other people, like mates who are betting.\n\nUrges rarely come out of nowhere. There's usually a chain: a trigger, then a thought, then the urge, then the bet. The good news is that every link in that chain is a place where you can step in.\n\nThis week you'll get to know your own triggers, and make a plan for each one. That way they stop catching you off guard."
       },
       "audio": {
         "url": null,
         "kind": "lesson",
         "minutes": 6,
         "title": "What sets you off",
-        "script": "PLACEHOLDER: 5 to 7 minute guided lesson on \"What sets you off\". A psychologist will write and record this."
+        "script": "Get comfortable, and take a slow breath in... and out.\n\nWelcome to week two. Last week was about your why. This week, we're going to look at what gets in the way of it: your triggers.\n\nA trigger is anything that sets off the urge to gamble. It might be obvious, like walking past the pub, or getting a text about a bonus bet. Or it might be quieter, like a feeling of boredom on a Sunday afternoon, or a flat mood after a hard day at work.\n\nHere's something important. Urges almost never come out of nowhere, even when it feels like they do. If you look closely, there's usually a chain.\n\nFirst, a trigger. Say, it's Friday, you've just been paid, and you're sitting on the couch.\n\nThen a thought. \"I've had a rough week. I deserve a bit of fun.\" Or, \"I'll just put twenty on. What's the harm?\"\n\nThen the urge. That pull, that restless feeling, the buzz of maybe we talked about last week.\n\nAnd then the action. Opening the app. Heading to the venue.\n\nWhen you're in the middle of it, it feels like one fast thing. But it's actually four links. And every link is a place where you can step in.\n\nYou can change the trigger. Avoid it, or change it, so it doesn't happen in the first place.\n\nYou can catch the thought, and answer it back.\n\nYou can ride out the urge, the way you practised last week, like a wave.\n\nAnd you can put a barrier in the way of the action, so there's time for the urge to pass.\n\nTake a breath. Let's try this with something real.\n\nThink about the last time you gambled, or the last time you felt a strong pull. Picture it. Where were you? What time was it? Who were you with, or were you on your own?\n\nNow, what were you feeling just before? Tired? Stressed? Bored? Excited? Flat? Lonely? Sometimes it's a mix.\n\nAnd what was going through your head? What did you tell yourself?\n\nDon't judge any of it. Just notice it, like a detective gathering clues.\n\nThose clues are your triggers. And most people find their triggers fall into a few groups. Times, like payday, weekends or late at night. Places and things, like venues, apps and ads. Feelings, like stress, boredom or loneliness. And people, like mates who bet, or family events where gambling is part of it.\n\nOver the next few days, we'll go through each of these groups, one at a time.\n\nThere's also a handy check you can use any time. It's called HALT. When you feel an urge, ask yourself: am I Hungry, Angry, Lonely or Tired? Those four states make almost any urge stronger. Sometimes the best thing you can do for an urge is eat something, have a rest, or ring a mate.\n\nFor today, all you need to do is start noticing. If an urge shows up, see if you can spot the trigger. What happened just before? When you use Urge SOS, the log at the end asks what set it off. Over time, that builds a picture of your own patterns.\n\nBy the end of this week, you'll make a plan for your biggest triggers, using the if-then plans in the app. But that's for later in the week. Today is just noticing.\n\nLet's finish with a slow breath in... and out.\n\nYou're getting to know yourself better. That's how this works. Head into your check-in when you're ready."
       },
       "busyAudio": {
         "url": null,
-        "minutes": 3,
-        "script": "PLACEHOLDER: 3-minute short version of \"What sets you off\"."
+        "minutes": 2,
+        "script": "Quick one today. Breath in... and out.\n\nWelcome to week two: triggers. A trigger is anything that sets off the urge to gamble. A time, like payday. A place, like the pub. Something on your phone, like an ad. A feeling, like stress or boredom. Or people, like mates who are betting.\n\nUrges rarely come out of nowhere. There's usually a chain: a trigger, then a thought, then the urge, then the bet. Every link in that chain is a place where you can step in.\n\nThink about the last time you felt a strong pull. Where were you? What time was it? What were you feeling just before? Don't judge it. Just notice it.\n\nHere's a handy check for any time an urge shows up. HALT. Am I Hungry, Angry, Lonely or Tired? Sometimes the best thing for an urge is food, rest, or a chat with a mate.\n\nFor today, just notice. If an urge shows up, ask: what happened just before?\n\nNow your check-in. Nice work."
       },
       "action": {
         "prompt": "One thing for today",
-        "options": ["PLACEHOLDER action one", "PLACEHOLDER action two", "PLACEHOLDER action three"]
+        "options": [
+          "If an urge shows up, notice what happened just before",
+          "When I feel a pull, check HALT: hungry, angry, lonely or tired?",
+          "Write down the last time I gambled: where, when, and how I felt"
+        ]
       },
       "teaser": "Tomorrow: Risky times of day and week."
     },
@@ -291,26 +295,30 @@
       "day": 9,
       "week": 2,
       "title": "Risky times of day and week",
-      "reviewStatus": "placeholder",
+      "reviewStatus": "draft",
       "video": {
         "url": null,
-        "script": "PLACEHOLDER: 60-second animated intro to \"Risky times of day and week\" (week 2: Triggers)."
+        "script": "For a lot of people, gambling follows the clock.\n\nPayday. Friday arvo after work. Saturday afternoon when the sport's on. Late at night when everyone else is asleep. Sunday when the week's stretching out ahead.\n\nThese are your risky times. They're predictable, which is actually good news. If you know when an urge is likely to show up, you can be ready for it.\n\nToday you'll map out your week. When are you most at risk? And what could you be doing in those times instead?\n\nBecause an empty, unplanned risky time is where gambling likes to move in. A planned one is much harder for it to get into."
       },
       "audio": {
         "url": null,
         "kind": "lesson",
         "minutes": 6,
         "title": "Risky times of day and week",
-        "script": "PLACEHOLDER: 5 to 7 minute guided lesson on \"Risky times of day and week\". A psychologist will write and record this."
+        "script": "Get comfortable, and breathe in... and out.\n\nYesterday you started noticing triggers. Today we're going to look at the first group: times.\n\nFor many people, gambling has a rhythm. It shows up at the same times each week, almost like an appointment. And because it's so regular, it can stop feeling like a choice. It just becomes what happens at that time.\n\nLet's map out your week. Picture a normal week, starting on Monday.\n\nMonday morning. Back to work, or back to the routine. Is there any pull here? For some people, Monday is fine. For others, it's when the weekend's losses sink in.\n\nNow the weekdays. Lunch breaks. The drive or train home. That gap between getting home and dinner. Late at night, when the house is quiet and the phone's in your hand. Notice if any of these light up for you.\n\nNow Friday. Pay might have landed. The week's done. There's a feeling of letting off steam. For a lot of people, Friday arvo and Friday night are the riskiest time of the week.\n\nNow the weekend. Saturday, when the sport is on. Sunday afternoon, which can feel long and empty.\n\nAnd then there are the times that don't come every week. Payday, if it's fortnightly or monthly. Grand finals and other big sporting events. Holidays. Birthdays. Christmas. Times when you've got a bit of extra money, or a lot of extra time.\n\nTake a moment and pick out your top two or three risky times. When does the urge show up most?\n\nGood. Now here's the key idea. Risky times are dangerous when they're empty. When there's nothing planned, gambling fills the gap. So the most powerful thing you can do is plan something for those times. Not something boring you're forcing yourself to do. Something you actually want to do, or at least something that keeps you busy and away from the screen.\n\nLet's think about what that could be.\n\nIf Friday night is risky, could you plan to have dinner with mates who don't bet? Go to the gym on the way home? Have a takeaway and a movie with the family?\n\nIf Saturday afternoon is risky, could you get out of the house? A walk, a surf, a footy game where you're playing, not betting? A job in the shed?\n\nIf late at night is risky, could you put your phone on charge outside the bedroom, and read, or just go to sleep earlier?\n\nIf payday is risky, we'll talk about that on Day 13. It's a big one.\n\nNotice that none of these are about willpower. They're about setting things up, so the risky time is filled with something else.\n\nYou don't have to plan your whole week today. Just pick your riskiest time, and one thing you could do instead. Hold it in your mind.\n\nLater this week you'll turn these into if-then plans in the app. If it's Friday arvo, then I'll go to the gym. If it's late at night, then my phone goes on charge in the kitchen. You can even set a weekly heads-up, so the app gives you a nudge just before.\n\nLet's finish with a breath in... and out.\n\nYour risky times are predictable. That means you can be ready for them. Head into your check-in when you're ready."
       },
       "busyAudio": {
         "url": null,
-        "minutes": 3,
-        "script": "PLACEHOLDER: 3-minute short version of \"Risky times of day and week\"."
+        "minutes": 2,
+        "script": "Short one today. Breath in... and out.\n\nFor a lot of people, gambling follows the clock. Payday. Friday arvo. Saturday when the sport's on. Late at night. Sunday afternoon when the day feels long.\n\nThese are your risky times, and they're predictable. That's good news, because it means you can be ready.\n\nThink about a normal week. When does the urge show up most? Pick your top one or two.\n\nHere's the key idea. Risky times are dangerous when they're empty. When nothing's planned, gambling fills the gap.\n\nSo for your riskiest time, pick one thing you could do instead. Dinner with mates who don't bet. The gym on the way home. Getting out of the house on Saturday. Phone on charge in the kitchen at night.\n\nLater this week you'll turn these into if-then plans in the app, with a weekly heads-up if you like.\n\nNow your check-in. Good on you."
       },
       "action": {
         "prompt": "One thing for today",
-        "options": ["PLACEHOLDER action one", "PLACEHOLDER action two", "PLACEHOLDER action three"]
+        "options": [
+          "Pick my riskiest time this week and plan something for it",
+          "Put my phone on charge outside the bedroom tonight",
+          "Make an if-then plan for my riskiest time (More, If-then plans)"
+        ]
       },
       "teaser": "Tomorrow: Risky places and apps."
     },
@@ -318,26 +326,30 @@
       "day": 10,
       "week": 2,
       "title": "Risky places and apps",
-      "reviewStatus": "placeholder",
+      "reviewStatus": "draft",
       "video": {
         "url": null,
-        "script": "PLACEHOLDER: 60-second animated intro to \"Risky places and apps\" (week 2: Triggers)."
+        "script": "Today's about places and things. The venues, apps and screens that make gambling easy.\n\nThe pub with the pokies room. The betting app on your home screen. The notifications offering a bonus. The ads during the footy. The group chat where everyone's sharing their bets.\n\nGambling companies spend a fortune making sure they're never more than a tap away. So today, let's look at where gambling gets in, and close a few doors.\n\nSome you can avoid altogether. Some you can change, like going to a different pub, or turning off notifications. And some you'll just have to get through, with a plan.\n\nToday's reflection is about finding your doors."
       },
       "audio": {
         "url": null,
         "kind": "reflection",
         "minutes": 6,
         "title": "Risky places and apps",
-        "script": "PLACEHOLDER: 5 to 7 minute guided reflection on \"Risky places and apps\". A psychologist will write and record this."
+        "script": "Settle in, and take a slow breath in... and out.\n\nToday's a reflection. We're going to look at the places and things that make gambling easy for you, and think about which doors you can close.\n\nLet's start with places. Picture the places in your life where gambling happens, or where it's easy to start.\n\nMaybe it's a particular pub or club, with a gaming room out the back. Maybe it's the local pub where you watch the footy with mates. Maybe it's the newsagent. Maybe it's the car, sitting in the car park after work, phone in hand. Maybe it's your own couch.\n\nJust notice which ones come up for you. Where does gambling live?\n\nNow let's think about your phone, because for a lot of people, that's where most of it happens now. Picture your home screen. Are there betting apps on it? Are you logged in? Do you get notifications? Emails and texts with offers, bonus bets, \"we miss you\" messages?\n\nAnd think about everything else on your phone. Social media, where ads pop up. Sports apps, that show betting offers right next to the score. Group chats, where mates share screenshots of their bets.\n\nTake a breath. That's a lot of doors.\n\nHere's a simple way to think about each one. For every place or thing, you've got three options.\n\nAvoid it. Some doors you can just close. Delete the app. Close the account. Unsubscribe from the emails. Block their numbers. If you've chosen to stop completely, sign up to BetStop, and the licensed betting companies have to stop marketing to you altogether.\n\nChange it. Some things you can't avoid completely, but you can change them. If your local has a gaming room, could you go to a different pub, or sit in the bistro, away from the machines? Could you watch the footy at home or at a mate's place, instead of at the pub? Could you mute the group chat on game days, or ask your mates to leave you out of the betting talk? Could you turn off notifications on the sports app?\n\nCope with it. And some things you'll just have to get through. A work function at a venue. A family event at the club. For those, you go in with a plan. Who you'll stick with. How long you'll stay. Leaving your card at home and taking a set amount of cash for the night. And knowing that Urge SOS is in your pocket if you need it.\n\nLet's make this real. Out of all the doors you thought of, which is the one that's let gambling in most often?\n\nNow ask yourself: can I avoid it, change it, or do I need to cope with it?\n\nAnd what's one small thing you could do about it today?\n\nMaybe it's deleting one app. Maybe it's turning off one set of notifications. Maybe it's deciding which pub you'll go to on Saturday.\n\nYou don't have to close every door today. One is plenty. Each one you close makes the next urge a little easier.\n\nBreathe in... and out.\n\nEvery door you close is a decision you won't have to make in a weak moment. Head into your check-in when you're ready."
       },
       "busyAudio": {
         "url": null,
-        "minutes": 3,
-        "script": "PLACEHOLDER: 3-minute short version of \"Risky places and apps\"."
+        "minutes": 2,
+        "script": "Quick one today. Breath in... and out.\n\nToday's about places and things that make gambling easy. The pub with the pokies room. Betting apps on your home screen. Notifications and offers. Ads during the footy. Group chats where mates share their bets.\n\nGambling companies work hard to be one tap away. So let's close a few doors.\n\nFor each place or thing, you've got three options.\n\nAvoid it: delete the app, close the account, unsubscribe, or sign up to BetStop.\n\nChange it: go to a different pub, sit away from the machines, watch the footy at a mate's place, mute the group chat on game days.\n\nCope with it: for things you can't avoid, like a work do at a venue, go in with a plan. Leave your card at home, take a set amount of cash, and know Urge SOS is in your pocket.\n\nWhich door has let gambling in most often? Pick one small thing you can do about it today.\n\nNow your check-in. Well done."
       },
       "action": {
         "prompt": "One thing for today",
-        "options": ["PLACEHOLDER action one", "PLACEHOLDER action two", "PLACEHOLDER action three"]
+        "options": [
+          "Delete one betting app or close one account",
+          "Turn off notifications on my sports apps",
+          "Unsubscribe from betting emails and texts"
+        ]
       },
       "teaser": "Tomorrow: Feelings that pull you in."
     },
@@ -345,26 +357,30 @@
       "day": 11,
       "week": 2,
       "title": "Feelings that pull you in",
-      "reviewStatus": "placeholder",
+      "reviewStatus": "draft",
       "video": {
         "url": null,
-        "script": "PLACEHOLDER: 60-second animated intro to \"Feelings that pull you in\" (week 2: Triggers)."
+        "script": "A lot of gambling isn't really about money. It's about feelings.\n\nStress after a hard day. Boredom on a long Sunday. Loneliness late at night. Feeling flat, or anxious, or angry. Even feeling good, like wanting to celebrate.\n\nFor a while, gambling can take the edge off. It gives you something to focus on. It switches off the noise. But the relief doesn't last, and the losses usually leave you feeling worse than before.\n\nToday we'll look at the feelings that pull you in. And we'll find other ways to deal with them. Ways that actually help, and don't cost you.\n\nIt starts with noticing what you're really feeling."
       },
       "audio": {
         "url": null,
         "kind": "lesson",
         "minutes": 6,
         "title": "Feelings that pull you in",
-        "script": "PLACEHOLDER: 5 to 7 minute guided lesson on \"Feelings that pull you in\". A psychologist will write and record this."
+        "script": "Get comfortable, and take a slow breath in... and out.\n\nToday we're looking at one of the most powerful triggers of all: feelings.\n\nWhen people think about gambling, they often think it's about money. Trying to win. But for a lot of people, if they're really honest, it's more about what gambling does to how they feel. It can be a way of escaping. Switching off. Getting a buzz when life feels flat. Having something to look forward to.\n\nLet's go through some of the most common feelings, and see which ones you recognise.\n\nStress. After a hard day at work, or when money's tight, or when there's tension at home. Gambling can feel like a break from all of it.\n\nBoredom. Long weekends. Quiet nights. Times when there's nothing much to do. Gambling fills the space and makes time go faster.\n\nLoneliness. When you're on your own, especially at night. Gambling can feel like company.\n\nFeeling low, or flat. When nothing feels very good. The buzz of maybe can feel like the only thing that lights you up.\n\nAnger or frustration. After an argument, or a bad day. Gambling can feel like letting off steam.\n\nAnd sometimes, good feelings too. Celebrating. Feeling lucky. Having a bit of extra cash. Wanting to keep a good feeling going.\n\nTake a moment. Which of these do you recognise? There might be one big one, or a few.\n\nHere's the thing to understand. Gambling does work, a little bit, in the moment. That's why it's so easy to reach for. It does give you a break from the feeling. But it's a bit like using a credit card to pay off another credit card. The relief doesn't last, and the cost comes later. Losses lead to more stress, more low moods, more secrecy, and the cycle goes round again.\n\nSo the question isn't how to stop having these feelings. Everyone has them. The question is: what else could you do with them?\n\nLet's go through a few ideas.\n\nFor stress: move your body. A walk, a run, a swim, the gym. Even ten minutes. Or Urge SOS, and three minutes of slow breathing. Stress lives in the body, and the body is the quickest way to shift it.\n\nFor boredom: have a list ready. Things you can do when you've got time on your hands. A job around the house. A project in the shed. Cooking something. Calling someone. Getting out of the house. Boredom is much harder to deal with if you're trying to think of something on the spot.\n\nFor loneliness: reach out. A text to a mate, a call to family, even just going somewhere where there are people, like the gym or the local footy. And remember, Gambling Help Online is there 24/7, if you need someone to talk to.\n\nFor feeling low: be kind to yourself, and look after the basics. Sleep, food, getting outside. And if low moods are hanging around for weeks, it's worth talking to your GP. Feeling low and gambling often go together, and getting help with one can really help with the other.\n\nFor anger: give it somewhere to go. A hard workout. A walk to cool off. Writing it down.\n\nFor celebrating: find another way to mark it. A good meal. Time with people you like. Putting something towards your goal.\n\nBefore we finish, try something. Next time you feel an urge, pause, and ask yourself: what am I actually feeling right now? Just name it. \"I'm stressed.\" \"I'm bored.\" \"I'm lonely.\" Naming a feeling often takes a bit of the heat out of it, and it points you towards what you actually need.\n\nBreathe in... and out.\n\nYour feelings make sense. You just deserve better ways of looking after them. Head into your check-in when you're ready."
       },
       "busyAudio": {
         "url": null,
-        "minutes": 3,
-        "script": "PLACEHOLDER: 3-minute short version of \"Feelings that pull you in\"."
+        "minutes": 2,
+        "script": "Short one today. Breath in... and out.\n\nA lot of gambling isn't really about money. It's about feelings. Stress, boredom, loneliness, feeling low, anger. Even good feelings, like wanting to celebrate.\n\nGambling can take the edge off for a moment. But the relief doesn't last, and the losses usually leave you feeling worse.\n\nSo which feelings pull you in most? And what else could you do with them?\n\nStress: move your body, or do three minutes of breathing in Urge SOS.\n\nBoredom: have a list of things ready, like a job around the house, cooking, or getting out.\n\nLoneliness: text a mate, call family, or go where there are people.\n\nFeeling low: look after sleep, food and getting outside. If it hangs around, talk to your GP.\n\nNext time an urge shows up, pause and ask: what am I actually feeling right now? Naming it often takes some of the heat out of it.\n\nNow your check-in. Good on you."
       },
       "action": {
         "prompt": "One thing for today",
-        "options": ["PLACEHOLDER action one", "PLACEHOLDER action two", "PLACEHOLDER action three"]
+        "options": [
+          "If an urge comes, name the feeling underneath it",
+          "Write a list of five things to do when I'm bored",
+          "Do something today that helps with stress: a walk, the gym, a swim"
+        ]
       },
       "teaser": "Tomorrow: People and pressure."
     },
@@ -372,26 +388,30 @@
       "day": 12,
       "week": 2,
       "title": "People and pressure",
-      "reviewStatus": "placeholder",
+      "reviewStatus": "draft",
       "video": {
         "url": null,
-        "script": "PLACEHOLDER: 60-second animated intro to \"People and pressure\" (week 2: Triggers)."
+        "script": "Gambling is often social. Mates who bet on the footy. The group chat. A work sweep. A night out that ends up at the pokies. Family events at the club.\n\nThere's nothing wrong with wanting to fit in. But when everyone around you is betting, saying no can feel awkward.\n\nToday's about the people side of triggers. Who makes it easier to gamble? Who makes it easier not to? And what can you actually say when someone asks, \"You in?\"\n\nYou don't need a big speech. A simple, ready-made answer works best. And you might be surprised how little people mind."
       },
       "audio": {
         "url": null,
         "kind": "lesson",
         "minutes": 6,
         "title": "People and pressure",
-        "script": "PLACEHOLDER: 5 to 7 minute guided lesson on \"People and pressure\". A psychologist will write and record this."
+        "script": "Get comfortable, and breathe in... and out.\n\nToday we're looking at the people side of triggers. Because for a lot of people, gambling isn't something they do alone. It's woven into their social life.\n\nLet's think about where that happens for you.\n\nMaybe it's mates who bet on the footy, and the group chat that lights up every game day. Maybe it's a work sweep, or workmates who go to the pub on Fridays. Maybe it's a family that always has a bet at Christmas, or a club where everyone ends up in the gaming room. Maybe it's one particular mate who you always seem to end up gambling with.\n\nTake a moment, and notice who comes to mind. There's no blame in this. These might be people you love. We're just noticing where the pressure comes from.\n\nNow let's think about the other side. Who in your life makes it easier not to gamble? People you do other things with. People who don't bet, or who wouldn't care if you didn't. Notice who comes up there too.\n\nHere's the thing about social pressure. Most of it isn't people actually pushing you. It's the feeling of being left out, or the worry about what people will think. And that worry is usually a lot bigger in our heads than it is in real life.\n\nSo let's get you ready. When someone says, \"You in?\" or \"Put twenty on for me,\" what will you say?\n\nThe best answers are short, honest enough, and said like it's no big deal. You don't owe anyone a long explanation. Here are a few you could try. See which one feels like you.\n\n\"Nah, I'm right, mate.\"\n\n\"I'm having a break from it.\"\n\n\"I'm saving for something.\"\n\n\"Not for me at the moment.\"\n\n\"I'm giving the betting a rest.\"\n\nPick one. Say it to yourself now, a couple of times, the way you'd say it to a mate.\n\nIt might feel a bit strange at first. That's normal. The first few times are the hardest. After that, most people find their mates just stop asking.\n\nNow let's think about some practical things.\n\nIf there's a group chat that's all about betting, could you mute it on game days? Or leave it, and stay in touch with those mates in other ways?\n\nIf your Friday drinks always end up at the pokies, could you head off before that happens? Or suggest somewhere else?\n\nIf there's one person you always end up gambling with, could you see them for something else? A game of golf, a feed, a fishing trip?\n\nAnd if there's someone you trust, it can really help to tell them what you're doing. Not everyone, just one or two people. When your mates know, they're often happy to back you up, and they'll stop asking.\n\nYou might find some people react in a way you don't expect. Most will be fine, and some will be really supportive. If someone gives you a hard time about it, that tells you something about them, not about you.\n\nBreathe in... and out.\n\nYou can keep your mates and still say no. Head into your check-in when you're ready."
       },
       "busyAudio": {
         "url": null,
-        "minutes": 3,
-        "script": "PLACEHOLDER: 3-minute short version of \"People and pressure\"."
+        "minutes": 2,
+        "script": "Quick one today. Breath in... and out.\n\nGambling is often social. Mates who bet on the footy. The group chat. A work sweep. Nights that end up at the pokies. Family events at the club.\n\nWho makes it easier to gamble? And who makes it easier not to? Just notice. No blame.\n\nMost social pressure isn't people pushing you. It's the worry about missing out, or what people will think. And that worry is usually bigger in our heads than in real life.\n\nSo get a simple answer ready for when someone says, \"You in?\" Something like:\n\n\"Nah, I'm right, mate.\"\n\n\"I'm having a break from it.\"\n\n\"I'm saving for something.\"\n\nPick one and say it to yourself a couple of times. The first few times are the hardest. After that, most mates just stop asking.\n\nAnd if there's a betting group chat, think about muting it on game days.\n\nNow your check-in. Nice work."
       },
       "action": {
         "prompt": "One thing for today",
-        "options": ["PLACEHOLDER action one", "PLACEHOLDER action two", "PLACEHOLDER action three"]
+        "options": [
+          "Pick my line for when someone asks \"You in?\"",
+          "Mute the betting group chat on game days",
+          "Plan something with a mate that isn't about gambling"
+        ]
       },
       "teaser": "Tomorrow: Planning around payday."
     },
@@ -399,26 +419,30 @@
       "day": 13,
       "week": 2,
       "title": "Planning around payday",
-      "reviewStatus": "placeholder",
+      "reviewStatus": "draft",
       "video": {
         "url": null,
-        "script": "PLACEHOLDER: 60-second animated intro to \"Planning around payday\" (week 2: Triggers)."
+        "script": "Payday. For a lot of people, it's the riskiest day of all. Money in the account, a feeling of having a bit to spare, and an urge that knows exactly when to show up.\n\nThe trick is to have a plan before the money lands. Pay the bills first. Move savings straight away, ideally automatically. Take out only what you need for the week. Some people even ask someone they trust to hold their card for the day.\n\nToday's session is a bit different. It's a guided visualisation. You'll picture your next payday, step by step, and practise getting through it the way you want to.\n\nAthletes rehearse in their heads before the big game. Today, you will too."
       },
       "audio": {
         "url": null,
         "kind": "meditation",
         "minutes": 6,
         "title": "Planning around payday",
-        "script": "PLACEHOLDER: 5 to 7 minute guided meditation on \"Planning around payday\". A psychologist will write and record this."
+        "script": "Find a comfortable position, and if it feels okay, close your eyes.\n\nTake a slow breath in... and out.\n\nAnd again. In... and out.\n\nToday we're going to rehearse something. Athletes do this before a big game. They picture it in their mind, step by step, so when the real thing comes, they're ready. Today, we're going to rehearse your next payday.\n\nFor a lot of people, payday is the riskiest day of all. Money lands, there's a feeling of having a bit to spare, and the urge knows exactly when to show up. So we're going to walk through it, and plan it, before it happens.\n\nLet's start with the night before. Picture yourself the night before payday. Before you go to bed, you set things up. Maybe you've already arranged for your savings to move automatically, the moment your pay lands. Maybe you've got your bills set up to come out first. Maybe you've written down how much you need for the week.\n\nNotice how it feels to have that sorted. A bit lighter. A bit more in control.\n\nNow it's payday morning. You wake up. Picture where you are. You pick up your phone and see the money has landed.\n\nNotice what happens in your body. Maybe there's a little flicker of excitement. Maybe the thought pops up: \"I could have a bit of a bet today.\" That's okay. That's the trigger doing its thing. You've been expecting it.\n\nNow picture yourself taking a slow breath, just like this one. In... and out.\n\nAnd then picture yourself doing what you planned. Paying the bills. Moving the money to savings, if it hasn't moved already. Checking your goal in the app, and watching it get a bit closer.\n\nPicture the number in your savings. Picture what it's for.\n\nNow the day goes on. Maybe it's a Friday. Work finishes. Picture that moment, walking out to the car, or getting on the train. This is when the pull might get stronger. \"It's Friday. I've earned it.\"\n\nNotice the urge. Where do you feel it in your body?\n\nNow picture yourself doing the thing you planned instead. Maybe you're heading to the gym. Maybe you're going home for dinner with the family. Maybe you're meeting a mate who doesn't bet. Maybe you're opening Urge SOS and taking three minutes to breathe.\n\nSee yourself doing it. See the urge rise, and peak, and start to fade, like a wave.\n\nNow picture the evening. You're at home, or wherever you planned to be. Your money is where you put it. Notice how that feels. Maybe relief. Maybe pride. Maybe just calm.\n\nNow picture waking up the next morning. You check your account, and the money is still there. No sinking feeling. No hiding anything. Just a normal Saturday morning.\n\nStay with that feeling for a few breaths.\n\nNow, let's bring it back to real life. Think about one thing you could set up before your next payday. Something that would make that rehearsal come true.\n\nIt might be setting up an automatic transfer to savings. It might be asking your bank to block gambling payments. It might be planning your payday evening. It might be asking someone you trust to hold your card for the day. It might be making an if-then plan in the app: \"If it's payday, then I'll move money into savings first thing.\"\n\nPick one.\n\nNow take a slow breath in... and out. Start to notice the room around you. Wriggle your fingers and toes.\n\nWhen you're ready, open your eyes.\n\nYou've rehearsed it. Now you're ready for it. Head into your check-in when you're ready."
       },
       "busyAudio": {
         "url": null,
-        "minutes": 3,
-        "script": "PLACEHOLDER: 3-minute short version of \"Planning around payday\"."
+        "minutes": 2,
+        "script": "Short version today. Get comfortable, and take a breath in... and out.\n\nPayday is the riskiest day for a lot of people. Money lands, and the urge knows exactly when to show up. So let's rehearse it.\n\nClose your eyes if you like. Picture your next payday morning. You see the money land. Notice the little flicker, maybe the thought: \"I could have a bit of a bet today.\" That's the trigger. You were expecting it.\n\nNow picture yourself taking a slow breath, and doing what you planned. Paying the bills. Moving money to savings. Checking your goal in the app.\n\nPicture Friday arvo, when the pull gets stronger. See yourself heading to the gym, or home to the family, or opening Urge SOS. See the urge rise and fade.\n\nNow picture waking up the next day, money still there. Notice how that feels.\n\nBefore you open your eyes, pick one thing to set up before your next payday. An automatic transfer to savings, a bank gambling block, or an if-then plan in the app.\n\nNow your check-in. Well done."
       },
       "action": {
         "prompt": "One thing for today",
-        "options": ["PLACEHOLDER action one", "PLACEHOLDER action two", "PLACEHOLDER action three"]
+        "options": [
+          "Set up an automatic transfer to savings on payday",
+          "Make an if-then plan for payday (More, If-then plans)",
+          "Ask someone I trust to hold my card on payday"
+        ]
       },
       "teaser": "Tomorrow: Looking back on week 2."
     },
@@ -426,26 +450,30 @@
       "day": 14,
       "week": 2,
       "title": "Looking back on week 2",
-      "reviewStatus": "placeholder",
+      "reviewStatus": "draft",
       "video": {
         "url": null,
-        "script": "PLACEHOLDER: 60-second animated intro to \"Looking back on week 2\" (week 2: Triggers)."
+        "script": "Two weeks in. Well done for sticking with it.\n\nThis week you got to know your triggers: the times, places, feelings and people that set off the urge. And you started planning around them.\n\nToday, let's pull it all together. Which triggers are the big ones for you? And do you have a plan for each of them?\n\nThe if-then plans in the app are perfect for this. If it's payday, then I'll move money into savings first thing. If I'm bored on a Sunday, then I'll get out of the house.\n\nNext week, we're moving from triggers to thoughts. The sneaky things your mind says to talk you into a bet. But first, let's look back."
       },
       "audio": {
         "url": null,
         "kind": "reflection",
         "minutes": 6,
         "title": "Looking back on week 2",
-        "script": "PLACEHOLDER: 5 to 7 minute guided reflection on \"Looking back on week 2\". A psychologist will write and record this."
+        "script": "Get comfortable, and take a slow breath in... and out.\n\nTwo weeks done. Whatever this week looked like, you're here, and that's what counts.\n\nThis week was all about triggers. Let's look back over it, and turn what you've learned into a plan.\n\nOn Day 8, you learned about the chain: a trigger, then a thought, then the urge, then the action. And you learned the HALT check. Hungry, angry, lonely or tired. Did you notice any of those this week, when an urge showed up?\n\nOn Day 9, you mapped your risky times. When in the week does the urge show up most for you? Say your riskiest time to yourself now.\n\nOn Day 10, you looked at places and things. The venues, apps and screens. Did you close any doors this week? Delete an app, turn off notifications, unsubscribe from something? If you did, that's real progress.\n\nOn Day 11, you looked at feelings. Stress, boredom, loneliness, feeling low. Which feeling pulls you in most? And what's one other thing you can do with it?\n\nOn Day 12, you thought about people, and you picked a line for when someone asks, \"You in?\" Do you remember your line? Say it to yourself now.\n\nAnd on Day 13, you rehearsed payday.\n\nTake a breath.\n\nNow let's pull it together. Out of everything this week, what are your three biggest triggers? They might be a time, a place, a feeling, a person, or a mix. Just pick the three that matter most.\n\nHold the first one in your mind. Do you have a plan for it? A clear plan, not just \"I'll try harder\"? If you do, great. If you don't, think about what you could do instead, next time it shows up.\n\nNow the second one. Same question.\n\nAnd the third.\n\nIf you've got clear answers, it's worth putting them into the app as if-then plans. Go to More, then If-then plans. It only takes a minute. If it's payday, then I'll move money into savings first thing. If I'm bored on a Sunday, then I'll get out of the house. If my mates ask, then I'll say I'm saving for something. Your plans will show up in Urge SOS, right when you need them.\n\nNow let's look honestly at how the week went. If it was gamble-free, take a moment to really feel that. If you slipped, remember: every gamble-free day still counts. And a slip is just more information about your triggers. What was going on just before? Add it to your plan.\n\nNext week, we're moving from triggers to thoughts. The things your mind says to talk you into a bet. \"I'm due a win.\" \"Just this once.\" \"I'll win it back.\" You'll learn to spot them, and answer them back.\n\nBefore we finish, think of one thing you did this week that you're proud of. Hold it in your mind.\n\nBreathe in... and out.\n\nWeek two, done. After your check-in, you'll see a summary of your week. Head into your check-in when you're ready."
       },
       "busyAudio": {
         "url": null,
-        "minutes": 3,
-        "script": "PLACEHOLDER: 3-minute short version of \"Looking back on week 2\"."
+        "minutes": 2,
+        "script": "Short version today. Breath in... and out.\n\nTwo weeks done. Well done for sticking with it.\n\nThis week you got to know your triggers. Times, like payday or Friday arvo. Places and things, like venues and apps. Feelings, like stress, boredom and loneliness. And people, like mates who bet.\n\nPick your three biggest triggers. For each one, do you have a clear plan? Not \"I'll try harder\", but \"If this, then I'll do that\"?\n\nIf you do, put them in the app as if-then plans. Go to More, then If-then plans. They'll show up in Urge SOS right when you need them.\n\nIf you slipped this week, every gamble-free day still counts. Ask what was going on just before, and add it to your plan.\n\nNext week: thoughts. The sneaky things your mind says to talk you into a bet.\n\nBefore you go, think of one thing you're proud of from this week.\n\nNow your check-in, then your week summary. Good on you."
       },
       "action": {
         "prompt": "One thing for today",
-        "options": ["PLACEHOLDER action one", "PLACEHOLDER action two", "PLACEHOLDER action three"]
+        "options": [
+          "Make if-then plans for my three biggest triggers",
+          "Tell someone what my biggest trigger is",
+          "Close one more door: an app, an account or a notification"
+        ]
       },
       "teaser": "Tomorrow: Thoughts aren't facts."
     },
