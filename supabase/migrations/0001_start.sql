@@ -69,6 +69,12 @@ alter table public.members add column if not exists paused_until date;
 alter table public.members add column if not exists plan_notes bytea;
 alter table public.members add column if not exists goal_since date; -- when the current savings goal was set
 alter table public.members add column if not exists betstop_at timestamptz; -- when they said they'd signed up to BetStop
+-- Cutting back: their own limits. Taking a break: from and until.
+alter table public.members add column if not exists limit_weekly_money numeric(10, 2) check (limit_weekly_money between 0 and 1000000);
+alter table public.members add column if not exists limit_days smallint check (limit_days between 0 and 7);
+alter table public.members add column if not exists limit_off text[] not null default '{}' check (cardinality(limit_off) <= 20);
+alter table public.members add column if not exists break_from date;
+alter table public.members add column if not exists break_until date;
 
 create table if not exists public.questionnaires (
   id bigint generated always as identity primary key,
@@ -191,6 +197,10 @@ language sql stable security definer set search_path = public as $$
       'savingTarget', m.saving_target,
       'goalSince', m.goal_since,
       'betstopAt', m.betstop_at,
+      'limits', case when m.goal = 'cut_back' then jsonb_build_object('weeklyMoney', m.limit_weekly_money, 'daysPerWeek', m.limit_days,
+        'offLimits', to_jsonb(m.limit_off)) else null end,
+      'break', case when m.goal = 'break' and m.break_until is not null
+        then jsonb_build_object('from', m.break_from, 'until', m.break_until) else null end,
       'riskyTimes', to_jsonb(m.risky_times),
       'payday', coalesce(m.payday, ''),
       'habit', coalesce(m.habit, ''),
@@ -252,6 +262,12 @@ begin
       saving_target = (o ->> 'savingTarget')::numeric,
       goal_since = (o ->> 'goalSince')::date,
       betstop_at = (o ->> 'betstopAt')::timestamptz,
+      limit_weekly_money = (o -> 'limits' ->> 'weeklyMoney')::numeric,
+      limit_days = (o -> 'limits' ->> 'daysPerWeek')::smallint,
+      limit_off = coalesce(array(select jsonb_array_elements_text(case when jsonb_typeof(o -> 'limits' -> 'offLimits') = 'array'
+        then o -> 'limits' -> 'offLimits' else '[]'::jsonb end)), '{}'),
+      break_from = (o -> 'break' ->> 'from')::date,
+      break_until = (o -> 'break' ->> 'until')::date,
       risky_times = coalesce(array(select jsonb_array_elements_text(o -> 'riskyTimes')), '{}'),
       payday = nullif(o ->> 'payday', ''),
       habit = nullif(left(o ->> 'habit', 80), ''),

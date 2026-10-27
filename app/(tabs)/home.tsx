@@ -10,6 +10,7 @@ import { useContent } from '@/lib/content';
 import { money } from '@/lib/format';
 import { photos } from '@/lib/images';
 import { FREE_DAYS, localDate, today, TOTAL_DAYS, TOTAL_WEEKS, weekOf } from '@/lib/program';
+import { breakStatus, limitsThisWeek } from '@/lib/goalPlan';
 import { missionOfTheWeek } from '@/lib/missions';
 import { goalProgress, progress } from '@/lib/progress';
 import { isPaused } from '@/lib/reminderPlan';
@@ -35,6 +36,8 @@ export default function Home() {
   const p = progress(state);
   const mission = missionOfTheWeek(missions, state);
   const goal = goalProgress(state);
+  const limits = limitsThisWeek(state);
+  const onBreak = state.onboarding?.goal === 'break' ? breakStatus(state.onboarding.break) : null;
   const o = state.onboarding;
   const now = new Date();
   const todayDate = localDate(now);
@@ -143,6 +146,55 @@ export default function Home() {
         <Txt variant="small" style={{ textAlign: 'center', marginTop: -space.sm }}>
           Day {t.day}: {next.title} · about 10 minutes, or 5 on a busy day
         </Txt>
+      ) : null}
+
+      {/* Cutting back: this week against their limits. Taking a break: how far through it, or what's next once it ends. */}
+      {limits ? (
+        <Pressable accessibilityRole="button" onPress={() => router.push('/aim')}>
+          <Card>
+            <Txt variant="label">Your limits this week</Txt>
+            {limits.weeklyMoney !== null ? (
+              <>
+                <Txt>
+                  {money(limits.spent)} of {money(limits.weeklyMoney)}
+                </Txt>
+                <ProgressBar at={limits.spent} of={limits.weeklyMoney} color={limits.withinMoney ? undefined : th.primary} />
+              </>
+            ) : null}
+            {limits.daysPerWeek !== null ? (
+              <>
+                <Txt>
+                  {limits.days} of {limits.daysPerWeek} {limits.daysPerWeek === 1 ? 'day' : 'days'}
+                </Txt>
+                <ProgressBar at={limits.days} of={Math.max(1, limits.daysPerWeek)} color={limits.withinDays ? undefined : th.primary} />
+              </>
+            ) : null}
+            <Txt variant="small">
+              {limits.withinMoney && limits.withinDays
+                ? 'Within your limits so far. Fresh week every Monday.'
+                : "Over this week. No beating yourself up: Monday's a fresh start. Tap to look at your limits."}
+            </Txt>
+          </Card>
+        </Pressable>
+      ) : null}
+      {onBreak ? (
+        onBreak.ended ? (
+          <Card raised>
+            <Txt variant="label">Your break is done</Txt>
+            <Txt>You made it. Take a moment to notice what's been different, then choose what comes next.</Txt>
+            <Button label="What's next?" icon="compass" onPress={() => router.push('/aim')} />
+          </Card>
+        ) : (
+          <Pressable accessibilityRole="button" onPress={() => router.push('/aim')}>
+            <Card>
+              <Txt variant="label">Your break</Txt>
+              <Txt>
+                Day {onBreak.day} of {onBreak.total} · {onBreak.daysLeft} {onBreak.daysLeft === 1 ? 'day' : 'days'} to go
+              </Txt>
+              <ProgressBar at={onBreak.day} of={onBreak.total} />
+            </Card>
+          </Pressable>
+        )
       ) : null}
 
       {/* Stopping completely and not on BetStop yet: recommend it until they tick it off on the BetStop screen. */}

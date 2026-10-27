@@ -38,8 +38,8 @@ export default function Session() {
   const { state, signedIn, saveDay, saveCheckin } = useStore();
   const [busy, setBusy] = useState(false);
   const [at, setAt] = useState(0);
-  const checkin = useCheckin();
-  const gambled = checkin.gambled;
+  const checkin = useCheckin(state.onboarding?.goal === 'cut_back');
+  const gambled = checkin.slip; // gambled outside their limits (or at all, unless cutting back)
   const [action, setAction] = useState('');
   const [saving, setSaving] = useState(false);
   const [problem, setProblem] = useState<string | null>(null);

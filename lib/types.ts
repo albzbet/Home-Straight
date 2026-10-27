@@ -2,6 +2,12 @@
 
 export type Goal = 'quit' | 'cut_back' | 'break';
 
+// Cutting back: the limits they set themselves (null = no limit of that kind). offLimits = kinds of gambling they've ruled out.
+export type GoalLimits = { weeklyMoney: number | null; daysPerWeek: number | null; offLimits: string[] };
+
+// Taking a break: from and until, YYYY-MM-DD.
+export type GoalBreak = { from: string; until: string };
+
 export type Onboarding = {
   goal: Goal;
   gamblingTypes: string[]; // pokies, sports betting... the main one first
@@ -10,6 +16,8 @@ export type Onboarding = {
   weeklySpend: number | null; // average weekly spend on gambling, in dollars
   savingFor: string; // e.g. "A trip to Bali"
   savingTarget: number | null;
+  limits?: GoalLimits | null; // cut_back only
+  break?: GoalBreak | null; // break only
   betstopAt?: string | null; // when they told us they'd signed up to BetStop (null = not yet)
   goalSince?: string | null; // YYYY-MM-DD the current goal was set; money kept counts towards it from then (null = the start)
   riskyTimes: string[];

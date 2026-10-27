@@ -6,7 +6,8 @@ import { Photo } from '@/components/Photo';
 import { Card, ProgressBar, Screen, SectionHeader, StatCard, Txt } from '@/components/ui';
 import { money } from '@/lib/format';
 import { photos } from '@/lib/images';
-import { periodStats, progress, weeklyGoals, type Period, type WeeklyGoal } from '@/lib/progress';
+import { goalsForWeek } from '@/lib/goalPlan';
+import { periodStats, progress, type Period, type WeeklyGoal } from '@/lib/progress';
 import { useStore } from '@/lib/store';
 import { fonts, radius, space, useTheme } from '@/lib/theme';
 
@@ -23,13 +24,17 @@ export default function Progress() {
   const [period, setPeriod] = useState<Period>('week');
   const stats = periodStats(state, period);
   const streak = progress(state).streak;
-  const goals = weeklyGoals(state);
+  const goals = goalsForWeek(state);
+  // Reached (or, for a limit, still within it): green. Over a limit: copper. Not there yet: muted.
+  const goalColor = (g: WeeklyGoal) => (g.lowerIsBetter ? (g.at <= g.of ? t.success : t.primary) : g.at >= g.of ? t.success : t.textMuted);
   const hasSpend = !!state.onboarding?.weeklySpend;
 
   const goalIcon: Record<WeeklyGoal['id'], { name: keyof typeof Ionicons.glyphMap; color: string }> = {
     sessions: { name: 'calendar', color: t.success },
     money: { name: 'cash', color: t.success },
     gambleFree: { name: 'sunny', color: t.mission },
+    limitMoney: { name: 'wallet', color: t.success },
+    limitDays: { name: 'calendar-clear', color: t.success },
   };
 
   return (
@@ -92,11 +97,12 @@ export default function Progress() {
             <View style={{ flexDirection: 'row', alignItems: 'center', gap: space.md }}>
               <Ionicons name={goalIcon[g.id].name} size={20} color={goalIcon[g.id].color} />
               <Text style={{ flex: 1, fontFamily: fonts.medium, fontSize: 15, color: t.text }}>{g.label}</Text>
-              <Text style={{ fontFamily: fonts.semibold, fontSize: 14, color: g.at >= g.of ? t.success : t.textMuted }}>
-                {g.id === 'money' ? `${money(g.at)} / ${money(g.of)}` : `${g.at}/${g.of}`}
+              <Text style={{ fontFamily: fonts.semibold, fontSize: 14, color: goalColor(g) }}>
+                {g.id === 'money' || g.id === 'limitMoney' ? `${money(g.at)} / ${money(g.of)}` : `${g.at}/${g.of}`}
               </Text>
             </View>
-            <ProgressBar at={g.at} of={g.of} />
+            {/* A limit fills as it's used: green while within it, copper once over (never red). */}
+            <ProgressBar at={g.at} of={g.of} color={g.lowerIsBetter && g.at > g.of ? t.primary : undefined} />
           </View>
         ))}
       </View>

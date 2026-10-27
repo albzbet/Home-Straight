@@ -2,11 +2,13 @@ import { router } from 'expo-router';
 import { useState } from 'react';
 import { View } from 'react-native';
 import { BetstopCard } from '@/components/Betstop';
+import { BreakFields, LimitsFields, limitsDraft, limitsFrom, limitsOk, type LimitsDraft } from '@/components/GoalDetails';
 import { useCrisisGate } from '@/components/Help';
 import { blankAnswers, Questions } from '@/components/Questions';
 import { Button, Card, Chip, Choice, Field, Row, Screen, ProgressBar, Txt } from '@/components/ui';
 import { config } from '@/lib/config';
 import { looksLikeEmail, parseMoney, timeLabel } from '@/lib/format';
+import { breakFor } from '@/lib/goalPlan';
 import { moneyInsight, pickInsights, type Insight } from '@/lib/insights';
 import { useStore } from '@/lib/store';
 import { space } from '@/lib/theme';
@@ -15,8 +17,9 @@ import type { Goal, Onboarding as OnboardingAnswers } from '@/lib/types';
 // Eight quick questions (about 3 minutes), then straight into Day 1. The first four are each followed by a short
 // "something to know" card matched to what was picked, so it starts teaching straight away. Money comes once they've
 // seen a few of those. Everything except the goal and the why can be skipped.
-const STEPS = [
+const ALL_STEPS = [
   'goal',
+  'goalDetail', // cut back: their limits; take a break: how long (skipped for "Stop completely")
   'goalCard',
   'types',
   'typesCard',
@@ -30,7 +33,6 @@ const STEPS = [
   'buddy',
   'questions',
 ] as const;
-const QUESTIONS = STEPS.filter((s) => !s.endsWith('Card'));
 const o = config.onboarding;
 
 const toggle = (list: string[], item: string) => (list.includes(item) ? list.filter((x) => x !== item) : [...list, item]);
@@ -57,6 +59,11 @@ export default function Onboarding() {
   const [answers, setAnswers] = useState(blankAnswers);
   const [betstop, setBetstop] = useState(false);
 
+  const [limits, setLimits] = useState<LimitsDraft>(limitsDraft(null));
+  const [breakDays, setBreakDays] = useState<number | null>(null);
+
+  const STEPS = goal === 'cut_back' || goal === 'break' ? ALL_STEPS : ALL_STEPS.filter((s) => s !== 'goalDetail');
+  const QUESTIONS = STEPS.filter((s) => !s.endsWith('Card'));
   const name = STEPS[step]!;
   const isCard = name.endsWith('Card');
   const question = QUESTIONS.indexOf(isCard ? STEPS[step - 1]! : name) + 1;
@@ -64,6 +71,7 @@ export default function Onboarding() {
   const canGo =
     isCard ||
     (name === 'goal' && !!goal) ||
+    (name === 'goalDetail' && (goal === 'cut_back' ? limitsOk(limits) : breakDays !== null)) ||
     name === 'types' ||
     (name === 'why' && (whys.length > 0 || !!whyText.trim())) ||
     name === 'money' ||
@@ -90,6 +98,8 @@ export default function Onboarding() {
       buddyEmail: buddyConsent ? buddyEmail.trim() : '',
       buddyConsent: buddyConsent && !!buddyEmail.trim(),
       betstopAt: goal === 'quit' && betstop ? new Date().toISOString() : null,
+      limits: goal === 'cut_back' ? limitsFrom(limits) : null,
+      break: goal === 'break' && breakDays ? breakFor(breakDays) : null,
       completedAt: new Date().toISOString(),
     };
     try {
@@ -108,7 +118,7 @@ export default function Onboarding() {
   const { check, sheet } = useCrisisGate();
   // Anything they've written is checked for crisis words before moving on.
   const next = () => check([whyText, savingFor, habit], () => (step < STEPS.length - 1 ? setStep(step + 1) : finish()));
-  const optional = !isCard && name !== 'goal' && name !== 'why' && name !== 'questions';
+  const optional = !isCard && name !== 'goal' && name !== 'goalDetail' && name !== 'why' && name !== 'questions';
 
   // The card for the step just answered.
   const cards: Insight[] =
@@ -159,6 +169,19 @@ export default function Onboarding() {
               onPress={() => setGoal(g.id as Goal)}
             />
           ))}
+        </>
+      )}
+
+      {name === 'goalDetail' && goal === 'cut_back' && (
+        <>
+          <Txt variant="title">Your limits</Txt>
+          <LimitsFields value={limits} onChange={setLimits} />
+        </>
+      )}
+      {name === 'goalDetail' && goal === 'break' && (
+        <>
+          <Txt variant="title">How long a break?</Txt>
+          <BreakFields days={breakDays} onChange={setBreakDays} />
         </>
       )}
 

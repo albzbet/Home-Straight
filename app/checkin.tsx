@@ -16,7 +16,7 @@ import { space, useTheme } from '@/lib/theme';
 export default function DailyCheckin() {
   const t = useTheme();
   const { state, saveCheckin } = useStore();
-  const checkin = useCheckin();
+  const checkin = useCheckin(state.onboarding?.goal === 'cut_back');
   const [note, setNote] = useState('');
   const [step, setStep] = useState<'mood' | 'questions' | 'bounce' | 'done'>('mood');
   const [saving, setSaving] = useState(false);
@@ -48,7 +48,11 @@ export default function DailyCheckin() {
             Thanks for checking in
           </Txt>
           <Txt variant="muted" style={{ textAlign: 'center' }}>
-            {checkin.gambled ? 'Bouncing back is what counts, and you just did it.' : 'Another day in the bank. See you tomorrow.'}
+            {checkin.slip
+              ? 'Bouncing back is what counts, and you just did it.'
+              : checkin.gambled
+                ? 'Sticking to your limits takes real effort. Good on you.'
+                : 'Another day in the bank. See you tomorrow.'}
           </Txt>
         </View>
       </Screen>
@@ -91,7 +95,7 @@ export default function DailyCheckin() {
       footer={
         <>
           {problem ? <Txt variant="small">{problem}</Txt> : null}
-          {step === 'questions' && checkin.gambled ? (
+          {step === 'questions' && checkin.slip ? (
             <PrimaryButton label="Next" onPress={() => setStep('bounce')} disabled={!checkin.complete} />
           ) : (
             <PrimaryButton label="Save" onPress={save} disabled={!checkin.complete} loading={saving} />

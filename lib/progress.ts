@@ -115,7 +115,14 @@ export function periodStats(state: ProgramState, period: Period, today: string =
   };
 }
 
-export type WeeklyGoal = { id: 'sessions' | 'money' | 'gambleFree'; label: string; at: number; of: number };
+// lowerIsBetter: a limit (cutting back), where staying at or under "of" is the goal.
+export type WeeklyGoal = {
+  id: 'sessions' | 'money' | 'gambleFree' | 'limitMoney' | 'limitDays';
+  label: string;
+  at: number;
+  of: number;
+  lowerIsBetter?: boolean;
+};
 
 // This week's goals, worked out from the program and their usual spend (nothing to set up): 5 sessions, keep a week's
 // usual spend, 7 gamble-free days. The money goal only shows if they told us their spend.

@@ -19,7 +19,8 @@ const SLIP_REASONS = [
 
 const toggle = (list: string[], item: string) => (list.includes(item) ? list.filter((x) => x !== item) : [...list, item]);
 
-export function useCheckin() {
+// cutBack: they're cutting back, so gambling within their own limits isn't a slip (no bounce-back questions for it).
+export function useCheckin(cutBack = false) {
   const [mood, setMood] = useState<number | null>(null);
   const [urge, setUrge] = useState<number | null>(null);
   const [gambled, setGambled] = useState<boolean | null>(null);
@@ -27,6 +28,8 @@ export function useCheckin() {
   const [slipWhat, setSlipWhat] = useState<string[]>([]);
   const [slipNote, setSlipNote] = useState('');
   const [slipDifferent, setSlipDifferent] = useState('');
+  const [withinLimits, setWithinLimits] = useState<boolean | null>(null);
+  const askLimits = cutBack && gambled === true;
   return {
     fields: {
       mood,
@@ -43,9 +46,14 @@ export function useCheckin() {
       setSlipNote,
       slipDifferent,
       setSlipDifferent,
+      askLimits,
+      withinLimits,
+      setWithinLimits,
     },
     gambled,
-    complete: mood !== null && urge !== null && gambled !== null,
+    // A slip gets the bounce-back step: any gambling, except within their limits when cutting back.
+    slip: gambled === true && !(askLimits && withinLimits === true),
+    complete: mood !== null && urge !== null && gambled !== null && (!askLimits || withinLimits !== null),
     // Free text to run past the crisis check.
     texts: [slipNote, slipDifferent],
     // What gets saved.
@@ -144,6 +152,15 @@ export function CheckinQuestions({ f, lastDate, withMood = true }: { f: Fields; 
           onChangeText={f.setAmount}
           keyboardType="decimal-pad"
         />
+      ) : null}
+      {f.askLimits ? (
+        <>
+          <Txt variant="h2">Did you stay within your limits?</Txt>
+          <Row>
+            <Chip label="Yes" selected={f.withinLimits === true} onPress={() => f.setWithinLimits(true)} />
+            <Chip label="No" selected={f.withinLimits === false} onPress={() => f.setWithinLimits(false)} />
+          </Row>
+        </>
       ) : null}
     </>
   );

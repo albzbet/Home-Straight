@@ -76,6 +76,14 @@ what's next. Plain English, click-by-click steps.
   `config.betstop`, facts checked 26 Oct 2026): `BetstopCard` (`components/Betstop.tsx`) straight after picking it in
   onboarding and on Home until they tick "I've signed up" (`onboarding.betstopAt`, `members.betstop_at` in 0001);
   `app/betstop.tsx` (how it works, other barriers: bank block, blocking apps, clear the decks), also from More.
+- Cut back and take a break get their details (owner, 27 Oct 2026): setup's `goalDetail` step (skipped for Stop completely)
+  asks cut back for their own limits (weekly $, most days a week, kinds off limits: `onboarding.limits`) and take a break for a
+  length (`onboarding.break` {from, until}); fields in `components/GoalDetails.tsx`, logic in `lib/goalPlan.ts`
+  (`limitsThisWeek` from check-in amounts and gamble days, `goalsForWeek` swaps them into Progress's weekly goals, `breakStatus`).
+  Home shows a limits card or a break card (and "What's next?" when it ends); `app/aim.tsx` (More > What you're aiming for)
+  changes the aim. Check-ins ask cut-back members "Did you stay within your limits?"; within limits = no bounce-back
+  (`useCheckin(cutBack)`, `checkin.slip`). Gamble-free days and the streak still count any gambling. Columns
+  `members.limit_*` / `break_*` in 0001.
 - If-then plans (`app/plans.tsx`, More > If-then plans, a Home card after Day 1 until they have one): "If [risky moment],
   then I'll [something else]" in three steps (their onboarding risky times first, marked Yours; ideas per moment from
   `config.plans`; own words allowed and crisis-checked), optional weekly heads-up (`planNudges` in `lib/plans.ts`, WEEKLY local
